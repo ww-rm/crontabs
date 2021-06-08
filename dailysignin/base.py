@@ -23,9 +23,9 @@ class BaseSigner:
             self.log_path = log_path
 
         self.s = utils.XSession(self.log_path)
-        self.s.headers = self.headers
+        self.s.headers.update(self.headers)
         if useproxies:
-            self.s.proxies = self.proxies
+            self.s.proxies.update(self.proxies)
 
     def log(self, msg: str):
         """Log with site name and message"""
