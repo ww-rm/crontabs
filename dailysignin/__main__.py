@@ -7,7 +7,7 @@ from base64 import b64decode
 
 import utils
 
-from . import cysll_com, jike0_com
+from . import cysll_com, jike0_com, acgwcy_com
 from .base import BaseSigner
 
 if __name__ == "__main__":
@@ -22,7 +22,7 @@ if __name__ == "__main__":
     rsakey = args.rsakey
     rsakey = b64decode(rsakey).decode("utf8")
 
-    sites = [cysll_com, jike0_com]
+    sites = [cysll_com, jike0_com, acgwcy_com]
     for site in sites:
         Signer = site.Signer
         signer: BaseSigner = Signer(
