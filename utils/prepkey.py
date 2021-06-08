@@ -97,13 +97,11 @@ if __name__ == "__main__":
         if args.encrypt:
             content = args.encrypt[0]
             key = args.encrypt[1]
-            key = Path(key).read_text("utf8") if Path(key).is_file() else key
             key = b64decode(key).decode("utf8")
             result = rsa_encrypt(content, key)
         elif args.decrypt:
             content = args.decrypt[0]
             key = args.decrypt[1]
-            key = Path(key).read_text("utf8") if Path(key).is_file() else key
             key = b64decode(key).decode("utf8")
             result = rsa_decrypt(content, key)
         print(result)

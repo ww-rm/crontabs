@@ -20,7 +20,6 @@ if __name__ == "__main__":
         keys: dict = json.load(f)
 
     rsakey = args.rsakey
-    rsakey = Path(rsakey).read_text("utf8") if Path(rsakey).is_file() else rsakey
     rsakey = b64decode(rsakey).decode("utf8")
 
     sites = [cysll_com, jike0_com]
