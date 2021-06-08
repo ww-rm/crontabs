@@ -2,12 +2,12 @@
 
 import json
 from argparse import ArgumentParser
-from pathlib import Path
 from base64 import b64decode
+from pathlib import Path
 
 import utils
 
-from . import cysll_com, jike0_com, acgwcy_com, yingyun_pw
+from . import acgwcy_com, cysll_com, jike0_com, www_hmoe1_net, yingyun_pw
 from .base import BaseSigner
 
 if __name__ == "__main__":
@@ -22,7 +22,9 @@ if __name__ == "__main__":
     rsakey = args.rsakey
     rsakey = b64decode(rsakey).decode("utf8")
 
-    sites = [cysll_com, jike0_com, acgwcy_com, yingyun_pw]
+    sites = [
+        cysll_com, jike0_com, acgwcy_com, yingyun_pw, www_hmoe1_net
+    ]
     for site in sites:
         Signer = site.Signer
         signer: BaseSigner = Signer(
