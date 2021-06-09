@@ -87,7 +87,7 @@ class Signer(BaseSigner):
         return res.json().get("data")
 
     def _get_csrf(self) -> str:
-        return ""
+        return self.s.cookies.get("bili_jct", default="")
 
     def _login(self) -> bool:
         """
@@ -99,11 +99,15 @@ class Signer(BaseSigner):
 
         # get captcha info
         captcha_info = self._get_captcha_info()
+        print(captcha_info)
         if captcha_info:
-            if captcha_info.get("type") == "img":
+            captcha_type = captcha_info.get("type")
+            if captcha_type == "img":
                 captcha_img = self._get_captcha_img(captcha_info.get("token"))
+            elif captcha_type == "geetest":
+                return NotImplementedError("Geetest")
             else:
-                raise NotImplementedError
+                raise NotImplementedError("Unknown Captcha type.")
         else:
             return False
 
@@ -150,7 +154,7 @@ class Signer(BaseSigner):
             self.url_logout,
             data={
                 "biliCSRF": self._get_csrf(),
-                "gourl": "https://www.bilibili.com/"
+                "gourl": ""
             }
         )
         if res.status_code != 200 or res.json().get("code") != 0:
