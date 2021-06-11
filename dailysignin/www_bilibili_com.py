@@ -32,7 +32,6 @@ class Signer(BaseSigner):
     # url_signin = "https://jike0.com/user/checkin"
     url_logout = "https://passport.bilibili.com/login/exit/v2"
 
-    url_sid = "https://passport.bilibili.com/qrcode/getLoginUrl"
     url_captcha_info = "https://passport.bilibili.com/x/passport-login/captcha"  # ?source=main_web"
     url_captcha_img = "https://api.bilibili.com/x/recaptcha/img"  # ?t=0.46679774852401557&token=7d57eb2167964b25af75aa15d8488a46"
     url_pubkey = "https://passport.bilibili.com/x/passport-login/web/key"  # ?r=0.4811057511950463"
@@ -40,6 +39,7 @@ class Signer(BaseSigner):
     def _get_captcha_info(self) -> dict:
         """
         response body
+
         {
             "code": 0, "message": "0", "ttl": 1,
             "data": {
@@ -70,6 +70,7 @@ class Signer(BaseSigner):
     def _get_pubkey(self) -> dict:
         """
         response body
+        
         {
             "code": 0, "message": "0", "ttl": 1,
             "data": {
@@ -99,14 +100,15 @@ class Signer(BaseSigner):
 
         # get captcha info
         captcha_info = self._get_captcha_info()
-        print(captcha_info)
         if captcha_info:
             captcha_type = captcha_info.get("type")
             if captcha_type == "img":
                 captcha_img = self._get_captcha_img(captcha_info.get("token"))
             elif captcha_type == "geetest":
-                return NotImplementedError("Geetest")
+                # print(captcha_info)
+                raise NotImplementedError("Geetest")
             else:
+                # print(captcha_info)
                 raise NotImplementedError("Unknown Captcha type.")
         else:
             return False
@@ -134,7 +136,10 @@ class Signer(BaseSigner):
                 "keep": "false",
                 "token": captcha_info.get("token"),
                 "go_url": "",
-                "captcha": _img_captcha(captcha_img)
+                "captcha": _img_captcha(captcha_img),
+                # "challenge": "",
+                # "validate": "",
+                # "seccode": "validate"+"|jordan"
             }
         )
         print(res.text)
