@@ -19,8 +19,8 @@ if __name__ == "__main__":
     with open(args.key_filepath, "r", encoding="utf8") as f:
         keys: dict = json.load(f)
 
-    rsakey = args.rsakey
-    rsakey = b64decode(rsakey).decode("utf8")
+    rsakey = b64decode(args.rsakey).decode("utf8")
+    _d = lambda p: utils.rsa_decrypt(p, rsakey)
 
     sites = [
         cysll_com, jike0_com, acgwcy_com, yingyun_pw, www_hmoe1_net
@@ -28,7 +28,7 @@ if __name__ == "__main__":
     for site in sites:
         Signer = site.Signer
         signer: BaseSigner = Signer(
-            utils.rsa_decrypt(keys.get(Signer.site_name).get("usrn"), rsakey),
-            utils.rsa_decrypt(keys.get(Signer.site_name).get("pwd"), rsakey)
+            _d(keys.get(Signer.site_name).get("usrn")),
+            _d(keys.get(Signer.site_name).get("pwd"))
         )
         signer.signin()

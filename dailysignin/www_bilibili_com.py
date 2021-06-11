@@ -12,7 +12,7 @@ from .base import BaseSigner
 
 
 def _img_captcha(img: np.ndarray) -> str:
-    cv2.imwrite("./captcha.jpg", img)
+    cv2.imwrite("./tmp/captcha.jpg", img)
     code = input("Enter Captcha: ").lower()
     return code
 
@@ -114,7 +114,7 @@ class Signer(BaseSigner):
             return False
 
         # cache captcha image and trans to cv image format
-        Path("./cache.jpg").write_bytes(captcha_img)
+        Path("./tmp/cache.jpg").write_bytes(captcha_img)
         captcha_img = cv2.imdecode(
             np.array(bytearray(captcha_img), dtype="uint8"),
             cv2.IMREAD_GRAYSCALE

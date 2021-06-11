@@ -64,6 +64,14 @@ def gen_rsa4096(export_dir):
 
 
 def rsa_encrypt(plain: str, public_key: str) -> str:
+    """
+    Args:
+        plain: utf8 encoded plain string
+        public_key: PEM, DER, OPENSSH format key string
+
+    Returns:
+        base64 encoded cipher string
+    """
     key = RSA.import_key(public_key)
     encrypter = PKCS1_OAEP.new(key)
 
@@ -73,6 +81,14 @@ def rsa_encrypt(plain: str, public_key: str) -> str:
 
 
 def rsa_decrypt(cipher: str, private_key: str) -> str:
+    """
+    Args:
+        cipher: base64 encoded cipher string
+        public_key: PEM, DER, OPENSSH format key string
+
+    Returns:
+        utf8 encoded plain string
+    """
     key = RSA.import_key(private_key)
     decrypter = PKCS1_OAEP.new(key)
 

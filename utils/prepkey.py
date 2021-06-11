@@ -10,8 +10,8 @@ if __name__ == "__main__":
     parser = ArgumentParser()
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("-g", dest="gen_dir", help="generate key pair: [export dir]")
-    group.add_argument("-e", dest="encrypt", nargs=2, help="encryption: [content], [public_key | public_key.pem]")
-    group.add_argument("-d", dest="decrypt", nargs=2, help="decryption: [content], [private_key | private_key.pem]")
+    group.add_argument("-e", dest="encrypt", nargs=2, help="encryption: [content], [public_key]")
+    group.add_argument("-d", dest="decrypt", nargs=2, help="decryption: [content], [private_key]")
 
     args = parser.parse_args()
     if args.gen_dir:
