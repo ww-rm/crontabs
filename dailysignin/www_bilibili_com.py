@@ -29,7 +29,7 @@ def _rsa_encrypt(plain: str, public_key: str) -> str:
 class Signer(BaseSigner):
     site_name = "www.bilibili.com"
     url_login = "https://passport.bilibili.com/x/passport-login/web/login"
-    # url_signin = "https://jike0.com/user/checkin"
+    url_signin = "https://api.bilibili.com/x/web-interface/nav"
     url_logout = "https://passport.bilibili.com/login/exit/v2"
 
     url_captcha_info = "https://passport.bilibili.com/x/passport-login/captcha"  # ?source=main_web"
@@ -70,7 +70,7 @@ class Signer(BaseSigner):
     def _get_pubkey(self) -> dict:
         """
         response body
-        
+
         {
             "code": 0, "message": "0", "ttl": 1,
             "data": {
@@ -149,9 +149,10 @@ class Signer(BaseSigner):
         return True
 
     def _signin(self) -> bool:
-        # res = self.s.post(self.url_signin)
-        # if res.status_code != 200:
-        #     return False
+        res = self.s.get(self.url_signin)
+        if res.status_code != 200 or res.json().get("code") != 0:
+            return False
+        print(res.json().get("data"))
         return True
 
     def _logout(self) -> bool:
@@ -162,6 +163,8 @@ class Signer(BaseSigner):
                 "gourl": ""
             }
         )
+        print(res.text)
+        print(res.cookies)
         if res.status_code != 200 or res.json().get("code") != 0:
             return False
         return True

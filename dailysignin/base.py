@@ -45,15 +45,18 @@ class BaseSigner:
         raise NotImplementedError
 
     def signin(self) -> bool:
+        res_val = True
         if not self._login():
             self.log("Failed to login.")
-            return False
-        if not self._signin():
-            self.log("Failed to sign in.")
-            return False
-        if not self._logout():
-            self.log("Failed to logout.")
-            return True
+            res_val = False
+        else:
+            if not self._signin():
+                self.log("Failed to sign in.")
+                res_val = False
+            if not self._logout():
+                self.log("Failed to logout.")
+                res_val = False
 
-        self.log("Success!")
-        return True
+        if res_val:
+            self.log("All Success!")
+        return res_val
