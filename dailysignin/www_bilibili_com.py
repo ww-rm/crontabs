@@ -36,6 +36,11 @@ class Signer(BaseSigner):
     url_captcha_img = "https://api.bilibili.com/x/recaptcha/img"  # ?t=0.46679774852401557&token=7d57eb2167964b25af75aa15d8488a46"
     url_pubkey = "https://passport.bilibili.com/x/passport-login/web/key"  # ?r=0.4811057511950463"
 
+    def __init__(self, usrn: str, pwd: str, cookies: dict = None, useproxies=False, log_path=None) -> None:
+        super().__init__(usrn, pwd, useproxies=useproxies, log_path=log_path)
+        if cookies:
+            self.s.cookies.update(cookies)
+
     def _get_captcha_info(self) -> dict:
         """
         response body
@@ -98,6 +103,12 @@ class Signer(BaseSigner):
         4. login
         """
 
+        # if use cookies to login
+        if ("bili_jct" in self.s.cookies
+            and "SESSDATA" in self.s.cookies
+                and "DedeUserID" in self.s.cookies):
+            return True
+
         # get captcha info
         captcha_info = self._get_captcha_info()
         if captcha_info:
@@ -120,7 +131,7 @@ class Signer(BaseSigner):
             cv2.IMREAD_GRAYSCALE
         )
 
-        # TODO: recognize different types of captcha
+        # TODO: recognize different types of geetest captcha
 
         # get pubkey and hash
         rsa_pubkey = self._get_pubkey()
@@ -142,8 +153,6 @@ class Signer(BaseSigner):
                 # "seccode": "validate"+"|jordan"
             }
         )
-        print(res.text)
-        print(res.cookies)
         if res.status_code != 200 or res.json().get("code") != 0:
             return False
         return True
