@@ -1,3 +1,5 @@
+# -*- coding: UTF-8 -*-
+
 import json
 import re
 import secrets
@@ -156,7 +158,7 @@ class GeeSession(XSession):
         return True
 
     # get.php
-    def get_info(self, gt, challenge, w, lang="zh-cn", pt=0, client_type="web"):
+    def get_info(self, gt, challenge, w, lang="zh-cn", pt=0, client_type="web", callback="geetest_1666666666666"):
         """
         param w: include aes_key
 
@@ -187,9 +189,9 @@ class GeeSession(XSession):
         """
 
     # ajax.php
-    def get_captcha_type(self, gt, challenge, w, lang="zh-cn", pt=0, client_type="web"):
+    def get_captcha_type(self, gt, challenge, w, lang="zh-cn", pt=0, client_type="web", callback="geetest_1666666666666"):
         """
-        param w: no aes_key
+        param w: no aes_key, (the same as last get_info request)
 
         {
             "lang": "zh-cn",
@@ -243,6 +245,8 @@ class GeeSession(XSession):
         }
         """
 
+    # # # # # # # # # slide.js # # # # # # # # # # # # # #
+    # 可以直接重放
     def get_captcha_info(
         self, gt, challenge, type_,
         lang="zh-cn", https=False, protocol="https://",
@@ -305,10 +309,10 @@ class GeeSession(XSession):
         """
         # get.php
 
-    def get_slide_validate(self, gt, challenge, w, lang="zh-cn", pt=0, client_type="web"):
+    def get_slide_validate(self, gt, challenge, w, lang="zh-cn", pt=0, client_type="web", callback="geetest_1666666666666"):
         """        
         param w: include aes_key
-        
+
         {
             "lang": "zh-cn",
             "userresponse": "5252222255525225211a",
@@ -349,4 +353,3 @@ class GeeSession(XSession):
         }
         """
         # ajax.php
-
