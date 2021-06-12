@@ -212,6 +212,9 @@ class Signer(BaseSigner):
         return True
 
     def _logout(self) -> bool:
+        if not self.usrn or not self.pwd:
+            return True
+            
         res = self.s.post(
             self.url_logout,
             data={
@@ -221,6 +224,6 @@ class Signer(BaseSigner):
         )
         # print(res.text)
         # print(res.cookies)
-        if res.status_code != 200 or res.json().get("code") != 0:
+        if res.status_code != 200:
             return False
         return True
