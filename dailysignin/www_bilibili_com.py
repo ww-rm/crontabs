@@ -7,14 +7,9 @@ import cv2
 import numpy as np
 from Crypto.Cipher import PKCS1_v1_5
 from Crypto.PublicKey import RSA
+from utils import nocaptcha, nogeetest
 
 from .base import BaseSigner
-
-
-def _img_captcha(img: np.ndarray) -> str:
-    cv2.imwrite("./tmp/captcha.jpg", img)
-    code = input("Enter Captcha: ").lower()
-    return code
 
 
 def _rsa_encrypt(plain: str, public_key: str) -> str:
@@ -95,6 +90,70 @@ class Signer(BaseSigner):
     def _get_csrf(self) -> str:
         return self.s.cookies.get("bili_jct", default="")
 
+    def _get_validate(self, try_times=10) -> dict:
+        """
+        Args:
+            try_times: times to try validate
+
+        Returns:
+        {
+            "token": "xxx",
+            "validate_data": {"validate": "xxx", "seccode": "xxx"} | {"captcha": "xxx"}
+        }
+
+        """
+        # get captcha info
+        # do ten times loop to try recognize captcha
+        captcha_validate_data = {}
+        for _ in range(try_times):
+            captcha_validate_data.clear()
+            captcha_info = self._get_captcha_info()
+
+            if captcha_info:
+                # print(captcha_info)
+                captcha_type = captcha_info.get("type")
+                # TODO: recognize different types of geetest captcha
+
+                if captcha_type == "img":
+                    captcha_img = self._get_captcha_img(captcha_info.get("token"))
+
+                    # cache captcha image
+                    Path("./tmp/cache.jpg").write_bytes(captcha_img)
+
+                    # trans to cv image format
+                    captcha_img = cv2.imdecode(
+                        np.array(bytearray(captcha_img), dtype="uint8"),
+                        cv2.IMREAD_GRAYSCALE
+                    )
+
+                    # try recognize img captcha
+                    captcha_validate = nocaptcha.img_recognize(captcha_img)
+                    if captcha_validate:
+                        captcha_validate_data["captcha"] = captcha_validate
+                        break
+
+                elif captcha_type == "geetest":
+                    gt = captcha_info.get("geetest").get("gt")
+                    challenge = captcha_info.get("geetest").get("challenge")
+
+                    raise NotImplementedError("Geetest Captcha")
+                    
+                    captcha_validate = nogeetest.get_validate(gt, challenge)
+                    if captcha_validate:
+                        captcha_validate_data["validate"] = captcha_validate
+                        captcha_validate_data["seccode"] = captcha_validate + "|jordan"
+                        break
+                else:
+                    raise NotImplementedError("Unknown Captcha type.")
+        if not captcha_validate_data:
+            return {}
+
+        captcha_data = {
+            "token": captcha_info.get("token"),
+            "validate_data": captcha_validate_data
+        }
+        return captcha_data
+
     def _login(self) -> bool:
         """
         1. Get captcha
@@ -109,59 +168,47 @@ class Signer(BaseSigner):
                 and "DedeUserID" in self.s.cookies):
             return True
 
-        # get captcha info
-        captcha_info = self._get_captcha_info()
-        if captcha_info:
-            captcha_type = captcha_info.get("type")
-            if captcha_type == "img":
-                captcha_img = self._get_captcha_img(captcha_info.get("token"))
-            elif captcha_type == "geetest":
-                # print(captcha_info)
-                raise NotImplementedError("Geetest")
-            else:
-                # print(captcha_info)
-                raise NotImplementedError("Unknown Captcha type.")
-        else:
+        # get validate data
+        captcha_data = self._get_validate()
+        if not captcha_data:
             return False
-
-        # cache captcha image and trans to cv image format
-        Path("./tmp/cache.jpg").write_bytes(captcha_img)
-        captcha_img = cv2.imdecode(
-            np.array(bytearray(captcha_img), dtype="uint8"),
-            cv2.IMREAD_GRAYSCALE
-        )
-
-        # TODO: recognize different types of geetest captcha
 
         # get pubkey and hash
         rsa_pubkey = self._get_pubkey()
         if not rsa_pubkey:
             return False
 
-        res = self.s.post(
-            self.url_login,
-            data={
-                "source": "main_web",
-                "username": self.usrn,
-                "password": _rsa_encrypt(rsa_pubkey.get("hash")+self.pwd, rsa_pubkey.get("key")),
-                "keep": "false",
-                "token": captcha_info.get("token"),
-                "go_url": "",
-                "captcha": _img_captcha(captcha_img),
-                # "challenge": "",
-                # "validate": "",
-                # "seccode": "validate"+"|jordan"
-            }
-        )
+        login_data = {
+            "source": "main_web",
+            "username": self.usrn,
+            "password": _rsa_encrypt(rsa_pubkey.get("hash")+self.pwd, rsa_pubkey.get("key")),
+            "keep": "false",
+            "token": captcha_data.get("token"),
+            "go_url": ""
+        }
+        login_data.update(captcha_data.get("validate_data"))
+
+        res = self.s.post(self.url_login, data=login_data)
         if res.status_code != 200 or res.json().get("code") != 0:
             return False
         return True
 
     def _signin(self) -> bool:
+        # get last coin count
         res = self.s.get(self.url_signin)
         if res.status_code != 200 or res.json().get("code") != 0:
             return False
-        print(res.json().get("data"))
+        last_money_count = res.json().get("data").get("money")
+
+        # get latest coin count
+        res = self.s.get(self.url_signin)
+        if res.status_code != 200 or res.json().get("code") != 0:
+            return False
+        latest_coin_count = res.json().get("data").get("money")
+
+        # if sign in successfully, coin++
+        if latest_coin_count <= last_money_count:
+            return False
         return True
 
     def _logout(self) -> bool:

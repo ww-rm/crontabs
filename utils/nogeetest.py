@@ -14,6 +14,10 @@ from .xsession import XSession
 __version__ = "fullpage.9.0.5"
 
 
+def get_validate(gt: str, challenge: str) -> str:
+    raise NotImplementedError
+
+
 def _bigintlist2int(bigintlist: list) -> int:
     # [lowest, ..., highest]
     # 28 bit for each num
