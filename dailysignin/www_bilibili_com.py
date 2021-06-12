@@ -219,8 +219,8 @@ class Signer(BaseSigner):
                 "gourl": ""
             }
         )
-        print(res.text)
-        print(res.cookies)
+        # print(res.text)
+        # print(res.cookies)
         if res.status_code != 200 or res.json().get("code") != 0:
             return False
         return True

@@ -40,4 +40,4 @@ if __name__ == "__main__":
         keys.get(Signer.site_name).get("cookies").items()
     ))
     signer = Signer("", "", cookies)
-    signer.signin()
+    signer._signin()
