@@ -64,7 +64,8 @@ def gen_rsa4096(export_dir):
 
 
 def rsa_encrypt(plain: str, public_key: str) -> str:
-    """
+    """RSA with PKCS1_OAEP
+
     Args:
         plain: utf8 encoded plain string
         public_key: PEM, DER, OPENSSH format key string
@@ -81,7 +82,8 @@ def rsa_encrypt(plain: str, public_key: str) -> str:
 
 
 def rsa_decrypt(cipher: str, private_key: str) -> str:
-    """
+    """RSA with PKCS1_OAEP
+    
     Args:
         cipher: base64 encoded cipher string
         public_key: PEM, DER, OPENSSH format key string

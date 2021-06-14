@@ -1,8 +1,9 @@
 # -*- coding: UTF-8 -*-
 
+from datetime import datetime
 from pathlib import Path
 
-from utils import xsession, helper
+from utils import xsession
 
 
 class BaseSigner:
@@ -29,8 +30,11 @@ class BaseSigner:
 
     def log(self, msg: str):
         """Log with site name and message"""
+        current_time = datetime.utcnow().isoformat(timespec="seconds")
+        log_msg = "{}\t{} : {}".format(current_time, self.site_name, msg)
+        
         with Path(self.log_path).open("a", encoding="utf8") as f:
-            print("{} : {} : {}".format(helper.getbeijingtime(), self.site_name, msg), file=f)
+            print(log_msg, file=f)
 
     def _login(self) -> bool:
         """Login"""

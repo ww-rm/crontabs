@@ -9,6 +9,9 @@ class Pixiv(XSession):
     # lang=zh
     url_host = "https://www.pixiv.net"
 
+    # api
+    api_login = "https://accounts.pixiv.net/api/login"
+
     # ajax
 
     ajax_top_illust = "https://www.pixiv.net/ajax/top/illust"  # ?mode=all|r18 # many many info in index page
@@ -34,7 +37,6 @@ class Pixiv(XSession):
     ajax_illusts_bookmarks_add = "https://www.pixiv.net/ajax/illusts/bookmarks/add"  # comment:"" illust_id:"" restrict:0 tags:[]
 
     # php
-    php_login = ""
     php_logout = "https://www.pixiv.net/logout.php"  # ?return_to=%2F
     php_ranking = "https://www.pixiv.net/ranking.php"  # ?format=json&p=1&mode=daily&content=all
     php_rpc_recommender = "https://www.pixiv.net/rpc/recommender.php"  # ?type=illust&sample_illusts=88548686&num_recommendations=500
@@ -243,6 +245,10 @@ class Pixiv(XSession):
         return True
 
     # POST method
+
+    def post_login(self, usrn, pwd, source="pc"):
+        # TODO: captcha arguments
+        raise NotImplementedError
 
     def post_illusts_bookmarks_add(self, illust_id, restrict: int = 0, comment: str = "", tags: list = None) -> bool:
         """Add or modify bookmark of an illust
