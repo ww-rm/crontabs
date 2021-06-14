@@ -50,7 +50,7 @@ class Pixiv(XSession):
                 self.cookies.set(name, value, domain=".pixiv.net", path="/")
         # print(self.cookies)
 
-    def _get_csrf_token(self):
+    def _get_csrf_token(self) -> str:
         """Get x-csrf-token"""
         html = self.get(self.url_host).text
         soup = bs4.BeautifulSoup(html, "lxml")
@@ -246,7 +246,7 @@ class Pixiv(XSession):
 
     # POST method
 
-    def post_login(self, usrn, pwd, source="pc"):
+    def post_login(self, usrn, pwd, source="pc") -> bool:
         # TODO: captcha arguments
         raise NotImplementedError
 

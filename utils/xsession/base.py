@@ -25,7 +25,7 @@ class XSession(requests.Session):
         self.logfile = logfile or sys.stderr
         self.interval = interval or 0.1
 
-    def request(self, method, url, *args, **kwargs):
+    def request(self, method, url, *args, **kwargs) -> requests.Response:
         try:
             sleep(self.interval)
             return super().request(method, url, *args, **kwargs)
