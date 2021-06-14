@@ -1,6 +1,7 @@
+# -*- coding: UTF-8 -*-
+
 import json
 import bs4
-import requests
 from .base import XSession
 
 
