@@ -7,7 +7,6 @@ from .base import XSession
 
 class Pixiv(XSession):
     # lang=zh
-    # 获取所有illust的id
     url_host = "https://www.pixiv.net"
 
     # ajax
@@ -41,20 +40,12 @@ class Pixiv(XSession):
     php_rpc_recommender = "https://www.pixiv.net/rpc/recommender.php"  # ?type=illust&sample_illusts=88548686&num_recommendations=500
     php_bookmark_add = "https://www.pixiv.net/bookmark_add.php"  # mode:"add" type:"user" user_id:"" tag:"" restrict:"" format:"json"
 
-    headers = {
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36",
-        "referer": url_host
-    }
-
-    def __init__(self, cookies: dict = None, proxies: dict = None):
-        self.headers.update(self.headers)
-        if proxies:
-            self.proxies.update(proxies)
+    def __init__(self, logfile=None, interval: float = 0.1, cookies: dict = None) -> None:
+        super().__init__(logfile=logfile, interval=interval)
+        self.headers["Referer"] = self.url_host
         if cookies:
             for name, value in cookies.items():
                 self.cookies.set(name, value, domain=".pixiv.net", path="/")
-        # print(self.cookies.list_domains())
-        # print(self.proxies)
         # print(self.cookies)
 
     def _get_csrf_token(self):

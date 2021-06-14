@@ -23,7 +23,7 @@ class XSession(requests.Session):
         """
         super().__init__()
         self.logfile = logfile or sys.stderr
-        self.interval = interval
+        self.interval = interval or 0.1
 
     def request(self, method, url, *args, **kwargs):
         try:
