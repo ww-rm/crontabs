@@ -2,7 +2,7 @@
 
 from pathlib import Path
 
-from utils import xsession
+from utils import xsession, helper
 
 
 class BaseSigner:
@@ -30,7 +30,7 @@ class BaseSigner:
     def log(self, msg: str):
         """Log with site name and message"""
         with Path(self.log_path).open("a", encoding="utf8") as f:
-            print("{} : {} : {}".format(xsession.getbeijingtime(), self.site_name, msg), file=f)
+            print("{} : {} : {}".format(helper.getbeijingtime(), self.site_name, msg), file=f)
 
     def _login(self) -> bool:
         """Login"""
