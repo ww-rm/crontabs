@@ -21,7 +21,7 @@ if __name__ == "__main__":
         keys: dict = json.load(f)
 
     rsakey = b64decode(args.rsakey).decode("utf8")
-    def _d(p): return utils.rsa_decrypt(p, rsakey)
+    def _d(p): return utils.secrets.rsa_decrypt(p, rsakey)
 
     sites = [
         cysll_com, jike0_com, acgwcy_com, yingyun_pw, www_hmoe1_net
