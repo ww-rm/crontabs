@@ -13,16 +13,17 @@ from .base import BaseSigner
 
 if __name__ == "__main__":
     parser = ArgumentParser()
-    parser.add_argument("key_filepath")
+    parser.add_argument("config")
     parser.add_argument("rsakey")
 
     args = parser.parse_args()
-    with open(args.key_filepath, "r", encoding="utf8") as f:
-        keys: dict = json.load(f)
 
+    with open(args.config, "r", encoding="utf8") as f:
+        config: dict = json.load(f)
     rsakey = b64decode(args.rsakey).decode("utf8")
     def _d(p): return utils.secrets.rsa_decrypt(p, rsakey)
 
+    keys: dict = config.get("keys")
     sites = [
         cysll_com, jike0_com, acgwcy_com, yingyun_pw, www_hmoe1_net
     ]

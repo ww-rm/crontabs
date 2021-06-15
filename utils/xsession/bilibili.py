@@ -19,6 +19,15 @@ class Bilibili(XSession):
 
     drawImage_upload = "https://api.vc.bilibili.com/api/v1/drawImage/upload"
 
+    web_interface_nav = "https://api.bilibili.com/x/web-interface/nav"
+
+    web_login = "https://passport.bilibili.com/x/passport-login/web/login"
+    login_exit = "https://passport.bilibili.com/login/exit/v2"
+
+    passport_login_captcha = "https://passport.bilibili.com/x/passport-login/captcha"  # ?source=main_web"
+    recaptcha_img = "https://api.bilibili.com/x/recaptcha/img"  # ?t=0.46679774852401557&token=7d57eb2167964b25af75aa15d8488a46"
+    web_key = "https://passport.bilibili.com/x/passport-login/web/key"  # ?r=0.4811057511950463"
+
     def __init__(self, logfile=None, interval: float = 0.1, cookies: dict = None) -> None:
         super().__init__(logfile=logfile, interval=interval)
         if cookies:
@@ -28,6 +37,18 @@ class Bilibili(XSession):
 
     def _get_csrf(self) -> str:
         return self.cookies.get("bili_jct", default="")
+
+    def _get_login_captcha(self):
+        ...
+
+    def _get_recaptcha_img(self) -> bytes:
+        ...
+
+    def _get_web_key(self):
+        ...
+
+    def get_web_nav(self) -> dict:
+        ...
 
     def _post_upload(self, img_path: Union[str, Path]) -> dict:
         """Upload a image and get url on static server
@@ -199,3 +220,9 @@ class Bilibili(XSession):
             return {}
         else:
             return res.json().get("data")
+
+    def post_login(self, usrn, pwd):
+        ...
+
+    def post_logout(self):
+        ...

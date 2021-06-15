@@ -25,17 +25,20 @@ class XSession(requests.Session):
         self.logfile = logfile or sys.stderr
         self.interval = interval or 0.1
 
+    def log(self, url: str, msg: str):
+        current_time = datetime.utcnow().isoformat(timespec="seconds")
+        log_msg = "{}\t{} : {}".format(current_time, url, msg)
+
+        if isinstance(self.logfile, io.IOBase):
+            print(log_msg, file=self.logfile)
+        else:
+            with Path(self.logfile).open("a", encoding="utf8") as f:
+                print(log_msg, file=f)
+
     def request(self, method, url, *args, **kwargs) -> requests.Response:
         try:
             sleep(self.interval)
             return super().request(method, url, *args, **kwargs)
         except Exception as e:
-            current_time = datetime.utcnow().isoformat(timespec="seconds")
-            log_msg = "{}\t{} : {}".format(current_time, url, str(e))
-
-            if isinstance(self.logfile, io.IOBase):
-                print(log_msg, file=self.logfile)
-            else:
-                with Path(self.logfile).open("a", encoding="utf8") as f:
-                    print(log_msg, file=f)
+            self.log(url, str(e))
             return requests.Response()
