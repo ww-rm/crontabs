@@ -14,13 +14,9 @@ from .base import BaseSigner
 
 class Signer(BaseSigner):
     site_name = "www.bilibili.com"
-
+    
     def __init__(self, usrn: str, pwd: str, cookies: dict = None, useproxies=False, log_path=None) -> None:
-        self.usrn = usrn
-        self.pwd = pwd
-        if log_path:
-            self.log_path = log_path
-
+        super().__init__(usrn, pwd, useproxies=useproxies, log_path=log_path)
         self.s = xsession.Bilibili(self.log_path, cookies=cookies)
         self.s.headers.update(self.headers)
         if useproxies:
