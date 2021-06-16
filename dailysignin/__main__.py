@@ -41,5 +41,5 @@ if __name__ == "__main__":
         lambda item: (item[0], _d(item[1])),
         keys.get(Signer.site_name).get("cookies").items()
     ))
-    signer = Signer("", "", cookies)
+    signer = Signer("", "", cookies=cookies)
     signer.signin()
