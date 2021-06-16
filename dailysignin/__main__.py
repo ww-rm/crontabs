@@ -15,6 +15,7 @@ if __name__ == "__main__":
     parser = ArgumentParser()
     parser.add_argument("config")
     parser.add_argument("rsakey")
+    parser.add_argument("--test", action="store_ture", default=False)
 
     args = parser.parse_args()
 

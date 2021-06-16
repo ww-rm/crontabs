@@ -171,6 +171,8 @@ class Bilibili(XSession):
 
         Args:
             content: content for the dynamic
+            at_uids: "xxx,xxx"
+            ctrl: "[{"location":0,"type":1,"length":7,"data":"xxx"},{"location":7,"type":1,"length":7,"data":"xxx"}]"
 
         Returns:
             If succeeded, return info about dynamic.
@@ -215,10 +217,11 @@ class Bilibili(XSession):
 
     def post_create_draw(self, content: str, pictures: List[Union[str, Path]],
                          description: str = "", title: str = "", tags: str = "",
+                         at_uids="", at_control=None,
                          biz=3, category=3, type_=0,
-                         at_uids="", from_="create.dynamic.web",
+                         from_="create.dynamic.web",
                          up_choose_comment=0, up_close_comment=0,
-                         extension=None, setting=None, at_control=None):
+                         extension=None, setting=None):
         """Create dynamic with pictures
 
         Args:
