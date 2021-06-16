@@ -23,7 +23,7 @@ if __name__ == "__main__":
     cookies = dict(map(lambda item: (item[0], _d(item[1])), config.get("cookies").items()))
     if bot.login(cookies=cookies):
         # create_pixiv_ranking_dynamic
-        history_path: str = config.get("pixiv").get("history")
+        history_path: str = config.get("pixiv").get("history_file")
         with Path(history_path).open("r", encoding="utf8") as f:
             history = json.load(f)
         blacklist = config.get("blacklist")
