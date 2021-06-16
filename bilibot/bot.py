@@ -7,12 +7,20 @@ from utils import xsession
 
 class Bot:
     log_path = "logs/bilibot.txt"
+    proxies = {
+        "http": "http://127.0.0.1:10809",
+        "https": "http://127.0.0.1:10809"
+    }
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:88.0) Gecko/20100101 Firefox/88.0"
+    }
 
     def __init__(self, log_path: Union[Path, str] = None) -> None:
         if log_path:
             self.log_path = log_path
 
         self.s = xsession.Bilibili(self.log_path)
+        self.s.headers.update(self.headers)
 
     def log(self, msg, title="Bilibot"):
         current_time = datetime.utcnow().isoformat(timespec="seconds")
@@ -59,6 +67,8 @@ class Bot:
         }
         """
         s_pixiv = xsession.Pixiv(self.log_path)
+        s_pixiv.headers.update(self.headers)
+        # s_pixiv.proxies.update(self.proxies)
         history = history or []
         blacklist = blacklist or []
 
@@ -90,7 +100,7 @@ class Bot:
         # cache illust data
         local_illust_paths = []
         success_illust_info = []
-        for illust_info in dynamic_illust_info:
+        for illust_info in dynamic_illust_info[:9]:
             url: str = illust_info.get("url")
             image_data = s_pixiv.get_page(url)
             if image_data:
