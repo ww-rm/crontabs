@@ -2,10 +2,13 @@
 
 import imghdr
 import json
+from base64 import b64encode
 from pathlib import Path
 from typing import List, Union
 
 import bs4
+from Crypto.Cipher import PKCS1_v1_5
+from Crypto.PublicKey import RSA
 
 from .base import XSession
 
@@ -28,6 +31,15 @@ class Bilibili(XSession):
     recaptcha_img = "https://api.bilibili.com/x/recaptcha/img"  # ?t=0.46679774852401557&token=7d57eb2167964b25af75aa15d8488a46"
     web_key = "https://passport.bilibili.com/x/passport-login/web/key"  # ?r=0.4811057511950463"
 
+    @staticmethod
+    def _rsa_encrypt(plain: str, public_key: str):
+        key = RSA.import_key(public_key)
+        encrypter = PKCS1_v1_5.new(key)
+
+        cipher = encrypter.encrypt(plain.encode("utf8"))
+        cipher = b64encode(cipher).decode("utf8")
+        return cipher
+
     def __init__(self, logfile=None, interval: float = 0.1, cookies: dict = None) -> None:
         super().__init__(logfile=logfile, interval=interval)
         if cookies:
@@ -38,17 +50,25 @@ class Bilibili(XSession):
     def _get_csrf(self) -> str:
         return self.cookies.get("bili_jct", default="")
 
-    def _get_login_captcha(self):
-        ...
+    def _get_web_key(self, r=0.4811057511950463):
+        """
+        Response body
 
-    def _get_recaptcha_img(self) -> bytes:
-        ...
-
-    def _get_web_key(self):
-        ...
-
-    def get_web_nav(self) -> dict:
-        ...
+        {
+            "code": 0, "message": "0", "ttl": 1,
+            "data": {
+                "hash": "xxxxxxxxxxxxx",
+                "key": "-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDjb4V7EidX/ym28t2ybo0U6t0n\n6p4ej8VjqKHg100va6jkNbNTrLQqMCQCAYtXMXXp2Fwkk6WR+12N9zknLjf+C9sx\n/+l48mjUU8RqahiFD1XT/u2e0m2EN029OhCgkHx3Fc/KlFSIbak93EH/XlYis0w+\nXl69GV6klzgxW6d2xQIDAQAB\n-----END PUBLIC KEY-----\n"
+            }
+        }
+        """
+        res = self.get(
+            self.web_key,
+            params={"r": r}
+        )
+        if res.status_code != 200 or res.json().get("code") != 0:
+            return {}
+        return res.json().get("data")
 
     def _post_upload(self, img_path: Union[str, Path]) -> dict:
         """Upload a image and get url on static server
@@ -78,6 +98,67 @@ class Bilibili(XSession):
                 }
             )
 
+        if res.status_code != 200 or res.json().get("code") != 0:
+            return {}
+        return res.json().get("data")
+
+    def get_web_nav(self) -> dict:
+        """
+        Returns:
+            Response body:
+
+        {
+            "code": 0,"message": "0",
+            "ttl": 1,
+            "data": {
+                "isLogin": True,
+                "email_verified": 1,
+                "face": "http: //i2.hdslb.com/bfs/face/xxx.jpg",
+                "level_info": {
+                    "current_level": 2,
+                    "current_min": 200,
+                    "current_exp": 250,
+                    "next_exp": 1500
+                },
+                "mid": 123456789,
+                "mobile_verified": 1,
+                "money": 32,
+                "moral": 70,
+                "official": {"role": 0, "title": "", "desc": "", "type": -1},
+                "officialVerify": {"type": -1, "desc": ""},
+                "pendant": {"pid": 0, "name": "", "image": "", "expire": 0, "image_enhance": "", "image_enhance_frame": ""},
+                "scores": 0,
+                "uname": "xxx",
+                "vipDueDate": 0,
+                "vipStatus": 0,
+                "vipType": 0,
+                "vip_pay_type": 0,
+                "vip_theme_type": 0,
+                "vip_label": {"path": "", "text": "", "label_theme": "", "text_color": "", "bg_style": 0, "bg_color": "", "border_color": ""},
+                "vip_avatar_subscript": 0,
+                "vip_nickname_color": "",
+                "vip": {
+                    "type": 0,
+                    "status": 0,
+                    "due_date": 0,
+                    "vip_pay_type": 0,
+                    "theme_type": 0,
+                    "label": {"path": "", "text": "", "label_theme": "", "text_color": "", "bg_style": 0, "bg_color": "", "border_color": ""},
+                    "avatar_subscript": 0,
+                    "nickname_color": "",
+                    "role": 0,
+                    "avatar_subscript_url": ""
+                },
+                "wallet": {"mid": 123456, "bcoin_balance": 0, "coupon_balance": 0, "coupon_due_time": 0},
+                "has_shop": False,
+                "shop_url": "",
+                "allowance_count": 0,
+                "answer_status": 0
+            }
+        }
+        """
+
+        res = self.get(self.web_interface_nav)
         if res.status_code != 200 or res.json().get("code") != 0:
             return {}
         return res.json().get("data")
@@ -144,7 +225,7 @@ class Bilibili(XSession):
             content: main content
             pictures: local paths of pictures needed to create with dynamic
             title:
-            description: 
+            description:
             tags:
 
         Returns:
@@ -201,7 +282,7 @@ class Bilibili(XSession):
                 "csrf_token": self._get_csrf()
             }
         )
-        print(res.text)
+        # print(res.text)
         if res.status_code != 200 or res.json().get("code") != 0:
             return {}
         return res.json().get("data")
@@ -221,8 +302,102 @@ class Bilibili(XSession):
         else:
             return res.json().get("data")
 
-    def post_login(self, usrn, pwd):
-        ...
+    def get_login_captcha(self, source="main_web") -> dict:
+        """
+        Returns:
+            Response body
 
-    def post_logout(self):
-        ...
+        {
+            "code": 0, "message": "0", "ttl": 1,
+            "data": {
+                "type": "img" | "geetest",
+                "token": "xxxx",
+                "geetest": {"challenge": "xxxx", "gt": "xxxx"}, "tencent": {"appid": ""}
+            }
+        }
+        """
+        res = self.s.get(
+            self.passport_login_captcha,
+            params={"source": source}
+        )
+        if res.status_code != 200 or res.json().get("code") != 0:
+            return {}
+        return res.json().get("data")
+
+    def get_recaptcha_img(self, token: str) -> bytes:
+        """Get simple image captcha"""
+        res = self.s.get(
+            self.recaptcha_img,
+            params={"token": token}
+        )
+
+        if res.status_code != 200:
+            return b""
+        return res.content
+
+    def post_login(self, username: str, password: str, token_info: dict, validate_data: str,
+                   source="main_web", keep="false", go_url="") -> dict:
+        """Login
+
+        Args:
+            username: 
+                username
+            password: 
+                password
+            token: 
+                returned from self.get_login_captcha
+            validate_data: 
+                string get from geetest or image recognition
+
+        Returns:
+            Response body
+
+        {
+            "code": 0, "message": "0", "ttl": 1,
+            "data": {
+                "status": 0,
+                "message": "",
+                "url": "https://passport.biligame.com/crossDomain?DedeUserID=xxx&DedeUserID__ckMd5=xxx&Expires=xxx&SESSDATA=xxx&bili_jct=xxx&gourl=xxx"
+            }
+        }
+        """
+        # get pubkey and hash
+        rsa_pubkey = self._get_web_key()
+        if not rsa_pubkey:
+            return {}
+
+        login_data = {
+            "source": source,
+            "username": username,
+            "password": self._rsa_encrypt(rsa_pubkey.get("hash")+password, rsa_pubkey.get("key")),
+            "keep": keep,
+            "token": token_info.get("token"),
+            "go_url": go_url
+        }
+
+        token_type = token_info.get("type")
+        if token_type == "img":
+            login_data["captcha"] = validate_data
+        elif token_type == "geetest":
+            login_data["validate"] = validate_data
+            login_data["seccode"] = validate_data + "|jordan"
+        else:
+            raise ValueError("Unknown captcha type.")
+
+        res = self.post(self.web_login, data=login_data)
+        if res.status_code != 200 or res.json().get("code") != 0:
+            return {}
+        return res.json().get("data")
+
+    def post_logout(self) -> bool:
+        res = self.post(
+            self.login_exit,
+            data={
+                "biliCSRF": self._get_csrf(),
+                "gourl": ""
+            }
+        )
+        # XXX: if no login info to logout, res will be html format, otherwise be json data
+        if res.status_code != 200:
+            return False
+        return True
