@@ -22,18 +22,24 @@ if __name__ == "__main__":
     bot = Bot()
     cookies = dict(map(lambda item: (item[0], _d(item[1])), config.get("cookies").items()))
     if bot.login(cookies=cookies):
-        # create_pixiv_ranking_dynamic
-        history_path: str = config.get("pixiv").get("history_file")
-        with Path(history_path).open("r", encoding="utf8") as f:
-            history = json.load(f)
-        blacklist = config.get("blacklist")
+        # load history data
+        data_path: str = config.get("pixiv").get("data_file")
+        with Path(data_path).open("r", encoding="utf8") as f:
+            bilibot_data: dict = json.load(f)
 
-        ret = bot.create_pixiv_ranking_dynamic(history, blacklist)
+        # create_pixiv_ranking_dynamic
+        ret = bot.create_pixiv_ranking_dynamic(
+            bilibot_data.get("history"), 
+            config.get("blacklist")
+        )
         if ret:
             if args.test:
                 bot.delete_dynamic(ret.get("dynamic_id"))
             else:
-                # update history
-                history.extend(ret.get("illust_ids"))
-                with Path(history_path).open("w", encoding="utf8") as f:
-                    json.dump(history, f, ensure_ascii=False)
+                # update data
+                bilibot_data["count"] = bilibot_data.get("count", 0) + 1
+                bilibot_data.get("history").extend(ret.get("illust_ids"))
+                # limit size, the latest 100000 illust ids
+                bilibot_data["history"] = bilibot_data.get("history")[-100000:]
+                with Path(data_path).open("w", encoding="utf8") as f:
+                    json.dump(bilibot_data, f, ensure_ascii=False)
