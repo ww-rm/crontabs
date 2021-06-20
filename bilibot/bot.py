@@ -79,14 +79,19 @@ class Bot:
             rankings = s_pixiv.get_ranking(date=cur_date, content="illust", mode="monthly")
             if rankings:
                 cur_date = rankings.get("prev_date")
-                illust_ids = [str(e.get("illust_id")) for e in rankings.get("contents")]
+                # choose no sexy illusts
+                illust_ids = [
+                    str(e.get("illust_id"))
+                    for e in rankings.get("contents")
+                    if e.get("illust_content_type").get("sexual") == 0
+                ]
 
                 # choose proper illust
                 for illust_id in illust_ids:
                     if illust_id not in history:
                         illust_info = s_pixiv.get_illust(illust_id)
                         if illust_info:
-                            if(illust_info.get("userId") not in blacklist) and (illust_info.get("pageCount") == 1):
+                            if (illust_info.get("userId") not in blacklist) and (illust_info.get("pageCount") == 1):
                                 # not in history and user not in blacklist and pagecount == 1
                                 dynamic_illust_info.append(
                                     {
