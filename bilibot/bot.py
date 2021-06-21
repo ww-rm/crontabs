@@ -165,10 +165,10 @@ class Bot:
         local_illust_paths = [e.get("local_path") for e in success_illust_info]
 
         # make text contents
-        contents = "\u0023\u6bcf\u65e5\u7f8e\u56fe\u0023 \u0023\u52a8\u6f2b\u63d2\u753b\u0023 \n"
-        contents += "\u0050\u7ad9\u7f8e\u56fe\uff08\u6bcf\u5929\u66f4\u65b0\uff09\n"
+        contents = "\u0023\u52a8\u6f2b\u58c1\u7eb8\u0023 \u0023\u52a8\u6f2b\u7f8e\u56fe\u0023 \n"
+        contents += "\u0049\u0044\u753b\u5e08\u6309\u987a\u5e8f\uff1a\n"
         for info in success_illust_info:
-            contents += "{id} \u753b\u5e08\uff1a{username}\n".format_map(info)
+            contents += "{id} \uff1a{username}\n".format_map(info)
         contents += "\uff08\u8f6c\u8f7d\u81ea\u0050\u0069\u0078\u0069\u0076\uff0c\u4fb5\u5220\uff09\n"
 
         dynamic_info = self.s.post_create_draw(contents, local_illust_paths)

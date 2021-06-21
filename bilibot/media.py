@@ -1,14 +1,13 @@
-
 from math import ceil, floor
 from pathlib import Path
 from typing import List, Union
 
 import cv2
-import numpy as np
 import moviepy.editor as mvp
+import numpy as np
 
 
-def load_images(img_paths: List[Union[str, Path]], load_size: tuple = (1080, 1920), padding_mode: str = "black") -> List[np.ndarray]:
+def load_images(img_paths: List[Union[str, Path]], load_size: tuple = (1080, 1920), padding_mode: str = "full_blurred") -> List[np.ndarray]:
     """Load local images to specified size and COLOR mode
 
     Args
@@ -101,3 +100,6 @@ def load_images(img_paths: List[Union[str, Path]], load_size: tuple = (1080, 192
         images.append(img)
 
     return images
+
+def make_video(images: List[np.ndarray]):
+    return
