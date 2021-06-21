@@ -1,4 +1,4 @@
-from math import ceil, floor
+from math import ceil, floor, pi
 from pathlib import Path
 from typing import List, Union
 
@@ -28,7 +28,7 @@ def load_images(img_paths: List[Union[str, Path]], load_size: tuple = (1080, 192
             return cv2.resize(img, (w, h), interpolation=cv2.INTER_CUBIC)
         else:
             # same width
-            h, w = int(load_size[0]*(h/w)), int(load_size[0])
+            h, w = int(load_size[1]*(h/w)), int(load_size[1])
             return cv2.resize(img, (w, h), interpolation=cv2.INTER_CUBIC)
 
     def _resize2(img: np.ndarray) -> np.ndarray:
@@ -40,14 +40,14 @@ def load_images(img_paths: List[Union[str, Path]], load_size: tuple = (1080, 192
             img = cv2.resize(img, (w, h), interpolation=cv2.INTER_CUBIC)
         else:
             # same height
-            h, w = int(load_size[1]), int(load_size[1]*(w/h))
+            h, w = int(load_size[0]), int(load_size[0]*(w/h))
             img = cv2.resize(img, (w, h), interpolation=cv2.INTER_CUBIC)
         # crop
         delta_h, delta_w = img.shape[0] - load_size[0], img.shape[1] - load_size[1]
         if delta_h > 0:
             img = img[0:load_size[0]]
         if delta_w > 0:
-            img = img[floor(delta_w/2):-ceil(delta_w/2)]
+            img = img[:, floor(delta_w/2):-ceil(delta_w/2)]
         return img
 
     def _pad_black(img: np.ndarray) -> np.ndarray:
@@ -102,4 +102,5 @@ def load_images(img_paths: List[Union[str, Path]], load_size: tuple = (1080, 192
     return images
 
 def make_video(images: List[np.ndarray]):
+    # TODO
     return
