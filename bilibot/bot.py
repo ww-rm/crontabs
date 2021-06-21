@@ -115,7 +115,7 @@ class Bot:
                 success_illust_info.append(illust_info)
 
         # make text contents
-        contents = "\u0023\u6bcf\u65e5\u7f8e\u56fe\u0023\u0020\u0023\u0050\u0049\u0058\u0049\u0056\u7f8e\u56fe\u0023\u0020\n"
+        contents = "\u0023\u6bcf\u65e5\u7f8e\u56fe\u0023 \u0023\u0050\u0049\u0058\u0049\u0056\u7f8e\u56fe\u0023 \n"
         contents += "\u0050\u7ad9\u7f8e\u56fe\uff08\u6bcf\u5929\u66f4\u65b0\uff09\n"
         for info in success_illust_info:
             contents += "{id} \u753b\u5e08\uff1a{username}\n".format_map(info)
