@@ -55,7 +55,7 @@ class Bot:
 
         s_pixiv = xsession.Pixiv(self.log_path)
         s_pixiv.headers.update(self.headers)
-        s_pixiv.proxies.update(self.proxies) # DEBUG
+        # s_pixiv.proxies.update(self.proxies) # DEBUG
 
         # get proper illust info
         dynamic_illust_info = []
