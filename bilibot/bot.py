@@ -24,7 +24,7 @@ class Bot:
         self.s = xsession.Bilibili(self.log_path)
         self.s.headers.update(self.headers)
 
-    def _get_safe_pixiv_illust_ids(self, num: int, history: List[str], blacklist: List[str]) -> list:
+    def _get_safe_pixiv_illust_ids(self, num: int, history: List[str], blacklist: List[str], blacktags: List[str]) -> list:
         """Download proper pixiv illusts to dir "tmp/"
 
         Args
@@ -47,11 +47,15 @@ class Bot:
             }
         """
 
+        def _check_tags(tags: List[str]) -> bool:
+            for t in blacktags:
+                if t in tags:
+                    return False
+            return True
+
         s_pixiv = xsession.Pixiv(self.log_path)
         s_pixiv.headers.update(self.headers)
-        # s_pixiv.proxies.update(self.proxies)
-        history = history or []
-        blacklist = blacklist or []
+        s_pixiv.proxies.update(self.proxies) # DEBUG
 
         # get proper illust info
         dynamic_illust_info = []
@@ -73,7 +77,7 @@ class Bot:
                             and int(e.get("illust_page_count")) == 1 \
                             and str(e.get("illust_id")) not in history \
                             and str(e.get("user_id")) not in blacklist \
-                            and "\u5c3b\u795e\u69d8" not in e.get("tags"):
+                            and _check_tags(e.get("tags")):
                         illust_ids.append(str(e.get("illust_id")))
 
                 # choose proper illust
@@ -146,7 +150,7 @@ class Bot:
             return False
         return True
 
-    def create_pixiv_ranking_dynamic(self, history: List[str] = None, blacklist: List[str] = None) -> dict:
+    def create_pixiv_ranking_dynamic(self, history: List[str], blacklist: List[str], blacktags: List[str]) -> dict:
         """
         Args
 
@@ -161,7 +165,7 @@ class Bot:
             "illust_ids": ["xxx", "xxxx"]
         }
         """
-        success_illust_info = self._get_safe_pixiv_illust_ids(9, history, blacklist)
+        success_illust_info = self._get_safe_pixiv_illust_ids(9, history, blacklist, blacktags)
         local_illust_paths = [e.get("local_path") for e in success_illust_info]
 
         # make text contents

@@ -21,6 +21,7 @@ class Bilibili(XSession):
     dynamic_svr_rm_dynamic = "https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/rm_dynamic"
 
     drawImage_upload = "https://api.vc.bilibili.com/api/v1/drawImage/upload"
+    cover_up = "https://member.bilibili.com/x/vu/web/cover/up"
 
     web_interface_nav = "https://api.bilibili.com/x/web-interface/nav"
 
@@ -98,6 +99,33 @@ class Bilibili(XSession):
                 }
             )
 
+        if res.status_code != 200 or res.json().get("code") != 0:
+            return {}
+        return res.json().get("data")
+
+    def _post_cover_up(self, cover: str) -> dict:
+        """Upload a image cover and get url on static server
+
+        Args
+
+        cover:
+            image in html data url format, should be 16:10 (width: height)
+
+        Returns
+
+        {
+            "code": 0,
+            "message": "0",
+            "ttl": 1,
+            "data": {
+                "url": "http://i0.hdslb.com/bfs/archive/xxx.jpg"
+            }
+        }
+        """
+        res = self.post(
+            self.cover_up,
+            data={"cover": cover, "csrf": self._get_csrf()}
+        )
         if res.status_code != 200 or res.json().get("code") != 0:
             return {}
         return res.json().get("data")
