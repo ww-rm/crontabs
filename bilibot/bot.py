@@ -55,7 +55,9 @@ class Bot:
 
         s_pixiv = xsession.Pixiv(self.log_path)
         s_pixiv.headers.update(self.headers)
-        # s_pixiv.proxies.update(self.proxies) # DEBUG
+
+        # DEBUG
+        # s_pixiv.proxies.update(self.proxies)
 
         # get proper illust info
         dynamic_illust_info = []
@@ -84,7 +86,7 @@ class Bot:
                 for illust_id in illust_ids:
                     illust_info = s_pixiv.get_illust(illust_id)
                     if illust_info:
-                        if int(illust_info.get("sl")) < 6:
+                        if int(illust_info.get("sl")) < 4:
                             dynamic_illust_info.append(
                                 {
                                     "id": illust_id,
@@ -173,7 +175,6 @@ class Bot:
         contents += "\u0049\u0044\u753b\u5e08\u6309\u987a\u5e8f\uff1a\n"
         for info in success_illust_info:
             contents += "{id} \uff1a{username}\n".format_map(info)
-        contents += "\uff08\u8f6c\u8f7d\u81ea\u0050\u0069\u0078\u0069\u0076\uff0c\u4fb5\u5220\uff09\n"
 
         dynamic_info = self.s.post_create_draw(contents, local_illust_paths)
         if not dynamic_info:
