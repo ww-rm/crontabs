@@ -2,7 +2,7 @@
 
 from . import (
     nocaptcha,
-    nogeetest,
+    media,
     secrets,
     xsession,
 )
