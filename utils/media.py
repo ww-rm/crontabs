@@ -1,3 +1,5 @@
+"""Used to make a simple image-video"""
+
 from math import ceil, floor
 from pathlib import Path
 from typing import List, Tuple, Union

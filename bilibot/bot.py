@@ -4,7 +4,7 @@ from typing import List, Union
 
 from utils import xsession
 
-from . import media
+from utils import media
 
 
 class Bot:
