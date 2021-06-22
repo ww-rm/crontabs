@@ -4,14 +4,14 @@ from pathlib import Path
 
 import cv2
 import numpy as np
-from utils import nocaptcha, nogeetest, xsession
+from utils import nocaptcha, xsession
 
 from .base import BaseSigner
 
 
 class Signer(BaseSigner):
     site_name = "www.bilibili.com"
-    
+
     def __init__(self, usrn: str, pwd: str, useproxies=False, log_path=None, cookies: dict = None) -> None:
         super().__init__(usrn, pwd, useproxies=useproxies, log_path=log_path)
         self.s = xsession.Bilibili(self.log_path, cookies=cookies)
@@ -19,69 +19,69 @@ class Signer(BaseSigner):
         if useproxies:
             self.s.proxies.update(self.proxies)
 
-    def _get_validate(self, try_times=10) -> dict:
-        """
-        Args:
-            try_times: times to try validate
+    # def _get_validate(self, try_times=10) -> dict:
+    #     """
+    #     Args:
+    #         try_times: times to try validate
 
-        Returns:
-        {
-            "token": "xxx",
-            "validate_data": {"validate": "xxx", "seccode": "xxx"} | {"captcha": "xxx"}
-        }
+    #     Returns:
+    #     {
+    #         "token": "xxx",
+    #         "validate_data": {"validate": "xxx", "seccode": "xxx"} | {"captcha": "xxx"}
+    #     }
 
-        """
-        # get captcha info
-        # do ten times loop to try recognize captcha
-        captcha_validate_data = {}
-        for _ in range(try_times):
-            captcha_validate_data.clear()
-            captcha_info = self._get_captcha_info()
+    #     """
+    #     # get captcha info
+    #     # do ten times loop to try recognize captcha
+    #     captcha_validate_data = {}
+    #     for _ in range(try_times):
+    #         captcha_validate_data.clear()
+    #         captcha_info = self._get_captcha_info()
 
-            if captcha_info:
-                # print(captcha_info)
-                captcha_type = captcha_info.get("type")
-                # TODO: recognize different types of geetest captcha
+    #         if captcha_info:
+    #             # print(captcha_info)
+    #             captcha_type = captcha_info.get("type")
+    #             # TODO: recognize different types of geetest captcha
 
-                if captcha_type == "img":
-                    captcha_img = self._get_captcha_img(captcha_info.get("token"))
+    #             if captcha_type == "img":
+    #                 captcha_img = self._get_captcha_img(captcha_info.get("token"))
 
-                    # cache captcha image
-                    Path("./tmp/cache.jpg").write_bytes(captcha_img)
+    #                 # cache captcha image
+    #                 Path("./tmp/cache.jpg").write_bytes(captcha_img)
 
-                    # trans to cv image format
-                    captcha_img = cv2.imdecode(
-                        np.array(bytearray(captcha_img), dtype="uint8"),
-                        cv2.IMREAD_GRAYSCALE
-                    )
+    #                 # trans to cv image format
+    #                 captcha_img = cv2.imdecode(
+    #                     np.array(bytearray(captcha_img), dtype="uint8"),
+    #                     cv2.IMREAD_GRAYSCALE
+    #                 )
 
-                    # try recognize img captcha
-                    captcha_validate = nocaptcha.img_recognize(captcha_img)
-                    if captcha_validate:
-                        captcha_validate_data["captcha"] = captcha_validate
-                        break
+    #                 # try recognize img captcha
+    #                 captcha_validate = nocaptcha.img_recognize(captcha_img)
+    #                 if captcha_validate:
+    #                     captcha_validate_data["captcha"] = captcha_validate
+    #                     break
 
-                elif captcha_type == "geetest":
-                    gt = captcha_info.get("geetest").get("gt")
-                    challenge = captcha_info.get("geetest").get("challenge")
+    #             elif captcha_type == "geetest":
+    #                 gt = captcha_info.get("geetest").get("gt")
+    #                 challenge = captcha_info.get("geetest").get("challenge")
 
-                    raise NotImplementedError("Geetest Captcha")
+    #                 raise NotImplementedError("Geetest Captcha")
 
-                    captcha_validate = nogeetest.get_validate(gt, challenge)
-                    if captcha_validate:
-                        captcha_validate_data["validate"] = captcha_validate
-                        captcha_validate_data["seccode"] = captcha_validate + "|jordan"
-                        break
-                else:
-                    raise NotImplementedError("Unknown Captcha type.")
-        if not captcha_validate_data:
-            return {}
+    #                 captcha_validate = nogeetest.get_validate(gt, challenge)
+    #                 if captcha_validate:
+    #                     captcha_validate_data["validate"] = captcha_validate
+    #                     captcha_validate_data["seccode"] = captcha_validate + "|jordan"
+    #                     break
+    #             else:
+    #                 raise NotImplementedError("Unknown Captcha type.")
+    #     if not captcha_validate_data:
+    #         return {}
 
-        captcha_data = {
-            "token": captcha_info.get("token"),
-            "validate_data": captcha_validate_data
-        }
-        return captcha_data
+    #     captcha_data = {
+    #         "token": captcha_info.get("token"),
+    #         "validate_data": captcha_validate_data
+    #     }
+    #     return captcha_data
 
     def _login(self) -> bool:
         """
