@@ -66,29 +66,29 @@ class Bot:
             rankings = s_pixiv.get_ranking(date=cur_date, content="illust", mode="monthly")
             if rankings:
                 cur_date = rankings.get("prev_date")
-                # choose no sexy illusts
-                illust_ids = [
-                    str(e.get("illust_id"))
-                    for e in rankings.get("contents")
-                    if e.get("illust_content_type").get("sexual") == 0  # set rules by ranking info
-                ]
+                illust_ids = []
+                for e in rankings.get("contents"):
+                    # set rules by ranking info
+                    if int(e.get("illust_content_type").get("sexual")) == 0 \
+                            and int(e.get("illust_page_count")) == 1 \
+                            and str(e.get("illust_id")) not in history \
+                            and str(e.get("user_id")) not in blacklist \
+                            and "\u5c3b\u795e\u69d8" not in e.get("tags"):
+                        illust_ids.append(str(e.get("illust_id")))
 
                 # choose proper illust
                 for illust_id in illust_ids:
-                    if illust_id not in history:
-                        illust_info = s_pixiv.get_illust(illust_id)
-                        if illust_info:
-                            # set rules by illust info
-                            if (illust_info.get("userId") not in blacklist) and (illust_info.get("pageCount") == 1):
-                                # not in history and user not in blacklist and pagecount == 1
-                                dynamic_illust_info.append(
-                                    {
-                                        "id": illust_id,
-                                        "user_id": illust_info.get("userId"),
-                                        "username": illust_info.get("userName"),
-                                        "url": illust_info.get("urls").get("original")
-                                    }
-                                )
+                    illust_info = s_pixiv.get_illust(illust_id)
+                    if illust_info:
+                        if int(illust_info.get("sl")) < 6:
+                            dynamic_illust_info.append(
+                                {
+                                    "id": illust_id,
+                                    "user_id": illust_info.get("userId"),
+                                    "username": illust_info.get("userName"),
+                                    "url": illust_info.get("urls").get("original")
+                                }
+                            )
 
         # cache illust data
         success_illust_info = []

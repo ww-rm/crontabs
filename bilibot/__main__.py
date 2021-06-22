@@ -42,4 +42,4 @@ if __name__ == "__main__":
                 # limit size, the latest 100000 illust ids
                 bilibot_data["history"] = bilibot_data.get("history")[-100000:]
                 with Path(data_path).open("w", encoding="utf8") as f:
-                    json.dump(bilibot_data, f, ensure_ascii=False)
+                    json.dump(bilibot_data, f, ensure_ascii=False, indent=4)
