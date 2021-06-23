@@ -1,14 +1,11 @@
-from datetime import datetime
+import logging
 from pathlib import Path
 from typing import List, Union
 
-from utils import xsession
-
-from utils import media
+from utils import media, xsession
 
 
 class Bot:
-    log_path = "logs/bilibot.txt"
     proxies = {
         "http": "http://127.0.0.1:10809",
         "https": "http://127.0.0.1:10809"
@@ -17,12 +14,10 @@ class Bot:
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:88.0) Gecko/20100101 Firefox/88.0"
     }
 
-    def __init__(self, log_path: Union[Path, str] = None) -> None:
-        if log_path:
-            self.log_path = log_path
-
-        self.s = xsession.Bilibili(self.log_path)
+    def __init__(self) -> None:
+        self.s = xsession.Bilibili()
         self.s.headers.update(self.headers)
+        self.logger = logging.getLogger(__name__)
 
     def _get_safe_pixiv_illust_ids(self, num: int, history: List[str], blacklist: List[str], blacktags: List[str]) -> list:
         """Download proper pixiv illusts to dir "tmp/"
@@ -53,7 +48,7 @@ class Bot:
                     return False
             return True
 
-        s_pixiv = xsession.Pixiv(self.log_path)
+        s_pixiv = xsession.Pixiv()
         s_pixiv.headers.update(self.headers)
 
         # DEBUG
@@ -123,18 +118,11 @@ class Bot:
             Info of bgm
         """
 
-    def log(self, msg, title="Bilibot"):
-        current_time = datetime.utcnow().isoformat(timespec="seconds")
-        log_msg = "{}\t{} : {}".format(current_time, title, msg)
-
-        with Path(self.log_path).open("a", encoding="utf8") as f:
-            print(log_msg, file=f)
-
     def login(self, usrn="", pwd="", cookies=None) -> bool:
         if cookies:
             self.s.cookies.update(cookies)
             return True
-        self.log("Failed to login.")
+        self.logger.warning("{}:Failed to login.".format("Bilibot"))
         return False
         # TODO: login
         raise NotImplementedError
@@ -142,13 +130,13 @@ class Bot:
     def logout(self) -> bool:
         if self.s.post_logout():
             return True
-        self.log("Failed to logout.")
+        self.logger.warning("{}:Failed to logout.".format("Bilibot"))
         return False
 
     def delete_dynamic(self, dynamic_id: str) -> bool:
         ret = self.s.post_rm_dynamic(dynamic_id)
         if not ret:
-            self.log("Failed to delete dynamic.")
+            self.logger.warning("{}:Failed to delete dynamic.".format("Bilibot"))
             return False
         return True
 
@@ -178,7 +166,7 @@ class Bot:
 
         dynamic_info = self.s.post_create_draw(contents, local_illust_paths)
         if not dynamic_info:
-            self.log("Failed to create draw.")
+            self.logger.warning("{}:Failed to create draw.".format("Bilibot"))
             return {}
 
         dynamic_id = dynamic_info.get("dynamic_id_str")
@@ -187,7 +175,7 @@ class Bot:
             "dynamic_id": dynamic_id,
             "illust_ids": success_illust_ids
         }
-        self.log("create_pixiv_ranking_dynamic Success!")
+        self.logger.info("{}:create_pixiv_ranking_dynamic Success!".format("Bilibot"))
         return ret
 
     def create_pixiv_ranking_video(self):

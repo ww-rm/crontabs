@@ -7,11 +7,9 @@ class Signer(BaseSigner):
     site_name = "www.hmoe1.net"
     url_admin = "https://www.hmoe1.net/wp-admin/admin-ajax.php"
 
-    def __init__(self, usrn: str, pwd: str, useproxies=False, log_path=None) -> None:
-        super().__init__(usrn, pwd, useproxies=useproxies, log_path=log_path)
-        self.s.headers.update(
-            {"Referer": "https://www.hmoe1.net/"}
-        )
+    def __init__(self, usrn: str, pwd: str, useproxies=False) -> None:
+        super().__init__(usrn, pwd, useproxies=useproxies)
+        self.s.headers["Referer"] = "https://www.hmoe1.net/"
 
     def _get_nonce(self) -> str:
         res = self.s.get(

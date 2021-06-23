@@ -41,8 +41,8 @@ class Bilibili(XSession):
         cipher = b64encode(cipher).decode("utf8")
         return cipher
 
-    def __init__(self, logfile=None, interval: float = 0.1, cookies: dict = None) -> None:
-        super().__init__(logfile=logfile, interval=interval)
+    def __init__(self, interval: float = 0.1, cookies: dict = None) -> None:
+        super().__init__(interval=interval)
         if cookies:
             for name, value in cookies.items():
                 self.cookies.set(name, value, domain="bilibili.com", path="/")

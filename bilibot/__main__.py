@@ -1,24 +1,44 @@
 import json
 from argparse import ArgumentParser
 from base64 import b64decode
+import logging
 from pathlib import Path
+import time
 
 import utils
 
 from .bot import Bot
 
 if __name__ == "__main__":
+    # parse args
     parser = ArgumentParser()
     parser.add_argument("config")
     parser.add_argument("rsakey")
     parser.add_argument("--test", action="store_true", default=False)
     args = parser.parse_args()
 
+    # logging config
+    root_logger = logging.getLogger()
+    fmter = logging.Formatter("{asctime} - {levelname} - {msg}", "%Y-%m-%d %H:%M:%S", "{")
+    fmter.converter = time.gmtime
+    if not args.test:
+        root_logger.setLevel(logging.INFO)
+        hdler = logging.FileHandler("logs/bilibot.txt", encoding="utf8")
+    else:
+        root_logger.setLevel(logging.WARNING)
+        hdler = logging.StreamHandler()
+    hdler.setFormatter(fmter)
+    logging.getLogger().addHandler(hdler)
+
+    # read config
     with open(args.config, "r", encoding="utf8") as f:
         config: dict = json.load(f)
+    
+    # read secrets
     rsakey = b64decode(args.rsakey).decode("utf8")
     def _d(p): return utils.secrets.rsa_decrypt(p, rsakey)
 
+    # main works
     bot = Bot()
     cookies = dict(map(lambda item: (item[0], _d(item[1])), config.get("cookies").items()))
     if bot.login(cookies=cookies):
@@ -44,3 +64,5 @@ if __name__ == "__main__":
                 bilibot_data["history"] = bilibot_data.get("history")[-100000:]
                 with Path(pixiv_data_path).open("w", encoding="utf8") as f:
                     json.dump(bilibot_data, f, ensure_ascii=False, indent=4)
+
+    logging.shutdown()

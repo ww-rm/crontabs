@@ -12,9 +12,9 @@ from .base import BaseSigner
 class Signer(BaseSigner):
     site_name = "www.bilibili.com"
 
-    def __init__(self, usrn: str, pwd: str, useproxies=False, log_path=None, cookies: dict = None) -> None:
-        super().__init__(usrn, pwd, useproxies=useproxies, log_path=log_path)
-        self.s = xsession.Bilibili(self.log_path, cookies=cookies)
+    def __init__(self, usrn: str, pwd: str, useproxies=False, cookies: dict = None) -> None:
+        super().__init__(usrn, pwd, useproxies=useproxies)
+        self.s = xsession.Bilibili(cookies=cookies)
         self.s.headers.update(self.headers)
         if useproxies:
             self.s.proxies.update(self.proxies)
