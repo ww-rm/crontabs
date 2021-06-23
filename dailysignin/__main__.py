@@ -31,7 +31,7 @@ if __name__ == "__main__":
         root_logger.setLevel(logging.WARNING)
         hdler = logging.StreamHandler()
     hdler.setFormatter(fmter)
-    logging.getLogger().addHandler(hdler)
+    root_logger.addHandler(hdler)
 
     # read config
     with open(args.config, "r", encoding="utf8") as f:
