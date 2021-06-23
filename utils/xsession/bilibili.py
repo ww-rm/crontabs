@@ -19,6 +19,7 @@ class Bilibili(XSession):
     dynamic_svr_create = "https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/create"
     dynamic_svr_create_draw = "https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/create_draw"
     dynamic_svr_rm_dynamic = "https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/rm_dynamic"
+    dynamic_svr_get_dynamic_detail = "https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/get_dynamic_detail"  # ?dynamic_id=539112416787513871"
 
     drawImage_upload = "https://api.vc.bilibili.com/api/v1/drawImage/upload"
     cover_up = "https://member.bilibili.com/x/vu/web/cover/up"
@@ -187,6 +188,125 @@ class Bilibili(XSession):
         """
 
         res = self.get(self.web_interface_nav)
+        if res.status_code != 200 or res.json().get("code") != 0:
+            return {}
+        return res.json().get("data")
+
+    def get_dynamic_detail(self, dynamic_id) -> dict:
+        """Get details of a dynamic
+
+        response body
+
+        {
+            "code": 0,
+            "msg": "",
+            "message": "",
+            "data": {
+                "card": {
+                    "desc": {
+                        "uid": xxx,
+                        "type": 2,
+                        "rid": xxx,
+                        "acl": 1024,
+                        "view": 299,
+                        "repost": 0,
+                        "comment": 0,
+                        "like": 7,
+                        "is_liked": 1,
+                        "dynamic_id": xxx,
+                        "timestamp": xxx,
+                        "pre_dy_id": 0,
+                        "orig_dy_id": 0,
+                        "orig_type": 0,
+                        "user_profile": {
+                            "info": {
+                                "uid": xxx,
+                                "uname": "xxx",
+                                "face": "https://i2.hdslb.com/bfs/face/xxx.jpg"
+                            },
+                            "card": {
+                                "official_verify": {
+                                    "type": -1,
+                                    "desc": ""
+                                }
+                            },
+                            "vip": {
+                                "vipType": 0,
+                                "vipDueDate": 0,
+                                "vipStatus": 0,
+                                "themeType": 0,
+                                "label": {
+                                    "path": "",
+                                    "text": "",
+                                    "label_theme": "",
+                                    "text_color": "",
+                                    "bg_style": 0,
+                                    "bg_color": "",
+                                    "border_color": ""
+                                },
+                                "avatar_subscript": 0,
+                                "nickname_color": "",
+                                "role": 0,
+                                "avatar_subscript_url": ""
+                            },
+                            "pendant": {
+                                "pid": 0,
+                                "name": "",
+                                "image": "",
+                                "expire": 0,
+                                "image_enhance": "",
+                                "image_enhance_frame": ""
+                            },
+                            "rank": "10000",
+                            "sign": "xxx",
+                            "level_info": {
+                                "current_level": x
+                            }
+                        },
+                        "uid_type": 1,
+                        "stype": 0,
+                        "r_type": 1,
+                        "inner_id": 0,
+                        "status": 1,
+                        "dynamic_id_str": "xxx",
+                        "pre_dy_id_str": "0",
+                        "orig_dy_id_str": "0",
+                        "rid_str": "xxx"
+                    },
+                    "card": "{
+                                "item": {
+                                    "at_control": "", "category": "daily", "description": "xxx", "id": xxx, "is_fav": 0, 
+                                    "pictures": [{"img_height": 1184, "img_size": 471.71875, "img_src": "https://i0.hdslb.com/bfs/album/xxx.jpg", "img_tags": None, "img_width": 785}], 
+                                    "name": "xxx", "uid": xxx, "vip": {"avatar_subscript": 0, "due_date": 0, "label": {"label_theme": "", "path": "", "text": ""}, 
+                                    "nickname_color": "", "status": 0, "theme_type": 0, "type": 0, "vip_pay_type": 0}
+                                }
+                            }",
+                    "extend_json": "{\"from\":{\"emoji_type\":1,\"from\":\"create.dynamic.web\",\"up_close_comment\":0,\"verify\":{\"asw\":{\"fl\":16,\"vf\":1},\"sw\":{\"fl\":16,\"vf\":1}}},\"like_icon\":{\"action\":\"\",\"action_url\":\"\",\"end\":\"\",\"end_url\":\"\",\"start\":\"\",\"start_url\":\"\"},\"topic\":{\"is_attach_topic\":1}}",
+                    "display": {
+                        "topic_info": {
+                            "topic_details": [
+                                {
+                                    "topic_id": xxx,
+                                    "topic_name": "xxx",
+                                    "is_activity": 1,
+                                    "topic_link": "https://www.bilibili.com/blackboard/dynamic/10713"
+                                }
+                            ]
+                        },
+                        "show_tip": {"del_tip": "xxx"}
+                    }
+                },
+                "result": 0,
+                "attentions": {"uids": [xxx]},
+                "_gt_": 0
+            }
+        }
+
+        Note
+
+        if dynamic ever exist, "data" will be returned correctly, but no result, only has "_gt_" field 
+        """
+        res = self.get(self.dynamic_svr_get_dynamic_detail, params={"dynamic_id": dynamic_id})
         if res.status_code != 200 or res.json().get("code") != 0:
             return {}
         return res.json().get("data")

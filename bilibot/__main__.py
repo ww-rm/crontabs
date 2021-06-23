@@ -48,8 +48,7 @@ def run(config):
         else:
             # check dynamic
             latest_dynamic_id = bilibot_data.get("latest_dynamic_id")
-            # TODO: not exist
-            if False:
+            if not bot.is_dynamic_exist(latest_dynamic_id):
                 # redo create_pixiv_ranking_dynamic
                 ret = bot.create_pixiv_ranking_dynamic(
                     bilibot_data.get("illust_history"),
