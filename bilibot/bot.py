@@ -78,7 +78,8 @@ class Bot:
                         illust_ids.append(str(e.get("illust_id")))
 
                 # choose proper illust
-                for illust_id in illust_ids:
+                # use set to avoid repeated illust id
+                for illust_id in set(illust_ids).difference(e.get("id") for e in dynamic_illust_info):
                     illust_info = s_pixiv.get_illust(illust_id)
                     if illust_info:
                         if int(illust_info.get("sl")) < 4:
@@ -99,10 +100,11 @@ class Bot:
             # download image if not exist
             if not path.is_file():
                 image_data = s_pixiv.get_page(url)
-                if image_data:
-                    path.write_bytes(image_data)
-                    illust_info["local_path"] = path
-                    success_illust_info.append(illust_info)
+                if not image_data:
+                    continue
+                path.write_bytes(image_data)
+            illust_info["local_path"] = path
+            success_illust_info.append(illust_info)
 
         return success_illust_info
 
