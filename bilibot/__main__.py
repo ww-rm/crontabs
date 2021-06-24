@@ -37,7 +37,7 @@ def run(config):
             )
             if ret:
                 # update data
-                bilibot_data["dynamic_count"] = bilibot_data.get("count", 0) + 1
+                bilibot_data["dynamic_count"] = bilibot_data.get("dynamic_count", 0) + 1
                 bilibot_data["latest_dynamic_id"] = ret.get("dynamic_id")
                 bilibot_data.get("illust_history").extend(ret.get("illust_ids"))
                 # limit size, the latest 100000 illust ids
