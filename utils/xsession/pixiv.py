@@ -62,6 +62,7 @@ class Pixiv(XSession):
     def get_page(self, page_url) -> bytes:
         response = self.get(page_url)
         if response.status_code != 200:
+            self.logger.warning("pixiv:Failed to download from {}".format(page_url))
             return b""
         return response.content
 
