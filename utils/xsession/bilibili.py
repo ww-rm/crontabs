@@ -549,7 +549,10 @@ class Bilibili(XSession):
                 "gourl": ""
             }
         )
-        # XXX: if no login info to logout, res will be html format, otherwise be json data
+        # NOTE: if no login info to logout, res will be html format, otherwise be json data
         if res.status_code != 200:
             return False
-        return True
+        try:
+            return (res.json().get("code") == 0)
+        except json.JSONDecodeError:
+            return False
