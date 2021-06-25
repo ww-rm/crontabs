@@ -82,7 +82,7 @@ class Bot:
                 for illust_id in set(illust_ids).difference(e.get("id") for e in dynamic_illust_info):
                     illust_info = s_pixiv.get_illust(illust_id)
                     if illust_info:
-                        if int(illust_info.get("sl")) < 4:
+                        if int(illust_info.get("sl")) < 6:
                             dynamic_illust_info.append(
                                 {
                                     "id": illust_id,
