@@ -101,7 +101,7 @@ class Bilibili(XSession):
             )
 
         if res.status_code != 200 or res.json().get("code") != 0:
-            self.logger.warning("bilibili:Failded to Upload file {}".format(Path(img_path).name))
+            self.logger.warning("Bilibili:Failded to Upload file {}:{}".format(Path(img_path).name, res.json().get("message")))
             return {}
         return res.json().get("data")
 
