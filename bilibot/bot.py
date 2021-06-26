@@ -149,7 +149,7 @@ class Bot:
             return True
         return False
 
-    def create_pixiv_ranking_dynamic(self, history: List[str], blacklist: List[str], blacktags: List[str]) -> dict:
+    def create_pixiv_ranking_dynamic(self, history: List[str], blacklist: List[str], blacktags: List[str], count: int) -> dict:
         """
         Args
 
@@ -157,6 +157,10 @@ class Bot:
             A list of dynamic illust history, to avoid upload same illusts
         blacklist: 
             A list of user ids, to avoid copyright problem
+        blacktags:
+            A list of banned illust tags
+        count:
+            the count for this dynamic
 
         Returns
         {
@@ -169,7 +173,7 @@ class Bot:
 
         # make text contents
         contents = "\u0023\u52a8\u6f2b\u58c1\u7eb8\u0023 \u0023\u52a8\u6f2b\u7f8e\u56fe\u0023 \n"
-        contents += "\u0049\u0044\u753b\u5e08\u6309\u987a\u5e8f\uff1a\n"
+        contents += "\u3010\u7b2c{}\u671f\u3011 \u0049\u0044\u753b\u5e08\u6309\u987a\u5e8f\uff1a\n".format(count)
         for info in success_illust_info:
             contents += "{id} \uff1a{username}\n".format_map(info)
 

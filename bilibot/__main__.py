@@ -11,7 +11,7 @@ import utils
 from .bot import Bot
 
 
-def run(config):
+def run(config: dict):
     # load bilibot data
     data_path: str = config.get("data_file")
     with Path(data_path).open("r", encoding="utf8") as f:
@@ -31,13 +31,16 @@ def run(config):
 
             # create_pixiv_ranking_dynamic
             ret = bot.create_pixiv_ranking_dynamic(
-                bilibot_data.get("illust_history"),
-                config.get("pixiv").get("blacklist"),
-                config.get("pixiv").get("blacktags")
+                history=bilibot_data.get("illust_history"),
+                blacklist=config.get("pixiv").get("blacklist"),
+                blacktags=config.get("pixiv").get("blacktags"),
+                count=bilibot_data.get("dynamic_count", 0) + 1
             )
             if ret:
-                # update data
+                # update count
                 bilibot_data["dynamic_count"] = bilibot_data.get("dynamic_count", 0) + 1
+
+                # update data
                 bilibot_data["latest_dynamic_id"] = ret.get("dynamic_id")
                 bilibot_data.get("illust_history").extend(ret.get("illust_ids"))
                 # limit size, the latest 100000 illust ids
@@ -51,9 +54,10 @@ def run(config):
             if not bot.is_dynamic_exist(latest_dynamic_id):
                 # redo create_pixiv_ranking_dynamic
                 ret = bot.create_pixiv_ranking_dynamic(
-                    bilibot_data.get("illust_history"),
-                    config.get("pixiv").get("blacklist"),
-                    config.get("pixiv").get("blacktags")
+                    history=bilibot_data.get("illust_history"),
+                    blacklist=config.get("pixiv").get("blacklist"),
+                    blacktags=config.get("pixiv").get("blacktags"),
+                    count=bilibot_data.get("dynamic_count", 1)
                 )
                 if ret:
                     # update data
@@ -67,7 +71,7 @@ def run(config):
         json.dump(bilibot_data, f, ensure_ascii=False, indent=4)
 
 
-def test(config):
+def test(config: dict):
     # load bilibot data
     data_path: str = config.get("data_file")
     with Path(data_path).open("r", encoding="utf8") as f:
@@ -79,9 +83,10 @@ def test(config):
     if bot.login(cookies=cookies):
         # test create_pixiv_ranking_dynamic
         ret = bot.create_pixiv_ranking_dynamic(
-            bilibot_data.get("illust_history"),
-            config.get("pixiv").get("blacklist"),
-            config.get("pixiv").get("blacktags")
+            history=bilibot_data.get("illust_history"),
+            blacklist=config.get("pixiv").get("blacklist"),
+            blacktags=config.get("pixiv").get("blacktags"),
+            count=bilibot_data.get("dynamic_count", 1)
         )
         if ret:
             bot.delete_dynamic(ret.get("dynamic_id"))
