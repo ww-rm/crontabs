@@ -10,7 +10,7 @@ import bs4
 from Crypto.Cipher import PKCS1_v1_5
 from Crypto.PublicKey import RSA
 
-from .base import XSession
+from .base import XSession, empty_retry
 
 
 class Bilibili(XSession):
@@ -72,6 +72,7 @@ class Bilibili(XSession):
             return {}
         return res.json().get("data")
 
+    @empty_retry()
     def _post_upload(self, img_path: Union[str, Path]) -> dict:
         """Upload a image and get url on static server
 
@@ -102,6 +103,7 @@ class Bilibili(XSession):
 
         if res.status_code != 200:
             self.logger.warning("Bilibili:Failded to Upload file {}:{}".format(Path(img_path).name, res.status_code))
+            return {}
         elif res.json().get("code") != 0:
             self.logger.warning("Bilibili:Failded to Upload file {}:{}".format(Path(img_path).name, res.json().get("message")))
             return {}
