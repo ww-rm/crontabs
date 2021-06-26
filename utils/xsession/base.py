@@ -25,7 +25,7 @@ def empty_retry(times=3, interval=1):
                 if ret:
                     return ret
                 sleep(interval)
-            logging.getLogger(__name__).error("All retries in func {} were failed.".format(func.__name__))
+            logging.getLogger(__name__).error("All retries failed in func {}.".format(func.__name__))
             return ret
         return decorated_func
     return decorator
