@@ -55,15 +55,10 @@ class Bot:
         # s_pixiv.proxies.update(self.proxies)
 
         # get proper illust info
-        dynamic_illust_info = []
-        # {
-        #     "id": "",
-        #     "user_id": "",
-        #     "username": "",
-        #     "url": ""
-        # }
+        dynamic_illust_info = []  # ids has been checked  # {"id": "", "user_id": "", "username": "", "url": ""}
+        success_illust_info = []  # successful ids # {"id": "", "user_id": "", "username": "", "url": "", "local_path": Path}
         cur_date = None
-        while len(dynamic_illust_info) < num:
+        while len(success_illust_info) < num:
             rankings = s_pixiv.get_ranking(date=cur_date, content="illust", mode="monthly")
             if rankings:
                 cur_date = rankings.get("prev_date")
@@ -92,21 +87,21 @@ class Bot:
                                 }
                             )
 
-        # cache illust data
-        success_illust_info = []
-        for illust_info in dynamic_illust_info[:num]:
-            url: str = illust_info.get("url")
-            path = Path("tmp", url.split("/")[-1])
-            # download image if not exist
-            if not path.is_file():
-                image_data = s_pixiv.get_page(url)
-                if not image_data:
-                    continue
-                path.write_bytes(image_data)
-            illust_info["local_path"] = path
-            success_illust_info.append(illust_info)
+            # cache illust data
+            for illust_info in dynamic_illust_info:
+                url: str = illust_info.get("url")
+                path = Path("tmp", url.split("/")[-1])
+                # download image if not exist
+                if not path.is_file():
+                    image_data = s_pixiv.get_page(url)
+                    # limit picture size under 20 MB
+                    if not image_data or len(image_data) > 19*1024*1024:
+                        continue
+                    path.write_bytes(image_data)
+                illust_info["local_path"] = path
+                success_illust_info.append(illust_info)
 
-        return success_illust_info
+        return success_illust_info[:num]
 
     def _get_random_bgm(self, playlist: str) -> dict:
         """
