@@ -19,7 +19,7 @@ class KuwoMusic(XSession):
     api_www_playlist_playlistinfo = "http://www.kuwo.cn/api/www/playlist/playListInfo"
     api_www_album_albuminfo = "http://www.kuwo.cn/api/www/album/albumInfo"
 
-    singles_songinfo_and_lrc = "http://m.kuwo.cn/newh5/singles/songinfoandlrc"  # TODO
+    singles_songinfo_and_lrc = "http://m.kuwo.cn/newh5/singles/songinfoandlrc"
 
     def __init__(self, interval: float = 0.1) -> None:
         super().__init__(interval=interval)
@@ -220,5 +220,16 @@ class KuwoMusic(XSession):
             headers={"csrf": self._get_csrf()}
         )
         if res.status_code != 200 or res.json().get("code") != 200:
+            return {}
+        return res.json().get("data")
+
+    def get_songinfo_and_lyric(self, song_id, httpsstatus=1) -> dict:
+        """Get song info and lyric(mainly)"""
+
+        res = self.get(
+            self.singles_songinfo_and_lrc,
+            params={"musicId": song_id, "httpsStatus": httpsstatus}
+        )
+        if res.status_code != 200 or res.json().get("status") != 200:
             return {}
         return res.json().get("data")
