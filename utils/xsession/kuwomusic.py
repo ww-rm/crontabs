@@ -28,7 +28,9 @@ class KuwoMusic(XSession):
         self.get(self.url_host)  # get csrf token for the first time
 
     def _get_csrf(self):
-        return self.cookies.get("kw_token")
+        if "kw_token" not in self.cookies:
+            self.get(self.url_host)
+        return self.cookies.get("kw_token", "")
 
     def get_song_data(self, song_id, br="320kmp3",
                       format_="mp3", response="url", type_="convert_url3", from_="web", httpsstatus=1) -> bytes:

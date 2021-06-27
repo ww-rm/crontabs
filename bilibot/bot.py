@@ -119,7 +119,7 @@ class Bot:
         if cookies:
             self.s.cookies.update(cookies)
             return True
-        self.logger.warning("{}:Failed to login.".format("Bilibot"))
+        self.logger.error("Bilibot:Failed to login.")
         return False
         # TODO: login
         raise NotImplementedError
@@ -127,13 +127,13 @@ class Bot:
     def logout(self) -> bool:
         if self.s.post_logout():
             return True
-        self.logger.warning("{}:Failed to logout.".format("Bilibot"))
+        self.logger.warning("Bilibot:Failed to logout.")
         return False
 
     def delete_dynamic(self, dynamic_id: str) -> bool:
         ret = self.s.post_rm_dynamic(dynamic_id)
         if not ret:
-            self.logger.warning("{}:Failed to delete dynamic.".format("Bilibot"))
+            self.logger.error("Bilibot:Failed to delete dynamic.")
             return False
         return True
 
@@ -174,7 +174,7 @@ class Bot:
 
         dynamic_info = self.s.post_create_draw(contents, local_illust_paths)
         if not dynamic_info:
-            self.logger.warning("{}:Failed to create draw.".format("Bilibot"))
+            self.logger.error("Bilibot:Failed to create draw.")
             return {}
 
         dynamic_id = dynamic_info.get("dynamic_id_str")
@@ -183,7 +183,7 @@ class Bot:
             "dynamic_id": dynamic_id,
             "illust_ids": success_illust_ids
         }
-        self.logger.info("{}:create_pixiv_ranking_dynamic Success!".format("Bilibot"))
+        self.logger.info("Bilibot:create_pixiv_ranking_dynamic Success!")
         return ret
 
     def create_pixiv_ranking_video(self):

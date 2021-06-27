@@ -40,7 +40,7 @@ class BaseSigner:
     def signin(self) -> bool:
         res_val = True
         if not self._login():
-            self.logger.warning("{}:{}".format(self.site_name, "Failed to login."))
+            self.logger.error("{}:{}".format(self.site_name, "Failed to login."))
             res_val = False
         else:
             if not self._signin():
