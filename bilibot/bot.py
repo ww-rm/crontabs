@@ -168,7 +168,7 @@ class Bot:
 
         # make text contents
         contents = "\u0023\u52a8\u6f2b\u58c1\u7eb8\u0023 \u0023\u52a8\u6f2b\u7f8e\u56fe\u0023 \n"
-        contents += "\u3010\u7b2c{}\u671f\u3011\uff08\u70b9\u4e2a\u5173\u6ce8\u4e0d\u8ff7\u8def\uff0c\u6bcf\u5929\u66f4\u65b0\u54e6\u200d>\u0602<\uff09\n"
+        contents += "\u3010\u7b2c{}\u671f\u3011\uff08\u70b9\u4e2a\u5173\u6ce8\u4e0d\u8ff7\u8def\uff0c\u6bcf\u5929\u66f4\u65b0\u54e6>\u0602<\uff09\n"
         contents += "\u0049\u0044\u753b\u5e08\u6309\u987a\u5e8f\uff1a\n".format(count)
         for info in success_illust_info:
             contents += "{id} \uff1a{username}\n".format_map(info)
