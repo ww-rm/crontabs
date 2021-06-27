@@ -558,5 +558,5 @@ class Bilibili(XSession):
             return False
         try:
             return (res.json().get("code") == 0)
-        except json.JSONDecodeError:
+        except ValueError:
             return False

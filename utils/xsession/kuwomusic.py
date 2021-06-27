@@ -1,5 +1,3 @@
-from json.decoder import JSONDecodeError
-
 from .base import XSession
 
 
@@ -44,7 +42,6 @@ class KuwoMusic(XSession):
         br: 
             bit rate, can be "128kmp3", "192kmp3", "320kmp3"
         """
-
         res = self.get(
             self.song_url,
             params={
@@ -65,7 +62,7 @@ class KuwoMusic(XSession):
             if res.json().get("code") != 200:
                 return b""
             song_url = res.json().get("url", "")
-        except JSONDecodeError:
+        except ValueError:
             return b""
 
         # get song data
