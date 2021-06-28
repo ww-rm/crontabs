@@ -61,19 +61,23 @@ class Downloader:
         lyric:
             whether save `.lrc` format lyrics to the output_dir
         """
-        song_data = self.s.get_song_data(song_id)
         song_info = self.s.get_music_info(song_id)
-
-        if song_data and song_info:
+        if not song_info:
+            self.logger.error("Failed to get song info:{}".format(song_id))
+            return False
+        else:
             song_name = self._validate_filename(song_info.get("name", "unknown"))
             save_path = Path(
                 output_dir,
                 "{} - {}.mp3".format(song_info.get("artist", "unknown"), song_name)
             )
-            save_path.write_bytes(song_data)
-        else:
-            self.logger.error("Failed to get song:{}".format(song_id))
-            return False
+            if not save_path.is_file():
+                song_data = self.s.get_song_data(song_id)
+                if not song_data:
+                    self.logger.error("Failed to get song data:{}".format(song_id))
+                    return False
+                else:
+                    save_path.write_bytes(song_data)
 
         if metadata:
             song_eyed3 = eyed3.load(save_path.as_posix(), tag_version=eyed3.id3.ID3_V2)
