@@ -41,8 +41,8 @@ class Downloader:
         lyric_info = self.s.get_songinfo_and_lyric(song_id)
         lyrics = []
         if lyric_info:
-            for e in lyric_info.get("lrclist"):
-                lyrics.append((_cvt_time(e.get("time", "")), e.get("lineLyric")))
+            for e in (lyric_info.get("lrclist") or []):
+                lyrics.append((_cvt_time(e.get("time", "")), e.get("lineLyric", "")))
         else:
             self.logger.warning("Kuwo:Failed to get lyric:{}".format(song_id))
         return lyrics
