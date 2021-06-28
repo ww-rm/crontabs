@@ -3,7 +3,7 @@ import logging
 import time
 from argparse import ArgumentParser
 from base64 import b64decode
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 import utils
@@ -27,7 +27,7 @@ def run(config: dict):
         # if at least 1 day before last update
         if (today - last_update_date).days > 0:
             # update date
-            bilibot_data["last_update_date"] = today.isoformat(" ", "seconds")
+            bilibot_data["last_update_date"] = (today - timedelta(seconds=30*24)).isoformat(" ", "seconds")
 
             # create_pixiv_ranking_dynamic
             ret = bot.create_pixiv_ranking_dynamic(
