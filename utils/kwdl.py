@@ -176,15 +176,16 @@ if __name__ == "__main__":
     downloader = Downloader()
     if args.song:
         for id_ in args.song:
-            downloader.download_song(id_, output_dir, args.metadata, args.lyric)
+            c = downloader.download_song(id_, output_dir, args.metadata, args.lyric)
     elif args.artist:
         for id_ in args.artist:
-            downloader.download_artist(id_, output_dir, args.metadata, args.lyric, args.num)
+            c = downloader.download_artist(id_, output_dir, args.metadata, args.lyric, args.num)
     elif args.album:
         for id_ in args.album:
-            downloader.download_album(id_, output_dir, args.metadata, args.lyric, args.num)
+            c = downloader.download_album(id_, output_dir, args.metadata, args.lyric, args.num)
     elif args.playlist:
         for id_ in args.playlist:
-            downloader.download_playlist(id_, output_dir, args.metadata, args.lyric, args.num)
+            c = downloader.download_playlist(id_, output_dir, args.metadata, args.lyric, args.num)
     else:
         raise ArgumentError("No arguments specified.")
+    print("Download {} songs successfully!".format(int(c)))
