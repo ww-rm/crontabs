@@ -60,7 +60,7 @@ class KuwoMusic(XSession):
                 params={
                     "rid": song_id,
                     "br": bit_rate[i],
-                    "format_": format_,
+                    "format": format_,
                     "response": response,
                     "type": type_,
                     "from": from_,
