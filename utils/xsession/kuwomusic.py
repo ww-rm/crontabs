@@ -1,4 +1,4 @@
-from .base import XSession
+from .base import XSession, empty_retry
 
 
 class KuwoMusic(XSession):
@@ -30,7 +30,8 @@ class KuwoMusic(XSession):
             self.get(self.url_host)
         return self.cookies.get("kw_token", "")
 
-    def get_song_data(self, song_id, br="320kmp3",
+    @empty_retry()
+    def get_song_data(self, song_id, br: str = "320kmp3",
                       format_="mp3", response="url", type_="convert_url3", from_="web", httpsstatus=1) -> bytes:
         """
         Get the static resource data for a song
@@ -41,29 +42,48 @@ class KuwoMusic(XSession):
             id of song
         br: 
             bit rate, can be "128kmp3", "192kmp3", "320kmp3"
+
+        Note
+
+        If can't find resource, will auto reduce bit rate and log warning info
         """
-        res = self.get(
-            self.song_url,
-            params={
-                "rid": song_id,
-                "br": br,
-                "format_": format_,
-                "response": response,
-                "type": type_,
-                "from": from_,
-                "httpsStatus": httpsstatus,
-                # "t": 1624631124032,
-                # "reqId": ""
-            }
-        )
-        if res.status_code != 200:
-            return b""
+        bit_rate = ["320kmp3", "192kmp3", "128kmp3"]
         try:
-            if res.json().get("code") != 200:
-                return b""
-            song_url = res.json().get("url", "")
+            br_index = bit_rate.index(br)
         except ValueError:
-            return b""
+            self.logger.warning("Incorrect 'br' value, default to use '320kmps'")
+            br_index = 0
+
+        for i in range(br_index, 3):
+            res = self.get(
+                self.song_url,
+                params={
+                    "rid": song_id,
+                    "br": bit_rate[i],
+                    "format_": format_,
+                    "response": response,
+                    "type": type_,
+                    "from": from_,
+                    "httpsStatus": httpsstatus,
+                    # "t": 1624631124032,
+                    # "reqId": "xxxx"
+                }
+            )
+            # print(res.text)
+            if res.status_code != 200:
+                return b""
+            try:
+                if res.json().get("code") != 200:
+                    return b""
+                song_url = res.json().get("url", "")
+            except ValueError:
+                song_url = ""
+                if i < 2:
+                    self.logger.warning("KuwoMusic:Failed to get song:{} in bit rate:{}, try to get lower bit rate:{}".format(song_id, bit_rate[i], bit_rate[i+1]))
+                else:
+                    self.logger.error("KuwoMusic:Failed to get song data:{} in any bit rate.".format(song_id))
+            else:
+                break
 
         # get song data
         if not song_url:
