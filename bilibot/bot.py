@@ -30,6 +30,8 @@ class Bot:
             A list of dynamic illust history, to avoid upload same illusts
         blacklist: 
             A list of user ids, to avoid copyright problem
+        blacktags:
+            A list of banned tags
 
         Returns:
             A list of illust info, 
@@ -59,7 +61,18 @@ class Bot:
         success_illust_info = []  # successful ids # {"id": "", "user_id": "", "username": "", "url": "", "local_path": Path}
         cur_date = None
         while len(success_illust_info) < num:
-            rankings = s_pixiv.get_ranking(date=cur_date, content="illust", mode="monthly")
+            # get top 100
+            rankings1 = s_pixiv.get_ranking(date=cur_date, content="illust", mode="monthly", p=1)
+            rankings2 = s_pixiv.get_ranking(date=cur_date, content="illust", mode="monthly", p=2)
+            if rankings1:
+                rankings = rankings1
+                rankings.get("contents").extend(rankings2.get("contents", []))
+            elif rankings2:
+                rankings = rankings2
+                rankings.get("contents").extend(rankings1.get("contents", []))
+            else:
+                rankings = {}
+            # if non-empty
             if rankings:
                 cur_date = rankings.get("prev_date")
                 illust_ids = []
