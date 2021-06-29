@@ -22,9 +22,9 @@ def run(config: dict):
     cookies = dict(map(lambda item: (item[0], _d(item[1])), config.get("cookies").items()))
     if bot.login(cookies=cookies):
         today = datetime.utcnow()
-        last_update_date = datetime.fromisoformat(bilibot_data.get("last_update_date"))
 
         # if at least 8 hours before last update
+        last_update_date = datetime.fromisoformat(bilibot_data.get("last_update_date"))
         if (today - last_update_date).seconds > 3600*8:
             # update date
             bilibot_data["last_update_date"] = (today - timedelta(minutes=10)).isoformat(" ", "seconds")
@@ -45,9 +45,6 @@ def run(config: dict):
                 bilibot_data.get("illust_history").extend(ret.get("illust_ids"))
                 # limit size, the latest 10000 illust ids
                 bilibot_data["illust_history"] = bilibot_data.get("illust_history")[-10000:]
-
-            # TODO: create video
-
         else:
             # check dynamic
             latest_dynamic_id = bilibot_data.get("latest_dynamic_id")
@@ -65,6 +62,8 @@ def run(config: dict):
                     bilibot_data.get("illust_history").extend(ret.get("illust_ids"))
                     # limit size, the latest 10000 illust ids
                     bilibot_data["illust_history"] = bilibot_data.get("illust_history")[-10000:]
+
+        # TODO: create video
 
     # save bilibot data
     with Path(data_path).open("w", encoding="utf8") as f:
