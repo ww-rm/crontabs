@@ -64,10 +64,11 @@ class Bot:
         # s_pixiv.proxies.update(self.proxies)
 
         # get proper illust info
-        dynamic_illust_info = []  # ids has been checked  # {"id": "", "user_id": "", "username": "", "url": ""}
+        checked_illust_info = []  # ids has been checked  # {"id": "", "user_id": "", "username": "", "url": ""}
         success_illust_info = []  # successful ids # {"id": "", "user_id": "", "username": "", "url": "", "local_path": Path}
         cur_date = None
         while len(success_illust_info) < num:
+            dynamic_illust_info = []  # current epoch illust info
             # get top 100
             rankings1 = s_pixiv.get_ranking(date=cur_date, content="illust", mode="monthly", p=1)
             rankings2 = s_pixiv.get_ranking(date=cur_date, content="illust", mode="monthly", p=2)
@@ -94,7 +95,7 @@ class Bot:
 
                 # choose proper illust
                 # use safe_remove to avoid repeated illust id
-                __safe_remove(illust_ids, [e.get("id") for e in dynamic_illust_info])
+                __safe_remove(illust_ids, [e.get("id") for e in checked_illust_info])
                 for illust_id in illust_ids:
                     illust_info = s_pixiv.get_illust(illust_id)
                     if illust_info:
@@ -121,6 +122,9 @@ class Bot:
                     path.write_bytes(image_data)
                 illust_info["local_path"] = path
                 success_illust_info.append(illust_info)
+
+            # extend checked illust history
+            checked_illust_info.extend(dynamic_illust_info)
 
         return success_illust_info[:num]
 
