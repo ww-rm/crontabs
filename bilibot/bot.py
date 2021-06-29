@@ -1,6 +1,6 @@
 import logging
 from pathlib import Path
-from typing import List, Union
+from typing import Iterable, List, Union
 
 from utils import media, xsession
 
@@ -43,6 +43,13 @@ class Bot:
                 "local_path": Path
             }
         """
+        def __safe_remove(l: List[str], r: Iterable[str]) -> None:
+            """In place operation."""
+            for e in r:
+                try:
+                    l.remove(e)
+                except ValueError:
+                    pass
 
         def _check_tags(tags: List[str]) -> bool:
             for t in blacktags:
@@ -86,8 +93,9 @@ class Bot:
                         illust_ids.append(str(e.get("illust_id")))
 
                 # choose proper illust
-                # use set to avoid repeated illust id
-                for illust_id in set(illust_ids).difference(e.get("id") for e in dynamic_illust_info):
+                # use safe_remove to avoid repeated illust id
+                __safe_remove(illust_ids, [e.get("id") for e in dynamic_illust_info])
+                for illust_id in illust_ids:
                     illust_info = s_pixiv.get_illust(illust_id)
                     if illust_info:
                         if int(illust_info.get("sl")) < 6:
