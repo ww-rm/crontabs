@@ -26,8 +26,8 @@ def run(config: dict):
         # dynamic task
         latest_dynamic_id = bilibot_data.get("latest_dynamic_id")
         if bot.is_dynamic_exist(latest_dynamic_id):
-            # if at least 8 hours before last update
             last_update_date = datetime.fromisoformat(bilibot_data.get("last_update_date"))
+            # if at least 8 hours before last update
             if (today - last_update_date).seconds > 3600*8:
                 # update date
                 bilibot_data["last_update_date"] = (today - timedelta(minutes=10)).isoformat(" ", "seconds")
