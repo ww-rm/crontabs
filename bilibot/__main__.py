@@ -43,7 +43,7 @@ def run(config: dict):
                 # update data
                 bilibot_data["latest_dynamic_id"] = ret.get("dynamic_id")
                 bilibot_data.get("illust_history").extend(ret.get("illust_ids"))
-                # limit size, the latest 100000 illust ids
+                # limit size, the latest 10000 illust ids
                 bilibot_data["illust_history"] = bilibot_data.get("illust_history")[-10000:]
 
             # TODO: create video
@@ -63,7 +63,7 @@ def run(config: dict):
                     # update data
                     bilibot_data["latest_dynamic_id"] = ret.get("dynamic_id")
                     bilibot_data.get("illust_history").extend(ret.get("illust_ids"))
-                    # limit size, the latest 100000 illust ids
+                    # limit size, the latest 10000 illust ids
                     bilibot_data["illust_history"] = bilibot_data.get("illust_history")[-10000:]
 
     # save bilibot data
