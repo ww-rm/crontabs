@@ -23,45 +23,45 @@ def run(config: dict):
     if bot.login(cookies=cookies):
         today = datetime.utcnow()
 
-        # if at least 8 hours before last update
-        last_update_date = datetime.fromisoformat(bilibot_data.get("last_update_date"))
-        if (today - last_update_date).seconds > 3600*8:
-            # update date
-            bilibot_data["last_update_date"] = (today - timedelta(minutes=10)).isoformat(" ", "seconds")
+        # dynamic task
+        latest_dynamic_id = bilibot_data.get("latest_dynamic_id")
+        if bot.is_dynamic_exist(latest_dynamic_id):
+            # if at least 8 hours before last update
+            last_update_date = datetime.fromisoformat(bilibot_data.get("last_update_date"))
+            if (today - last_update_date).seconds > 3600*8:
+                # update date
+                bilibot_data["last_update_date"] = (today - timedelta(minutes=10)).isoformat(" ", "seconds")
 
-            # create_pixiv_ranking_dynamic
-            ret = bot.create_pixiv_ranking_dynamic(
-                history=bilibot_data.get("illust_history"),
-                blacklist=config.get("pixiv").get("blacklist"),
-                blacktags=config.get("pixiv").get("blacktags"),
-                count=bilibot_data.get("dynamic_count", 0) + 1
-            )
-            if ret:
-                # update count
-                bilibot_data["dynamic_count"] = bilibot_data.get("dynamic_count", 0) + 1
-
-                # update data
-                bilibot_data["latest_dynamic_id"] = ret.get("dynamic_id")
-                bilibot_data.get("illust_history").extend(ret.get("illust_ids"))
-                # limit size, the latest 10000 illust ids
-                bilibot_data["illust_history"] = bilibot_data.get("illust_history")[-10000:]
-        else:
-            # check dynamic
-            latest_dynamic_id = bilibot_data.get("latest_dynamic_id")
-            if not bot.is_dynamic_exist(latest_dynamic_id):
-                # redo create_pixiv_ranking_dynamic
+                # do create_pixiv_ranking_dynamic
                 ret = bot.create_pixiv_ranking_dynamic(
                     history=bilibot_data.get("illust_history"),
                     blacklist=config.get("pixiv").get("blacklist"),
                     blacktags=config.get("pixiv").get("blacktags"),
-                    count=bilibot_data.get("dynamic_count", 1)
+                    count=bilibot_data.get("dynamic_count", 0) + 1
                 )
                 if ret:
+                    # update count
+                    bilibot_data["dynamic_count"] = bilibot_data.get("dynamic_count", 0) + 1
+
                     # update data
                     bilibot_data["latest_dynamic_id"] = ret.get("dynamic_id")
                     bilibot_data.get("illust_history").extend(ret.get("illust_ids"))
                     # limit size, the latest 10000 illust ids
                     bilibot_data["illust_history"] = bilibot_data.get("illust_history")[-10000:]
+        else:
+            # redo create_pixiv_ranking_dynamic
+            ret = bot.create_pixiv_ranking_dynamic(
+                history=bilibot_data.get("illust_history"),
+                blacklist=config.get("pixiv").get("blacklist"),
+                blacktags=config.get("pixiv").get("blacktags"),
+                count=bilibot_data.get("dynamic_count", 1)
+            )
+            if ret:
+                # update data
+                bilibot_data["latest_dynamic_id"] = ret.get("dynamic_id")
+                bilibot_data.get("illust_history").extend(ret.get("illust_ids"))
+                # limit size, the latest 10000 illust ids
+                bilibot_data["illust_history"] = bilibot_data.get("illust_history")[-10000:]
 
         # TODO: create video
 
@@ -85,7 +85,7 @@ def test(config: dict):
             history=bilibot_data.get("illust_history"),
             blacklist=config.get("pixiv").get("blacklist"),
             blacktags=config.get("pixiv").get("blacktags"),
-            count=bilibot_data.get("dynamic_count", 1)
+            count=bilibot_data.get("dynamic_count", 0) + 1
         )
         if ret:
             bot.delete_dynamic(ret.get("dynamic_id"))
