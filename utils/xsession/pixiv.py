@@ -220,7 +220,7 @@ class Pixiv(XSession):
             self.php_ranking,
             params={"format": "json", "p": p, "content": content, "mode": mode, "date": date}
         ).json()
-        return {} if json_["error"] else json_
+        return {} if json_.get("error") else json_
 
     def get_rpc_recommender(self, sample_illusts: int, num_recommendations=500, type_="illust") -> list:
         """Deprecated, used to get recommended illust ids
