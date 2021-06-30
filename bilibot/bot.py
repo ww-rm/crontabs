@@ -165,7 +165,7 @@ class Bot:
     def is_dynamic_exist(self, dynamic_id: str) -> bool:
         """Check if a dynamic exist"""
         ret = self.s.get_dynamic_detail(dynamic_id)
-        if ret and ret["result"] == 0:
+        if ret and ret.get("result") == 0:
             return True
         return False
 
