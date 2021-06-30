@@ -299,6 +299,9 @@ class Bilibili(XSession):
                             ]
                         },
                         "show_tip": {"del_tip": "xxx"}
+                    },
+                    "extra": {
+                        "is_auditing": 1
                     }
                 },
                 "result": 0,
@@ -309,7 +312,9 @@ class Bilibili(XSession):
 
         Note
 
-        if dynamic ever exist, "data" will be returned correctly, but no result, only has "_gt_" field 
+        if dynamic ever exist, "data" will be returned correctly, but no result, only has "_gt_" field,
+
+        if dynamic exist and being auditing, will has `extra` field in `data.card` and `data.card.extra.is_auditing` == `1`
         """
         res = self.get(self.dynamic_svr_get_dynamic_detail, params={"dynamic_id": dynamic_id})
         if res.status_code != 200 or res.json()["code"] != 0:
