@@ -54,7 +54,7 @@ class Pixiv(XSession):
         """Get x-csrf-token"""
         html = self.get(self.url_host).text
         soup = bs4.BeautifulSoup(html, "lxml")
-        token = json.loads(soup.find("meta", {"id": "meta-global-data"}).attrs.get("content", {})).get("token", "")
+        token = json.loads(soup.find("meta", {"id": "meta-global-data"}).attrs.get("content", "{}")).get("token", "")
         return token
 
     # GET method
