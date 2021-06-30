@@ -220,7 +220,7 @@ class Pixiv(XSession):
             self.php_ranking,
             params={"format": "json", "p": p, "content": content, "mode": mode, "date": date}
         ).json()
-        return {} if json_.get("error") else json_
+        return {} if "error" in json_ else json_
 
     def get_rpc_recommender(self, sample_illusts: int, num_recommendations=500, type_="illust") -> list:
         """Deprecated, used to get recommended illust ids
@@ -238,7 +238,7 @@ class Pixiv(XSession):
                 "type": type_
             }
         ).json()
-        return [] if json_.get("error") else json_["recommendations"]
+        return [] if "error" in json_ else json_["recommendations"]
 
     def get_logout(self) -> bool:
         """Logout"""
@@ -273,7 +273,7 @@ class Pixiv(XSession):
                 "x-csrf-token": self._get_csrf_token()  # 400
             }
         ).json()
-        return False if json_.get("error") else True
+        return False if "error" in json_ else True
 
     def post_bookmark_add(self, user_id, restrict=0, tag="", mode="add", type_="user") -> bool:
         """Add or modify bookmark of a user
