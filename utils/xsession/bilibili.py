@@ -53,16 +53,7 @@ class Bilibili(XSession):
         return self.cookies.get("bili_jct", default="")
 
     def _get_web_key(self, r=0.4811057511950463):
-        """
-        Response body
-
-        {
-            "code": 0, "message": "0", "ttl": 1,
-            "data": {
-                "hash": "xxxxxxxxxxxxx",
-                "key": "-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDjb4V7EidX/ym28t2ybo0U6t0n\n6p4ej8VjqKHg100va6jkNbNTrLQqMCQCAYtXMXXp2Fwkk6WR+12N9zknLjf+C9sx\n/+l48mjUU8RqahiFD1XT/u2e0m2EN029OhCgkHx3Fc/KlFSIbak93EH/XlYis0w+\nXl69GV6klzgxW6d2xQIDAQAB\n-----END PUBLIC KEY-----\n"
-            }
-        }
+        """Get web key
         """
         res = self.get(
             self.web_key,
@@ -80,15 +71,7 @@ class Bilibili(XSession):
             image_path: local image file path
 
         Returns:
-            {
-                "code": 0,
-                "message": "success",
-                "data": {
-                    "image_url": "xxx",
-                    "image_width": 625,
-                    "image_height": 477
-                }
-            }
+            see responses folder
         """
         img_path = Path(img_path)
         with img_path.open("rb") as f:
@@ -119,14 +102,7 @@ class Bilibili(XSession):
 
         Returns
 
-        {
-            "code": 0,
-            "message": "0",
-            "ttl": 1,
-            "data": {
-                "url": "http://i0.hdslb.com/bfs/archive/xxx.jpg"
-            }
-        }
+        see responses folder
         """
         res = self.post(
             self.cover_up,
@@ -138,58 +114,9 @@ class Bilibili(XSession):
 
     def get_web_nav(self) -> dict:
         """
-        Returns:
-            Response body:
+        Returns
 
-        {
-            "code": 0,"message": "0",
-            "ttl": 1,
-            "data": {
-                "isLogin": True,
-                "email_verified": 1,
-                "face": "http: //i2.hdslb.com/bfs/face/xxx.jpg",
-                "level_info": {
-                    "current_level": 2,
-                    "current_min": 200,
-                    "current_exp": 250,
-                    "next_exp": 1500
-                },
-                "mid": 123456789,
-                "mobile_verified": 1,
-                "money": 32,
-                "moral": 70,
-                "official": {"role": 0, "title": "", "desc": "", "type": -1},
-                "officialVerify": {"type": -1, "desc": ""},
-                "pendant": {"pid": 0, "name": "", "image": "", "expire": 0, "image_enhance": "", "image_enhance_frame": ""},
-                "scores": 0,
-                "uname": "xxx",
-                "vipDueDate": 0,
-                "vipStatus": 0,
-                "vipType": 0,
-                "vip_pay_type": 0,
-                "vip_theme_type": 0,
-                "vip_label": {"path": "", "text": "", "label_theme": "", "text_color": "", "bg_style": 0, "bg_color": "", "border_color": ""},
-                "vip_avatar_subscript": 0,
-                "vip_nickname_color": "",
-                "vip": {
-                    "type": 0,
-                    "status": 0,
-                    "due_date": 0,
-                    "vip_pay_type": 0,
-                    "theme_type": 0,
-                    "label": {"path": "", "text": "", "label_theme": "", "text_color": "", "bg_style": 0, "bg_color": "", "border_color": ""},
-                    "avatar_subscript": 0,
-                    "nickname_color": "",
-                    "role": 0,
-                    "avatar_subscript_url": ""
-                },
-                "wallet": {"mid": 123456, "bcoin_balance": 0, "coupon_balance": 0, "coupon_due_time": 0},
-                "has_shop": False,
-                "shop_url": "",
-                "allowance_count": 0,
-                "answer_status": 0
-            }
-        }
+        see responses folder
         """
 
         res = self.get(self.web_interface_nav)
@@ -199,116 +126,6 @@ class Bilibili(XSession):
 
     def get_dynamic_detail(self, dynamic_id) -> dict:
         """Get details of a dynamic
-
-        response body
-
-        {
-            "code": 0,
-            "msg": "",
-            "message": "",
-            "data": {
-                "card": {
-                    "desc": {
-                        "uid": xxx,
-                        "type": 2,
-                        "rid": xxx,
-                        "acl": 1024,
-                        "view": 299,
-                        "repost": 0,
-                        "comment": 0,
-                        "like": 7,
-                        "is_liked": 1,
-                        "dynamic_id": xxx,
-                        "timestamp": xxx,
-                        "pre_dy_id": 0,
-                        "orig_dy_id": 0,
-                        "orig_type": 0,
-                        "user_profile": {
-                            "info": {
-                                "uid": xxx,
-                                "uname": "xxx",
-                                "face": "https://i2.hdslb.com/bfs/face/xxx.jpg"
-                            },
-                            "card": {
-                                "official_verify": {
-                                    "type": -1,
-                                    "desc": ""
-                                }
-                            },
-                            "vip": {
-                                "vipType": 0,
-                                "vipDueDate": 0,
-                                "vipStatus": 0,
-                                "themeType": 0,
-                                "label": {
-                                    "path": "",
-                                    "text": "",
-                                    "label_theme": "",
-                                    "text_color": "",
-                                    "bg_style": 0,
-                                    "bg_color": "",
-                                    "border_color": ""
-                                },
-                                "avatar_subscript": 0,
-                                "nickname_color": "",
-                                "role": 0,
-                                "avatar_subscript_url": ""
-                            },
-                            "pendant": {
-                                "pid": 0,
-                                "name": "",
-                                "image": "",
-                                "expire": 0,
-                                "image_enhance": "",
-                                "image_enhance_frame": ""
-                            },
-                            "rank": "10000",
-                            "sign": "xxx",
-                            "level_info": {
-                                "current_level": x
-                            }
-                        },
-                        "uid_type": 1,
-                        "stype": 0,
-                        "r_type": 1,
-                        "inner_id": 0,
-                        "status": 1,
-                        "dynamic_id_str": "xxx",
-                        "pre_dy_id_str": "0",
-                        "orig_dy_id_str": "0",
-                        "rid_str": "xxx"
-                    },
-                    "card": "{
-                                "item": {
-                                    "at_control": "", "category": "daily", "description": "xxx", "id": xxx, "is_fav": 0, 
-                                    "pictures": [{"img_height": 1184, "img_size": 471.71875, "img_src": "https://i0.hdslb.com/bfs/album/xxx.jpg", "img_tags": None, "img_width": 785}], 
-                                    "name": "xxx", "uid": xxx, "vip": {"avatar_subscript": 0, "due_date": 0, "label": {"label_theme": "", "path": "", "text": ""}, 
-                                    "nickname_color": "", "status": 0, "theme_type": 0, "type": 0, "vip_pay_type": 0}
-                                }
-                            }",
-                    "extend_json": "{\"from\":{\"emoji_type\":1,\"from\":\"create.dynamic.web\",\"up_close_comment\":0,\"verify\":{\"asw\":{\"fl\":16,\"vf\":1},\"sw\":{\"fl\":16,\"vf\":1}}},\"like_icon\":{\"action\":\"\",\"action_url\":\"\",\"end\":\"\",\"end_url\":\"\",\"start\":\"\",\"start_url\":\"\"},\"topic\":{\"is_attach_topic\":1}}",
-                    "display": {
-                        "topic_info": {
-                            "topic_details": [
-                                {
-                                    "topic_id": xxx,
-                                    "topic_name": "xxx",
-                                    "is_activity": 1,
-                                    "topic_link": "https://www.bilibili.com/blackboard/dynamic/10713"
-                                }
-                            ]
-                        },
-                        "show_tip": {"del_tip": "xxx"}
-                    },
-                    "extra": {
-                        "is_auditing": 1
-                    }
-                },
-                "result": 0,
-                "attentions": {"uids": [xxx]},
-                "_gt_": 0
-            }
-        }
 
         Note
 
@@ -331,23 +148,6 @@ class Bilibili(XSession):
             content: content for the dynamic
             at_uids: "xxx,xxx"
             ctrl: "[{"location":0,"type":1,"length":7,"data":"xxx"},{"location":7,"type":1,"length":7,"data":"xxx"}]"
-
-        Returns:
-            If succeeded, return info about dynamic.
-
-            {
-                "code": 0,
-                "msg": "",
-                "message": "",
-                "data": {
-                    "result": 0,
-                    "errmsg": "xxx",
-                    "dynamic_id": xxx,
-                    "create_result": 1,
-                    "dynamic_id_str": "xxx",
-                    "_gt_": 0
-                }
-            }
         """
         res = self.post(
             self.dynamic_svr_create,
@@ -385,22 +185,9 @@ class Bilibili(XSession):
         Args:
             content: main content
             pictures: local paths of pictures needed to create with dynamic
-            title:
-            description:
-            tags:
-
-        Returns:
-            {
-                "code": 0,
-                "msg": "",
-                "message": "",
-                "data": {
-                    "doc_id": "xxx",
-                    "dynamic_id": xxx,
-                    "dynamic_id_str": "xxx",
-                    "_gt_": 0
-                }
-            }
+            title: unknown
+            description: unknown
+            tags: unknown
         """
         res_pics = []
         # upload pictures
@@ -466,16 +253,8 @@ class Bilibili(XSession):
     def get_login_captcha(self, source="main_web") -> dict:
         """
         Returns:
-            Response body
 
-        {
-            "code": 0, "message": "0", "ttl": 1,
-            "data": {
-                "type": "img" | "geetest",
-                "token": "xxxx",
-                "geetest": {"challenge": "xxxx", "gt": "xxxx"}, "tencent": {"appid": ""}
-            }
-        }
+        see responses folder
         """
         res = self.get(
             self.passport_login_captcha,
@@ -509,18 +288,6 @@ class Bilibili(XSession):
                 returned from self.get_login_captcha
             validate_data: 
                 string get from geetest or image recognition
-
-        Returns:
-            Response body
-
-        {
-            "code": 0, "message": "0", "ttl": 1,
-            "data": {
-                "status": 0,
-                "message": "",
-                "url": "https://passport.biligame.com/crossDomain?DedeUserID=xxx&DedeUserID__ckMd5=xxx&Expires=xxx&SESSDATA=xxx&bili_jct=xxx&gourl=xxx"
-            }
-        }
         """
         # get pubkey and hash
         rsa_pubkey = self._get_web_key()
