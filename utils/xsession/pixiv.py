@@ -238,7 +238,7 @@ class Pixiv(XSession):
                 "type": type_
             }
         ).json()
-        return [] if json_["error"] else json_["recommendations"]
+        return [] if json_.get("error") else json_["recommendations"]
 
     def get_logout(self) -> bool:
         """Logout"""
@@ -273,7 +273,7 @@ class Pixiv(XSession):
                 "x-csrf-token": self._get_csrf_token()  # 400
             }
         ).json()
-        return False if json_["error"] else True
+        return False if json_.get("error") else True
 
     def post_bookmark_add(self, user_id, restrict=0, tag="", mode="add", type_="user") -> bool:
         """Add or modify bookmark of a user
