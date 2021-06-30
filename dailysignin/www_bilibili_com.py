@@ -104,13 +104,13 @@ class Signer(BaseSigner):
         nav_info = self.s.get_web_nav()
         if not nav_info:
             return False
-        last_money_count = nav_info.get("money")
+        last_money_count = nav_info["money"]
 
         # get latest coin count
         nav_info = self.s.get_web_nav()
         if not nav_info:
             return False
-        latest_coin_count = nav_info.get("money")
+        latest_coin_count = nav_info["money"]
 
         # if sign in successfully, coin++
         if latest_coin_count <= last_money_count:

@@ -73,9 +73,9 @@ class KuwoMusic(XSession):
             if res.status_code != 200:
                 return b""
             try:
-                if res.json().get("code") != 200:
+                if res.json()["code"] != 200:
                     return b""
-                song_url = res.json().get("url", "")
+                song_url = res.json()["url"]
             except ValueError:
                 song_url = ""
                 if i < 2:
@@ -104,9 +104,9 @@ class KuwoMusic(XSession):
             },
             headers={"csrf": self._get_csrf()}
         )
-        if res.status_code != 200 or res.json().get("code") != 200:
+        if res.status_code != 200 or res.json()["code"] != 200:
             return {}
-        return res.json().get("data")
+        return res.json()["data"]
 
     def get_playlist_info(self, playlist_id, pn: int = 1, rn: int = 30, httpsstatus=1) -> dict:
         """Get info of a playlist
@@ -134,9 +134,9 @@ class KuwoMusic(XSession):
             },
             headers={"csrf": self._get_csrf()}
         )
-        if res.status_code != 200 or res.json().get("code") != 200:
+        if res.status_code != 200 or res.json()["code"] != 200:
             return {}
-        return res.json().get("data")
+        return res.json()["data"]
 
     def get_album_info(self, album_id, pn: int = 1, rn: int = 30, httpsstatus=1) -> dict:
         """Get music list of an album
@@ -164,9 +164,9 @@ class KuwoMusic(XSession):
             },
             headers={"csrf": self._get_csrf()}
         )
-        if res.status_code != 200 or res.json().get("code") != 200:
+        if res.status_code != 200 or res.json()["code"] != 200:
             return {}
-        return res.json().get("data")
+        return res.json()["data"]
 
     def get_artist(self, artist_id, httpsstatus=1) -> dict:
         """Get info of an artist"""
@@ -179,9 +179,9 @@ class KuwoMusic(XSession):
             },
             headers={"csrf": self._get_csrf()}
         )
-        if res.status_code != 200 or res.json().get("code") != 200:
+        if res.status_code != 200 or res.json()["code"] != 200:
             return {}
-        return res.json().get("data")
+        return res.json()["data"]
 
     def get_artist_music(self, artist_id, pn: int = 1, rn: int = 30, httpsstatus=1) -> dict:
         """Get music list of an artist
@@ -209,9 +209,9 @@ class KuwoMusic(XSession):
             },
             headers={"csrf": self._get_csrf()}
         )
-        if res.status_code != 200 or res.json().get("code") != 200:
+        if res.status_code != 200 or res.json()["code"] != 200:
             return {}
-        return res.json().get("data")
+        return res.json()["data"]
 
     def get_artist_album(self, artist_id, pn: int = 1, rn: int = 30, httpsstatus=1) -> dict:
         """Get album list of an artist
@@ -239,9 +239,9 @@ class KuwoMusic(XSession):
             },
             headers={"csrf": self._get_csrf()}
         )
-        if res.status_code != 200 or res.json().get("code") != 200:
+        if res.status_code != 200 or res.json()["code"] != 200:
             return {}
-        return res.json().get("data")
+        return res.json()["data"]
 
     def get_songinfo_and_lyric(self, song_id, httpsstatus=1) -> dict:
         """Get song info and lyric(mainly)"""
@@ -250,6 +250,6 @@ class KuwoMusic(XSession):
             self.singles_songinfo_and_lrc,
             params={"musicId": song_id, "httpsStatus": httpsstatus}
         )
-        if res.status_code != 200 or res.json().get("status") != 200:
+        if res.status_code != 200 or res.json()["status"] != 200:
             return {}
-        return res.json().get("data")
+        return res.json()["data"]

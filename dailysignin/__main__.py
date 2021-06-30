@@ -42,22 +42,22 @@ if __name__ == "__main__":
     def _d(p): return utils.secrets.rsa_decrypt(p, rsakey)
 
     # main works
-    keys: dict = config.get("keys")
+    keys: dict = config["keys"]
     sites = [
         cysll_com, jike0_com, acgwcy_com, yingyun_pw, www_hmoe1_net
     ]
     for site in sites:
         Signer = site.Signer
         signer: BaseSigner = Signer(
-            _d(keys.get(Signer.site_name).get("usrn")),
-            _d(keys.get(Signer.site_name).get("pwd"))
+            _d(keys[Signer.site_name]["usrn"]),
+            _d(keys[Signer.site_name]["pwd"])
         )
         signer.signin()
 
     Signer = www_bilibili_com.Signer
     cookies = dict(map(
         lambda item: (item[0], _d(item[1])),
-        keys.get(Signer.site_name).get("cookies").items()
+        keys[Signer.site_name]["cookies"].items()
     ))
     signer = Signer("", "", cookies=cookies)
     signer.signin()

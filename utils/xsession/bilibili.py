@@ -68,9 +68,9 @@ class Bilibili(XSession):
             self.web_key,
             params={"r": r}
         )
-        if res.status_code != 200 or res.json().get("code") != 0:
+        if res.status_code != 200 or res.json()["code"] != 0:
             return {}
-        return res.json().get("data")
+        return res.json()["data"]
 
     @empty_retry()
     def _post_upload(self, img_path: Union[str, Path]) -> dict:
@@ -104,10 +104,10 @@ class Bilibili(XSession):
         if res.status_code != 200:
             self.logger.warning("Bilibili:Failded to Upload file {}:{}".format(Path(img_path).name, res.status_code))
             return {}
-        elif res.json().get("code") != 0:
-            self.logger.warning("Bilibili:Failded to Upload file {}:{}".format(Path(img_path).name, res.json().get("message")))
+        elif res.json()["code"] != 0:
+            self.logger.warning("Bilibili:Failded to Upload file {}:{}".format(Path(img_path).name, res.json()["message"]))
             return {}
-        return res.json().get("data")
+        return res.json()["data"]
 
     def _post_cover_up(self, cover: str) -> dict:
         """Upload a image cover and get url on static server
@@ -132,9 +132,9 @@ class Bilibili(XSession):
             self.cover_up,
             data={"cover": cover, "csrf": self._get_csrf()}
         )
-        if res.status_code != 200 or res.json().get("code") != 0:
+        if res.status_code != 200 or res.json()["code"] != 0:
             return {}
-        return res.json().get("data")
+        return res.json()["data"]
 
     def get_web_nav(self) -> dict:
         """
@@ -193,9 +193,9 @@ class Bilibili(XSession):
         """
 
         res = self.get(self.web_interface_nav)
-        if res.status_code != 200 or res.json().get("code") != 0:
+        if res.status_code != 200 or res.json()["code"] != 0:
             return {}
-        return res.json().get("data")
+        return res.json()["data"]
 
     def get_dynamic_detail(self, dynamic_id) -> dict:
         """Get details of a dynamic
@@ -312,9 +312,9 @@ class Bilibili(XSession):
         if dynamic ever exist, "data" will be returned correctly, but no result, only has "_gt_" field 
         """
         res = self.get(self.dynamic_svr_get_dynamic_detail, params={"dynamic_id": dynamic_id})
-        if res.status_code != 200 or res.json().get("code") != 0:
+        if res.status_code != 200 or res.json()["code"] != 0:
             return {}
-        return res.json().get("data")
+        return res.json()["data"]
 
     def post_create(self, content: str,
                     dynamic_id=0, type_=4, rid=0,
@@ -364,9 +364,9 @@ class Bilibili(XSession):
                 "csrf_token": self._get_csrf()
             })
 
-        if res.status_code != 200 or res.json().get("code") != 0:
+        if res.status_code != 200 or res.json()["code"] != 0:
             return {}
-        return res.json().get("data")
+        return res.json()["data"]
 
     def post_create_draw(self, content: str, pictures: List[Union[str, Path]],
                          description: str = "", title: str = "", tags: str = "",
@@ -403,9 +403,9 @@ class Bilibili(XSession):
             pic_info = self._post_upload(pic_path)
             if pic_info:
                 res_pics.append({
-                    "img_src": pic_info.get("image_url"),
-                    "img_width": pic_info.get("image_width"),
-                    "img_height": pic_info.get("image_height"),
+                    "img_src": pic_info["image_url"],
+                    "img_width": pic_info["image_width"],
+                    "img_height": pic_info["image_height"],
                     "img_size": pic_path.stat().st_size / 1024
                 })
 
@@ -439,9 +439,9 @@ class Bilibili(XSession):
             }
         )
         # print(res.text)
-        if res.status_code != 200 or res.json().get("code") != 0:
+        if res.status_code != 200 or res.json()["code"] != 0:
             return {}
-        return res.json().get("data")
+        return res.json()["data"]
 
     def post_rm_dynamic(self, dynamic_id) -> dict:
         """Delete a dynamic"""
@@ -453,10 +453,10 @@ class Bilibili(XSession):
                 "csrf_token": self._get_csrf()
             }
         )
-        if res.status_code != 200 or res.json().get("code") != 0:
+        if res.status_code != 200 or res.json()["code"] != 0:
             return {}
         else:
-            return res.json().get("data")
+            return res.json()["data"]
 
     def get_login_captcha(self, source="main_web") -> dict:
         """
@@ -472,17 +472,17 @@ class Bilibili(XSession):
             }
         }
         """
-        res = self.s.get(
+        res = self.get(
             self.passport_login_captcha,
             params={"source": source}
         )
-        if res.status_code != 200 or res.json().get("code") != 0:
+        if res.status_code != 200 or res.json()["code"] != 0:
             return {}
-        return res.json().get("data")
+        return res.json()["data"]
 
     def get_recaptcha_img(self, token: str) -> bytes:
         """Get simple image captcha"""
-        res = self.s.get(
+        res = self.get(
             self.recaptcha_img,
             params={"token": token}
         )
@@ -525,13 +525,13 @@ class Bilibili(XSession):
         login_data = {
             "source": source,
             "username": username,
-            "password": self._rsa_encrypt(rsa_pubkey.get("hash")+password, rsa_pubkey.get("key")),
+            "password": self._rsa_encrypt(rsa_pubkey["hash"]+password, rsa_pubkey["key"]),
             "keep": keep,
-            "token": token_info.get("token"),
+            "token": token_info["token"],
             "go_url": go_url
         }
 
-        token_type = token_info.get("type")
+        token_type = token_info["type"]
         if token_type == "img":
             login_data["captcha"] = validate_data
         elif token_type == "geetest":
@@ -541,9 +541,9 @@ class Bilibili(XSession):
             raise ValueError("Unknown captcha type.")
 
         res = self.post(self.web_login, data=login_data)
-        if res.status_code != 200 or res.json().get("code") != 0:
+        if res.status_code != 200 or res.json()["code"] != 0:
             return {}
-        return res.json().get("data")
+        return res.json()["data"]
 
     def post_logout(self) -> bool:
         res = self.post(
@@ -557,6 +557,6 @@ class Bilibili(XSession):
         if res.status_code != 200:
             return False
         try:
-            return (res.json().get("code") == 0)
+            return (res.json()["code"] == 0)
         except ValueError:
             return False

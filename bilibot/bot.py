@@ -74,44 +74,44 @@ class Bot:
             rankings2 = s_pixiv.get_ranking(date=cur_date, content="illust", mode="monthly", p=2)
             if rankings1:
                 rankings = rankings1
-                rankings.get("contents").extend(rankings2.get("contents", []))
+                rankings["contents"].extend(rankings2.get("contents", []))
             elif rankings2:
                 rankings = rankings2
-                rankings.get("contents").extend(rankings1.get("contents", []))
+                rankings["contents"].extend(rankings1.get("contents", []))
             else:
                 rankings = {}
             # if non-empty
             if rankings:
-                cur_date = rankings.get("prev_date")
+                cur_date = rankings["prev_date"]
                 illust_ids = []
-                for e in rankings.get("contents"):
+                for e in rankings["contents"]:
                     # set rules by ranking info
-                    if int(e.get("illust_content_type").get("sexual")) == 0 \
-                            and int(e.get("illust_page_count")) == 1 \
-                            and str(e.get("illust_id")) not in history \
-                            and str(e.get("user_id")) not in blacklist \
-                            and _check_tags(e.get("tags")):
-                        illust_ids.append(str(e.get("illust_id")))
+                    if int(e["illust_content_type"]["sexual"]) == 0 \
+                            and int(e["illust_page_count"]) == 1 \
+                            and str(e["illust_id"]) not in history \
+                            and str(e["user_id"]) not in blacklist \
+                            and _check_tags(e["tags"]):
+                        illust_ids.append(str(e["illust_id"]))
 
                 # choose proper illust
                 # use safe_remove to avoid repeated illust id
-                __safe_remove(illust_ids, [e.get("id") for e in checked_illust_info])
+                __safe_remove(illust_ids, [e["id"] for e in checked_illust_info])
                 for illust_id in illust_ids:
                     illust_info = s_pixiv.get_illust(illust_id)
                     if illust_info:
-                        if int(illust_info.get("sl")) < 6:
+                        if int(illust_info["sl"]) < 6:
                             dynamic_illust_info.append(
                                 {
                                     "id": illust_id,
-                                    "user_id": illust_info.get("userId"),
-                                    "username": illust_info.get("userName"),
-                                    "url": illust_info.get("urls").get("original")
+                                    "user_id": illust_info["userId"],
+                                    "username": illust_info["userName"],
+                                    "url": illust_info["urls"]["original"]
                                 }
                             )
 
             # cache illust data
             for illust_info in dynamic_illust_info:
-                url: str = illust_info.get("url")
+                url: str = illust_info["url"]
                 path = Path("tmp", url.split("/")[-1])
                 # download image if not exist
                 if not path.is_file():
@@ -165,7 +165,7 @@ class Bot:
     def is_dynamic_exist(self, dynamic_id: str) -> bool:
         """Check if a dynamic exist"""
         ret = self.s.get_dynamic_detail(dynamic_id)
-        if ret and ret.get("result") == 0:
+        if ret and ret["result"] == 0:
             return True
         return False
 
@@ -189,7 +189,7 @@ class Bot:
         }
         """
         success_illust_info = self._get_safe_pixiv_illust_ids(9, history, blacklist, blacktags)
-        local_illust_paths = [e.get("local_path") for e in success_illust_info]
+        local_illust_paths = [e["local_path"] for e in success_illust_info]
 
         # make text contents
         contents = "#动漫壁纸# #动漫美图# \n"
@@ -203,8 +203,8 @@ class Bot:
             self.logger.error("Bilibot:Failed to create draw.")
             return {}
 
-        dynamic_id = dynamic_info.get("dynamic_id_str")
-        success_illust_ids = [info.get("id") for info in success_illust_info]
+        dynamic_id = dynamic_info["dynamic_id_str"]
+        success_illust_ids = [info["id"] for info in success_illust_info]
         ret = {
             "dynamic_id": dynamic_id,
             "illust_ids": success_illust_ids

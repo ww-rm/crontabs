@@ -30,7 +30,7 @@ class Signer(BaseSigner):
             return False
 
         # add Authorization header
-        self.s.headers["Authorization"] = "Bearer " + res.json().get("token")
+        self.s.headers["Authorization"] = "Bearer " + res.json()["token"]
         return True
 
     def _signin(self) -> bool:

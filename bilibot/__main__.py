@@ -13,20 +13,20 @@ from .bot import Bot
 
 def run(config: dict):
     # load bilibot data
-    data_path: str = config.get("data_file")
+    data_path: str = config["data_file"]
     with Path(data_path).open("r", encoding="utf8") as f:
         bilibot_data: dict = json.load(f)
 
     # main works
     bot = Bot()
-    cookies = dict(map(lambda item: (item[0], _d(item[1])), config.get("cookies").items()))
+    cookies = dict(map(lambda item: (item[0], _d(item[1])), config["cookies"].items()))
     if bot.login(cookies=cookies):
         today = datetime.utcnow()
 
         # dynamic task
-        latest_dynamic_id = bilibot_data.get("latest_dynamic_id")
+        latest_dynamic_id = bilibot_data["latest_dynamic_id"]
         if bot.is_dynamic_exist(latest_dynamic_id):
-            last_update_date = datetime.fromisoformat(bilibot_data.get("last_update_date"))
+            last_update_date = datetime.fromisoformat(bilibot_data["last_update_date"])
             # if at least 1 hours before last update
             if (today - last_update_date).seconds > 3600*1:
                 # update date
@@ -34,34 +34,34 @@ def run(config: dict):
 
                 # do create_pixiv_ranking_dynamic
                 ret = bot.create_pixiv_ranking_dynamic(
-                    history=bilibot_data.get("illust_history"),
-                    blacklist=config.get("pixiv").get("blacklist"),
-                    blacktags=config.get("pixiv").get("blacktags"),
-                    count=bilibot_data.get("dynamic_count", 0) + 1
+                    history=bilibot_data["illust_history"],
+                    blacklist=config["pixiv"]["blacklist"],
+                    blacktags=config["pixiv"]["blacktags"],
+                    count=bilibot_data["dynamic_count"] + 1
                 )
                 if ret:
                     # update count
-                    bilibot_data["dynamic_count"] = bilibot_data.get("dynamic_count", 0) + 1
+                    bilibot_data["dynamic_count"] += 1
 
                     # update data
-                    bilibot_data["latest_dynamic_id"] = ret.get("dynamic_id")
-                    bilibot_data.get("illust_history").extend(ret.get("illust_ids"))
+                    bilibot_data["latest_dynamic_id"] = ret["dynamic_id"]
+                    bilibot_data["illust_history"].extend(ret["illust_ids"])
                     # limit size, the latest 10000 illust ids
-                    bilibot_data["illust_history"] = bilibot_data.get("illust_history")[-10000:]
+                    bilibot_data["illust_history"] = bilibot_data["illust_history"][-10000:]
         else:
             # redo create_pixiv_ranking_dynamic
             ret = bot.create_pixiv_ranking_dynamic(
-                history=bilibot_data.get("illust_history"),
-                blacklist=config.get("pixiv").get("blacklist"),
-                blacktags=config.get("pixiv").get("blacktags"),
-                count=bilibot_data.get("dynamic_count", 1)
+                history=bilibot_data["illust_history"],
+                blacklist=config["pixiv"]["blacklist"],
+                blacktags=config["pixiv"]["blacktags"],
+                count=bilibot_data["dynamic_count"]
             )
             if ret:
                 # update data
-                bilibot_data["latest_dynamic_id"] = ret.get("dynamic_id")
-                bilibot_data.get("illust_history").extend(ret.get("illust_ids"))
+                bilibot_data["latest_dynamic_id"] = ret["dynamic_id"]
+                bilibot_data["illust_history"].extend(ret["illust_ids"])
                 # limit size, the latest 10000 illust ids
-                bilibot_data["illust_history"] = bilibot_data.get("illust_history")[-10000:]
+                bilibot_data["illust_history"] = bilibot_data["illust_history"][-10000:]
 
         # TODO: create video
 
@@ -72,23 +72,23 @@ def run(config: dict):
 
 def test(config: dict):
     # load bilibot data
-    data_path: str = config.get("data_file")
+    data_path: str = config["data_file"]
     with Path(data_path).open("r", encoding="utf8") as f:
         bilibot_data: dict = json.load(f)
 
     # main works
     bot = Bot()
-    cookies = dict(map(lambda item: (item[0], _d(item[1])), config.get("cookies").items()))
+    cookies = dict(map(lambda item: (item[0], _d(item[1])), config["cookies"].items()))
     if bot.login(cookies=cookies):
         # test create_pixiv_ranking_dynamic
         ret = bot.create_pixiv_ranking_dynamic(
-            history=bilibot_data.get("illust_history"),
-            blacklist=config.get("pixiv").get("blacklist"),
-            blacktags=config.get("pixiv").get("blacktags"),
-            count=bilibot_data.get("dynamic_count", 0) + 1
+            history=bilibot_data["illust_history"],
+            blacklist=config["pixiv"]["blacklist"],
+            blacktags=config["pixiv"]["blacktags"],
+            count=bilibot_data["dynamic_count"] + 1
         )
         if ret:
-            bot.delete_dynamic(ret.get("dynamic_id"))
+            bot.delete_dynamic(ret["dynamic_id"])
 
         # TODO: test video ?
 

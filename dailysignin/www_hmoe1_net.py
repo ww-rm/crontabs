@@ -22,7 +22,7 @@ class Signer(BaseSigner):
         if res.status_code != 200:
             return ""
 
-        nonce = res.json().get("_nonce")
+        nonce = res.json()["_nonce"]
         return nonce
 
     def _login(self) -> bool:
@@ -40,7 +40,7 @@ class Signer(BaseSigner):
             }
         )
 
-        if res.status_code != 200 or res.json().get("code") != 0:
+        if res.status_code != 200 or res.json()["code"] != 0:
             return False
         return True
 

@@ -41,8 +41,8 @@ class Downloader:
         lyric_info = self.s.get_songinfo_and_lyric(song_id)
         lyrics = []
         if lyric_info:
-            for e in (lyric_info.get("lrclist") or []):
-                lyrics.append((_cvt_time(e.get("time", "")), e.get("lineLyric", "")))
+            for e in (lyric_info["lrclist"] or []):
+                lyrics.append((_cvt_time(e["time"]), e["lineLyric"]))
         else:
             self.logger.warning("Kuwo:Failed to get lyric:{}".format(song_id))
         return lyrics
@@ -66,10 +66,10 @@ class Downloader:
             self.logger.error("Failed to get song info:{}".format(song_id))
             return False
         else:
-            song_name = self._validate_filename(song_info.get("name", "unknown"))
+            song_name = self._validate_filename(song_info["name"] or "unknown")
             save_path = Path(
                 output_dir,
-                "{} - {}.mp3".format(song_info.get("artist", "unknown"), song_name)
+                "{} - {}.mp3".format(song_info["artist"] or "unknown", song_name)
             )
             if not save_path.is_file():
                 song_data = self.s.get_song_data(song_id)
@@ -84,11 +84,11 @@ class Downloader:
             if song_eyed3.tag is None:
                 song_eyed3.initTag()
             song_tag: eyed3.id3.Tag = song_eyed3.tag
-            song_tag.title = song_info.get("name", "")
-            song_tag.artist = song_info.get("artist", "")
-            song_tag.album = song_info.get("album", "")
+            song_tag.title = song_info["name"] or "unknown"
+            song_tag.artist = song_info["artist"] or "unknown"
+            song_tag.album = song_info["album"] or "unknown"
             # try add cover image
-            res = self.s.get(song_info.get("pic", ""))
+            res = self.s.get(song_info["pic"])
             if res.status_code == 200:
                 cover_img = res.content
                 song_tag.images.set(
@@ -111,9 +111,9 @@ class Downloader:
         cur_p = 1
         while len(song_ids) < num:
             artist_music = self.s.get_artist_music(artist_id, pn=cur_p)
-            if not artist_music or not artist_music.get("list"):
+            if not artist_music or not artist_music["list"]:
                 break
-            song_ids.extend(e.get("rid") for e in artist_music.get("list"))
+            song_ids.extend(e["rid"] for e in artist_music["list"])
 
         success_count = 0
         for id_ in tqdm(song_ids[:num], "Artist:{}".format(artist_id)):
@@ -127,9 +127,9 @@ class Downloader:
         cur_p = 1
         while len(song_ids) < num:
             album_info = self.s.get_album_info(album_id, pn=cur_p)
-            if not album_info or not album_info.get("musicList"):
+            if not album_info or not album_info["musicList"]:
                 break
-            song_ids.extend(e.get("rid") for e in album_info.get("musicList"))
+            song_ids.extend(e["rid"] for e in album_info["musicList"])
 
         success_count = 0
         for id_ in tqdm(song_ids[:num], "Album:{}".format(album_id)):
@@ -143,9 +143,9 @@ class Downloader:
         cur_p = 1
         while len(song_ids) < num:
             playlist_info = self.s.get_album_info(playlist_id, pn=cur_p)
-            if not playlist_info or not playlist_info.get("musicList"):
+            if not playlist_info or not playlist_info["musicList"]:
                 break
-            song_ids.extend(e.get("rid") for e in playlist_info.get("musicList"))
+            song_ids.extend(e["rid"] for e in playlist_info["musicList"])
 
         success_count = 0
         for id_ in tqdm(song_ids[:num], "Playlist:{}".format(playlist_id)):

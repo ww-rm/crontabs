@@ -14,13 +14,13 @@ class Signer(BaseSigner):
             self.url_login,
             data={"email": self.usrn, "passwd": self.pwd, "code": ""}
         )
-        if res.status_code != 200 or res.json().get("ret") != 1:
+        if res.status_code != 200 or res.json()["ret"] != 1:
             return False
         return True
 
     def _signin(self) -> bool:
         res = self.s.post(self.url_signin)
-        if res.status_code != 200 or res.json().get("ret") != 1:
+        if res.status_code != 200 or res.json()["ret"] != 1:
             return False
         return True
 
