@@ -26,28 +26,29 @@ def run(config: dict):
         # dynamic task
         latest_dynamic_id = bilibot_data["latest_dynamic_id"]
         if bot.is_dynamic_exist(latest_dynamic_id):
-            last_update_date = datetime.fromisoformat(bilibot_data["last_update_date"])
-            # if at least 1 hours before last update
-            if (today - last_update_date).seconds > 3600*1:
-                # update date
-                bilibot_data["last_update_date"] = (today - timedelta(minutes=10)).isoformat(" ", "seconds")
+            if not bot.is_dynamic_auditing(latest_dynamic_id):
+                last_update_date = datetime.fromisoformat(bilibot_data["last_update_date"])
+                # if at least 1 hours before last update
+                if (today - last_update_date).seconds > 3600*1:
+                    # update date
+                    bilibot_data["last_update_date"] = (today - timedelta(minutes=10)).isoformat(" ", "seconds")
 
-                # do create_pixiv_ranking_dynamic
-                ret = bot.create_pixiv_ranking_dynamic(
-                    history=bilibot_data["illust_history"],
-                    blacklist=config["pixiv"]["blacklist"],
-                    blacktags=config["pixiv"]["blacktags"],
-                    count=bilibot_data["dynamic_count"] + 1
-                )
-                if ret:
-                    # update count
-                    bilibot_data["dynamic_count"] += 1
+                    # do create_pixiv_ranking_dynamic
+                    ret = bot.create_pixiv_ranking_dynamic(
+                        history=bilibot_data["illust_history"],
+                        blacklist=config["pixiv"]["blacklist"],
+                        blacktags=config["pixiv"]["blacktags"],
+                        count=bilibot_data["dynamic_count"] + 1
+                    )
+                    if ret:
+                        # update count
+                        bilibot_data["dynamic_count"] += 1
 
-                    # update data
-                    bilibot_data["latest_dynamic_id"] = ret["dynamic_id"]
-                    bilibot_data["illust_history"].extend(ret["illust_ids"])
-                    # limit size, the latest 10000 illust ids
-                    bilibot_data["illust_history"] = bilibot_data["illust_history"][-10000:]
+                        # update data
+                        bilibot_data["latest_dynamic_id"] = ret["dynamic_id"]
+                        bilibot_data["illust_history"].extend(ret["illust_ids"])
+                        # limit size, the latest 10000 illust ids
+                        bilibot_data["illust_history"] = bilibot_data["illust_history"][-10000:]
         else:
             # redo create_pixiv_ranking_dynamic
             ret = bot.create_pixiv_ranking_dynamic(

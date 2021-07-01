@@ -169,6 +169,17 @@ class Bot:
             return True
         return False
 
+    def is_dynamic_auditing(self, dynamic_id: str) -> bool:
+        """Check if a dynamic is being auditing
+
+        Returns:
+            bool: True if dynamic exist and being auditing, otherwise False
+        """
+        ret = self.s.get_dynamic_detail(dynamic_id)
+        if ret and ret.get("result") == 0 and ret["card"].get("extra", {}).get("is_auditing") == 1:
+            return True
+        return False
+
     def create_pixiv_ranking_dynamic(self, history: List[str], blacklist: List[str], blacktags: List[str], count: int) -> dict:
         """
         Args
