@@ -43,7 +43,7 @@ class XSession(requests.Session):
             interval: Seconds between each request. Default to 0.1
         """
         super().__init__()
-        self.interval = interval or 0.1
+        self.interval = interval or 0.01
         self.logger = logging.getLogger(__name__)
 
     def request(self, method, url, *args, **kwargs) -> requests.Response:
