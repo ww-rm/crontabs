@@ -6,5 +6,5 @@ from .base import XSession
 
 
 class Geetest(XSession):
-    def __init__(self, logfile=None, interval: float = 0.1) -> None:
-        super().__init__(logfile=logfile, interval=interval)
+    def __init__(self, interval: float = 0.01) -> None:
+        super().__init__(interval=interval)

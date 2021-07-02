@@ -21,7 +21,7 @@ class KuwoMusic(XSession):
 
     singles_songinfo_and_lrc = "http://m.kuwo.cn/newh5/singles/songinfoandlrc"
 
-    def __init__(self, interval: float = 0.1) -> None:
+    def __init__(self, interval: float = 0.01) -> None:
         super().__init__(interval=interval)
         self.get(self.url_host)  # get csrf token for the first time
 
