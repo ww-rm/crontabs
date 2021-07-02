@@ -42,7 +42,7 @@ class Pixiv(XSession):
     php_rpc_recommender = "https://www.pixiv.net/rpc/recommender.php"  # ?type=illust&sample_illusts=88548686&num_recommendations=500
     php_bookmark_add = "https://www.pixiv.net/bookmark_add.php"  # mode:"add" type:"user" user_id:"" tag:"" restrict:"" format:"json"
 
-    def __init__(self, interval: float = 0.1, cookies: dict = None) -> None:
+    def __init__(self, interval: float = 0.01, cookies: dict = None) -> None:
         super().__init__(interval=interval)
         self.headers["Referer"] = self.url_host
         if cookies:

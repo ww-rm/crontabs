@@ -42,7 +42,7 @@ class Bilibili(XSession):
         cipher = b64encode(cipher).decode("utf8")
         return cipher
 
-    def __init__(self, interval: float = 0.1, cookies: dict = None) -> None:
+    def __init__(self, interval: float = 0.01, cookies: dict = None) -> None:
         super().__init__(interval=interval)
         if cookies:
             for name, value in cookies.items():
