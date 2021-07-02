@@ -37,7 +37,7 @@ class XSession(requests.Session):
     If anything wrong happened in a request, return an empty Response object and log error info using `logging` module
     """
 
-    def __init__(self, interval: float = 0.1) -> None:
+    def __init__(self, interval: float = 0.01) -> None:
         """
         Args:
             interval: Seconds between each request. Default to 0.1

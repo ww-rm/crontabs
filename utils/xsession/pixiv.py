@@ -2,7 +2,7 @@
 
 import json
 import bs4
-from .base import XSession
+from .base import XSession, empty_retry
 
 
 class Pixiv(XSession):
@@ -59,6 +59,7 @@ class Pixiv(XSession):
 
     # GET method
 
+    @empty_retry()
     def get_page(self, page_url) -> bytes:
         response = self.get(page_url)
         if response.status_code != 200:
