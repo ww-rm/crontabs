@@ -40,7 +40,7 @@ class XSession(requests.Session):
     def __init__(self, interval: float = 0.01) -> None:
         """
         Args:
-            interval: Seconds between each request. Default to 0.1
+            interval: Seconds between each request. Default to 0.01
         """
         super().__init__()
         self.interval = interval or 0.01
