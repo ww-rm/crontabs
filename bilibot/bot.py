@@ -66,7 +66,6 @@ class Bot:
         history = set(history) # reduce look up time
 
         # get proper illust info
-        checked_illust_info = []  # ids has been checked  # {"id": 123, "user_id": 123, "username": "", "url": ""}
         success_illust_info = []  # successful ids # {"id": 123, "user_id": 123, "username": "", "url": "", "local_path": Path}
         cur_date = None
         while len(success_illust_info) < num:
@@ -97,7 +96,7 @@ class Bot:
 
                 # choose proper illust
                 # use safe_remove to avoid repeated illust id
-                __safe_remove(illust_ids, [e["id"] for e in checked_illust_info])
+                __safe_remove(illust_ids, [e["id"] for e in success_illust_info])
                 for illust_id in illust_ids:
                     illust_info = s_pixiv.get_illust(illust_id)
                     if illust_info:
@@ -124,9 +123,6 @@ class Bot:
                     path.write_bytes(image_data)
                 illust_info["local_path"] = path
                 success_illust_info.append(illust_info)
-
-            # extend checked illust history
-            checked_illust_info.extend(dynamic_illust_info)
 
         return success_illust_info[:num]
 
