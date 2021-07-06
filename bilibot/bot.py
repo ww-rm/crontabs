@@ -63,6 +63,8 @@ class Bot:
         # DEBUG
         # s_pixiv.proxies.update(self.proxies)
 
+        history = set(history) # reduce look up time
+
         # get proper illust info
         checked_illust_info = []  # ids has been checked  # {"id": 123, "user_id": 123, "username": "", "url": ""}
         success_illust_info = []  # successful ids # {"id": 123, "user_id": 123, "username": "", "url": "", "local_path": Path}
