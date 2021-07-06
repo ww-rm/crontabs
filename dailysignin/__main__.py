@@ -9,7 +9,7 @@ from base64 import b64decode
 import utils
 
 from . import (acgwcy_com, cysll_com, jike0_com, socloud_me, www_bilibili_com,
-               www_hmoe1_net, yingyun_pw, ssru6_pw)
+               www_hmoe1_net, yingyun_pw, ssru6_pw, freevpn_cyou)
 
 
 def run(config: dict):
@@ -23,6 +23,7 @@ def run(config: dict):
     www_hmoe1_net.Signer(_d(keys["www.hmoe1.net"]["usrn"]), _d(keys["www.hmoe1.net"]["pwd"])).signin()
     socloud_me.Signer(_d(keys["socloud.me"]["usrn"]), _d(keys["socloud.me"]["pwd"])).signin()
     ssru6_pw.Signer(_d(keys["ssru6.pw"]["usrn"]), _d(keys["ssru6.pw"]["pwd"])).signin()
+    freevpn_cyou.Signer(_d(keys["freevpn.cyou"]["usrn"]), _d(keys["freevpn.cyou"]["pwd"])).signin()
 
     cookies = dict(map(lambda item: (item[0], _d(item[1])), keys["www.bilibili.com"]["cookies"].items()))
     www_bilibili_com.Signer("", "", cookies=cookies).signin()
