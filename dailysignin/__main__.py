@@ -8,9 +8,24 @@ from base64 import b64decode
 
 import utils
 
-from . import (acgwcy_com, cysll_com, jike0_com, www_bilibili_com,
+from . import (acgwcy_com, cysll_com, jike0_com, socloud_me, www_bilibili_com,
                www_hmoe1_net, yingyun_pw)
-from .base import BaseSigner
+
+
+def run(config: dict):
+    # main works
+    keys: dict = config["keys"]
+
+    cysll_com.Signer(_d(keys["cysll.com"]["usrn"]), _d(keys["cysll.com"]["pwd"])).signin()
+    jike0_com.Signer(_d(keys["jike0.com"]["usrn"]), _d(keys["jike0.com"]["pwd"])).signin()
+    acgwcy_com.Signer(_d(keys["51acgwcy.com"]["usrn"]), _d(keys["51acgwcy.com"]["pwd"])).signin()
+    yingyun_pw.Signer(_d(keys["yingyun-f.pw"]["usrn"]), _d(keys["yingyun-f.pw"]["pwd"])).signin()
+    www_hmoe1_net.Signer(_d(keys["www.hmoe1.net"]["usrn"]), _d(keys["www.hmoe1.net"]["pwd"])).signin()
+    socloud_me.Signer(_d(keys["socloud.me"]["usrn"]), _d(keys["socloud.me"]["pwd"])).signin()
+
+    cookies = dict(map(lambda item: (item[0], _d(item[1])), keys["www.bilibili.com"]["cookies"].items()))
+    www_bilibili_com.Signer("", "", cookies=cookies).signin()
+
 
 if __name__ == "__main__":
     # parse args
@@ -41,25 +56,6 @@ if __name__ == "__main__":
     rsakey = b64decode(args.rsakey).decode("utf8")
     def _d(p): return utils.secrets.rsa_decrypt(p, rsakey)
 
-    # main works
-    keys: dict = config["keys"]
-    sites = [
-        cysll_com, jike0_com, acgwcy_com, yingyun_pw, www_hmoe1_net
-    ]
-    for site in sites:
-        Signer = site.Signer
-        signer: BaseSigner = Signer(
-            _d(keys[Signer.site_name]["usrn"]),
-            _d(keys[Signer.site_name]["pwd"])
-        )
-        signer.signin()
-
-    Signer = www_bilibili_com.Signer
-    cookies = dict(map(
-        lambda item: (item[0], _d(item[1])),
-        keys[Signer.site_name]["cookies"].items()
-    ))
-    signer = Signer("", "", cookies=cookies)
-    signer.signin()
+    run(config)
 
     logging.shutdown()
