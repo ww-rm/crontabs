@@ -133,7 +133,7 @@ class Bot:
                     # first try to get headers and get image size
                     # limit picture size under 20 MB
                     res_headers = s_pixiv.head_page(url)
-                    if not res_headers or int(res_headers.get("Content-Length")) > 19*1024*1024:
+                    if not res_headers or int(res_headers["Content-Length"]) > 19*1024*1024:
                         continue
 
                     # get image data

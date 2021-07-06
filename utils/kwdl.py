@@ -93,7 +93,7 @@ class Downloader:
                 song_tag.images.set(
                     eyed3.id3.frames.ImageFrame.FRONT_COVER,
                     res.content,
-                    res.headers.get("Content-Type")
+                    res.headers["Content-Type"]
                 )
             song_tag.save(encoding="utf8", version=eyed3.id3.ID3_V2_3)  # MUST be v2.3 to show cover image
         if lyric:
