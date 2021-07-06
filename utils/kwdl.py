@@ -1,4 +1,3 @@
-import imghdr
 import logging
 import re
 from argparse import ArgumentError, ArgumentParser
@@ -87,14 +86,14 @@ class Downloader:
             song_tag.title = song_info["name"] or "unknown"
             song_tag.artist = song_info["artist"] or "unknown"
             song_tag.album = song_info["album"] or "unknown"
+
             # try add cover image
             res = self.s.get(song_info["pic"])
             if res.status_code == 200:
-                cover_img = res.content
                 song_tag.images.set(
                     eyed3.id3.frames.ImageFrame.FRONT_COVER,
-                    cover_img,
-                    "image/{}".format(imghdr.what(None, cover_img[:32]))
+                    res.content,
+                    res.headers.get("Content-Type")
                 )
             song_tag.save(encoding="utf8", version=eyed3.id3.ID3_V2_3)  # MUST be v2.3 to show cover image
         if lyric:
