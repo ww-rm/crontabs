@@ -1,6 +1,8 @@
 import logging
+import random
 from pathlib import Path
 from typing import Iterable, List, Union
+from utils.xsession.base import empty_retry
 
 from utils import media, xsession
 
@@ -19,7 +21,8 @@ class Bot:
         self.s.headers.update(self.headers)
         self.logger = logging.getLogger(__name__)
 
-    def _get_safe_pixiv_illust_ids(self, num: int, history: List[int], blacklist: List[int], blacktags: List[str]) -> List[dict]:
+    def _get_safe_pixiv_illust_ids(self, num: int, history: List[int], blacklist: List[int], blacktags: List[str], choosetags: List[str], *,
+                                   mode: str = "monthly") -> List[dict]:
         """Download proper pixiv illusts to dir "tmp/"
 
         Args
@@ -32,6 +35,10 @@ class Bot:
             A list of user ids, to avoid copyright problem
         blacktags:
             A list of banned tags
+        choosetags:
+            A list of chosen tags
+
+        mode (str): The same as `mode` in `Pixiv.get_ranking`
 
         Returns:
             A list of illust info, 
@@ -57,13 +64,19 @@ class Bot:
                     return False
             return True
 
+        def _choose_tags(tags: List[str]) -> bool:
+            for t in choosetags:
+                if t not in tags:
+                    return False
+            return True
+
         s_pixiv = xsession.Pixiv()
         s_pixiv.headers.update(self.headers)
 
         # DEBUG
         # s_pixiv.proxies.update(self.proxies)
 
-        history = set(history) # reduce look up time
+        history = set(history)  # reduce look up time
 
         # get proper illust info
         success_illust_info = []  # successful ids # {"id": 123, "user_id": 123, "username": "", "url": "", "local_path": Path}
@@ -71,8 +84,8 @@ class Bot:
         while len(success_illust_info) < num:
             dynamic_illust_info = []  # current epoch illust info
             # get top 100
-            rankings1 = s_pixiv.get_ranking(date=cur_date, content="illust", mode="monthly", p=1)
-            rankings2 = s_pixiv.get_ranking(date=cur_date, content="illust", mode="monthly", p=2)
+            rankings1 = s_pixiv.get_ranking(date=cur_date, content="illust", mode=mode, p=1)
+            rankings2 = s_pixiv.get_ranking(date=cur_date, content="illust", mode=mode, p=2)
             if rankings1:
                 rankings = rankings1
                 rankings["contents"].extend(rankings2.get("contents", []))
@@ -91,7 +104,8 @@ class Bot:
                             and int(e["illust_page_count"]) == 1 \
                             and int(e["illust_id"]) not in history \
                             and int(e["user_id"]) not in blacklist \
-                            and _check_tags(e["tags"]):
+                            and _check_tags(e["tags"]) \
+                            and _choose_tags(e["tags"]):
                         illust_ids.append(int(e["illust_id"]))
 
                 # choose proper illust
@@ -126,7 +140,8 @@ class Bot:
 
         return success_illust_info[:num]
 
-    def _get_random_bgm(self, playlist: int) -> dict:
+    @empty_retry()
+    def _get_random_bgm(self, playlist: List[int]) -> dict:
         """
         Args
 
@@ -134,9 +149,27 @@ class Bot:
             playlist id for kuwo music
 
         Returns
-
-            Info of bgm
+            dict: song save path and infos, `name`, `artist`, `local_path`
         """
+        s_kuwo = xsession.KuwoMusic()
+        s_kuwo.headers.update(self.headers)
+        id_ = random.choice(playlist)
+
+        song_info = s_kuwo.get_music_info(id_)
+        song_data = s_kuwo.get_song_data(id_)
+        if not song_info or not song_data:
+            return {}
+
+        # cache file to local
+        cache_path = Path("tmp/bgm.mp3")
+        cache_path.write_bytes(song_data)
+        result = {
+            "name": song_info.get("name"),
+            "artist": song_info.get("artist"),
+            "local_path": cache_path
+        }
+
+        return result
 
     def login(self, usrn="", pwd="", cookies=None) -> bool:
         if cookies:
@@ -197,7 +230,7 @@ class Bot:
             "illust_ids": [123, 456]
         }
         """
-        success_illust_info = self._get_safe_pixiv_illust_ids(9, history, blacklist, blacktags)
+        success_illust_info = self._get_safe_pixiv_illust_ids(9, history, blacklist, blacktags, [])
         local_illust_paths = [e["local_path"] for e in success_illust_info]
 
         # make text contents
@@ -222,5 +255,35 @@ class Bot:
         self.logger.info("Bilibot:create_pixiv_ranking_dynamic Success!")
         return ret
 
-    def create_pixiv_ranking_video(self):
+    def create_pixiv_ranking_video(self, history: List[int], blacklist: List[int], blacktags: List[str], bgmlist: List[int], count: int) -> dict:
+        """
+        Args
+
+        history: 
+            A list of dynamic illust history, to avoid upload same illusts
+        blacklist: 
+            A list of user ids, to avoid copyright problem
+        blacktags:
+            A list of banned illust tags
+        count:
+            the count for this video
+        """
+        ##########################
+        # TODO: LOCAL TEST
+        ##########################
+        # get illusts
+        success_illust_info = self._get_safe_pixiv_illust_ids(30, history, blacklist, blacktags, ["女の子"], mode="weekly")
+        local_illust_paths = [e["local_path"] for e in success_illust_info]
+
+        # TODO: get bgm
+        bgm_info = self._get_random_bgm(bgmlist)
+        bgm_path = bgm_info.get("local_path")
+
+        # make video to local
+        video_path = media.make_video(media.load_images(local_illust_paths), "tmp/video.mp4", bgm_path)
+
+        # TODO: upload video
+        # TODO: make simple intro
+        # TODO: make contribution
+
         raise NotImplementedError
