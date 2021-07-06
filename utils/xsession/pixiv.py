@@ -57,13 +57,23 @@ class Pixiv(XSession):
         token = json.loads(soup.find("meta", {"id": "meta-global-data"}).attrs.get("content", "{}")).get("token", "")
         return token
 
+    # HEAD method
+    
+    @empty_retry()
+    def head_page(self, page_url) -> dict:
+        response = self.head(page_url)
+        if response.status_code != 200:
+            self.logger.warning("pixiv:Failed to get headers from {}".format(page_url))
+            return {}
+        return response.headers
+
     # GET method
 
     @empty_retry()
     def get_page(self, page_url) -> bytes:
         response = self.get(page_url)
         if response.status_code != 200:
-            self.logger.warning("pixiv:Failed to download from {}".format(page_url))
+            self.logger.warning("pixiv:Failed to get page from {}".format(page_url))
             return b""
         return response.content
 

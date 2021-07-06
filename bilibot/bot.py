@@ -130,10 +130,17 @@ class Bot:
                 path = Path("tmp", url.split("/")[-1])
                 # download image if not exist
                 if not path.is_file():
-                    image_data = s_pixiv.get_page(url)
+                    # first try to get headers and get image size
                     # limit picture size under 20 MB
-                    if not image_data or len(image_data) > 19*1024*1024:
+                    res_headers = s_pixiv.head_page(url)
+                    if not res_headers or int(res_headers.get("Content-Length")) > 19*1024*1024:
                         continue
+
+                    # get image data
+                    image_data = s_pixiv.get_page(url)
+                    if not image_data:
+                        continue
+
                     path.write_bytes(image_data)
                 illust_info["local_path"] = path
                 success_illust_info.append(illust_info)
