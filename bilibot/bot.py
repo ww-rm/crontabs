@@ -19,7 +19,7 @@ class Bot:
         self.s.headers.update(self.headers)
         self.logger = logging.getLogger(__name__)
 
-    def _get_safe_pixiv_illust_ids(self, num: int, history: List[str], blacklist: List[str], blacktags: List[str]) -> list:
+    def _get_safe_pixiv_illust_ids(self, num: int, history: List[int], blacklist: List[int], blacktags: List[str]) -> List[dict]:
         """Download proper pixiv illusts to dir "tmp/"
 
         Args
@@ -36,14 +36,14 @@ class Bot:
         Returns:
             A list of illust info, 
             {
-                "id": str
-                "user_id": str
+                "id": int
+                "user_id": int
                 "username": str
                 "url": str
                 "local_path": Path
             }
         """
-        def __safe_remove(l: List[str], r: Iterable[str]) -> None:
+        def __safe_remove(l: List[int], r: Iterable[int]) -> None:
             """In place operation."""
             for e in r:
                 try:
@@ -64,8 +64,8 @@ class Bot:
         # s_pixiv.proxies.update(self.proxies)
 
         # get proper illust info
-        checked_illust_info = []  # ids has been checked  # {"id": "", "user_id": "", "username": "", "url": ""}
-        success_illust_info = []  # successful ids # {"id": "", "user_id": "", "username": "", "url": "", "local_path": Path}
+        checked_illust_info = []  # ids has been checked  # {"id": 123, "user_id": 123, "username": "", "url": ""}
+        success_illust_info = []  # successful ids # {"id": 123, "user_id": 123, "username": "", "url": "", "local_path": Path}
         cur_date = None
         while len(success_illust_info) < num:
             dynamic_illust_info = []  # current epoch illust info
@@ -88,10 +88,10 @@ class Bot:
                     # set rules by ranking info
                     if int(e["illust_content_type"]["sexual"]) == 0 \
                             and int(e["illust_page_count"]) == 1 \
-                            and str(e["illust_id"]) not in history \
-                            and str(e["user_id"]) not in blacklist \
+                            and int(e["illust_id"]) not in history \
+                            and int(e["user_id"]) not in blacklist \
                             and _check_tags(e["tags"]):
-                        illust_ids.append(str(e["illust_id"]))
+                        illust_ids.append(int(e["illust_id"]))
 
                 # choose proper illust
                 # use safe_remove to avoid repeated illust id
@@ -102,8 +102,8 @@ class Bot:
                         if int(illust_info["sl"]) < 6:
                             dynamic_illust_info.append(
                                 {
-                                    "id": illust_id,
-                                    "user_id": illust_info["userId"],
+                                    "id": int(illust_id),
+                                    "user_id": int(illust_info["userId"]),
                                     "username": illust_info["userName"],
                                     "url": illust_info["urls"]["original"]
                                 }
@@ -128,7 +128,7 @@ class Bot:
 
         return success_illust_info[:num]
 
-    def _get_random_bgm(self, playlist: str) -> dict:
+    def _get_random_bgm(self, playlist: int) -> dict:
         """
         Args
 
@@ -155,21 +155,21 @@ class Bot:
         self.logger.warning("Bilibot:Failed to logout.")
         return False
 
-    def delete_dynamic(self, dynamic_id: str) -> bool:
+    def delete_dynamic(self, dynamic_id: int) -> bool:
         ret = self.s.post_rm_dynamic(dynamic_id)
         if not ret:
             self.logger.error("Bilibot:Failed to delete dynamic.")
             return False
         return True
 
-    def is_dynamic_exist(self, dynamic_id: str) -> bool:
+    def is_dynamic_exist(self, dynamic_id: int) -> bool:
         """Check if a dynamic exist"""
         ret = self.s.get_dynamic_detail(dynamic_id)
         if ret and ret.get("result") == 0:
             return True
         return False
 
-    def is_dynamic_auditing(self, dynamic_id: str) -> bool:
+    def is_dynamic_auditing(self, dynamic_id: int) -> bool:
         """Check if a dynamic is being auditing
 
         Returns:
@@ -180,7 +180,7 @@ class Bot:
             return True
         return False
 
-    def create_pixiv_ranking_dynamic(self, history: List[str], blacklist: List[str], blacktags: List[str], count: int) -> dict:
+    def create_pixiv_ranking_dynamic(self, history: List[int], blacklist: List[int], blacktags: List[str], count: int) -> dict:
         """
         Args
 
@@ -195,8 +195,8 @@ class Bot:
 
         Returns
         {
-            "dynamic_id": "xxxx", 
-            "illust_ids": ["xxx", "xxxx"]
+            "dynamic_id": 123, 
+            "illust_ids": [123, 456]
         }
         """
         success_illust_info = self._get_safe_pixiv_illust_ids(9, history, blacklist, blacktags)
@@ -215,7 +215,7 @@ class Bot:
             self.logger.error("Bilibot:Failed to create draw.")
             return {}
 
-        dynamic_id = dynamic_info["dynamic_id_str"]
+        dynamic_id = dynamic_info["dynamic_id"]
         success_illust_ids = [info["id"] for info in success_illust_info]
         ret = {
             "dynamic_id": dynamic_id,
