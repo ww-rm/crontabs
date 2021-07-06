@@ -27,7 +27,7 @@ def run(config: dict):
 
     cookies = dict(map(lambda item: (item[0], _d(item[1])), keys["www.bilibili.com"]["cookies"].items()))
     www_bilibili_com.Signer("", "", cookies=cookies).signin()
-
+ 
 
 if __name__ == "__main__":
     # parse args
