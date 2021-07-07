@@ -75,7 +75,7 @@ class Bot:
         s_pixiv.headers.update(self.headers)
 
         # DEBUG
-        # s_pixiv.proxies.update(self.proxies)
+        s_pixiv.proxies.update(self.proxies)
 
         history = set(history)  # reduce look up time
 
@@ -270,20 +270,20 @@ class Bot:
         count:
             the count for this video
         """
-        ##########################
-        # TODO: LOCAL TEST
-        ##########################
         # get illusts
         success_illust_info = self._get_safe_pixiv_illust_ids(30, history, blacklist, blacktags, ["女の子"], mode="weekly")
         local_illust_paths = [e["local_path"] for e in success_illust_info]
 
-        # TODO: get bgm
+        # get bgm
         bgm_info = self._get_random_bgm(bgmlist)
         bgm_path = bgm_info.get("local_path")
 
         # make video to local
         video_path = media.make_video(media.load_images(local_illust_paths), "tmp/video.mp4", bgm_path)
 
+        ##########################
+        # TODO: LOCAL TEST
+        ##########################
         # TODO: upload video
         # TODO: make simple intro
         # TODO: make contribution

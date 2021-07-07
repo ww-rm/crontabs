@@ -76,7 +76,7 @@ def load_images(img_paths: List[Union[str, Path]], load_size: tuple = (1080, 192
 
     def _pad_full_blurred(img: np.ndarray) -> np.ndarray:
         fg, mask = _pad_black(img)
-        bg = cv2.blur(_resize2(img), (15, 15))
+        bg = cv2.blur(_resize2(img), (20, 20))
         return cv2.bitwise_or(fg, cv2.bitwise_and(bg, mask))
 
     images = []
