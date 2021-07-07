@@ -22,7 +22,7 @@ class Bot:
         self.logger = logging.getLogger(__name__)
 
     def _get_safe_pixiv_illust_ids(self, num: int, history: List[int], blacklist: List[int], blacktags: List[str], choosetags: List[str], *,
-                                   mode: str = "monthly") -> List[dict]:
+                                   mode: str = "monthly", sl: int = 5) -> List[dict]:
         """Download proper pixiv illusts to dir "tmp/"
 
         Args
@@ -39,6 +39,7 @@ class Bot:
             A list of chosen tags
 
         mode (str): The same as `mode` in `Pixiv.get_ranking`
+        sl (int): Sex level ? the higher, the sexier
 
         Returns:
             A list of illust info, 
@@ -114,7 +115,7 @@ class Bot:
                 for illust_id in illust_ids:
                     illust_info = s_pixiv.get_illust(illust_id)
                     if illust_info:
-                        if int(illust_info["sl"]) < 6:
+                        if int(illust_info["sl"]) <= sl:
                             dynamic_illust_info.append(
                                 {
                                     "id": int(illust_id),
