@@ -75,7 +75,7 @@ class Bot:
         s_pixiv.headers.update(self.headers)
 
         # DEBUG
-        s_pixiv.proxies.update(self.proxies)
+        # s_pixiv.proxies.update(self.proxies)
 
         history = set(history)  # reduce look up time
 
