@@ -236,9 +236,9 @@ class Bot:
 
         # make text contents
         contents = "#动漫壁纸# #动漫美图# \n"
-        contents += "（觉得不错的话，点个赞和关注吧，每天更新哦>؂<）\n"
+        contents += "【第{}期】（觉得不错的话，点个赞和关注吧，每天更新哦>؂<）\n".format(count)
         contents += "--------------------------------------------------\n"
-        contents += "【第{}期】ID画师按顺序：\n".format(count)
+        contents += "ID画师按顺序：\n"
         for info in success_illust_info:
             contents += "{id}：{username}\n".format_map(info)
 
