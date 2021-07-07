@@ -284,8 +284,9 @@ class Bot:
         ##########################
         # TODO: LOCAL TEST
         ##########################
-        # TODO: upload video
-        # TODO: make simple intro
-        # TODO: make contribution
+        # choose cover image
+        # upload video
+        # make simple intro
+        # make contribution
 
         raise NotImplementedError
