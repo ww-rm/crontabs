@@ -48,8 +48,8 @@ def run(config: dict):
                         # update data
                         bilibot_data["latest_dynamic_id"] = ret["dynamic_id"]
                         bilibot_data["illust_history"].extend(ret["illust_ids"])
-                        # limit size, the latest 5000 illust ids
-                        bilibot_data["illust_history"] = bilibot_data["illust_history"][-5000:]
+                        # limit size, the latest 10000 illust ids
+                        bilibot_data["illust_history"] = bilibot_data["illust_history"][-10000:]
         else:
             # redo create_pixiv_ranking_dynamic
             ret = bot.create_pixiv_ranking_dynamic(
@@ -62,8 +62,8 @@ def run(config: dict):
                 # update data
                 bilibot_data["latest_dynamic_id"] = ret["dynamic_id"]
                 bilibot_data["illust_history"].extend(ret["illust_ids"])
-                # limit size, the latest 5000 illust ids
-                bilibot_data["illust_history"] = bilibot_data["illust_history"][-5000:]
+                # limit size, the latest 10000 illust ids
+                bilibot_data["illust_history"] = bilibot_data["illust_history"][-10000:]
 
         # TODO: create video
 
