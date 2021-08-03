@@ -201,6 +201,7 @@ class Pixiv(XSession):
         json_ = self.get(self.ajax_user_profile_top.format(user_id=user_id)).json()
         return {} if json_["error"] is True else json_["body"]
 
+    @empty_retry()
     def get_ranking(self, p=1, content="all", mode="daily", date: str = None) -> dict:
         """Get ranking, limit 50 illusts info in one page
 
@@ -217,10 +218,23 @@ class Pixiv(XSession):
 
         Note: May need cookies to get r18 ranking
         """
-        json_ = self.get(
+        res = self.get(
             self.php_ranking,
             params={"format": "json", "p": p, "content": content, "mode": mode, "date": date}
-        ).json()
+        )
+
+        # status code
+        if res.status_code != 200:
+            self.logger.warning("pixiv:Status code {} in get_ranking.".format(res.status_code))
+            return {}
+
+        # json format return
+        try:
+            json_ = res.json()
+        except ValueError:
+            self.logger.warning("pixiv:Json ValueError in get_ranking return.")
+            return {}
+
         return {} if "error" in json_ else json_
 
     def get_rpc_recommender(self, sample_illusts: int, num_recommendations=500, type_="illust") -> list:
