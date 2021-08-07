@@ -139,8 +139,14 @@ class Pixiv(XSession):
             }).json()
         return {} if json_["error"] is True else json_["body"]
 
+    @empty_retry()
     def get_illust(self, illust_id) -> dict:
-        json_ = self.get(self.ajax_illust.format(illust_id=illust_id)).json()
+        try:
+            json_ = self.get(self.ajax_illust.format(illust_id=illust_id)).json()
+        except ValueError:
+            self.logger.warning("pixiv:Json ValueError in get_illust for {}".format(illust_id))
+            return {}
+
         return {} if json_["error"] is True else json_["body"]
 
     def get_illust_pages(self, illust_id) -> list:
