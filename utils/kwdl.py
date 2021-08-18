@@ -115,6 +115,7 @@ class Downloader:
             if not artist_music or not artist_music["list"]:
                 break
             song_ids.extend(e["rid"] for e in artist_music["list"])
+            cur_p += 1
 
         success_count = 0
         for id_ in tqdm(song_ids[:num], "Artist:{}".format(artist_id)):
@@ -131,6 +132,7 @@ class Downloader:
             if not album_info or not album_info["musicList"]:
                 break
             song_ids.extend(e["rid"] for e in album_info["musicList"])
+            cur_p += 1
 
         success_count = 0
         for id_ in tqdm(song_ids[:num], "Album:{}".format(album_id)):
@@ -143,10 +145,11 @@ class Downloader:
         song_ids = []
         cur_p = 1
         while len(song_ids) < num:
-            playlist_info = self.s.get_album_info(playlist_id, pn=cur_p)
+            playlist_info = self.s.get_playlist_info(playlist_id, pn=cur_p)
             if not playlist_info or not playlist_info["musicList"]:
                 break
             song_ids.extend(e["rid"] for e in playlist_info["musicList"])
+            cur_p += 1
 
         success_count = 0
         for id_ in tqdm(song_ids[:num], "Playlist:{}".format(playlist_id)):
