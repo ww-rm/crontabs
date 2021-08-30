@@ -109,6 +109,10 @@ class Bot:
                             and _choose_tags(e["tags"]):
                         illust_ids.append(int(e["illust_id"]))
 
+                # shuffle illust_ids
+                for _ in range(50):
+                    random.shuffle(illust_ids)
+
                 # choose proper illust
                 # use safe_remove to avoid repeated illust id
                 __safe_remove(illust_ids, [e["id"] for e in success_illust_info])
