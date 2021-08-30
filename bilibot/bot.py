@@ -249,7 +249,7 @@ class Bot:
 
         dynamic_info = self.s.post_create_draw(contents, local_illust_paths)
         if not dynamic_info:
-            self.logger.error("Bilibot:Failed to create draw.")
+            self.logger.error("Bilibot:Failed to create draw:{}".format(dynamic_info.get("msg")))
             return {}
 
         dynamic_id = dynamic_info["dynamic_id"]
