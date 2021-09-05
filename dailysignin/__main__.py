@@ -16,7 +16,7 @@ def run(config: dict):
     # main works
     keys: dict = config["keys"]
 
-    cysll_com.Signer(_d(keys["cysll.com"]["usrn"]), _d(keys["cysll.com"]["pwd"])).signin()
+    # cysll_com.Signer(_d(keys["cysll.com"]["usrn"]), _d(keys["cysll.com"]["pwd"])).signin()
     acgwcy_com.Signer(_d(keys["51acgwcy.com"]["usrn"]), _d(keys["51acgwcy.com"]["pwd"])).signin()
     www_hmoe1_net.Signer(_d(keys["www.hmoe1.net"]["usrn"]), _d(keys["www.hmoe1.net"]["pwd"])).signin()
     
