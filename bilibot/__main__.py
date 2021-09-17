@@ -29,8 +29,8 @@ def run(config: dict):
         if bot.is_dynamic_exist(latest_dynamic_id):
             if not bot.is_dynamic_auditing(latest_dynamic_id):
                 last_update_date = datetime.fromisoformat(bilibot_data["last_update_date"])
-                # if at least 1 hours before last update
-                if (today - last_update_date).seconds > 3600*1:
+                # if at least 5 hours before last update
+                if (today - last_update_date).seconds > 3600*5:
                     # update date
                     bilibot_data["last_update_date"] = (today - timedelta(minutes=10)).isoformat(" ", "seconds")
 
