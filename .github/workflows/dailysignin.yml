@@ -35,5 +35,5 @@ jobs:
       run: |
         git add .
         bash "scripts/safe_commit.sh" "autorun-dailysignin"
-        git pull
+        git pull --no-rebase
         git push
