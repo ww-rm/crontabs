@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import List, Union
 
 import bs4
+import requests
 from Crypto.Cipher import PKCS1_v1_5
 from Crypto.PublicKey import RSA
 
@@ -49,6 +50,24 @@ class Bilibili(XSession):
                 self.cookies.set(name, value, domain="bilibili.com", path="/")
         # print(cookies)
 
+    def _check_response(self, res: requests.Response) -> dict:
+        """Check the status code and error code of a json response, and return data of body
+        
+        Args:
+            res (Response): response to check
+
+        Returns:
+            data (json): empty dict or data dict, if empty, will log error info    
+        """
+
+        if res.status_code != 200:
+            self.logger.warning("Bilibili:Response code error {}:{}".format(res.url, res.status_code))
+            return {}
+        elif res.json()["code"] != 0:
+            self.logger.warning("Bilibili:Data error code {}:{}:{}".format(res.url, res.json()["code"], res.json()["message"]))
+            return {}
+        return res.json()["data"]
+
     def _get_csrf(self) -> str:
         return self.cookies.get("bili_jct", default="")
 
@@ -59,9 +78,7 @@ class Bilibili(XSession):
             self.web_key,
             params={"r": r}
         )
-        if res.status_code != 200 or res.json()["code"] != 0:
-            return {}
-        return res.json()["data"]
+        return self._check_response(res)
 
     @empty_retry()
     def _post_upload(self, img_path: Union[str, Path]) -> dict:
@@ -84,13 +101,7 @@ class Bilibili(XSession):
                 }
             )
 
-        if res.status_code != 200:
-            self.logger.warning("Bilibili:Failded to Upload file {}:{}".format(Path(img_path).name, res.status_code))
-            return {}
-        elif res.json()["code"] != 0:
-            self.logger.warning("Bilibili:Failded to Upload file {}:{}".format(Path(img_path).name, res.json()["message"]))
-            return {}
-        return res.json()["data"]
+        return self._check_response(res)
 
     def _post_cover_up(self, cover: str) -> dict:
         """Upload a image cover and get url on static server
@@ -108,9 +119,7 @@ class Bilibili(XSession):
             self.cover_up,
             data={"cover": cover, "csrf": self._get_csrf()}
         )
-        if res.status_code != 200 or res.json()["code"] != 0:
-            return {}
-        return res.json()["data"]
+        return self._check_response(res)
 
     def get_web_nav(self) -> dict:
         """
@@ -120,9 +129,7 @@ class Bilibili(XSession):
         """
 
         res = self.get(self.web_interface_nav)
-        if res.status_code != 200 or res.json()["code"] != 0:
-            return {}
-        return res.json()["data"]
+        return self._check_response(res)
 
     def get_dynamic_detail(self, dynamic_id) -> dict:
         """Get details of a dynamic
@@ -134,9 +141,7 @@ class Bilibili(XSession):
         if dynamic exist and being auditing, will has `extra` field in `data.card` and `data.card.extra.is_auditing` == `1`
         """
         res = self.get(self.dynamic_svr_get_dynamic_detail, params={"dynamic_id": dynamic_id})
-        if res.status_code != 200 or res.json()["code"] != 0:
-            return {}
-        return res.json()["data"]
+        return self._check_response(res)
 
     def post_create(self, content: str,
                     dynamic_id=0, type_=4, rid=0,
@@ -169,9 +174,7 @@ class Bilibili(XSession):
                 "csrf_token": self._get_csrf()
             })
 
-        if res.status_code != 200 or res.json()["code"] != 0:
-            return {}
-        return res.json()["data"]
+        return self._check_response(res)
 
     def post_create_draw(self, content: str, pictures: List[Union[str, Path]],
                          description: str = "", title: str = "", tags: str = "",
@@ -231,13 +234,7 @@ class Bilibili(XSession):
             }
         )
         # print(res.text)
-        if res.status_code != 200:
-            self.logger.error("Bilibili:Failded to post_create_draw status_code:{}".format(res.status_code))
-            return {}
-        elif res.json()["code"] != 0:
-            self.logger.error("Bilibili:Failded to post_create_draw {}:{}".format(res.json()["code"], res.json()["message"]))
-            return {}
-        return res.json()["data"]
+        return self._check_response(res)
 
     def post_rm_dynamic(self, dynamic_id) -> dict:
         """Delete a dynamic"""
@@ -249,10 +246,7 @@ class Bilibili(XSession):
                 "csrf_token": self._get_csrf()
             }
         )
-        if res.status_code != 200 or res.json()["code"] != 0:
-            return {}
-        else:
-            return res.json()["data"]
+        return self._check_response(res)
 
     def get_login_captcha(self, source="main_web") -> dict:
         """
@@ -264,9 +258,7 @@ class Bilibili(XSession):
             self.passport_login_captcha,
             params={"source": source}
         )
-        if res.status_code != 200 or res.json()["code"] != 0:
-            return {}
-        return res.json()["data"]
+        return self._check_response(res)
 
     def get_recaptcha_img(self, token: str) -> bytes:
         """Get simple image captcha"""
@@ -317,9 +309,7 @@ class Bilibili(XSession):
             raise ValueError("Unknown captcha type.")
 
         res = self.post(self.web_login, data=login_data)
-        if res.status_code != 200 or res.json()["code"] != 0:
-            return {}
-        return res.json()["data"]
+        return self._check_response(res)
 
     def post_logout(self) -> bool:
         res = self.post(

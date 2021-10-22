@@ -52,4 +52,6 @@ class XSession(requests.Session):
             return super().request(method, url, *args, **kwargs)
         except Exception as e:
             self.logger.error("{}:{}".format(url, e))
-            return requests.Response()
+            res = requests.Response()
+            res.url = url  # keep url info
+            return res
