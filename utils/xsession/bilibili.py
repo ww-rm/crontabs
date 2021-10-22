@@ -231,7 +231,11 @@ class Bilibili(XSession):
             }
         )
         # print(res.text)
-        if res.status_code != 200 or res.json()["code"] != 0:
+        if res.status_code != 200:
+            self.logger.error("Bilibili:Failded to post_create_draw status_code:{}".format(res.status_code))
+            return {}
+        elif res.json()["code"] != 0:
+            self.logger.error("Bilibili:Failded to post_create_draw {}:{}".format(res.json()["code"], res.json()["message"]))
             return {}
         return res.json()["data"]
 
