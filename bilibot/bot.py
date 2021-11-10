@@ -177,7 +177,7 @@ class Bot:
 
         return result
 
-    def login(self, usrn="", pwd="", *, cookies=None) -> bool:
+    def login(self, usrn: str = "", pwd: str = "", *, cookies: dict = None) -> bool:
         if cookies:
             self.s.cookies.update(cookies)
             return True

@@ -43,13 +43,6 @@ class Bilibili(XSession):
         cipher = b64encode(cipher).decode("utf8")
         return cipher
 
-    def __init__(self, interval: float = 0.01, cookies: dict = None) -> None:
-        super().__init__(interval=interval)
-        if cookies:
-            for name, value in cookies.items():
-                self.cookies.set(name, value, domain="bilibili.com", path="/")
-        # print(cookies)
-
     def _check_response(self, res: requests.Response) -> dict:
         """Check the status code and error code of a json response, and return data of body
         

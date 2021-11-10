@@ -42,13 +42,9 @@ class Pixiv(XSession):
     php_rpc_recommender = "https://www.pixiv.net/rpc/recommender.php"  # ?type=illust&sample_illusts=88548686&num_recommendations=500
     php_bookmark_add = "https://www.pixiv.net/bookmark_add.php"  # mode:"add" type:"user" user_id:"" tag:"" restrict:"" format:"json"
 
-    def __init__(self, interval: float = 0.01, cookies: dict = None) -> None:
+    def __init__(self, interval: float = 0.01) -> None:
         super().__init__(interval=interval)
         self.headers["Referer"] = self.url_host
-        if cookies:
-            for name, value in cookies.items():
-                self.cookies.set(name, value, domain=".pixiv.net", path="/")
-        # print(self.cookies)
 
     def _get_csrf_token(self) -> str:
         """Get x-csrf-token"""
