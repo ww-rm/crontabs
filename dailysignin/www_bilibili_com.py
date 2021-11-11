@@ -14,8 +14,10 @@ class Signer(BaseSigner):
 
     def __init__(self, usrn: str, pwd: str, useproxies=False, cookies: dict = None) -> None:
         super().__init__(usrn, pwd, useproxies=useproxies)
-        self.s = xsession.Bilibili(cookies=cookies)
+        self.s = xsession.Bilibili()
         self.s.headers.update(self.headers)
+        if cookies:
+            self.s.cookies.update(cookies)
         if useproxies:
             self.s.proxies.update(self.proxies)
 
