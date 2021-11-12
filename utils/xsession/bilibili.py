@@ -67,7 +67,7 @@ class Bilibili(XSession):
         """Get web key
         """
         res = self.get(
-            self.web_key,
+            Bilibili.web_key,
             params={"r": r}
         )
         return self._check_response(res)
@@ -85,7 +85,7 @@ class Bilibili(XSession):
         img_path = Path(img_path)
         with img_path.open("rb") as f:
             res = self.post(
-                self.drawImage_upload,
+                Bilibili.drawImage_upload,
                 files={
                     "file_up": (img_path.name, f, "image/{}".format(imghdr.what(f))),
                     "biz": (None, "draw"),
@@ -108,7 +108,7 @@ class Bilibili(XSession):
         see responses folder
         """
         res = self.post(
-            self.cover_up,
+            Bilibili.cover_up,
             data={"cover": cover, "csrf": self._get_csrf()}
         )
         return self._check_response(res)
@@ -120,7 +120,7 @@ class Bilibili(XSession):
         see responses folder
         """
 
-        res = self.get(self.web_interface_nav)
+        res = self.get(Bilibili.web_interface_nav)
         return self._check_response(res)
 
     def get_dynamic_detail(self, dynamic_id) -> dict:
@@ -132,7 +132,7 @@ class Bilibili(XSession):
 
         if dynamic exist and being auditing, will has `extra` field in `data.card` and `data.card.extra.is_auditing` == `1`
         """
-        res = self.get(self.dynamic_svr_get_dynamic_detail, params={"dynamic_id": dynamic_id})
+        res = self.get(Bilibili.dynamic_svr_get_dynamic_detail, params={"dynamic_id": dynamic_id})
         return self._check_response(res)
 
     def post_create(self, content: str,
@@ -147,7 +147,7 @@ class Bilibili(XSession):
             ctrl: "[{"location":0,"type":1,"length":7,"data":"xxx"},{"location":7,"type":1,"length":7,"data":"xxx"}]"
         """
         res = self.post(
-            self.dynamic_svr_create,
+            Bilibili.dynamic_svr_create,
             data={
                 "content": content,
                 "up_choose_comment": up_choose_comment,
@@ -197,7 +197,7 @@ class Bilibili(XSession):
                 })
 
         res = self.post(
-            self.dynamic_svr_create_draw,
+            Bilibili.dynamic_svr_create_draw,
             data={
                 "content": content,
                 "pictures": json.dumps(res_pics),
@@ -231,7 +231,7 @@ class Bilibili(XSession):
     def post_rm_dynamic(self, dynamic_id) -> dict:
         """Delete a dynamic"""
         res = self.post(
-            self.dynamic_svr_rm_dynamic,
+            Bilibili.dynamic_svr_rm_dynamic,
             data={
                 "dynamic_id": dynamic_id,
                 "csrf": self._get_csrf(),
@@ -247,7 +247,7 @@ class Bilibili(XSession):
         see responses folder
         """
         res = self.get(
-            self.passport_login_captcha,
+            Bilibili.passport_login_captcha,
             params={"source": source}
         )
         return self._check_response(res)
@@ -255,7 +255,7 @@ class Bilibili(XSession):
     def get_recaptcha_img(self, token: str) -> bytes:
         """Get simple image captcha"""
         res = self.get(
-            self.recaptcha_img,
+            Bilibili.recaptcha_img,
             params={"token": token}
         )
 
@@ -300,12 +300,12 @@ class Bilibili(XSession):
         else:
             raise ValueError("Unknown captcha type.")
 
-        res = self.post(self.web_login, data=login_data)
+        res = self.post(Bilibili.web_login, data=login_data)
         return self._check_response(res)
 
     def post_logout(self) -> bool:
         res = self.post(
-            self.login_exit,
+            Bilibili.login_exit,
             data={
                 "biliCSRF": self._get_csrf(),
                 "gourl": ""

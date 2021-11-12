@@ -23,11 +23,11 @@ class KuwoMusic(XSession):
 
     def __init__(self, interval: float = 0.01) -> None:
         super().__init__(interval=interval)
-        self.get(self.url_host)  # get csrf token for the first time
+        self.get(KuwoMusic.url_host)  # get csrf token for the first time
 
     def _get_csrf(self):
         if "kw_token" not in self.cookies:
-            self.get(self.url_host)
+            self.get(KuwoMusic.url_host)
         return self.cookies.get("kw_token", "")
 
     @empty_retry()
@@ -56,7 +56,7 @@ class KuwoMusic(XSession):
 
         for i in range(br_index, 3):
             res = self.get(
-                self.song_url,
+                KuwoMusic.song_url,
                 params={
                     "rid": song_id,
                     "br": bit_rate[i],
@@ -96,7 +96,7 @@ class KuwoMusic(XSession):
 
     def get_music_info(self, song_id, httpsstatus=1) -> dict:
         res = self.get(
-            self.api_www_music_musicinfo,
+            KuwoMusic.api_www_music_musicinfo,
             params={
                 "mid": song_id,
                 "httpsStatus": httpsstatus,
@@ -125,7 +125,7 @@ class KuwoMusic(XSession):
         If no music found, the field `musicList` in data will be empty list
         """
         res = self.get(
-            self.api_www_playlist_playlistinfo,
+            KuwoMusic.api_www_playlist_playlistinfo,
             params={
                 "pid": playlist_id,
                 "pn": max(pn, 1), "rn": max(rn, 1),
@@ -155,7 +155,7 @@ class KuwoMusic(XSession):
         If no music found, the field `musicList` in data will be empty list
         """
         res = self.get(
-            self.api_www_album_albuminfo,
+            KuwoMusic.api_www_album_albuminfo,
             params={
                 "albumId": album_id,
                 "pn": max(pn, 1), "rn": max(rn, 1),
@@ -171,7 +171,7 @@ class KuwoMusic(XSession):
     def get_artist(self, artist_id, httpsstatus=1) -> dict:
         """Get info of an artist"""
         res = self.get(
-            self.api_www_artist_artist,
+            KuwoMusic.api_www_artist_artist,
             params={
                 "artistid": artist_id,
                 "httpsStatus": httpsstatus,
@@ -200,7 +200,7 @@ class KuwoMusic(XSession):
         If no music found, the field `list` in data will be empty list
         """
         res = self.get(
-            self.api_www_artist_artistmusic,
+            KuwoMusic.api_www_artist_artistmusic,
             params={
                 "artistid": artist_id,
                 "pn": max(pn, 1), "rn": max(rn, 1),
@@ -230,7 +230,7 @@ class KuwoMusic(XSession):
         If no music found, the field `albumList` in data will be empty list
         """
         res = self.get(
-            self.api_www_artist_artistalbum,
+            KuwoMusic.api_www_artist_artistalbum,
             params={
                 "artistid": artist_id,
                 "pn": max(pn, 1), "rn": max(rn, 1),
@@ -247,7 +247,7 @@ class KuwoMusic(XSession):
         """Get song info and lyric(mainly)"""
 
         res = self.get(
-            self.singles_songinfo_and_lrc,
+            KuwoMusic.singles_songinfo_and_lrc,
             params={"musicId": song_id, "httpsStatus": httpsstatus}
         )
         if res.status_code != 200 or res.json()["status"] != 200:

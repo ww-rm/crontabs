@@ -44,11 +44,11 @@ class Pixiv(XSession):
 
     def __init__(self, interval: float = 0.01) -> None:
         super().__init__(interval=interval)
-        self.headers["Referer"] = self.url_host
+        self.headers["Referer"] = Pixiv.url_host
 
     def _get_csrf_token(self) -> str:
         """Get x-csrf-token"""
-        html = self.get(self.url_host).text
+        html = self.get(Pixiv.url_host).text
         soup = bs4.BeautifulSoup(html, "lxml")
         token = json.loads(soup.find("meta", {"id": "meta-global-data"}).attrs.get("content", "{}")).get("token", "")
         return token
@@ -69,7 +69,7 @@ class Pixiv(XSession):
         Args:
             mode: "all" means all ages, "r18" means R-18 only
         """
-        json_ = self.get(self.ajax_top_illust, params={"mode": mode}).json()
+        json_ = self.get(Pixiv.ajax_top_illust, params={"mode": mode}).json()
         return {} if json_["error"] is True else json_["body"]
 
     def get_search_artworks(self, keyword, order="date_d", mode="all", p=1, s_mode="s_tag", type_="all") -> dict:
@@ -83,7 +83,7 @@ class Pixiv(XSession):
             type_: No need to care
         """
         json_ = self.get(
-            self.ajax_search_artworks.format(keyword=keyword),
+            Pixiv.ajax_search_artworks.format(keyword=keyword),
             params={
                 "order": order,
                 "mode": mode,
@@ -104,7 +104,7 @@ class Pixiv(XSession):
             type_: "illust", "ugoira", "illust_and_ugoira"
         """
         json_ = self.get(
-            self.ajax_search_illustrations.format(keyword=keyword),
+            Pixiv.ajax_search_illustrations.format(keyword=keyword),
             params={
                 "order": order,
                 "mode": mode,
@@ -125,7 +125,7 @@ class Pixiv(XSession):
             type_: No need to care
         """
         json_ = self.get(
-            self.ajax_search_manga.format(keyword=keyword),
+            Pixiv.ajax_search_manga.format(keyword=keyword),
             params={
                 "order": order,
                 "mode": mode,
@@ -138,7 +138,7 @@ class Pixiv(XSession):
     @empty_retry()
     def get_illust(self, illust_id) -> dict:
         try:
-            json_ = self.get(self.ajax_illust.format(illust_id=illust_id)).json()
+            json_ = self.get(Pixiv.ajax_illust.format(illust_id=illust_id)).json()
         except ValueError:
             self.logger.warning("pixiv:Json ValueError in get_illust for {}".format(illust_id))
             return {}
@@ -146,19 +146,19 @@ class Pixiv(XSession):
         return {} if json_["error"] is True else json_["body"]
 
     def get_illust_pages(self, illust_id) -> list:
-        json_ = self.get(self.ajax_illust_pages.format(illust_id=illust_id)).json()
+        json_ = self.get(Pixiv.ajax_illust_pages.format(illust_id=illust_id)).json()
         return [] if json_["error"] is True else json_["body"]
 
     def get_illust_recommend_init(self, illust_id, limit=1) -> dict:
         """details.keys()"""
         json_ = self.get(
-            self.ajax_illust_recommend_init.format(illust_id=illust_id),
+            Pixiv.ajax_illust_recommend_init.format(illust_id=illust_id),
             params={"limit": limit}
         ).json()
         return {} if json_["error"] is True else json_["body"]
 
     def get_user(self, user_id) -> dict:
-        json_ = self.get(self.ajax_user.format(user_id=user_id)).json()
+        json_ = self.get(Pixiv.ajax_user.format(user_id=user_id)).json()
         return {} if json_["error"] is True else json_["body"]
 
     def get_user_following(self, user_id, offset, limit=50, rest="show") -> dict:
@@ -173,7 +173,7 @@ class Pixiv(XSession):
             The list is body.users
         """
         json_ = self.get(
-            self.ajax_user_following.format(user_id=user_id),
+            Pixiv.ajax_user_following.format(user_id=user_id),
             params={"offset": offset, "limit": limit if limit < 90 else 90, "rest": rest}
         ).json()
         return {} if json_["error"] is True else json_["body"]
@@ -190,17 +190,17 @@ class Pixiv(XSession):
             Recommends list is body.recommendUsers, the length of list <= userNum
         """
         json_ = self.get(
-            self.ajax_user_recommends.format(user_id=user_id),
+            Pixiv.ajax_user_recommends.format(user_id=user_id),
             params={"userNum": userNum, "workNum": workNum, "isR18": isR18}
         ).json()
         return {} if json_["error"] is True else json_["body"]
 
     def get_user_profile_all(self, user_id) -> dict:
-        json_ = self.get(self.ajax_user_profile_all.format(user_id=user_id)).json()
+        json_ = self.get(Pixiv.ajax_user_profile_all.format(user_id=user_id)).json()
         return {} if json_["error"] is True else json_["body"]
 
     def get_user_profile_top(self, user_id) -> dict:
-        json_ = self.get(self.ajax_user_profile_top.format(user_id=user_id)).json()
+        json_ = self.get(Pixiv.ajax_user_profile_top.format(user_id=user_id)).json()
         return {} if json_["error"] is True else json_["body"]
 
     @empty_retry()
@@ -221,7 +221,7 @@ class Pixiv(XSession):
         Note: May need cookies to get r18 ranking
         """
         res = self.get(
-            self.php_ranking,
+            Pixiv.php_ranking,
             params={"format": "json", "p": p, "content": content, "mode": mode, "date": date}
         )
 
@@ -248,7 +248,7 @@ class Pixiv(XSession):
             type_: no need to care
         """
         json_ = self.get(
-            self.php_rpc_recommender,
+            Pixiv.php_rpc_recommender,
             params={
                 "sample_illusts": sample_illusts,
                 "num_recommendations": num_recommendations,
@@ -259,7 +259,7 @@ class Pixiv(XSession):
 
     def get_logout(self) -> bool:
         """Logout"""
-        response = self.get(self.php_logout, params={"return_to": "/"})
+        response = self.get(Pixiv.php_logout, params={"return_to": "/"})
         return True
 
     # POST method
@@ -279,7 +279,7 @@ class Pixiv(XSession):
         """
 
         json_ = self.post(
-            self.ajax_illusts_bookmarks_add,
+            Pixiv.ajax_illusts_bookmarks_add,
             json={
                 "illust_id": illust_id,
                 "restrict": restrict,
@@ -303,7 +303,7 @@ class Pixiv(XSession):
             type_: No need to care
         """
         response = self.post(
-            self.php_bookmark_add,
+            Pixiv.php_bookmark_add,
             data={
                 "user_id": user_id,
                 "restrict": restrict,

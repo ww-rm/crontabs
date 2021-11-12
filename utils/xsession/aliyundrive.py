@@ -8,9 +8,14 @@ from pathlib import Path
 
 from .base import XSession, empty_retry
 
+class Auth(XSession):
+    ...
 
-class AliyunDrive(XSession):
-    url_host = "https://www.aliyundrive.com"
+class Passport(XSession):
+    ...
+
+class Api(XSession):
+    url_host = "https://api.aliyundrive.com"
 
     adrive_v2_file_createwithfolders = "https://api.aliyundrive.com/adrive/v2/file/createWithFolders"
     adrive_v2_file_complete = "https://api.aliyundrive.com/v2/file/complete"
@@ -143,7 +148,7 @@ class AliyunDrive(XSession):
 
         # print(json_data)
         res = self.post(
-            self.adrive_v2_file_createwithfolders,
+            Api.adrive_v2_file_createwithfolders,
             json=json_data
         )
 
@@ -201,7 +206,7 @@ class AliyunDrive(XSession):
         """
 
         res = self.post(
-            self.adrive_v2_file_complete,
+            Api.adrive_v2_file_complete,
             json={
                 "drive_id": drive_id,
                 "file_id": file_id,
@@ -229,3 +234,6 @@ class AliyunDrive(XSession):
 
         """
         query = "parent_file_id = \"{}\" and (name = \"{}\"".format(parent_file_id, name)
+
+class AliyunDrive(Auth, Passport, Api):
+    ...
