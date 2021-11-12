@@ -5,7 +5,6 @@ from base64 import b64decode, b64encode
 from math import ceil
 from os import PathLike
 from pathlib import Path
-from multiprocessing import Pool
 
 from .base import XSession, empty_retry
 
@@ -100,6 +99,8 @@ class AliyunDrive(XSession):
 
             Returns empty dict when upload failed.
         """
+        chunk_size = 10*1024*1024
+
         json_data = {
             "drive_id": drive_id,
             "name": name,
@@ -108,7 +109,7 @@ class AliyunDrive(XSession):
             "check_name_mode": check_name_mode,
         }
 
-        # process file
+        # prepare file json params
         if type_ == "file":
             filepath = Path(filepath)
 
@@ -117,7 +118,7 @@ class AliyunDrive(XSession):
             json_data["size"] = file_size
 
             json_data["part_info_list"] = []
-            for i in range(ceil(file_size / (10*1024*1024)) or 1):
+            for i in range(ceil(file_size / chunk_size) or 1):
                 # at least one part
                 json_data["part_info_list"].append({"part_number": i + 1})
 
@@ -152,36 +153,37 @@ class AliyunDrive(XSession):
 
         upload_info = res.json()
 
-        # check upload id
-        if not upload_info.get("upload_id"):
-            if check_name_mode == "refuse":
-                self.logger.warning("Same file found, {} upload refused".format(filepath.as_posix()))
-                return upload_info
-            else:
-                self.logger.error("Failed get upload id:{}".format(filepath.as_posix()))
-                return {}
-
-        # rapid upload successfully
-        if upload_info.get("rapid_upload"):
-            self.logger.info("Aliyundrive:rapid upload file {}".format(filepath.as_posix()))
-            return upload_info
-
-        # upload file chunks
-        with filepath.open("rb") as f:
-            for part_info in upload_info.get("part_info_list"):
-                flag = False
-                upload_url = part_info.get("upload_url")
-                chunk = f.read(10*1024*1024)
-
-                # try 3 times
-                for _ in range(3):
-                    res = self.put(upload_url, data=chunk)
-                    if res.ok:
-                        flag = True
-                        break
-                if not flag:
-                    self.logger.error("AliyunDrive:File {} Part {} upload failed.".format(filepath.as_posix(), part_info.get("part_number")))
+        if type_ == "file":
+            # check upload id
+            if not upload_info.get("upload_id"):
+                if check_name_mode == "refuse":
+                    self.logger.warning("Same file found, {} upload refused".format(filepath.as_posix()))
+                    return upload_info
+                else:
+                    self.logger.error("Failed get upload id:{}".format(filepath.as_posix()))
                     return {}
+
+            # rapid upload successfully
+            if upload_info.get("rapid_upload"):
+                self.logger.info("Aliyundrive:rapid upload file {}".format(filepath.as_posix()))
+                return upload_info
+
+            # upload file chunks
+            with filepath.open("rb") as f:
+                for part_info in upload_info.get("part_info_list"):
+                    upload_url = part_info.get("upload_url")
+                    chunk = f.read(chunk_size)
+
+                    # try 3 times
+                    flag = False
+                    for _ in range(3):
+                        res = self.put(upload_url, data=chunk)
+                        if res.ok:
+                            flag = True
+                            break
+                    if not flag:
+                        self.logger.error("AliyunDrive:File {} Part {} upload failed.".format(filepath.as_posix(), part_info.get("part_number")))
+                        return {}
 
         return upload_info
 
