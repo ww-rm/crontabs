@@ -54,7 +54,6 @@ class Bilibili(XSession):
         """
 
         if res.status_code != 200:
-            self.logger.warning("Bilibili:Response code error {}:{}".format(res.url, res.status_code))
             return {}
         elif res.json()["code"] != 0:
             self.logger.warning("Bilibili:Data error code {}:{}:{}".format(res.url, res.json()["code"], res.json()["message"]))

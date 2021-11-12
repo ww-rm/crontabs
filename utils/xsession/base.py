@@ -47,11 +47,15 @@ class XSession(requests.Session):
         self.logger = logging.getLogger(__name__)
 
     def request(self, method, url, *args, **kwargs) -> requests.Response:
+        sleep(self.interval)
         try:
-            sleep(self.interval)
-            return super().request(method, url, *args, **kwargs)
+            res = super().request(method, url, *args, **kwargs)
         except Exception as e:
             self.logger.error("{}:{}".format(url, e))
             res = requests.Response()
             res.url = url  # keep url info
+        else:
+            if not res.ok:
+                self.logger.warning("{}:{}".format(url, res.status_code))
+        finally:
             return res
