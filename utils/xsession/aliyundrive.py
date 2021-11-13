@@ -6,16 +6,27 @@ from math import ceil
 from os import PathLike
 from pathlib import Path
 
+from bs4 import BeautifulSoup
+
 from .base import XSession, empty_retry
 
-class Auth(XSession):
-    ...
 
-class Passport(XSession):
-    ...
+class AliyunDrive(XSession):
+    """
+    https://auth.aliyundrive.com/v2/oauth/authorize -> Cookie: SESSIONID
+    https://passport.aliyundrive.com/mini_login.htm -> Cookie: cookie2, t, XSRF-TOKEN. "form-data"
+    https://ynuf.aliapp.org/w/wu.json -> Cookie: cbc
+    https://ynuf.aliapp.org/service/um.json -> Res: tn, id
+    https://passport.aliyundrive.com/newlogin/login.do -> bizExt
+    https://auth.aliyundrive.com/v2/oauth/token_login -> ...
 
-class Api(XSession):
+    """
+
     url_host = "https://api.aliyundrive.com"
+
+    passport_logout = "https://passport.aliyundrive.com/logout.htm"  # ?site=52&toURL=https://www.aliyundrive.com/"
+
+    token_refresh = "https://api.aliyundrive.com/token/refresh"
 
     adrive_v2_file_createwithfolders = "https://api.aliyundrive.com/adrive/v2/file/createWithFolders"
     adrive_v2_file_complete = "https://api.aliyundrive.com/v2/file/complete"
@@ -27,12 +38,8 @@ class Api(XSession):
 
     adrive_v2_databox_get_personal_info = "https://api.aliyundrive.com/v2/databox/get_personal_info"
 
-    def _debug_login(self, access_token: str, cookies: dict = None):
-        """Used for debug."""
-        self.access_token = access_token
-        self.headers["Authorization"] = "Bearer " + access_token
-        if cookies:
-            self.cookies.update(cookies)
+    def __init__(self, interval: float = 0.01) -> None:
+        super().__init__(interval=interval)
 
     def _get_proof_code(self, filepath: PathLike, version: str = "v1") -> str:
         """
@@ -80,6 +87,35 @@ class Api(XSession):
             raise ValueError("version must be v1")
 
         return proof_code
+
+    def get_logout(self) -> bool:
+        res = self.get(
+            AliyunDrive.passport_logout,
+            params={
+                "site": 52,
+                "toURL": "https://www.aliyundrive.com/"
+            }
+        )
+        if not res.ok:
+            return False
+        return True
+
+    def post_token_refresh(self, refresh_token: str) -> dict:
+        """
+        Get new access token.
+
+        Args:
+            refresh_token (str): get from self.refresh_token.
+
+        Returns:
+            See responses/aliyundrive/token_refresh.json
+        """
+
+        res = self.post(AliyunDrive.token_refresh, json={"refresh_token": refresh_token})
+
+        if res.status_code != 200:
+            return {}
+        return res.json()
 
     def post_file_create_with_folders(
         self,
@@ -148,7 +184,7 @@ class Api(XSession):
 
         # print(json_data)
         res = self.post(
-            Api.adrive_v2_file_createwithfolders,
+            AliyunDrive.adrive_v2_file_createwithfolders,
             json=json_data
         )
 
@@ -156,26 +192,26 @@ class Api(XSession):
             self.logger.error("Aliyundrive:createwithfolders failed:{}.".format(res.status_code))
             return {}
 
-        upload_info = res.json()
+        create_info = res.json()
 
         if type_ == "file":
             # check upload id
-            if not upload_info.get("upload_id"):
+            if not create_info.get("upload_id"):
                 if check_name_mode == "refuse":
                     self.logger.warning("Same file found, {} upload refused".format(filepath.as_posix()))
-                    return upload_info
+                    return create_info
                 else:
                     self.logger.error("Failed get upload id:{}".format(filepath.as_posix()))
                     return {}
 
             # rapid upload successfully
-            if upload_info.get("rapid_upload"):
+            if create_info.get("rapid_upload"):
                 self.logger.info("Aliyundrive:rapid upload file {}".format(filepath.as_posix()))
-                return upload_info
+                return create_info
 
             # upload file chunks
             with filepath.open("rb") as f:
-                for part_info in upload_info.get("part_info_list"):
+                for part_info in create_info.get("part_info_list"):
                     upload_url = part_info.get("upload_url")
                     chunk = f.read(chunk_size)
 
@@ -190,7 +226,7 @@ class Api(XSession):
                         self.logger.error("AliyunDrive:File {} Part {} upload failed.".format(filepath.as_posix(), part_info.get("part_number")))
                         return {}
 
-        return upload_info
+        return create_info
 
     def post_file_complete(self, drive_id: str, file_id: str, upload_id: str):
         """
@@ -206,7 +242,7 @@ class Api(XSession):
         """
 
         res = self.post(
-            Api.adrive_v2_file_complete,
+            AliyunDrive.adrive_v2_file_complete,
             json={
                 "drive_id": drive_id,
                 "file_id": file_id,
@@ -219,21 +255,18 @@ class Api(XSession):
 
         return res.json()
 
-    def post_file_search(self, drive_id: str, parent_file_id: str = "root", name: str = "test", limit: int = 100, order_by: str = "name ASC"):
+    def post_file_search(self, drive_id: str, name: str, parent_file_id: str = "root", limit: int = 100, order_by: str = "name ASC"):
         """
         Search files in drive.
 
         Args:
             drive_id (str): Id of drive to search.
+            name (str): Name of node to be operated.
             parent_file_id (str): The parent folder of folder to be operated. Can be "root" of a string of file id.
-            name (str): Name of folder to be operated.
             limit (int): Limit number of results.
-            order_by (str): Order.
+            order_by (str): [name ASC].
 
         Returns:
 
         """
         query = "parent_file_id = \"{}\" and (name = \"{}\"".format(parent_file_id, name)
-
-class AliyunDrive(Auth, Passport, Api):
-    ...
