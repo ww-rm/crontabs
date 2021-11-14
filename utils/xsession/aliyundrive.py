@@ -11,7 +11,7 @@ from bs4 import BeautifulSoup
 from .base import XSession, empty_retry
 
 
-class AliyunDrive(XSession):
+class AliyunDriveBase(XSession):
     """
     https://auth.aliyundrive.com/v2/oauth/authorize -> Cookie: SESSIONID
     https://passport.aliyundrive.com/mini_login.htm -> Cookie: cookie2, t, XSRF-TOKEN. "form-data"
@@ -37,9 +37,6 @@ class AliyunDrive(XSession):
     v2_recyclebin_trash = "https://api.aliyundrive.com/v2/recyclebin/trash"
 
     adrive_v2_databox_get_personal_info = "https://api.aliyundrive.com/v2/databox/get_personal_info"
-
-    def __init__(self, interval: float = 0.01) -> None:
-        super().__init__(interval=interval)
 
     def _get_proof_code(self, filepath: PathLike, version: str = "v1") -> str:
         """
@@ -270,3 +267,7 @@ class AliyunDrive(XSession):
 
         """
         query = "parent_file_id = \"{}\" and (name = \"{}\"".format(parent_file_id, name)
+
+
+class AliyunDrive(AliyunDriveBase):
+    """"""
