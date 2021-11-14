@@ -7,15 +7,12 @@ from time import sleep
 import requests
 
 
-def empty_retry(times=3, interval=1):
+def empty_retry(times: int = 3, interval: float = 1):
     """Retry when a func returns empty
 
-    Args
-
-    times:
-        how many times to retry
-    interval:
-        interval between each retry, in seconds
+    Args:
+        times (int): Times to retry.
+        interval (float): Interval between each retry, in seconds.
     """
     def decorator(func):
         @wraps(func)
@@ -32,18 +29,18 @@ def empty_retry(times=3, interval=1):
 
 
 class XSession(requests.Session):
-    """A wrapper class for requests.Session, can control log path
+    """A wrapper class for `requests.Session`, can log info.
 
-    If anything wrong happened in a request, return an empty Response object and log error info using `logging` module
+    If anything wrong happened in a request, return an empty `Response` object, keeping url info and logging error info using `logging` module.
     """
 
     def __init__(self, interval: float = 0.01) -> None:
         """
         Args:
-            interval: Seconds between each request. Default to 0.01
+            interval (float): Seconds between each request. Minimum to 0.01.
         """
         super().__init__()
-        self.interval = interval or 0.01
+        self.interval = max(0.01, interval)
         self.logger = logging.getLogger(__name__)
 
     def request(self, method, url, *args, **kwargs) -> requests.Response:
