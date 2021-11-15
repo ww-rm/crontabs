@@ -24,6 +24,7 @@ class AliyunDriveBase(XSession):
 
     token_refresh = "https://api.aliyundrive.com/token/refresh"
 
+    v2_file_get = "https://api.aliyundrive.com/v2/file/get"
     adrive_v2_file_createwithfolders = "https://api.aliyundrive.com/adrive/v2/file/createWithFolders"
     v2_file_complete = "https://api.aliyundrive.com/v2/file/complete"
     adrive_v3_file_search = "https://api.aliyundrive.com/adrive/v3/file/search"
@@ -88,6 +89,15 @@ class AliyunDriveBase(XSession):
     ###################################
     ### File operations begin here. ###
     ###################################
+
+    def _post_file_get(self, drive_id: str, file_id: str) -> dict:
+        res = self.post(
+            AliyunDriveBase.v2_file_get,
+            json={
+                "drive_id": drive_id, "file_id": file_id
+            }
+        )
+        return self._check_response(res)
 
     def _post_file_create_with_folders(
         self,
