@@ -98,7 +98,7 @@ class AliyunDriveBase(XSession):
         Args:
             drive_id (str): Id of drive to be operated.
             name (str): The path should be created, can be multi-level, (e.g. a/b/c/d/xxx.txt).
-            parent_file_id (str): The parent node of node to be operated. Can be "root" of a string of node id.
+            parent_file_id (str): The parent node of node to be operated. Can be "root" or a string of node id.
             type_ (str): ["folder" | "file" ], decided by your leaf node of "name" param.
             check_name_mode (str): ["auto_rename" | "refuse" | "overwrite"]. "overwrite" only can be used in "file" type.
 
@@ -240,7 +240,7 @@ class AliyunDriveBase(XSession):
 
         Args:
             drive_id: ID.
-            parent_file_id (str): The parent folder of folder to be operated. Can be "root" of a string of file id.
+            parent_file_id (str): The parent folder of folder to be operated. Can be "root" or a string of file id.
             limit (int): Limit number of results.
             order_by (str): ["name", "updated_at", "created_at", "size"]
             order_direction (str): ["ASC" | "DESC"]
@@ -407,11 +407,16 @@ class AliyunDrive(AliyunDriveBase):
 
         return ret
 
-    def create_folder(self, folder_full_path: PathLike, check_name_mode: str = "refuse") -> dict:
+    def create_folder(
+        self,
+        folder_path: PathLike,
+        parent_file_id: str = "root", check_name_mode: str = "refuse"
+    ) -> dict:
         """Create folder of specified path in drive.
 
         Args:
-            folder_full_path (PathLike): The full path of folder to be created, start at root node of drive.
+            folder_path (PathLike): The full path of folder to be created, can be multi-level.
+            parent_file_id (str): The parent node of node to be operated. Can be "root" or a string of node id.
             check_name_mode (str): Can be "auto_rename" or "refuse".
 
         Returns:
@@ -419,36 +424,40 @@ class AliyunDrive(AliyunDriveBase):
             else see responses/aliyundrive/adrive_v2_file_createWithFolders.json
         """
 
-        folder_full_path = Path(folder_full_path)
+        folder_path = Path(folder_path)
 
         if check_name_mode == "auto_rename":
-            self.logger.warning("Check name mode is auto_rename for create folder {}.".format(folder_full_path.as_posix()))
+            self.logger.warning("Check name mode is auto_rename for create folder {}.".format(folder_path.as_posix()))
 
         if not self._check_refresh():
             return {}
         create_info = self._post_file_create_with_folders(
             self.drive_id,
-            folder_full_path.as_posix(),
-            type_="folder",
-            check_name_mode=check_name_mode
+            folder_path.as_posix(),
+            parent_file_id, "folder", check_name_mode
         )
 
         if not create_info:
-            self.logger.error("Failed to create folder {}.".format(folder_full_path.as_posix()))
+            self.logger.error("Failed to create folder {}.".format(folder_path.as_posix()))
             return {}
 
         if check_name_mode == "refuse" and create_info.get("exist") is True:
-            self.logger.warning("Folder {} already exist.".format(folder_full_path.as_posix()))
+            self.logger.warning("Folder {} already exist.".format(folder_path.as_posix()))
 
-        self.logger.info("Successfully create folder {}.".format(folder_full_path.as_posix()))
+        self.logger.info("Successfully create folder {}.".format(folder_path.as_posix()))
         return create_info
 
-    def upload_file(self, file_upload_path: PathLike, file_local_path: PathLike, check_name_mode: str = "refuse", try_rapid_upload: bool = True) -> dict:
+    def upload_file(
+        self,
+        file_upload_path: PathLike, file_local_path: PathLike,
+        parent_file_id: str = "root", check_name_mode: str = "refuse", try_rapid_upload: bool = True
+    ) -> dict:
         """Upload a file to specified path.
 
         Args:
             file_upload_path (PathLike): The full path of file to upload, include full filename and suffix.
             file_local_path (PathLike): The local path of file to upload.
+            parent_file_id (str): The parent node of node to be operated. Can be "root" or a string of node id.
             check_name_mode (str): ["auto_rename" | "refuse" | "overwrite"].
             try_rapid_upload (bool): If try rapid upload, will take time to calc sha1 and proof code.
 
@@ -494,7 +503,7 @@ class AliyunDrive(AliyunDriveBase):
         create_info = self._post_file_create_with_folders(
             self.drive_id,
             Path(file_upload_path).as_posix(),
-            type_="file", check_name_mode=check_name_mode,
+            parent_file_id, "file", check_name_mode,
             part_info_list=part_info_list,
             size=file_size,
             content_hash_name="sha1", content_hash=content_hash,
@@ -566,7 +575,7 @@ class AliyunDrive(AliyunDriveBase):
             exact_match (bool): Whether exactly match name.
 
             category (str): Search file type, ["image" | "video" | "folder" | "doc" | "audio"].
-            parent_file_id (str): The parent file id. Can be "root" of a string of file id.
+            parent_file_id (str): The parent file id. Can be "root" or a string of file id. If empty string, search in total drive.
 
         Returns:
             Return empty when failed, else see response folder.
@@ -591,7 +600,7 @@ class AliyunDrive(AliyunDriveBase):
         """List files in a folder.
 
         Args:
-            parent_file_id (str): The parent file id. Can be "root" of a string of file id.
+            parent_file_id (str): The parent file id. Can be "root" or a string of file id.
             order_by (str): ["name", "updated_at", "created_at", "size"]
             order_direction (str): ["ASC" | "DESC"]
             limit (int): Limit number of results.
@@ -611,3 +620,9 @@ class AliyunDrive(AliyunDriveBase):
             self.logger.error("Failed to list folder {}.".format(parent_file_id))
             return {}
         return list_info
+
+    def delete_file(self, file_id: str):
+        """Move file or folder to trash."""
+
+    def download_file(self, file_id: str, file_save_path: PathLike):
+        "Download a file to local storage."
