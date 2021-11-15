@@ -94,7 +94,8 @@ class AliyunDriveBase(XSession):
         res = self.post(
             AliyunDriveBase.v2_file_get,
             json={
-                "drive_id": drive_id, "file_id": file_id
+                "drive_id": drive_id, 
+                "file_id": file_id
             }
         )
         return self._check_response(res)
@@ -182,10 +183,8 @@ class AliyunDriveBase(XSession):
     def _post_file_search(
         self,
         drive_id: str,
-        name: str = "",
+        query: str,
         limit: int = 100, order_by: str = "name ASC",
-        exact_match: bool = True,
-        parent_file_id: str = "", category: str = "",
         *,
         image_thumbnail_process: str = "image/resize,w_400/format,jpeg",
         image_url_process: str = "image/resize,w_1920/format,jpeg",
@@ -195,33 +194,20 @@ class AliyunDriveBase(XSession):
 
         Args:
             drive_id (str): Id of drive to search.
-            name (str): Name to search.
+            query (str): Query statement.
             limit (int): Limit number of results.
             order_by (str): ["name ASC" | "updated_at ASC" | "created_at ASC" | "size ASC" | 
-                "name DESC" | "updated_at DESC" | "created_at DESC" | "size DESC"].
-            exact_match (bool): Whether exactly match name.
-
-            parent_file_id (str): If provided, search name in specified parent folder. Can be "root" or id string.
-            category (str): ["image" | "video" | "folder" | "doc" | "audio"].
-
+                "name DESC" | "updated_at DESC" | "created_at DESC" | "size DESC"]
         Returns:
             See responses/aliyundrive/adrive_v3_file_list.json
         """
-        query = "(name {} \"{}\")".format("=" if exact_match else "match", name)
-
-        if parent_file_id:
-            query += " and (parent_file_id = \"{}\"".format(parent_file_id)
-
-        if category:
-            query += " and (category = \"{}\"".format(category)
-
         res = self.post(
             AliyunDriveBase.adrive_v3_file_search,
             json={
                 "drive_id": drive_id,
+                "query": query,
                 "limit": limit,
                 "order_by": order_by,
-                "query": query,
                 "image_thumbnail_process": image_thumbnail_process,
                 "image_url_process": image_url_process,
                 "video_thumbnail_process": video_thumbnail_process
@@ -584,11 +570,21 @@ class AliyunDrive(AliyunDriveBase):
             Return empty when failed, else see response folder.
         """
 
+        query = "(name {} \"{}\")".format("=" if exact_match else "match", name)
+
+        if parent_file_id:
+            query += " and (parent_file_id = \"{}\"".format(parent_file_id)
+
+        if category:
+            query += " and (category = \"{}\"".format(category)
+
         if not self._check_refresh():
             return {}
         search_info = self._post_file_search(
-            self.drive_id, name, limit, order_by+" "+order_direction,
-            exact_match, parent_file_id, category
+            self.drive_id,
+            query,
+            limit,
+            order_by+" "+order_direction,
         )
 
         if not search_info:
