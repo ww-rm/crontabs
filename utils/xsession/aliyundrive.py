@@ -24,14 +24,14 @@ class AliyunDriveBase(XSession):
     token_refresh = "https://api.aliyundrive.com/token/refresh"
 
     adrive_v2_file_createwithfolders = "https://api.aliyundrive.com/adrive/v2/file/createWithFolders"
-    adrive_v2_file_complete = "https://api.aliyundrive.com/v2/file/complete"
+    v2_file_complete = "https://api.aliyundrive.com/v2/file/complete"
     adrive_v3_file_search = "https://api.aliyundrive.com/adrive/v3/file/search"
     adrive_v3_file_list = "https://api.aliyundrive.com/adrive/v3/file/list"
 
     v2_user_get = "https://api.aliyundrive.com/v2/user/get"
     v2_recyclebin_trash = "https://api.aliyundrive.com/v2/recyclebin/trash"
 
-    adrive_v2_databox_get_personal_info = "https://api.aliyundrive.com/v2/databox/get_personal_info"
+    v2_databox_get_personal_info = "https://api.aliyundrive.com/v2/databox/get_personal_info"
 
     def _get_logout(self) -> bool:
         res = self.get(
@@ -63,6 +63,28 @@ class AliyunDriveBase(XSession):
         if res.status_code != 200:
             return {}
         return res.json()
+
+    ###################################
+    ### User operations begin here. ###
+    ###################################
+
+    def _post_get_personal_info(self) -> dict:
+        res = self.post(AliyunDriveBase.v2_databox_get_personal_info)
+
+        if res.status_code != 200:
+            return {}
+        return res.json()
+
+    def _post_user_get(self) -> dict:
+        res = self.post(AliyunDriveBase.v2_user_get)
+
+        if res.status_code != 200:
+            return {}
+        return res.json()
+
+    ###################################
+    ### File operations begin here. ###
+    ###################################
 
     def _post_file_create_with_folders(
         self,
@@ -133,11 +155,11 @@ class AliyunDriveBase(XSession):
             upload_id (str): get from return of post_file_create_with_folders.
 
         Returns:
-            See responses/aliyundrive/adrive_v2_file_complete.json
+            See responses/aliyundrive/v2_file_complete.json
         """
 
         res = self.post(
-            AliyunDriveBase.adrive_v2_file_complete,
+            AliyunDriveBase.v2_file_complete,
             json={
                 "drive_id": drive_id,
                 "file_id": file_id,
@@ -150,21 +172,100 @@ class AliyunDriveBase(XSession):
 
         return res.json()
 
-    def _post_file_search(self, drive_id: str, name: str, parent_file_id: str = "root", limit: int = 100, order_by: str = "name ASC"):
+    def _post_file_search(
+        self,
+        drive_id: str,
+        name: str = "",
+        limit: int = 100, order_by: str = "name ASC",
+        exact_match: bool = True,
+        parent_file_id: str = "", category: str = "",
+        *,
+        image_thumbnail_process: str = "image/resize,w_400/format,jpeg",
+        image_url_process: str = "image/resize,w_1920/format,jpeg",
+        video_thumbnail_process: str = "video/snapshot,t_0,f_jpg,ar_auto,w_300"
+    ):
         """Search files in drive.
 
         Args:
             drive_id (str): Id of drive to search.
-            name (str): Name of node to be operated.
-            parent_file_id (str): The parent folder of folder to be operated. Can be "root" of a string of file id.
+            name (str): Name to search.
             limit (int): Limit number of results.
-            order_by (str): [name ASC].
+            order_by (str): ["name ASC" | "updated_at ASC" | "created_at ASC" | "size ASC" | 
+                "name DESC" | "updated_at DESC" | "created_at DESC" | "size DESC"].
+            exact_match (bool): Whether exactly match name.
+
+            parent_file_id (str): If provided, search name in specified parent folder. Can be "root" or id string.
+            category (str): ["image" | "video" | "folder" | "doc" | "audio"].
 
         Returns:
-            # TODO
+            See responses/aliyundrive/adrive_v3_file_list.json
         """
-        query = "parent_file_id = \"{}\" and (name = \"{}\"".format(parent_file_id, name)
-        # TODO
+        query = "(name {} \"{}\")".format("=" if exact_match else "match", name)
+
+        if parent_file_id:
+            query += " and (parent_file_id = \"{}\"".format(parent_file_id)
+
+        if category:
+            query += " and (category = \"{}\"".format(category)
+
+        res = self.post(
+            AliyunDriveBase.adrive_v3_file_search,
+            json={
+                "drive_id": drive_id,
+                "limit": limit,
+                "order_by": order_by,
+                "query": query,
+                "image_thumbnail_process": image_thumbnail_process,
+                "image_url_process": image_url_process,
+                "video_thumbnail_process": video_thumbnail_process
+            }
+        )
+
+        if res.status_code != 200:
+            return {}
+        return res.json()
+
+    def _post_file_list(
+        self,
+        drive_id: str, parent_file_id: str = "root",
+        order_by: str = "name", order_direction: str = "ASC", limit: int = 100,
+        *,
+        all_: bool = False,  fileds: str = "*",
+        url_expire_sec: int = 1600,
+        image_thumbnail_process: str = "image/resize,w_400/format,jpeg",
+        image_url_process: str = "image/resize,w_1920/format,jpeg",
+        video_thumbnail_process: str = "video/snapshot,t_0,f_jpg,ar_auto,w_300"
+    ) -> dict:
+        """List items of a folder node.
+
+        Args:
+            drive_id: ID.
+            parent_file_id (str): The parent folder of folder to be operated. Can be "root" of a string of file id.
+            limit (int): Limit number of results.
+            order_by (str): ["name", "updated_at", "created_at", "size"]
+            order_direction (str): ["ASC" | "DESC"]
+        """
+
+        res = self.post(
+            AliyunDriveBase.adrive_v3_file_list,
+            json={
+                "drive_id": drive_id,
+                "parent_file_id": parent_file_id,
+                "limit": limit,
+                "order_by": order_by,
+                "order_direction": order_direction,
+                "all": all_,
+                "fields": fileds,
+                "url_expire_sec": url_expire_sec,
+                "image_thumbnail_process": image_thumbnail_process,
+                "image_url_process": image_url_process,
+                "video_thumbnail_process": video_thumbnail_process
+            }
+        )
+
+        if res.status_code != 200:
+            return {}
+        return res.json()
 
 
 class AliyunDrive(AliyunDriveBase):
@@ -238,7 +339,10 @@ class AliyunDrive(AliyunDriveBase):
         return proof_code
 
     def _check_refresh(self) -> bool:
-        """Check token and try refresh it if is about to expire."""
+        """Check token and try refresh it if is about to expire.
+        
+        Used before each api call.
+        """
 
         # if expire in 5 min
         if (self.expire_time - datetime.now(timezone.utc)).total_seconds() <= 5*60:
@@ -311,13 +415,14 @@ class AliyunDrive(AliyunDriveBase):
             check_name_mode (str): Can be "auto_rename" or "refuse".
 
         Returns:
-            See responses/aliyundrive/adrive_v2_file_createWithFolders.json
+            Return empty if failed, 
+            else see responses/aliyundrive/adrive_v2_file_createWithFolders.json
         """
 
         folder_full_path = Path(folder_full_path)
 
         if check_name_mode == "auto_rename":
-            self.logger.warning("Check name mode is auto_rename for create folder {}".format(folder_full_path.as_posix()))
+            self.logger.warning("Check name mode is auto_rename for create folder {}.".format(folder_full_path.as_posix()))
 
         if not self._check_refresh():
             return {}
@@ -335,6 +440,7 @@ class AliyunDrive(AliyunDriveBase):
         if check_name_mode == "refuse" and create_info.get("exist") is True:
             self.logger.warning("Folder {} already exist.".format(folder_full_path.as_posix()))
 
+        self.logger.info("Successfully create folder {}.".format(folder_full_path.as_posix()))
         return create_info
 
     def upload_file(self, file_upload_path: PathLike, file_local_path: PathLike, check_name_mode: str = "refuse", try_rapid_upload: bool = True) -> dict:
@@ -347,8 +453,9 @@ class AliyunDrive(AliyunDriveBase):
             try_rapid_upload (bool): If try rapid upload, will take time to calc sha1 and proof code.
 
         Returns:
-            See responses/aliyundrive/adrive_v2_file_createWithFolders.json
-                and responses/aliyundrive/adrive_v2_file_complete.json
+            Return empty if failed,
+            else see responses/aliyundrive/adrive_v2_file_createWithFolders.json
+                and responses/aliyundrive/v2_file_complete.json
         """
 
         CHUNK_SIZE = 10*1024*1024
@@ -440,4 +547,39 @@ class AliyunDrive(AliyunDriveBase):
             self.logger.error("Failed to complete upload file {}.".format(filepath.as_posix()))
             return {}
 
+        self.logger.info("Successfully upload file {}.".format(filepath.as_posix()))
         return complete_info
+
+    def search_file(
+        self,
+        name: str, order_by: str = "name", order_direction: str = "ASC",
+        limit: int = 100, exact_match: bool = True, *,
+        category: str = "", parent_folder_id: str = ""
+    ) -> dict:
+        """Search files in specified folder and path.
+
+        Args:
+            name (str): Name to search.
+            order_by (str): ["name", "updated_at", "created_at", "size"]
+            order_direction (str): ["ASC" | "DESC"]
+            limit (int): Limit number of results.
+            exact_match (bool): Whether exactly match name.
+
+            category (str): Search file type, ["image" | "video" | "folder" | "doc" | "audio"].
+            parent_folder_id (str): The parent folder of folder to be operated. Can be "root" of a string of file id.
+
+        Returns:
+            Return empty when failed, else see response folder.
+        """
+
+        if not self._check_refresh():
+            return {}
+        search_info = self._post_file_search(
+            self.drive_id, name, limit, order_by+" "+order_direction,
+            exact_match, parent_folder_id, category
+        )
+
+        if not search_info:
+            self.logger.error("Failed to search file {}.".format(name))
+            return {}
+        return search_info
