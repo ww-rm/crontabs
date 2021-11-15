@@ -303,12 +303,15 @@ class AliyunDrive(AliyunDriveBase):
 
         return ret
 
-    def create_folder(self, folder_full_path: PathLike, check_name_mode: str = "refuse") -> bool:
+    def create_folder(self, folder_full_path: PathLike, check_name_mode: str = "refuse") -> dict:
         """Create folder of specified path in drive.
 
         Args:
             folder_full_path (PathLike): The full path of folder to be created, start at root node of drive.
             check_name_mode (str): Can be "auto_rename" or "refuse".
+
+        Returns:
+            See responses/aliyundrive/adrive_v2_file_createWithFolders.json
         """
 
         folder_full_path = Path(folder_full_path)
@@ -316,6 +319,8 @@ class AliyunDrive(AliyunDriveBase):
         if check_name_mode == "auto_rename":
             self.logger.warning("Check name mode is auto_rename for create folder {}".format(folder_full_path.as_posix()))
 
+        if not self._check_refresh():
+            return {}
         create_info = self._post_file_create_with_folders(
             self.drive_id,
             folder_full_path.as_posix(),
@@ -325,14 +330,14 @@ class AliyunDrive(AliyunDriveBase):
 
         if not create_info:
             self.logger.error("Failed to create folder {}.".format(folder_full_path.as_posix()))
-            return False
+            return {}
 
         if check_name_mode == "refuse" and create_info.get("exist") is True:
             self.logger.warning("Folder {} already exist.".format(folder_full_path.as_posix()))
 
-        return True
+        return create_info
 
-    def upload_file(self, file_upload_path: PathLike, file_local_path: PathLike, check_name_mode: str = "refuse", try_rapid_upload: bool = True) -> bool:
+    def upload_file(self, file_upload_path: PathLike, file_local_path: PathLike, check_name_mode: str = "refuse", try_rapid_upload: bool = True) -> dict:
         """Upload a file to specified path.
 
         Args:
@@ -340,6 +345,10 @@ class AliyunDrive(AliyunDriveBase):
             file_local_path (PathLike): The local path of file to upload.
             check_name_mode (str): ["auto_rename" | "refuse" | "overwrite"].
             try_rapid_upload (bool): If try rapid upload, will take time to calc sha1 and proof code.
+
+        Returns:
+            See responses/aliyundrive/adrive_v2_file_createWithFolders.json
+                and responses/aliyundrive/adrive_v2_file_complete.json
         """
 
         CHUNK_SIZE = 10*1024*1024
@@ -374,7 +383,7 @@ class AliyunDrive(AliyunDriveBase):
             proof_code = self._get_proof_code(filepath, "v1")
 
         if not self._check_refresh():
-            return False
+            return {}
         create_info = self._post_file_create_with_folders(
             self.drive_id,
             Path(file_upload_path).as_posix(),
@@ -387,21 +396,21 @@ class AliyunDrive(AliyunDriveBase):
 
         if not create_info:
             self.logger.error("Failed to get create info of file {}.".format(filepath.as_posix()))
-            return False
+            return {}
 
         # check upload id
         if not create_info.get("upload_id"):
             if check_name_mode == "refuse":
                 self.logger.warning("Same file found, file {} upload refused".format(filepath.as_posix()))
-                return True
+                return create_info
             else:
                 self.logger.error("Failed get upload id for file".format(filepath.as_posix()))
-                return False
+                return {}
 
         # rapid upload successfully
         if create_info.get("rapid_upload") is True:
             self.logger.info("Rapid upload file {}".format(filepath.as_posix()))
-            return True
+            return create_info
 
         # upload file chunks
         with filepath.open("rb") as f:
@@ -418,10 +427,10 @@ class AliyunDrive(AliyunDriveBase):
                         break
                 if not flag:
                     self.logger.error("File {} Part {} upload failed.".format(filepath.as_posix(), part_info.get("part_number")))
-                    return False
+                    return {}
 
         if not self._check_refresh():
-            return False
+            return {}
         complete_info = self._post_file_complete(
             self.drive_id,
             create_info.get("file_id"),
@@ -429,6 +438,6 @@ class AliyunDrive(AliyunDriveBase):
         )
         if not complete_info:
             self.logger.error("Failed to complete upload file {}.".format(filepath.as_posix()))
-            return False
+            return {}
 
-        return True
+        return complete_info
