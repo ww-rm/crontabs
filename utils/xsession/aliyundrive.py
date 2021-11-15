@@ -358,11 +358,11 @@ class AliyunDrive(AliyunDriveBase):
                 return False
 
             # set new token info
-            self.token_type = refresh_info.get("token_type")
-            self.access_token = refresh_info.get("access_token")
-            self.refresh_token = refresh_info.get("refresh_token")
+            self.token_type = refresh_info["token_type"]
+            self.access_token = refresh_info["access_token"]
+            self.refresh_token = refresh_info["refresh_token"]
 
-            self.expire_time = isoparse(refresh_info.get("expire_time"))  # include timezone, utc time
+            self.expire_time = isoparse(refresh_info["expire_time"])  # include timezone, utc time
 
             self.headers["Authorization"] = self.token_type + " " + self.access_token
 
@@ -385,18 +385,18 @@ class AliyunDrive(AliyunDriveBase):
                 return False
 
             login_info = b64decode(bizExt).decode("gbk")
-            login_result = json.loads(login_info).get("pds_login_result")
+            login_result = json.loads(login_info)["pds_login_result"]
             if not login_result:
                 return False
 
-            self.user_id = login_result.get("userId")
-            self.drive_id = login_result.get("defaultDriveId")
+            self.user_id = login_result["userId"]
+            self.drive_id = login_result["defaultDriveId"]
 
-            self.token_type = login_result.get("tokenType")
-            self.access_token = login_result.get("accessToken")
-            self.refresh_token = login_result.get("refreshToken")
+            self.token_type = login_result["tokenType"]
+            self.access_token = login_result["accessToken"]
+            self.refresh_token = login_result["refreshToken"]
 
-            self.expire_time = isoparse(login_result.get("expireTime"))  # include timezone, utc time
+            self.expire_time = isoparse(login_result["expireTime"])  # include timezone, utc time
 
             self.headers["Authorization"] = self.token_type + " " + self.access_token
 
@@ -533,8 +533,8 @@ class AliyunDrive(AliyunDriveBase):
 
         # upload file chunks
         with filepath.open("rb") as f:
-            for part_info in create_info.get("part_info_list"):
-                upload_url = part_info.get("upload_url")
+            for part_info in create_info["part_info_list"]:
+                upload_url = part_info["upload_url"]
                 chunk = f.read(CHUNK_SIZE)
 
                 # try 3 times
@@ -545,15 +545,15 @@ class AliyunDrive(AliyunDriveBase):
                         flag = True
                         break
                 if not flag:
-                    self.logger.error("File {} Part {} upload failed.".format(filepath.as_posix(), part_info.get("part_number")))
+                    self.logger.error("File {} Part {} upload failed.".format(filepath.as_posix(), part_info["part_number"]))
                     return {}
 
         if not self._check_refresh():
             return {}
         complete_info = self._post_file_complete(
             self.drive_id,
-            create_info.get("file_id"),
-            create_info.get("upload_id")
+            create_info["file_id"],
+            create_info["upload_id"]
         )
         if not complete_info:
             self.logger.error("Failed to complete upload file {}.".format(filepath.as_posix()))
