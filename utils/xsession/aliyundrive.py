@@ -340,7 +340,7 @@ class AliyunDrive(AliyunDriveBase):
 
     def _check_refresh(self) -> bool:
         """Check token and try refresh it if is about to expire.
-        
+
         Used before each api call.
         """
 
@@ -552,9 +552,9 @@ class AliyunDrive(AliyunDriveBase):
 
     def search_file(
         self,
-        name: str, order_by: str = "name", order_direction: str = "ASC",
-        limit: int = 100, exact_match: bool = True, *,
-        category: str = "", parent_folder_id: str = ""
+        name: str,
+        order_by: str = "name", order_direction: str = "ASC", limit: int = 100, exact_match: bool = True, *,
+        category: str = "", parent_file_id: str = ""
     ) -> dict:
         """Search files in specified folder and path.
 
@@ -566,7 +566,7 @@ class AliyunDrive(AliyunDriveBase):
             exact_match (bool): Whether exactly match name.
 
             category (str): Search file type, ["image" | "video" | "folder" | "doc" | "audio"].
-            parent_folder_id (str): The parent folder of folder to be operated. Can be "root" of a string of file id.
+            parent_file_id (str): The parent file id. Can be "root" of a string of file id.
 
         Returns:
             Return empty when failed, else see response folder.
@@ -576,10 +576,38 @@ class AliyunDrive(AliyunDriveBase):
             return {}
         search_info = self._post_file_search(
             self.drive_id, name, limit, order_by+" "+order_direction,
-            exact_match, parent_folder_id, category
+            exact_match, parent_file_id, category
         )
 
         if not search_info:
             self.logger.error("Failed to search file {}.".format(name))
             return {}
         return search_info
+
+    def list_file(
+        self, parent_file_id: str = "root",
+        order_by: str = "name", order_direction: str = "ASC", limit: int = 100
+    ) -> dict:
+        """List files in a folder.
+
+        Args:
+            parent_file_id (str): The parent file id. Can be "root" of a string of file id.
+            order_by (str): ["name", "updated_at", "created_at", "size"]
+            order_direction (str): ["ASC" | "DESC"]
+            limit (int): Limit number of results.
+
+        Returns:
+            Return empty when failed, else see responses folder.
+        """
+
+        if not self._check_refresh():
+            return {}
+        list_info = self._post_file_list(
+            self.drive_id, parent_file_id,
+            order_by, order_direction, limit
+        )
+
+        if not list_info:
+            self.logger.error("Failed to list folder {}.".format(parent_file_id))
+            return {}
+        return list_info
