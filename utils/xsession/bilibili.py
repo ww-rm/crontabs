@@ -5,7 +5,7 @@ import json
 from base64 import b64encode
 from os import PathLike
 from pathlib import Path
-from typing import List
+from typing import Iterator, List
 
 import requests
 from Crypto.Cipher import PKCS1_v1_5
@@ -239,16 +239,17 @@ class BilibiliBase(XSession):
         )
         return self._check_response(res)
 
-    def _get_recaptcha_img(self, token: str) -> bytes:
-        """Get simple image captcha"""
+    def _get_recaptcha_img(self, token: str, chunk_size: int = 10485760) -> Iterator[bytes]:
+        """Get simple image captcha."""
         res = self.get(
             BilibiliBase.recaptcha_img,
-            params={"token": token}
+            params={"token": token},
+            stream=True
         )
 
         if res.status_code != 200:
-            return b""
-        return res.content
+            return b""  # Need to make bool False
+        return res.iter_content(chunk_size)
 
     def _post_login(
         self, username: str, password: str, token_info: dict, validate_data: str,
@@ -338,6 +339,17 @@ class Bilibili(BilibiliBase):
                 return False
 
             # TODO: automatically get validate_data
+            token_type = token_info["type"]
+            if token_type == "img":
+                img_data = self._get_recaptcha_img(token_info["token"])
+                # TODO: recognize img
+                raise NotImplementedError
+            elif token_type == "geetest":
+                # TODO: get geetest validate data
+                raise NotImplementedError
+            else:
+                raise ValueError("Unknown captcha type.")
+
             login_info = self._post_login(
                 usrn, pwd,
                 token_info, validate_data
