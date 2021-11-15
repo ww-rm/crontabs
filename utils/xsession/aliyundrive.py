@@ -8,6 +8,7 @@ from os import PathLike
 from pathlib import Path
 
 from bs4 import BeautifulSoup
+import requests
 
 from .base import XSession, empty_retry
 from datetime import datetime, timezone
@@ -32,6 +33,14 @@ class AliyunDriveBase(XSession):
     v2_recyclebin_trash = "https://api.aliyundrive.com/v2/recyclebin/trash"
 
     v2_databox_get_personal_info = "https://api.aliyundrive.com/v2/databox/get_personal_info"
+
+    def _check_response(self, res: requests.Response) -> dict:
+        """Check a json response."""
+
+        if res.status_code is not None and not res.ok:
+            self.logger.error("{}:{}:{}".format(res.url, res.status_code, res.json()["message"]))
+            return {}
+        return res.json()
 
     def _get_logout(self) -> bool:
         res = self.get(
@@ -60,9 +69,7 @@ class AliyunDriveBase(XSession):
             json={"refresh_token": refresh_token}
         )
 
-        if res.status_code != 200:
-            return {}
-        return res.json()
+        return self._check_response(res)
 
     ###################################
     ### User operations begin here. ###
@@ -71,16 +78,12 @@ class AliyunDriveBase(XSession):
     def _post_get_personal_info(self) -> dict:
         res = self.post(AliyunDriveBase.v2_databox_get_personal_info)
 
-        if res.status_code != 200:
-            return {}
-        return res.json()
+        return self._check_response(res)
 
     def _post_user_get(self) -> dict:
         res = self.post(AliyunDriveBase.v2_user_get)
 
-        if res.status_code != 200:
-            return {}
-        return res.json()
+        return self._check_response(res)
 
     ###################################
     ### File operations begin here. ###
@@ -141,10 +144,7 @@ class AliyunDriveBase(XSession):
             json=json_data
         )
 
-        if res.status_code != 201:
-            return {}
-
-        return res.json()
+        return self._check_response(res)
 
     def _post_file_complete(self, drive_id: str, file_id: str, upload_id: str) -> dict:
         """Used to complete file upload.
@@ -167,10 +167,7 @@ class AliyunDriveBase(XSession):
             }
         )
 
-        if res.status_code != 200:
-            return {}
-
-        return res.json()
+        return self._check_response(res)
 
     def _post_file_search(
         self,
@@ -183,7 +180,7 @@ class AliyunDriveBase(XSession):
         image_thumbnail_process: str = "image/resize,w_400/format,jpeg",
         image_url_process: str = "image/resize,w_1920/format,jpeg",
         video_thumbnail_process: str = "video/snapshot,t_0,f_jpg,ar_auto,w_300"
-    ):
+    ) -> dict:
         """Search files in drive.
 
         Args:
@@ -221,9 +218,7 @@ class AliyunDriveBase(XSession):
             }
         )
 
-        if res.status_code != 200:
-            return {}
-        return res.json()
+        return self._check_response(res)
 
     def _post_file_list(
         self,
@@ -263,9 +258,7 @@ class AliyunDriveBase(XSession):
             }
         )
 
-        if res.status_code != 200:
-            return {}
-        return res.json()
+        return self._check_response(res)
 
 
 class AliyunDrive(AliyunDriveBase):

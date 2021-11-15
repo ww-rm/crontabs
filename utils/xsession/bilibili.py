@@ -5,9 +5,8 @@ import json
 from base64 import b64encode
 from os import PathLike
 from pathlib import Path
-from typing import List, Union
+from typing import List
 
-import bs4
 import requests
 from Crypto.Cipher import PKCS1_v1_5
 from Crypto.PublicKey import RSA
