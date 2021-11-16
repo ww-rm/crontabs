@@ -53,15 +53,23 @@ class BilibiliBase(XSession):
         if res.status_code is None:
             return {}
 
+        # status code of responses correctly returned must be 200
+        # but "code" field in json data may not be 0
         if res.status_code != 200:
             return {}
 
-        # status code of responses correctly returned must be 200
-        # but "code" field in json data may not be 0
-        if res.json()["code"] != 0:
-            self.logger.error("{}:{}:{}".format(res.url, res.json()["code"], res.json()["message"]))
+        # check valid json data
+        try:
+            json_ = res.json()
+        except ValueError:
+            self.logger.error("{}:JsonValueError.".format(res.url))
             return {}
-        return res.json()["data"]
+
+        # check error mesage
+        if json_["code"] != 0:
+            self.logger.error("{}:{}:{}".format(res.url, json_["code"], json_["message"]))
+            return {}
+        return json_["data"]
 
     def _get_web_key(self, r=0.4811057511950463) -> dict:
         """Get web key

@@ -1,6 +1,8 @@
 # -*- coding: UTF-8 -*-
 
 import json
+from os import PathLike
+from pathlib import Path
 from typing import Any, Iterator, Union
 import bs4
 import requests
@@ -324,7 +326,7 @@ class PixivBase(XSession):
         )
         return self._check_response2(res)
 
-    def post_bookmark_add(self, user_id, restrict=0, tag="", mode="add", type_="user") -> bool:
+    def _post_bookmark_add(self, user_id, restrict=0, tag="", mode="add", type_="user") -> bool:
         """Add or modify bookmark of a user
 
         Args:
@@ -349,3 +351,79 @@ class PixivBase(XSession):
             }
         )
         return False if res.status_code != 200 else True
+
+
+class Pixiv(PixivBase):
+    """"""
+
+    def download_page(self, page_url: str, page_save_path: PathLike) -> bool:
+        """Download a single page."""
+
+        data = self._get_page(page_url)
+
+        if not data:
+            self.logger.error("Failed to download page {}.".format(page_url))
+            return False
+
+        with Path(page_save_path).open("wb") as f:
+            for chunk in data:
+                f.write(chunk)
+        return True
+
+    def get_illust(self, illust_id: str) -> dict:
+        """"""
+        illust_info = self._get_illust(illust_id)
+
+        if not illust_info:
+            self.logger.error("Failed to get {} illust info.".format(illust_id))
+            return {}
+        return illust_info
+
+    def get_ranking_daily(self, p: int = 1, content: str = "illust", date: str = None, r18: bool = False) -> dict:
+        """Get daily ranking info.
+
+        Args:
+            p: page num, each page has 50 records.
+            content: ["all" | "illust" | "ugoira" | "manga"]
+            date: None means newest, or like "20120814".
+            r18: Whether only return r18, need to login.
+        """
+
+        mode = "daily_r18" if r18 else "daily"
+        ranking_info = self._get_ranking(p, content, mode, date)
+        if not ranking_info:
+            self.logger.error("Failed to get daily ranking info {}:{}:{}:{}.".format(p, content, date, r18))
+            return {}
+        return ranking_info
+
+    def get_ranking_weekly(self, p: int = 1, content: str = "illust", date: str = None, r18: bool = False) -> dict:
+        """Get weekly ranking info.
+
+        Args:
+            p: page num, each page has 50 records.
+            content: ["all" | "illust" | "ugoira" | "manga"]
+            date: None means newest, or like "20120814".
+            r18: Whether only return r18, need to login.
+        """
+
+        mode = "weekly_r18" if r18 else "weekly"
+        ranking_info = self._get_ranking(p, content, mode, date)
+        if not ranking_info:
+            self.logger.error("Failed to get weekly ranking info {}:{}:{}:{}.".format(p, content, date, r18))
+            return {}
+        return ranking_info
+
+    def get_ranking_monthly(self, p: int = 1, content: str = "illust", date: str = None) -> dict:
+        """Get monthly ranking info.
+
+        Args:
+            p: page num, each page has 50 records.
+            content: ["all" | "illust" | "manga"]
+            date: None means newest, or like "20120814".
+        """
+
+        ranking_info = self._get_ranking(p, content, "monthly", date)
+        if not ranking_info:
+            self.logger.error("Failed to get monthly ranking info {}:{}:{}:{}.".format(p, content, date))
+            return {}
+        return ranking_info

@@ -38,13 +38,23 @@ class AliyunDriveBase(XSession):
     def _check_response(self, res: requests.Response) -> dict:
         """Check a json response."""
 
+        # check empty response
         if res.status_code is None:
             return {}
 
-        if not res.ok:
-            self.logger.error("{}:{}:{}".format(res.url, res.status_code, res.json()["message"]))
+        # check valid json data
+        try:
+            json_ = res.json()
+        except ValueError:
+            self.logger.error("{}:JsonValueError.".format(res.url))
             return {}
-        return res.json()
+
+        # check error message
+        if not res.ok:
+            self.logger.error("{}:{}:{}".format(res.url, res.status_code, json_["message"]))
+            return {}
+
+        return json_
 
     def _get_logout(self) -> bool:
         res = self.get(
