@@ -38,7 +38,10 @@ class AliyunDriveBase(XSession):
     def _check_response(self, res: requests.Response) -> dict:
         """Check a json response."""
 
-        if res.status_code is not None and not res.ok:
+        if res.status_code is None:
+            return {}
+
+        if not res.ok:
             self.logger.error("{}:{}:{}".format(res.url, res.status_code, res.json()["message"]))
             return {}
         return res.json()
@@ -94,7 +97,7 @@ class AliyunDriveBase(XSession):
         res = self.post(
             AliyunDriveBase.v2_file_get,
             json={
-                "drive_id": drive_id, 
+                "drive_id": drive_id,
                 "file_id": file_id
             }
         )

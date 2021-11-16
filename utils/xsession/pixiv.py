@@ -1,11 +1,13 @@
 # -*- coding: UTF-8 -*-
 
 import json
+from typing import Any, Iterator, Union
 import bs4
+import requests
 from .base import XSession, empty_retry
 
 
-class Pixiv(XSession):
+class PixivBase(XSession):
     # lang=zh
     url_host = "https://www.pixiv.net"
 
@@ -42,13 +44,47 @@ class Pixiv(XSession):
     php_rpc_recommender = "https://www.pixiv.net/rpc/recommender.php"  # ?type=illust&sample_illusts=88548686&num_recommendations=500
     php_bookmark_add = "https://www.pixiv.net/bookmark_add.php"  # mode:"add" type:"user" user_id:"" tag:"" restrict:"" format:"json"
 
+    def _check_response(self, res: requests.Response) -> Union[dict, list]:
+        """Check response."""
+
+        if res.status_code is None:
+            return {}
+
+        try:
+            json_ = res.json()
+        except ValueError:
+            self.logger.error("{}:JsonValueError.".format(res.url))
+            return {}
+
+        if json_["error"] is True:
+            self.logger.error("{}:{}".format(res.url, json_["message"]))
+            return {}
+        return json_["body"]
+
+    def _check_response2(self, res: requests.Response) -> Union[dict, list]:
+        """Check response."""
+
+        if res.status_code is None:
+            return {}
+
+        try:
+            json_ = res.json()
+        except ValueError:
+            self.logger.error("{}:JsonValueError.".format(res.url))
+            return {}
+
+        if "error" in json_:
+            self.logger.error("{}:{}".format(res.url, json_["error"]))
+            return {}
+        return json_
+
     def __init__(self, interval: float = 0.01) -> None:
         super().__init__(interval=interval)
-        self.headers["Referer"] = Pixiv.url_host
+        self.headers["Referer"] = PixivBase.url_host
 
     def _get_csrf_token(self) -> str:
         """Get x-csrf-token"""
-        html = self.get(Pixiv.url_host).text
+        html = self.get(PixivBase.url_host).text
         soup = bs4.BeautifulSoup(html, "lxml")
         token = json.loads(soup.find("meta", {"id": "meta-global-data"}).attrs.get("content", "{}")).get("token", "")
         return token
@@ -56,23 +92,34 @@ class Pixiv(XSession):
     # GET method
 
     @empty_retry()
-    def get_page(self, page_url) -> bytes:
-        response = self.get(page_url)
-        if response.status_code != 200:
-            self.logger.warning("pixiv:Failed to get page from {}".format(page_url))
-            return b""
-        return response.content
+    def _get_page(self, page_url: str, chunk_size: int = 10485760) -> Iterator[bytes]:
+        """
+        Args:
+            page_url (str): url to get page from.
+            chunk_size (str): To avoid huge memory usage, default to 10 MB.
 
-    def get_top_illust(self, mode="all") -> dict:
-        """Get top illusts by mode
+        Returns:
+            Return empty bytes when failed, otherwise a bytes iterator.
+        """
+        res = self.get(page_url, stream=True)
+        if res.status_code != 200:
+            self.logger.error("Failed to get page from {}.".format(page_url))
+            return b""  # Need to make bool False
+        return res.iter_content(chunk_size)
+
+    def _get_top_illust(self, mode="all") -> dict:
+        """Get top illusts by mode.
 
         Args:
             mode: "all" means all ages, "r18" means R-18 only
         """
-        json_ = self.get(Pixiv.ajax_top_illust, params={"mode": mode}).json()
-        return {} if json_["error"] is True else json_["body"]
+        res = self.get(
+            PixivBase.ajax_top_illust,
+            params={"mode": mode}
+        )
+        return self._check_response(res)
 
-    def get_search_artworks(self, keyword, order="date_d", mode="all", p=1, s_mode="s_tag", type_="all") -> dict:
+    def _get_search_artworks(self, keyword, order="date_d", mode="all", p=1, s_mode="s_tag", type_="all") -> dict:
         """Get search artworks result
 
         Args:
@@ -82,18 +129,19 @@ class Pixiv(XSession):
             s_mode: "s_tag" partly match tag, "s_tag_full" exactly match tag, "s_tc" match title and character description
             type_: No need to care
         """
-        json_ = self.get(
-            Pixiv.ajax_search_artworks.format(keyword=keyword),
+        res = self.get(
+            PixivBase.ajax_search_artworks.format(keyword=keyword),
             params={
                 "order": order,
                 "mode": mode,
                 "p": p,
                 "s_mode": s_mode,
                 "type": type_
-            }).json()
-        return {} if json_["error"] is True else json_["body"]
+            }
+        )
+        return self._check_response(res)
 
-    def get_search_illustrations(self, keyword, order="date_d", mode="all", p=1, s_mode="s_tag", type_="illust") -> dict:
+    def _get_search_illustrations(self, keyword, order="date_d", mode="all", p=1, s_mode="s_tag", type_="illust") -> dict:
         """Get search illustration or ugoira result
 
         Args:
@@ -103,18 +151,19 @@ class Pixiv(XSession):
             s_mode: "s_tag" partly match tag, "s_tag_full" exactly match tag, "s_tc" match title and character description
             type_: "illust", "ugoira", "illust_and_ugoira"
         """
-        json_ = self.get(
-            Pixiv.ajax_search_illustrations.format(keyword=keyword),
+        res = self.get(
+            PixivBase.ajax_search_illustrations.format(keyword=keyword),
             params={
                 "order": order,
                 "mode": mode,
                 "p": p,
                 "s_mode": s_mode,
                 "type": type_
-            }).json()
-        return {} if json_["error"] is True else json_["body"]
+            }
+        )
+        return self._check_response(res)
 
-    def get_search_manga(self, keyword, order="date_d", mode="all", p=1, s_mode="s_tag", type_="manga") -> dict:
+    def _get_search_manga(self, keyword, order="date_d", mode="all", p=1, s_mode="s_tag", type_="manga") -> dict:
         """Get search manga result
 
         Args:
@@ -124,44 +173,48 @@ class Pixiv(XSession):
             s_mode: "s_tag" partly match tag, "s_tag_full" exactly match tag, "s_tc" match title and character description
             type_: No need to care
         """
-        json_ = self.get(
-            Pixiv.ajax_search_manga.format(keyword=keyword),
+        res = self.get(
+            PixivBase.ajax_search_manga.format(keyword=keyword),
             params={
                 "order": order,
                 "mode": mode,
                 "p": p,
                 "s_mode": s_mode,
                 "type": type_
-            }).json()
-        return {} if json_["error"] is True else json_["body"]
+            }
+        )
+        return self._check_response(res)
 
     @empty_retry()
-    def get_illust(self, illust_id) -> dict:
-        try:
-            json_ = self.get(Pixiv.ajax_illust.format(illust_id=illust_id)).json()
-        except ValueError:
-            self.logger.warning("pixiv:Json ValueError in get_illust for {}".format(illust_id))
-            return {}
+    def _get_illust(self, illust_id) -> dict:
+        res = self.get(
+            PixivBase.ajax_illust.format(illust_id=illust_id)
+        )
 
-        return {} if json_["error"] is True else json_["body"]
+        return self._check_response(res)
 
-    def get_illust_pages(self, illust_id) -> list:
-        json_ = self.get(Pixiv.ajax_illust_pages.format(illust_id=illust_id)).json()
-        return [] if json_["error"] is True else json_["body"]
+    def _get_illust_pages(self, illust_id) -> list:
+        res = self.get(
+            PixivBase.ajax_illust_pages.format(illust_id=illust_id)
+        )
+        return self._check_response(res)
 
-    def get_illust_recommend_init(self, illust_id, limit=1) -> dict:
+    def _get_illust_recommend_init(self, illust_id, limit=1) -> dict:
         """details.keys()"""
-        json_ = self.get(
-            Pixiv.ajax_illust_recommend_init.format(illust_id=illust_id),
+        res = self.get(
+            PixivBase.ajax_illust_recommend_init.format(illust_id=illust_id),
             params={"limit": limit}
-        ).json()
-        return {} if json_["error"] is True else json_["body"]
+        )
+        return self._check_response(res)
 
-    def get_user(self, user_id) -> dict:
-        json_ = self.get(Pixiv.ajax_user.format(user_id=user_id)).json()
-        return {} if json_["error"] is True else json_["body"]
+    def _get_user(self, user_id) -> dict:
+        res = self.get(
+            PixivBase.ajax_user.format(user_id=user_id)
+        )
 
-    def get_user_following(self, user_id, offset, limit=50, rest="show") -> dict:
+        return self._check_response(res)
+
+    def _get_user_following(self, user_id, offset, limit=50, rest="show") -> dict:
         """Get following list of a user
 
         Args:
@@ -172,13 +225,17 @@ class Pixiv(XSession):
         Returns:
             The list is body.users
         """
-        json_ = self.get(
-            Pixiv.ajax_user_following.format(user_id=user_id),
-            params={"offset": offset, "limit": limit if limit < 90 else 90, "rest": rest}
-        ).json()
-        return {} if json_["error"] is True else json_["body"]
+        res = self.get(
+            PixivBase.ajax_user_following.format(user_id=user_id),
+            params={
+                "offset": offset,
+                "limit": min(limit, 90),
+                "rest": rest
+            }
+        )
+        return self._check_response(res)
 
-    def get_user_recommends(self, user_id, userNum=100, workNum=3, isR18=True) -> dict:
+    def _get_user_recommends(self, user_id, userNum=100, workNum=3, isR18=True) -> dict:
         """Get recommends of a user
 
         Args:
@@ -189,22 +246,26 @@ class Pixiv(XSession):
         Returns:
             Recommends list is body.recommendUsers, the length of list <= userNum
         """
-        json_ = self.get(
-            Pixiv.ajax_user_recommends.format(user_id=user_id),
-            params={"userNum": userNum, "workNum": workNum, "isR18": isR18}
-        ).json()
-        return {} if json_["error"] is True else json_["body"]
+        res = self.get(
+            PixivBase.ajax_user_recommends.format(user_id=user_id),
+            params={
+                "userNum": userNum,
+                "workNum": workNum,
+                "isR18": isR18
+            }
+        )
+        return self._check_response(res)
 
-    def get_user_profile_all(self, user_id) -> dict:
-        json_ = self.get(Pixiv.ajax_user_profile_all.format(user_id=user_id)).json()
-        return {} if json_["error"] is True else json_["body"]
+    def _get_user_profile_all(self, user_id) -> dict:
+        res = self.get(PixivBase.ajax_user_profile_all.format(user_id=user_id))
+        return self._check_response(res)
 
-    def get_user_profile_top(self, user_id) -> dict:
-        json_ = self.get(Pixiv.ajax_user_profile_top.format(user_id=user_id)).json()
-        return {} if json_["error"] is True else json_["body"]
+    def _get_user_profile_top(self, user_id) -> dict:
+        res = self.get(PixivBase.ajax_user_profile_top.format(user_id=user_id))
+        return self._check_response(res)
 
     @empty_retry()
-    def get_ranking(self, p=1, content="all", mode="daily", date: str = None) -> dict:
+    def _get_ranking(self, p=1, content="all", mode="daily", date: str = None) -> dict:
         """Get ranking, limit 50 illusts info in one page
 
         Args:
@@ -218,57 +279,28 @@ class Pixiv(XSession):
                 "original", "male", "male_r18", "female", "female_r18"]
             date: ranking date, example: 20210319, None means the newest
 
-        Note: May need cookies to get r18 ranking
+        Note: 
+            May need cookies to get r18 ranking.
         """
         res = self.get(
-            Pixiv.php_ranking,
+            PixivBase.php_ranking,
             params={"format": "json", "p": p, "content": content, "mode": mode, "date": date}
         )
 
-        # status code
-        if res.status_code != 200:
-            self.logger.warning("pixiv:Status code {} in get_ranking.".format(res.status_code))
-            return {}
+        return self._check_response2(res)
 
-        # json format return
-        try:
-            json_ = res.json()
-        except ValueError:
-            self.logger.warning("pixiv:Json ValueError in get_ranking return.")
-            return {}
-
-        return {} if "error" in json_ else json_
-
-    def get_rpc_recommender(self, sample_illusts: int, num_recommendations=500, type_="illust") -> list:
-        """Deprecated, used to get recommended illust ids
-
-        Args:
-            sample_illusts: illust id
-            num_recommendations: recommend illusts number
-            type_: no need to care
-        """
-        json_ = self.get(
-            Pixiv.php_rpc_recommender,
-            params={
-                "sample_illusts": sample_illusts,
-                "num_recommendations": num_recommendations,
-                "type": type_
-            }
-        ).json()
-        return [] if "error" in json_ else json_["recommendations"]
-
-    def get_logout(self) -> bool:
+    def _get_logout(self) -> bool:
         """Logout"""
-        response = self.get(Pixiv.php_logout, params={"return_to": "/"})
+        res = self.get(PixivBase.php_logout, params={"return_to": "/"})
         return True
 
     # POST method
 
-    def post_login(self, usrn, pwd, source="pc") -> bool:
+    def _post_login(self, usrn, pwd, source="pc") -> bool:
         # TODO: captcha arguments
         raise NotImplementedError
 
-    def post_illusts_bookmarks_add(self, illust_id, restrict: int = 0, comment: str = "", tags: list = None) -> bool:
+    def _post_illusts_bookmarks_add(self, illust_id, restrict: int = 0, comment: str = "", tags: list = None) -> bool:
         """Add or modify bookmark of an illust
 
         Args:
@@ -278,8 +310,8 @@ class Pixiv(XSession):
             tags: a list contains string tags, can be empty list
         """
 
-        json_ = self.post(
-            Pixiv.ajax_illusts_bookmarks_add,
+        res = self.post(
+            PixivBase.ajax_illusts_bookmarks_add,
             json={
                 "illust_id": illust_id,
                 "restrict": restrict,
@@ -289,8 +321,8 @@ class Pixiv(XSession):
             headers={
                 "x-csrf-token": self._get_csrf_token()  # 400
             }
-        ).json()
-        return False if "error" in json_ else True
+        )
+        return self._check_response2(res)
 
     def post_bookmark_add(self, user_id, restrict=0, tag="", mode="add", type_="user") -> bool:
         """Add or modify bookmark of a user
@@ -302,8 +334,8 @@ class Pixiv(XSession):
             mode: No need to care
             type_: No need to care
         """
-        response = self.post(
-            Pixiv.php_bookmark_add,
+        res = self.post(
+            PixivBase.php_bookmark_add,
             data={
                 "user_id": user_id,
                 "restrict": restrict,
@@ -316,4 +348,4 @@ class Pixiv(XSession):
                 "x-csrf-token": self._get_csrf_token()  # 404
             }
         )
-        return False if response.status_code != 200 else True
+        return False if res.status_code != 200 else True

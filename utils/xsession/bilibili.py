@@ -50,9 +50,15 @@ class BilibiliBase(XSession):
             data (json): empty dict or data dict, if empty, will log error info    
         """
 
+        if res.status_code is None:
+            return {}
+
         if res.status_code != 200:
             return {}
-        elif res.json()["code"] != 0:
+
+        # status code of responses correctly returned must be 200
+        # but "code" field in json data may not be 0
+        if res.json()["code"] != 0:
             self.logger.error("{}:{}:{}".format(res.url, res.json()["code"], res.json()["message"]))
             return {}
         return res.json()["data"]

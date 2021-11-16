@@ -1,7 +1,7 @@
 from .base import XSession, empty_retry
 
 
-class KuwoMusic(XSession):
+class KuwoMusicBase(XSession):
     url_host = "http://www.kuwo.cn/"
 
     song_url = "http://www.kuwo.cn/url"
