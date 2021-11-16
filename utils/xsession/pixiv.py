@@ -432,6 +432,6 @@ class Pixiv(PixivBase):
 
         ranking_info = self._get_ranking(p, content, "monthly", date)
         if not ranking_info:
-            self.logger.error("Failed to get monthly ranking info {}:{}:{}:{}.".format(p, content, date))
+            self.logger.error("Failed to get monthly ranking info {}:{}:{}.".format(p, content, date))
             return {}
         return ranking_info
