@@ -8,6 +8,7 @@ from os import PathLike
 from pathlib import Path
 
 from bs4 import BeautifulSoup
+import requests
 
 from .base import XSession, empty_retry
 from datetime import datetime, timezone
@@ -23,6 +24,7 @@ class AliyunDriveBase(XSession):
 
     token_refresh = "https://api.aliyundrive.com/token/refresh"
 
+    v2_file_get = "https://api.aliyundrive.com/v2/file/get"
     adrive_v2_file_createwithfolders = "https://api.aliyundrive.com/adrive/v2/file/createWithFolders"
     v2_file_complete = "https://api.aliyundrive.com/v2/file/complete"
     adrive_v3_file_search = "https://api.aliyundrive.com/adrive/v3/file/search"
@@ -32,6 +34,27 @@ class AliyunDriveBase(XSession):
     v2_recyclebin_trash = "https://api.aliyundrive.com/v2/recyclebin/trash"
 
     v2_databox_get_personal_info = "https://api.aliyundrive.com/v2/databox/get_personal_info"
+
+    def _check_response(self, res: requests.Response) -> dict:
+        """Check a json response."""
+
+        # check empty response
+        if res.status_code is None:
+            return {}
+
+        # check valid json data
+        try:
+            json_ = res.json()
+        except ValueError:
+            self.logger.error("{}:JsonValueError.".format(res.url))
+            return {}
+
+        # check error message
+        if not res.ok:
+            self.logger.error("{}:{}:{}".format(res.url, res.status_code, json_["message"]))
+            return {}
+
+        return json_
 
     def _get_logout(self) -> bool:
         res = self.get(
@@ -60,9 +83,7 @@ class AliyunDriveBase(XSession):
             json={"refresh_token": refresh_token}
         )
 
-        if res.status_code != 200:
-            return {}
-        return res.json()
+        return self._check_response(res)
 
     ###################################
     ### User operations begin here. ###
@@ -71,20 +92,26 @@ class AliyunDriveBase(XSession):
     def _post_get_personal_info(self) -> dict:
         res = self.post(AliyunDriveBase.v2_databox_get_personal_info)
 
-        if res.status_code != 200:
-            return {}
-        return res.json()
+        return self._check_response(res)
 
     def _post_user_get(self) -> dict:
         res = self.post(AliyunDriveBase.v2_user_get)
 
-        if res.status_code != 200:
-            return {}
-        return res.json()
+        return self._check_response(res)
 
     ###################################
     ### File operations begin here. ###
     ###################################
+
+    def _post_file_get(self, drive_id: str, file_id: str) -> dict:
+        res = self.post(
+            AliyunDriveBase.v2_file_get,
+            json={
+                "drive_id": drive_id,
+                "file_id": file_id
+            }
+        )
+        return self._check_response(res)
 
     def _post_file_create_with_folders(
         self,
@@ -98,7 +125,7 @@ class AliyunDriveBase(XSession):
         Args:
             drive_id (str): Id of drive to be operated.
             name (str): The path should be created, can be multi-level, (e.g. a/b/c/d/xxx.txt).
-            parent_file_id (str): The parent node of node to be operated. Can be "root" of a string of node id.
+            parent_file_id (str): The parent node of node to be operated. Can be "root" or a string of node id.
             type_ (str): ["folder" | "file" ], decided by your leaf node of "name" param.
             check_name_mode (str): ["auto_rename" | "refuse" | "overwrite"]. "overwrite" only can be used in "file" type.
 
@@ -141,10 +168,7 @@ class AliyunDriveBase(XSession):
             json=json_data
         )
 
-        if res.status_code != 201:
-            return {}
-
-        return res.json()
+        return self._check_response(res)
 
     def _post_file_complete(self, drive_id: str, file_id: str, upload_id: str) -> dict:
         """Used to complete file upload.
@@ -167,63 +191,43 @@ class AliyunDriveBase(XSession):
             }
         )
 
-        if res.status_code != 200:
-            return {}
-
-        return res.json()
+        return self._check_response(res)
 
     def _post_file_search(
         self,
         drive_id: str,
-        name: str = "",
+        query: str,
         limit: int = 100, order_by: str = "name ASC",
-        exact_match: bool = True,
-        parent_file_id: str = "", category: str = "",
         *,
         image_thumbnail_process: str = "image/resize,w_400/format,jpeg",
         image_url_process: str = "image/resize,w_1920/format,jpeg",
         video_thumbnail_process: str = "video/snapshot,t_0,f_jpg,ar_auto,w_300"
-    ):
+    ) -> dict:
         """Search files in drive.
 
         Args:
             drive_id (str): Id of drive to search.
-            name (str): Name to search.
+            query (str): Query statement.
             limit (int): Limit number of results.
             order_by (str): ["name ASC" | "updated_at ASC" | "created_at ASC" | "size ASC" | 
-                "name DESC" | "updated_at DESC" | "created_at DESC" | "size DESC"].
-            exact_match (bool): Whether exactly match name.
-
-            parent_file_id (str): If provided, search name in specified parent folder. Can be "root" or id string.
-            category (str): ["image" | "video" | "folder" | "doc" | "audio"].
-
+                "name DESC" | "updated_at DESC" | "created_at DESC" | "size DESC"]
         Returns:
             See responses/aliyundrive/adrive_v3_file_list.json
         """
-        query = "(name {} \"{}\")".format("=" if exact_match else "match", name)
-
-        if parent_file_id:
-            query += " and (parent_file_id = \"{}\"".format(parent_file_id)
-
-        if category:
-            query += " and (category = \"{}\"".format(category)
-
         res = self.post(
             AliyunDriveBase.adrive_v3_file_search,
             json={
                 "drive_id": drive_id,
+                "query": query,
                 "limit": limit,
                 "order_by": order_by,
-                "query": query,
                 "image_thumbnail_process": image_thumbnail_process,
                 "image_url_process": image_url_process,
                 "video_thumbnail_process": video_thumbnail_process
             }
         )
 
-        if res.status_code != 200:
-            return {}
-        return res.json()
+        return self._check_response(res)
 
     def _post_file_list(
         self,
@@ -240,7 +244,7 @@ class AliyunDriveBase(XSession):
 
         Args:
             drive_id: ID.
-            parent_file_id (str): The parent folder of folder to be operated. Can be "root" of a string of file id.
+            parent_file_id (str): The parent folder of folder to be operated. Can be "root" or a string of file id.
             limit (int): Limit number of results.
             order_by (str): ["name", "updated_at", "created_at", "size"]
             order_direction (str): ["ASC" | "DESC"]
@@ -263,9 +267,7 @@ class AliyunDriveBase(XSession):
             }
         )
 
-        if res.status_code != 200:
-            return {}
-        return res.json()
+        return self._check_response(res)
 
 
 class AliyunDrive(AliyunDriveBase):
@@ -355,11 +357,11 @@ class AliyunDrive(AliyunDriveBase):
                 return False
 
             # set new token info
-            self.token_type = refresh_info.get("token_type")
-            self.access_token = refresh_info.get("access_token")
-            self.refresh_token = refresh_info.get("refresh_token")
+            self.token_type = refresh_info["token_type"]
+            self.access_token = refresh_info["access_token"]
+            self.refresh_token = refresh_info["refresh_token"]
 
-            self.expire_time = isoparse(refresh_info.get("expire_time"))  # include timezone, utc time
+            self.expire_time = isoparse(refresh_info["expire_time"])  # include timezone, utc time
 
             self.headers["Authorization"] = self.token_type + " " + self.access_token
 
@@ -382,18 +384,18 @@ class AliyunDrive(AliyunDriveBase):
                 return False
 
             login_info = b64decode(bizExt).decode("gbk")
-            login_result = json.loads(login_info).get("pds_login_result")
+            login_result = json.loads(login_info)["pds_login_result"]
             if not login_result:
                 return False
 
-            self.user_id = login_result.get("userId")
-            self.drive_id = login_result.get("defaultDriveId")
+            self.user_id = login_result["userId"]
+            self.drive_id = login_result["defaultDriveId"]
 
-            self.token_type = login_result.get("tokenType")
-            self.access_token = login_result.get("accessToken")
-            self.refresh_token = login_result.get("refreshToken")
+            self.token_type = login_result["tokenType"]
+            self.access_token = login_result["accessToken"]
+            self.refresh_token = login_result["refreshToken"]
 
-            self.expire_time = isoparse(login_result.get("expireTime"))  # include timezone, utc time
+            self.expire_time = isoparse(login_result["expireTime"])  # include timezone, utc time
 
             self.headers["Authorization"] = self.token_type + " " + self.access_token
 
@@ -407,11 +409,16 @@ class AliyunDrive(AliyunDriveBase):
 
         return ret
 
-    def create_folder(self, folder_full_path: PathLike, check_name_mode: str = "refuse") -> dict:
+    def create_folder(
+        self,
+        folder_path: PathLike,
+        parent_file_id: str = "root", check_name_mode: str = "refuse"
+    ) -> dict:
         """Create folder of specified path in drive.
 
         Args:
-            folder_full_path (PathLike): The full path of folder to be created, start at root node of drive.
+            folder_path (PathLike): The full path of folder to be created, can be multi-level.
+            parent_file_id (str): The parent node of node to be operated. Can be "root" or a string of node id.
             check_name_mode (str): Can be "auto_rename" or "refuse".
 
         Returns:
@@ -419,36 +426,40 @@ class AliyunDrive(AliyunDriveBase):
             else see responses/aliyundrive/adrive_v2_file_createWithFolders.json
         """
 
-        folder_full_path = Path(folder_full_path)
+        folder_path = Path(folder_path)
 
         if check_name_mode == "auto_rename":
-            self.logger.warning("Check name mode is auto_rename for create folder {}.".format(folder_full_path.as_posix()))
+            self.logger.warning("Check name mode is auto_rename for create folder {}.".format(folder_path.as_posix()))
 
         if not self._check_refresh():
             return {}
         create_info = self._post_file_create_with_folders(
             self.drive_id,
-            folder_full_path.as_posix(),
-            type_="folder",
-            check_name_mode=check_name_mode
+            folder_path.as_posix(),
+            parent_file_id, "folder", check_name_mode
         )
 
         if not create_info:
-            self.logger.error("Failed to create folder {}.".format(folder_full_path.as_posix()))
+            self.logger.error("Failed to create folder {}.".format(folder_path.as_posix()))
             return {}
 
         if check_name_mode == "refuse" and create_info.get("exist") is True:
-            self.logger.warning("Folder {} already exist.".format(folder_full_path.as_posix()))
+            self.logger.warning("Folder {} already exist.".format(folder_path.as_posix()))
 
-        self.logger.info("Successfully create folder {}.".format(folder_full_path.as_posix()))
+        self.logger.info("Successfully create folder {}.".format(folder_path.as_posix()))
         return create_info
 
-    def upload_file(self, file_upload_path: PathLike, file_local_path: PathLike, check_name_mode: str = "refuse", try_rapid_upload: bool = True) -> dict:
+    def upload_file(
+        self,
+        file_upload_path: PathLike, file_local_path: PathLike,
+        parent_file_id: str = "root", check_name_mode: str = "refuse", try_rapid_upload: bool = True
+    ) -> dict:
         """Upload a file to specified path.
 
         Args:
             file_upload_path (PathLike): The full path of file to upload, include full filename and suffix.
             file_local_path (PathLike): The local path of file to upload.
+            parent_file_id (str): The parent node of node to be operated. Can be "root" or a string of node id.
             check_name_mode (str): ["auto_rename" | "refuse" | "overwrite"].
             try_rapid_upload (bool): If try rapid upload, will take time to calc sha1 and proof code.
 
@@ -494,7 +505,7 @@ class AliyunDrive(AliyunDriveBase):
         create_info = self._post_file_create_with_folders(
             self.drive_id,
             Path(file_upload_path).as_posix(),
-            type_="file", check_name_mode=check_name_mode,
+            parent_file_id, "file", check_name_mode,
             part_info_list=part_info_list,
             size=file_size,
             content_hash_name="sha1", content_hash=content_hash,
@@ -521,8 +532,8 @@ class AliyunDrive(AliyunDriveBase):
 
         # upload file chunks
         with filepath.open("rb") as f:
-            for part_info in create_info.get("part_info_list"):
-                upload_url = part_info.get("upload_url")
+            for part_info in create_info["part_info_list"]:
+                upload_url = part_info["upload_url"]
                 chunk = f.read(CHUNK_SIZE)
 
                 # try 3 times
@@ -533,15 +544,15 @@ class AliyunDrive(AliyunDriveBase):
                         flag = True
                         break
                 if not flag:
-                    self.logger.error("File {} Part {} upload failed.".format(filepath.as_posix(), part_info.get("part_number")))
+                    self.logger.error("File {} Part {} upload failed.".format(filepath.as_posix(), part_info["part_number"]))
                     return {}
 
         if not self._check_refresh():
             return {}
         complete_info = self._post_file_complete(
             self.drive_id,
-            create_info.get("file_id"),
-            create_info.get("upload_id")
+            create_info["file_id"],
+            create_info["upload_id"]
         )
         if not complete_info:
             self.logger.error("Failed to complete upload file {}.".format(filepath.as_posix()))
@@ -566,17 +577,27 @@ class AliyunDrive(AliyunDriveBase):
             exact_match (bool): Whether exactly match name.
 
             category (str): Search file type, ["image" | "video" | "folder" | "doc" | "audio"].
-            parent_file_id (str): The parent file id. Can be "root" of a string of file id.
+            parent_file_id (str): The parent file id. Can be "root" or a string of file id. If empty string, search in total drive.
 
         Returns:
             Return empty when failed, else see response folder.
         """
 
+        query = "(name {} \"{}\")".format("=" if exact_match else "match", name)
+
+        if parent_file_id:
+            query += " and (parent_file_id = \"{}\"".format(parent_file_id)
+
+        if category:
+            query += " and (category = \"{}\"".format(category)
+
         if not self._check_refresh():
             return {}
         search_info = self._post_file_search(
-            self.drive_id, name, limit, order_by+" "+order_direction,
-            exact_match, parent_file_id, category
+            self.drive_id,
+            query,
+            limit,
+            order_by+" "+order_direction,
         )
 
         if not search_info:
@@ -591,7 +612,7 @@ class AliyunDrive(AliyunDriveBase):
         """List files in a folder.
 
         Args:
-            parent_file_id (str): The parent file id. Can be "root" of a string of file id.
+            parent_file_id (str): The parent file id. Can be "root" or a string of file id.
             order_by (str): ["name", "updated_at", "created_at", "size"]
             order_direction (str): ["ASC" | "DESC"]
             limit (int): Limit number of results.
@@ -611,3 +632,9 @@ class AliyunDrive(AliyunDriveBase):
             self.logger.error("Failed to list folder {}.".format(parent_file_id))
             return {}
         return list_info
+
+    def delete_file(self, file_id: str):
+        """Move file or folder to trash."""
+
+    def download_file(self, file_id: str, file_save_path: PathLike):
+        "Download a file to local storage."

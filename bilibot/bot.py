@@ -17,29 +17,25 @@ class Bot:
     }
 
     def __init__(self) -> None:
-        self.s = xsession.Bilibili()
-        self.s.headers.update(self.headers)
+        self.s_bili = xsession.Bilibili()
+        self.s_bili.headers.update(self.headers)
         self.logger = logging.getLogger(__name__)
 
-    def _get_safe_pixiv_illust_ids(self, num: int, history: List[int], blacklist: List[int], blacktags: List[str], choosetags: List[str], *,
-                                   mode: str = "monthly", sl: int = 5) -> List[dict]:
+    def _get_safe_pixiv_illust_ids(
+        self, num: int,
+        history: List[int], blacklist: List[int], blacktags: List[str], choosetags: List[str], *,
+        sl: int = 5
+    ) -> List[dict]:
         """Download proper pixiv illusts to dir "tmp/"
 
-        Args
+        Args:
+            num: how many illust ids should return.
+            history: A list of dynamic illust history, to avoid upload same illusts.
+            blacklist: A list of user ids, to avoid copyright problem.
+            blacktags: A list of banned tags.
+            choosetags: A list of chosen tags.
 
-        num:
-            how many illust ids should return
-        history: 
-            A list of dynamic illust history, to avoid upload same illusts
-        blacklist: 
-            A list of user ids, to avoid copyright problem
-        blacktags:
-            A list of banned tags
-        choosetags:
-            A list of chosen tags
-
-        mode (str): The same as `mode` in `Pixiv.get_ranking`
-        sl (int): Sex level ? the higher, the sexier
+            sl (int): Sex level ? the higher, the sexier
 
         Returns:
             A list of illust info, 
@@ -84,9 +80,9 @@ class Bot:
         cur_date = None
         while len(success_illust_info) < num:
             dynamic_illust_info = []  # current epoch illust info
-            # get top 100
-            rankings1 = s_pixiv.get_ranking(date=cur_date, content="illust", mode=mode, p=1)
-            rankings2 = s_pixiv.get_ranking(date=cur_date, content="illust", mode=mode, p=2)
+            # get top 100 monthly illust
+            rankings1 = s_pixiv.get_ranking_monthly(p=1, date=cur_date)
+            rankings2 = s_pixiv.get_ranking_monthly(p=2, date=cur_date)
             if rankings1:
                 rankings = rankings1
                 rankings["contents"].extend(rankings2.get("contents", []))
@@ -136,11 +132,11 @@ class Bot:
                 # download image if not exist
                 if not path.is_file():
                     # get image data
-                    # limit picture size under 20 MB
-                    image_data = s_pixiv.get_page(url)
-                    if not image_data or len(image_data) > 19*1024*1024:
+                    if not s_pixiv.download_page(url, path):
                         continue
-                    path.write_bytes(image_data)
+                    # limit picture size under 20 MB
+                    if path.stat().st_size > 19*1024*1024:
+                        continue
                 illust_info["local_path"] = path
                 success_illust_info.append(illust_info)
 
@@ -161,6 +157,9 @@ class Bot:
         s_kuwo.headers.update(self.headers)
         id_ = random.choice(playlist)
 
+        # BUG
+        raise NotImplementedError
+
         song_info = s_kuwo.get_music_info(id_)
         song_data = s_kuwo.get_song_data(id_)
         if not song_info or not song_data:
@@ -178,30 +177,20 @@ class Bot:
         return result
 
     def login(self, usrn: str = "", pwd: str = "", *, cookies: dict = None) -> bool:
-        if cookies:
-            self.s.cookies.update(cookies)
-            return True
-        self.logger.error("Bilibot:Failed to login.")
-        return False
-        # TODO: login
-        raise NotImplementedError
+        return self.s_bili.login(usrn, pwd, cookies=cookies)
 
     def logout(self) -> bool:
-        if self.s.post_logout():
-            return True
-        self.logger.warning("Bilibot:Failed to logout.")
-        return False
+        return self.s_bili.logout()
 
-    def delete_dynamic(self, dynamic_id: int) -> bool:
-        ret = self.s.post_rm_dynamic(dynamic_id)
-        if not ret:
-            self.logger.error("Bilibot:Failed to delete dynamic.")
+    def delete_dynamic(self, dynamic_id: str) -> bool:
+        delete_info = self.s_bili.delete_dynamic(dynamic_id)
+        if not delete_info:
             return False
         return True
 
     def is_dynamic_exist(self, dynamic_id: int) -> bool:
         """Check if a dynamic exist"""
-        ret = self.s.get_dynamic_detail(dynamic_id)
+        ret = self.s_bili.get_dynamic_detail(dynamic_id)
         if ret and ret.get("result") == 0:
             return True
         return False
@@ -212,29 +201,24 @@ class Bot:
         Returns:
             bool: True if dynamic exist and being auditing, otherwise False
         """
-        ret = self.s.get_dynamic_detail(dynamic_id)
+        ret = self.s_bili.get_dynamic_detail(dynamic_id)
         if ret and ret.get("result") == 0 and ret["card"].get("extra", {}).get("is_auditing") == 1:
             return True
         return False
 
     def create_pixiv_ranking_dynamic(self, history: List[int], blacklist: List[int], blacktags: List[str], count: int) -> dict:
         """
-        Args
+        Args:
+            history: A list of dynamic illust history, to avoid upload same illusts.
+            blacklist: A list of user ids, to avoid copyright problem.
+            blacktags: A list of banned illust tags.
+            count: the count for this dynamic.
 
-        history: 
-            A list of dynamic illust history, to avoid upload same illusts
-        blacklist: 
-            A list of user ids, to avoid copyright problem
-        blacktags:
-            A list of banned illust tags
-        count:
-            the count for this dynamic
-
-        Returns
-        {
-            "dynamic_id": 123, 
-            "illust_ids": [123, 456]
-        }
+        Returns:
+            {
+                "dynamic_id": 123, 
+                "illust_ids": [123, 456]
+            }
         """
         success_illust_info = self._get_safe_pixiv_illust_ids(9, history, blacklist, blacktags, [])
         local_illust_paths = [e["local_path"] for e in success_illust_info]
@@ -247,9 +231,9 @@ class Bot:
         for info in success_illust_info:
             contents += "{id}：{username}\n".format_map(info)
 
-        dynamic_info = self.s.post_create_draw(contents, local_illust_paths)
+        dynamic_info = self.s_bili.create_dynamic(contents, local_illust_paths)
         if not dynamic_info:
-            self.logger.error("Bilibot:Failed to create draw:{}".format(dynamic_info.get("msg")))
+            self.logger.error("Failed to create ranking dynamic.")
             return {}
 
         dynamic_id = dynamic_info["dynamic_id"]
@@ -258,7 +242,7 @@ class Bot:
             "dynamic_id": dynamic_id,
             "illust_ids": success_illust_ids
         }
-        self.logger.info("Bilibot:create_pixiv_ranking_dynamic Success!")
+        self.logger.info("Create ranking dynamic Success!")
         return ret
 
     def create_pixiv_ranking_video(self, history: List[int], blacklist: List[int], blacktags: List[str], bgmlist: List[int], count: int) -> dict:
@@ -274,6 +258,9 @@ class Bot:
         count:
             the count for this video
         """
+
+        raise NotImplementedError
+
         # get illusts
         success_illust_info = self._get_safe_pixiv_illust_ids(30, history, blacklist, blacktags, ["女の子"], mode="weekly")
         local_illust_paths = [e["local_path"] for e in success_illust_info]
