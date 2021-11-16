@@ -40,7 +40,7 @@ if __name__ == "__main__":
 
     # logging config
     root_logger = logging.getLogger()
-    fmter = logging.Formatter("{asctime} - {levelname} - {msg}", "%Y-%m-%d %H:%M:%S", "{")
+    fmter = logging.Formatter("{asctime} - {levelname} - {filename} - {lineno} - {message}", "%Y-%m-%d %H:%M:%S", "{")
     fmter.converter = time.gmtime
     if not args.test:
         root_logger.setLevel(logging.INFO)
