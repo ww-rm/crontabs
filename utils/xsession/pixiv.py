@@ -59,7 +59,10 @@ class PixivBase(XSession):
             return {}
 
         if json_["error"] is True:
-            self.logger.error("{}:{}".format(res.url, json_["message"]))
+            self.logger.error("{}:{}".format(
+                res.url,
+                json_.get("message", "") or json_.get("msg", "No msg.")
+            ))
             return {}
         return json_["body"]
 
@@ -369,6 +372,10 @@ class Pixiv(PixivBase):
             for chunk in data:
                 f.write(chunk)
         return True
+
+    def download_illust(self, illust_id: str, illust_save_folder: Path) -> bool:
+        """"""
+        raise NotImplementedError
 
     def get_illust(self, illust_id: str) -> dict:
         """"""

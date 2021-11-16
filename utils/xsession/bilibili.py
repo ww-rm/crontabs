@@ -67,7 +67,13 @@ class BilibiliBase(XSession):
 
         # check error mesage
         if json_["code"] != 0:
-            self.logger.error("{}:{}:{}".format(res.url, json_["code"], json_["message"]))
+            self.logger.error(
+                "{}:{}:{}".format(
+                    res.url,
+                    json_["code"],
+                    json_.get("message", "") or json_.get("msg", "No msg.")
+                )
+            )
             return {}
         return json_["data"]
 

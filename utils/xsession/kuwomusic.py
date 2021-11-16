@@ -254,7 +254,7 @@ class KuwoMusic(KuwoMusicBase):
         Note:
             If can't find resource, will auto reduce bit rate and log warning info.
         """
-
+        raise NotImplementedError
         br_list = ["320kmp3", "192kmp3", "128kmp3"]
         try:
             br_index = br_list.index(bit_rate)
@@ -285,3 +285,10 @@ class KuwoMusic(KuwoMusicBase):
                 f.write(chunk)
 
         return True
+
+    def get_music_info(self, song_id: str) -> dict:
+        music_info = self._get_music_info(song_id)
+        if not music_info:
+            self.logger.error("Failed to get music info {}.".format(song_id))
+            return {}
+        return music_info
