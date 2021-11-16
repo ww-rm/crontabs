@@ -129,14 +129,17 @@ class Bot:
             for illust_info in dynamic_illust_info:
                 url: str = illust_info["url"]
                 path = Path("tmp", url.split("/")[-1])
+
                 # download image if not exist
                 if not path.is_file():
                     # get image data
                     if not s_pixiv.download_page(url, path):
                         continue
-                    # limit picture size under 20 MB
-                    if path.stat().st_size > 19*1024*1024:
-                        continue
+
+                # limit picture size under 20 MB
+                if path.stat().st_size > 19*1024*1024:
+                    continue
+
                 illust_info["local_path"] = path
                 success_illust_info.append(illust_info)
 
