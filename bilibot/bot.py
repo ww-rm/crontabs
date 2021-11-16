@@ -208,22 +208,17 @@ class Bot:
 
     def create_pixiv_ranking_dynamic(self, history: List[int], blacklist: List[int], blacktags: List[str], count: int) -> dict:
         """
-        Args
+        Args:
+            history: A list of dynamic illust history, to avoid upload same illusts.
+            blacklist: A list of user ids, to avoid copyright problem.
+            blacktags: A list of banned illust tags.
+            count: the count for this dynamic.
 
-        history: 
-            A list of dynamic illust history, to avoid upload same illusts
-        blacklist: 
-            A list of user ids, to avoid copyright problem
-        blacktags:
-            A list of banned illust tags
-        count:
-            the count for this dynamic
-
-        Returns
-        {
-            "dynamic_id": 123, 
-            "illust_ids": [123, 456]
-        }
+        Returns:
+            {
+                "dynamic_id": 123, 
+                "illust_ids": [123, 456]
+            }
         """
         success_illust_info = self._get_safe_pixiv_illust_ids(9, history, blacklist, blacktags, [])
         local_illust_paths = [e["local_path"] for e in success_illust_info]
@@ -263,6 +258,9 @@ class Bot:
         count:
             the count for this video
         """
+
+        raise NotImplementedError
+
         # get illusts
         success_illust_info = self._get_safe_pixiv_illust_ids(30, history, blacklist, blacktags, ["女の子"], mode="weekly")
         local_illust_paths = [e["local_path"] for e in success_illust_info]

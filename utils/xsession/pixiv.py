@@ -378,7 +378,8 @@ class Pixiv(PixivBase):
         raise NotImplementedError
 
     def get_illust(self, illust_id: str) -> dict:
-        """"""
+        """Get illust info."""
+
         illust_info = self._get_illust(illust_id)
 
         if not illust_info:
