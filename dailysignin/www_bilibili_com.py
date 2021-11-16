@@ -103,13 +103,13 @@ class Signer(BaseSigner):
 
     def _signin(self) -> bool:
         # get last coin count
-        nav_info = self.s.get_web_nav()
+        nav_info = self.s.get_nav_info()
         if not nav_info:
             return False
         last_money_count = nav_info["money"]
 
         # get latest coin count
-        nav_info = self.s.get_web_nav()
+        nav_info = self.s.get_nav_info()
         if not nav_info:
             return False
         latest_coin_count = nav_info["money"]
@@ -123,7 +123,7 @@ class Signer(BaseSigner):
         if not self.usrn or not self.pwd:
             return True
 
-        ret = self.s.post_logout()
+        ret = self.s.logout()
         # print(res.text)
         # print(res.cookies)
         if not ret:

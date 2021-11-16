@@ -454,3 +454,12 @@ class Bilibili(BilibiliBase):
             self.logger.error("Failed to get detail of dynamic {}.".format(dynamic_id))
             return {}
         return detail_info
+
+    def get_nav_info(self) -> dict:
+        """Get some account info."""
+
+        nav_info = self._get_web_nav()
+        if not nav_info:
+            self.logger.error("Failed to get web nav info.")
+            return {}
+        return nav_info
