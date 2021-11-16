@@ -182,6 +182,12 @@ class Bot:
     def logout(self) -> bool:
         return self.s_bili.logout()
 
+    def delete_dynamic(self, dynamic_id: str) -> bool:
+        delete_info = self.s_bili.delete_dynamic(dynamic_id)
+        if not delete_info:
+            return False
+        return True
+
     def is_dynamic_exist(self, dynamic_id: int) -> bool:
         """Check if a dynamic exist"""
         ret = self.s_bili.get_dynamic_detail(dynamic_id)
