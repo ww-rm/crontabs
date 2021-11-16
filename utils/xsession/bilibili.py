@@ -430,6 +430,10 @@ class Bilibili(BilibiliBase):
                         "img_size": pic_path.stat().st_size / 1024
                     })
 
+            if len(res_pics) < len(pictures):
+                self.logger.error("Failed to upload all pictures.")
+                return {}
+
             create_info = self._post_create_draw(content, res_pics)
             if not create_info:
                 self.logger.error("Failed to create dynamic.")
