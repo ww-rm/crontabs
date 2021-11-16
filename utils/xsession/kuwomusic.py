@@ -1,3 +1,7 @@
+from os import PathLike
+from pathlib import Path
+from typing import Iterator
+import requests
 from .base import XSession, empty_retry
 
 
@@ -23,80 +27,89 @@ class KuwoMusicBase(XSession):
 
     def __init__(self, interval: float = 0.01) -> None:
         super().__init__(interval=interval)
-        self.get(KuwoMusic.url_host)  # get csrf token for the first time
+        self.get(KuwoMusicBase.url_host)  # get csrf token for the first time
 
     def _get_csrf(self):
         if "kw_token" not in self.cookies:
-            self.get(KuwoMusic.url_host)
+            self.get(KuwoMusicBase.url_host)
         return self.cookies.get("kw_token", "")
 
-    @empty_retry()
-    def get_song_data(self, song_id, br: str = "320kmp3",
-                      format_="mp3", response="url", type_="convert_url3", from_="web", httpsstatus=1) -> bytes:
+    def _check_response(self, res: requests.Response) -> dict:
+        """Check the status code and error code of a json response, and return main data.
+
+        Args:
+            res (Response): response to check
+
+        Returns:
+            data (json): empty dict or data dict, if empty, will log error info    
         """
-        Get the static resource data for a song
 
-        Args
+        if res.status_code is None:
+            return {}
 
-        song_id: 
-            id of song
-        br: 
-            bit rate, can be "128kmp3", "192kmp3", "320kmp3"
+        # status code of responses correctly returned must be 200
+        # but "code" field in json data may not be 0
+        if res.status_code != 200:
+            return {}
 
-        Note
-
-        If can't find resource, will auto reduce bit rate and log warning info
-        """
-        bit_rate = ["320kmp3", "192kmp3", "128kmp3"]
+        # check valid json data
         try:
-            br_index = bit_rate.index(br)
+            json_ = res.json()
         except ValueError:
-            self.logger.warning("Incorrect 'br' value, default to use '320kmps'")
-            br_index = 0
+            self.logger.error("{}:JsonValueError.".format(res.url))
+            return {}
 
-        for i in range(br_index, 3):
-            res = self.get(
-                KuwoMusic.song_url,
-                params={
-                    "rid": song_id,
-                    "br": bit_rate[i],
-                    "format": format_,
-                    "response": response,
-                    "type": type_,
-                    "from": from_,
-                    "httpsStatus": httpsstatus,
-                    # "t": 1624631124032,
-                    # "reqId": "xxxx"
-                }
-            )
-            # print(res.text)
-            if res.status_code != 200:
-                return b""
-            try:
-                if res.json()["code"] != 200:
-                    return b""
-                song_url = res.json()["url"]
-            except ValueError:
-                song_url = ""
-                if i < 2:
-                    self.logger.warning("KuwoMusic:Failed to get song:{} in bit rate:{}, try to get lower bit rate:{}".format(song_id, bit_rate[i], bit_rate[i+1]))
-                else:
-                    self.logger.error("KuwoMusic:Failed to get song data:{} in any bit rate.".format(song_id))
-            else:
-                break
+        # check error mesage
+        if json_["code"] != 200:
+            self.logger.error("{}:{}:{}".format(res.url, json_["code"], json_.get("message", "No msg.")))
+            return {}
+        return json_["data"]
 
-        # get song data
-        if not song_url:
-            return b""
+    # BUG: song_url is deprecated.
+    def _get_song_url(
+        self,
+        song_id: str,
+        br: str = "320kmp3",
+        format_="mp3", response="url",
+        type_="convert_url3", from_="web", httpsstatus=1
+    ) -> dict:
+        """
+        Get the url for a song.
 
-        res = self.get(song_url)
+        Args:
+            song_id: id of song
+            br: bit rate, can be "128kmp3", "192kmp3", "320kmp3"
+
+        """
+        res = self.get(
+            KuwoMusicBase.song_url,
+            params={
+                "rid": song_id,
+                "br": br,
+                "format": format_,
+                "response": response,
+                "type": type_,
+                "from": from_,
+                "httpsStatus": httpsstatus,
+                # "t": 1624631124032,
+                # "reqId": "xxxx"
+            }
+        )
+
+        return self._check_response(res)
+
+    @empty_retry()
+    def _get_song_data(self, song_url: str, chunk_size: int = 10485760) -> Iterator[bytes]:
+        """"""
+        res = self.get(song_url, stream=True)
+
         if res.status_code != 200:
             return b""
-        return res.content
+        return res.iter_content(chunk_size)
 
-    def get_music_info(self, song_id, httpsstatus=1) -> dict:
+    def _get_music_info(self, song_id: str, httpsstatus=1) -> dict:
         res = self.get(
-            KuwoMusic.api_www_music_musicinfo,
+            KuwoMusicBase.api_www_music_musicinfo,
             params={
                 "mid": song_id,
                 "httpsStatus": httpsstatus,
@@ -104,11 +117,9 @@ class KuwoMusicBase(XSession):
             },
             headers={"csrf": self._get_csrf()}
         )
-        if res.status_code != 200 or res.json()["code"] != 200:
-            return {}
-        return res.json()["data"]
+        return self._check_response(res)
 
-    def get_playlist_info(self, playlist_id, pn: int = 1, rn: int = 30, httpsstatus=1) -> dict:
+    def _get_playlist_info(self, playlist_id: str, pn: int = 1, rn: int = 30, httpsstatus=1) -> dict:
         """Get info of a playlist
 
         Args
@@ -125,7 +136,7 @@ class KuwoMusicBase(XSession):
         If no music found, the field `musicList` in data will be empty list
         """
         res = self.get(
-            KuwoMusic.api_www_playlist_playlistinfo,
+            KuwoMusicBase.api_www_playlist_playlistinfo,
             params={
                 "pid": playlist_id,
                 "pn": max(pn, 1), "rn": max(rn, 1),
@@ -134,44 +145,36 @@ class KuwoMusicBase(XSession):
             },
             headers={"csrf": self._get_csrf()}
         )
-        if res.status_code != 200 or res.json()["code"] != 200:
-            return {}
-        return res.json()["data"]
+        return self._check_response(res)
 
-    def get_album_info(self, album_id, pn: int = 1, rn: int = 30, httpsstatus=1) -> dict:
+    def _get_album_info(self, album_id: str, pn: int = 1, rn: int = 30, httpsstatus=1) -> dict:
         """Get music list of an album
 
-        Args
+        Args:
+            album_id: album_id
+            pn: page num
+            rn: return num in each page
 
-        album_id:
-            album_id
-        pn:
-            page num
-        rn:
-            return num in each page
-
-        Returns
-
-        If no music found, the field `musicList` in data will be empty list
+        Returns:
+            If no music found, the field `musicList` in data will be empty list
         """
         res = self.get(
-            KuwoMusic.api_www_album_albuminfo,
+            KuwoMusicBase.api_www_album_albuminfo,
             params={
                 "albumId": album_id,
-                "pn": max(pn, 1), "rn": max(rn, 1),
+                "pn": max(pn, 1),
+                "rn": max(rn, 1),
                 "httsStatus": httpsstatus,
                 # "reqId": ""
             },
             headers={"csrf": self._get_csrf()}
         )
-        if res.status_code != 200 or res.json()["code"] != 200:
-            return {}
-        return res.json()["data"]
+        return self._check_response(res)
 
-    def get_artist(self, artist_id, httpsstatus=1) -> dict:
-        """Get info of an artist"""
+    def _get_artist(self, artist_id: str, httpsstatus=1) -> dict:
+        """Get info of an artist."""
         res = self.get(
-            KuwoMusic.api_www_artist_artist,
+            KuwoMusicBase.api_www_artist_artist,
             params={
                 "artistid": artist_id,
                 "httpsStatus": httpsstatus,
@@ -179,58 +182,45 @@ class KuwoMusicBase(XSession):
             },
             headers={"csrf": self._get_csrf()}
         )
-        if res.status_code != 200 or res.json()["code"] != 200:
-            return {}
-        return res.json()["data"]
+        return self._check_response(res)
 
-    def get_artist_music(self, artist_id, pn: int = 1, rn: int = 30, httpsstatus=1) -> dict:
-        """Get music list of an artist
+    def _get_artist_music(self, artist_id: str, pn: int = 1, rn: int = 30, httpsstatus=1) -> dict:
+        """Get music list of an artist.
 
-        Args
+        Args:
+            artist_id: artist_id
+            pn: page num
+            rn: return num in each page
 
-        artist_id:
-            artist_id
-        pn:
-            page num
-        rn:
-            return num in each page
-
-        Returns
-
-        If no music found, the field `list` in data will be empty list
+        Returns:
+            If no music found, the field `list` in data will be empty list
         """
         res = self.get(
-            KuwoMusic.api_www_artist_artistmusic,
+            KuwoMusicBase.api_www_artist_artistmusic,
             params={
                 "artistid": artist_id,
-                "pn": max(pn, 1), "rn": max(rn, 1),
+                "pn": max(pn, 1),
+                "rn": max(rn, 1),
                 "httsStatus": httpsstatus,
                 # "reqId": ""
             },
             headers={"csrf": self._get_csrf()}
         )
-        if res.status_code != 200 or res.json()["code"] != 200:
-            return {}
-        return res.json()["data"]
+        return self._check_response(res)
 
-    def get_artist_album(self, artist_id, pn: int = 1, rn: int = 30, httpsstatus=1) -> dict:
+    def _get_artist_album(self, artist_id: str, pn: int = 1, rn: int = 30, httpsstatus=1) -> dict:
         """Get album list of an artist
 
-        Args
+        Args:
+            artist_id: artist_id
+            pn: page num
+            rn: return num in each page
 
-        artist_id:
-            artist_id
-        pn:
-            page num
-        rn:
-            return num in each page
-
-        Returns
-
-        If no music found, the field `albumList` in data will be empty list
+        Returns:
+            If no music found, the field `albumList` in data will be empty list.
         """
         res = self.get(
-            KuwoMusic.api_www_artist_artistalbum,
+            KuwoMusicBase.api_www_artist_artistalbum,
             params={
                 "artistid": artist_id,
                 "pn": max(pn, 1), "rn": max(rn, 1),
@@ -239,17 +229,59 @@ class KuwoMusicBase(XSession):
             },
             headers={"csrf": self._get_csrf()}
         )
-        if res.status_code != 200 or res.json()["code"] != 200:
-            return {}
-        return res.json()["data"]
+        return self._check_response(res)
 
-    def get_songinfo_and_lyric(self, song_id, httpsstatus=1) -> dict:
-        """Get song info and lyric(mainly)"""
+    def _get_songinfo_and_lyric(self, song_id: str, httpsstatus=1) -> dict:
+        """Get song info and lyric. (mainly used for lyric.)"""
 
         res = self.get(
-            KuwoMusic.singles_songinfo_and_lrc,
-            params={"musicId": song_id, "httpsStatus": httpsstatus}
+            KuwoMusicBase.singles_songinfo_and_lrc,
+            params={
+                "musicId": song_id,
+                "httpsStatus": httpsstatus
+            }
         )
-        if res.status_code != 200 or res.json()["status"] != 200:
-            return {}
-        return res.json()["data"]
+        return self._check_response(res)
+
+
+class KuwoMusic(KuwoMusicBase):
+    """"""
+
+    def download_song(self, song_id: str, save_path: PathLike, bit_rate: str = "320kmps") -> bool:
+        # XXX: add cover and lyric
+        # BUG: song url is deprected.
+        """
+        Note:
+            If can't find resource, will auto reduce bit rate and log warning info.
+        """
+
+        br_list = ["320kmp3", "192kmp3", "128kmp3"]
+        try:
+            br_index = br_list.index(bit_rate)
+        except ValueError:
+            self.logger.warning("Incorrect 'bit_rate' value {}, default to use '320kmps'.".format(bit_rate))
+            br_index = 0
+
+        for i in range(br_index, 3):
+            url_info = self._get_song_url(
+                song_id, br_list[br_index]
+            )
+            if not url_info:
+                self.logger.warning("KuwoMusic:Failed to get song url {} in bit rate:{}, try to get lower bit rate:{}".format(song_id, br_list[i], br_list[i+1]))
+            else:
+                break
+
+        if not url_info:
+            self.logger.error("KuwoMusic:Failed to get song url {}.".format(song_id))
+            return False
+
+        song_data = self._get_song_data(url_info["url"])
+        if not song_data:
+            self.logger.error("Failed to get song data {}.".format(song_id))
+            return False
+
+        with Path(save_path).open("wb") as f:
+            for chunk in song_data:
+                f.write(chunk)
+
+        return True
