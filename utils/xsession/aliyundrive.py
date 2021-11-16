@@ -496,6 +496,7 @@ class AliyunDrive(AliyunDriveBase):
                     if not chunk:
                         break
                     content_hash.update(chunk)
+            content_hash = content_hash.hexdigest().upper()
 
             # caculate proof code
             proof_code = self._get_proof_code(filepath, "v1")
