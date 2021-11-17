@@ -17,11 +17,20 @@ def empty_retry(times: int = 3, interval: float = 1):
     def decorator(func):
         @wraps(func)
         def decorated_func(*args, **kwargs):
-            for _ in range(times):
+            for i in range(times + 1):
+                # retry log
+                if i > 0:
+                    logging.getLogger(__name__).warning("Retry func {} {} time.".format(func.__name__, i + 1))
+
+                # call func
                 ret = func(*args, **kwargs)
                 if ret:
                     return ret
+
+                # sleep for interval
                 sleep(interval)
+
+            # all retry failed
             logging.getLogger(__name__).error("All retries failed in func {}.".format(func.__name__))
             return ret
         return decorated_func
