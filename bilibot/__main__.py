@@ -35,7 +35,7 @@ def run(config: dict):
                 time_delta = (today - last_update_date).total_seconds()
                 # if at least 5 hours before last update
                 if time_delta > 3600*5:
-                    logger.info("{} seconds before last successful new update, try create new one.".format(time_delta))
+                    logger.info("{:.0f} seconds before last successful new update, try create new one.".format(time_delta))
 
                     # do create_pixiv_ranking_dynamic
                     ret = bot.create_pixiv_ranking_dynamic(
