@@ -12,6 +12,7 @@ from .bot import Bot
 
 
 def run(config: dict):
+    logger = logging.getLogger(__name__)
     # load bilibot data
     data_path: str = config["data_file"]
     with Path(data_path).open("r", encoding="utf8") as f:
@@ -27,10 +28,14 @@ def run(config: dict):
         latest_dynamic_id = bilibot_data["latest_dynamic_id"]
         # exist and not being auditing
         if bot.is_dynamic_exist(latest_dynamic_id):
-            if not bot.is_dynamic_auditing(latest_dynamic_id):
+            if bot.is_dynamic_auditing(latest_dynamic_id):
+                logger.info("Last dynamic being auditing.")
+            else:
                 last_update_date = datetime.fromisoformat(bilibot_data["last_update_date"])
+                time_delta = (today - last_update_date).total_seconds()
                 # if at least 5 hours before last update
-                if (today - last_update_date).total_seconds() > 3600*5:
+                if time_delta > 3600*5:
+                    logger.info("{} seconds before last update, try create new one.".format(time_delta))
                     # update date
                     bilibot_data["last_update_date"] = (today - timedelta(minutes=10)).isoformat(" ", "seconds")
 
@@ -51,6 +56,7 @@ def run(config: dict):
                         # limit size, the latest 10000 illust ids
                         bilibot_data["illust_history"] = bilibot_data["illust_history"][-10000:]
         else:
+            logger.info("Last dynamic don't exist, redo create dynamic task.")
             # redo create_pixiv_ranking_dynamic
             ret = bot.create_pixiv_ranking_dynamic(
                 history=bilibot_data["illust_history"],
