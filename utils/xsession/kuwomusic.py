@@ -6,32 +6,32 @@ from .base import XSession, empty_retry
 
 
 class KuwoMusicBase(XSession):
-    url_host = "http://www.kuwo.cn/"
+    URL_host = "http://www.kuwo.cn/"
 
-    song_url = "http://www.kuwo.cn/url"
+    URL_song_url = "http://www.kuwo.cn/url"
 
-    play_detail = "http://www.kuwo.cn/play_detail/{song_id}"  # TODO
-    singer_detail = "http://www.kuwo.cn/singer_detail/{singer_id}"  # TODO
-    playlist_detail = "http://www.kuwo.cn/playlist_detail/{playlist_id}"  # TODO
-    album_detail = "http://www.kuwo.cn/album_detail/{album_id}"  # TODO
+    URL_play_detail = "http://www.kuwo.cn/play_detail/{song_id}"  # TODO
+    URL_singer_detail = "http://www.kuwo.cn/singer_detail/{singer_id}"  # TODO
+    URL_playlist_detail = "http://www.kuwo.cn/playlist_detail/{playlist_id}"  # TODO
+    URL_album_detail = "http://www.kuwo.cn/album_detail/{album_id}"  # TODO
 
-    api_www_music_musicinfo = "http://www.kuwo.cn/api/www/music/musicInfo"
-    api_www_artist_artistmusic = "http://www.kuwo.cn/api/www/artist/artistMusic"
-    api_www_artist_artistalbum = "http://www.kuwo.cn/api/www/artist/artistAlbum"
+    URL_api_www_music_musicinfo = "http://www.kuwo.cn/api/www/music/musicInfo"
+    URL_api_www_artist_artistmusic = "http://www.kuwo.cn/api/www/artist/artistMusic"
+    URL_api_www_artist_artistalbum = "http://www.kuwo.cn/api/www/artist/artistAlbum"
 
-    api_www_artist_artist = "http://www.kuwo.cn/api/www/artist/artist"
-    api_www_playlist_playlistinfo = "http://www.kuwo.cn/api/www/playlist/playListInfo"
-    api_www_album_albuminfo = "http://www.kuwo.cn/api/www/album/albumInfo"
+    URL_api_www_artist_artist = "http://www.kuwo.cn/api/www/artist/artist"
+    URL_api_www_playlist_playlistinfo = "http://www.kuwo.cn/api/www/playlist/playListInfo"
+    URL_api_www_album_albuminfo = "http://www.kuwo.cn/api/www/album/albumInfo"
 
-    singles_songinfo_and_lrc = "http://m.kuwo.cn/newh5/singles/songinfoandlrc"
+    URL_singles_songinfo_and_lrc = "http://m.kuwo.cn/newh5/singles/songinfoandlrc"
 
     def __init__(self, interval: float = 0.01) -> None:
         super().__init__(interval=interval)
-        self.get(KuwoMusicBase.url_host)  # get csrf token for the first time
+        self.get(KuwoMusicBase.URL_host)  # get csrf token for the first time
 
     def _get_csrf(self):
         if "kw_token" not in self.cookies:
-            self.get(KuwoMusicBase.url_host)
+            self.get(KuwoMusicBase.URL_host)
         return self.cookies.get("kw_token", "")
 
     def _check_response(self, res: requests.Response) -> dict:
@@ -65,7 +65,7 @@ class KuwoMusicBase(XSession):
             return {}
         return json_["data"]
 
-    # BUG: song_url is deprecated.
+    # BUG: URL_song_url is deprecated.
     def _get_song_url(
         self,
         song_id: str,
@@ -82,7 +82,7 @@ class KuwoMusicBase(XSession):
 
         """
         res = self.get(
-            KuwoMusicBase.song_url,
+            KuwoMusicBase.URL_song_url,
             params={
                 "rid": song_id,
                 "br": br,
@@ -109,7 +109,7 @@ class KuwoMusicBase(XSession):
 
     def _get_music_info(self, song_id: str, httpsstatus=1) -> dict:
         res = self.get(
-            KuwoMusicBase.api_www_music_musicinfo,
+            KuwoMusicBase.URL_api_www_music_musicinfo,
             params={
                 "mid": song_id,
                 "httpsStatus": httpsstatus,
@@ -136,7 +136,7 @@ class KuwoMusicBase(XSession):
         If no music found, the field `musicList` in data will be empty list
         """
         res = self.get(
-            KuwoMusicBase.api_www_playlist_playlistinfo,
+            KuwoMusicBase.URL_api_www_playlist_playlistinfo,
             params={
                 "pid": playlist_id,
                 "pn": max(pn, 1), "rn": max(rn, 1),
@@ -159,7 +159,7 @@ class KuwoMusicBase(XSession):
             If no music found, the field `musicList` in data will be empty list
         """
         res = self.get(
-            KuwoMusicBase.api_www_album_albuminfo,
+            KuwoMusicBase.URL_api_www_album_albuminfo,
             params={
                 "albumId": album_id,
                 "pn": max(pn, 1),
@@ -174,7 +174,7 @@ class KuwoMusicBase(XSession):
     def _get_artist(self, artist_id: str, httpsstatus=1) -> dict:
         """Get info of an artist."""
         res = self.get(
-            KuwoMusicBase.api_www_artist_artist,
+            KuwoMusicBase.URL_api_www_artist_artist,
             params={
                 "artistid": artist_id,
                 "httpsStatus": httpsstatus,
@@ -196,7 +196,7 @@ class KuwoMusicBase(XSession):
             If no music found, the field `list` in data will be empty list
         """
         res = self.get(
-            KuwoMusicBase.api_www_artist_artistmusic,
+            KuwoMusicBase.URL_api_www_artist_artistmusic,
             params={
                 "artistid": artist_id,
                 "pn": max(pn, 1),
@@ -220,7 +220,7 @@ class KuwoMusicBase(XSession):
             If no music found, the field `albumList` in data will be empty list.
         """
         res = self.get(
-            KuwoMusicBase.api_www_artist_artistalbum,
+            KuwoMusicBase.URL_api_www_artist_artistalbum,
             params={
                 "artistid": artist_id,
                 "pn": max(pn, 1), "rn": max(rn, 1),
@@ -235,7 +235,7 @@ class KuwoMusicBase(XSession):
         """Get song info and lyric. (mainly used for lyric.)"""
 
         res = self.get(
-            KuwoMusicBase.singles_songinfo_and_lrc,
+            KuwoMusicBase.URL_singles_songinfo_and_lrc,
             params={
                 "musicId": song_id,
                 "httpsStatus": httpsstatus

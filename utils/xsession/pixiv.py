@@ -11,40 +11,40 @@ from .base import XSession, empty_retry
 
 class PixivBase(XSession):
     # lang=zh
-    url_host = "https://www.pixiv.net"
+    URL_host = "https://www.pixiv.net"
 
     # api
-    api_login = "https://accounts.pixiv.net/api/login"
+    URL_api_login = "https://accounts.pixiv.net/api/login"
 
     # ajax
 
-    ajax_top_illust = "https://www.pixiv.net/ajax/top/illust"  # ?mode=all|r18 # many many info in index page
+    URL_ajax_top_illust = "https://www.pixiv.net/ajax/top/illust"  # ?mode=all|r18 # many many info in index page
 
-    ajax_search_tags = "https://www.pixiv.net/ajax/search/tags/{keyword}"
+    URL_ajax_search_tags = "https://www.pixiv.net/ajax/search/tags/{keyword}"
     # ?order=date&mode=all&p=1&s_mode=s_tag # param for url_search_*
-    ajax_search_artworks = "https://www.pixiv.net/ajax/search/artworks/{keyword}"
-    ajax_search_illustrations = "https://www.pixiv.net/ajax/search/illustrations/{keyword}"  # ?type=illust
-    ajax_search_manga = "https://www.pixiv.net/ajax/search/manga/{keyword}"
+    URL_ajax_search_artworks = "https://www.pixiv.net/ajax/search/artworks/{keyword}"
+    URL_ajax_search_illustrations = "https://www.pixiv.net/ajax/search/illustrations/{keyword}"  # ?type=illust
+    URL_ajax_search_manga = "https://www.pixiv.net/ajax/search/manga/{keyword}"
 
-    ajax_user = "https://www.pixiv.net/ajax/user/{user_id}"  # user simple info
-    ajax_user_following = "https://www.pixiv.net/ajax/user/{user_id}/following"  # ?offset=0&limit=24&rest=show
-    ajax_user_recommends = "https://www.pixiv.net/ajax/user/{user_id}/recommends"  # ?userNum=20&workNum=3&isR18=true
-    ajax_user_profile_all = "https://www.pixiv.net/ajax/user/{user_id}/profile/all"  # user all illusts and details # 9930155
-    ajax_user_profile_top = "https://www.pixiv.net/ajax/user/{user_id}/profile/top"
-    ajax_user_illusts = "https://www.pixiv.net/ajax/user/{user_id}/illusts"  # ?ids[]=84502979"
+    URL_ajax_user = "https://www.pixiv.net/ajax/user/{user_id}"  # user simple info
+    URL_ajax_user_following = "https://www.pixiv.net/ajax/user/{user_id}/following"  # ?offset=0&limit=24&rest=show
+    URL_ajax_user_recommends = "https://www.pixiv.net/ajax/user/{user_id}/recommends"  # ?userNum=20&workNum=3&isR18=true
+    URL_ajax_user_profile_all = "https://www.pixiv.net/ajax/user/{user_id}/profile/all"  # user all illusts and details # 9930155
+    URL_ajax_user_profile_top = "https://www.pixiv.net/ajax/user/{user_id}/profile/top"
+    URL_ajax_user_illusts = "https://www.pixiv.net/ajax/user/{user_id}/illusts"  # ?ids[]=84502979"
 
-    ajax_illust = "https://www.pixiv.net/ajax/illust/{illust_id}"  # illust details # 70850475
-    ajax_illust_pages = "https://www.pixiv.net/ajax/illust/{illust_id}/pages"  # illust pages
-    ajax_illust_recommend_init = "https://www.pixiv.net/ajax/illust/{illust_id}/recommend/init"  # limit=1
+    URL_ajax_illust = "https://www.pixiv.net/ajax/illust/{illust_id}"  # illust details # 70850475
+    URL_ajax_illust_pages = "https://www.pixiv.net/ajax/illust/{illust_id}/pages"  # illust pages
+    URL_ajax_illust_recommend_init = "https://www.pixiv.net/ajax/illust/{illust_id}/recommend/init"  # limit=1
 
-    ajax_illusts_like = "https://www.pixiv.net/ajax/illusts/like"  # illust_id:""
-    ajax_illusts_bookmarks_add = "https://www.pixiv.net/ajax/illusts/bookmarks/add"  # comment:"" illust_id:"" restrict:0 tags:[]
+    URL_ajax_illusts_like = "https://www.pixiv.net/ajax/illusts/like"  # illust_id:""
+    URL_ajax_illusts_bookmarks_add = "https://www.pixiv.net/ajax/illusts/bookmarks/add"  # comment:"" illust_id:"" restrict:0 tags:[]
 
     # php
-    php_logout = "https://www.pixiv.net/logout.php"  # ?return_to=%2F
-    php_ranking = "https://www.pixiv.net/ranking.php"  # ?format=json&p=1&mode=daily&content=all
-    php_rpc_recommender = "https://www.pixiv.net/rpc/recommender.php"  # ?type=illust&sample_illusts=88548686&num_recommendations=500
-    php_bookmark_add = "https://www.pixiv.net/bookmark_add.php"  # mode:"add" type:"user" user_id:"" tag:"" restrict:"" format:"json"
+    URL_php_logout = "https://www.pixiv.net/logout.php"  # ?return_to=%2F
+    URL_php_ranking = "https://www.pixiv.net/ranking.php"  # ?format=json&p=1&mode=daily&content=all
+    URL_php_rpc_recommender = "https://www.pixiv.net/rpc/recommender.php"  # ?type=illust&sample_illusts=88548686&num_recommendations=500
+    URL_php_bookmark_add = "https://www.pixiv.net/bookmark_add.php"  # mode:"add" type:"user" user_id:"" tag:"" restrict:"" format:"json"
 
     def _check_response(self, res: requests.Response) -> Union[dict, list]:
         """Check response."""
@@ -85,11 +85,11 @@ class PixivBase(XSession):
 
     def __init__(self, interval: float = 0.01) -> None:
         super().__init__(interval=interval)
-        self.headers["Referer"] = PixivBase.url_host
+        self.headers["Referer"] = PixivBase.URL_host
 
     def _get_csrf_token(self) -> str:
         """Get x-csrf-token"""
-        html = self.get(PixivBase.url_host).text
+        html = self.get(PixivBase.URL_host).text
         soup = bs4.BeautifulSoup(html, "lxml")
         token = json.loads(soup.find("meta", {"id": "meta-global-data"}).attrs.get("content", "{}")).get("token", "")
         return token
@@ -119,7 +119,7 @@ class PixivBase(XSession):
             mode: "all" means all ages, "r18" means R-18 only
         """
         res = self.get(
-            PixivBase.ajax_top_illust,
+            PixivBase.URL_ajax_top_illust,
             params={"mode": mode}
         )
         return self._check_response(res)
@@ -135,7 +135,7 @@ class PixivBase(XSession):
             type_: No need to care
         """
         res = self.get(
-            PixivBase.ajax_search_artworks.format(keyword=keyword),
+            PixivBase.URL_ajax_search_artworks.format(keyword=keyword),
             params={
                 "order": order,
                 "mode": mode,
@@ -157,7 +157,7 @@ class PixivBase(XSession):
             type_: "illust", "ugoira", "illust_and_ugoira"
         """
         res = self.get(
-            PixivBase.ajax_search_illustrations.format(keyword=keyword),
+            PixivBase.URL_ajax_search_illustrations.format(keyword=keyword),
             params={
                 "order": order,
                 "mode": mode,
@@ -179,7 +179,7 @@ class PixivBase(XSession):
             type_: No need to care
         """
         res = self.get(
-            PixivBase.ajax_search_manga.format(keyword=keyword),
+            PixivBase.URL_ajax_search_manga.format(keyword=keyword),
             params={
                 "order": order,
                 "mode": mode,
@@ -193,28 +193,28 @@ class PixivBase(XSession):
     @empty_retry()
     def _get_illust(self, illust_id) -> dict:
         res = self.get(
-            PixivBase.ajax_illust.format(illust_id=illust_id)
+            PixivBase.URL_ajax_illust.format(illust_id=illust_id)
         )
 
         return self._check_response(res)
 
     def _get_illust_pages(self, illust_id) -> list:
         res = self.get(
-            PixivBase.ajax_illust_pages.format(illust_id=illust_id)
+            PixivBase.URL_ajax_illust_pages.format(illust_id=illust_id)
         )
         return self._check_response(res)
 
     def _get_illust_recommend_init(self, illust_id, limit=1) -> dict:
         """details.keys()"""
         res = self.get(
-            PixivBase.ajax_illust_recommend_init.format(illust_id=illust_id),
+            PixivBase.URL_ajax_illust_recommend_init.format(illust_id=illust_id),
             params={"limit": limit}
         )
         return self._check_response(res)
 
     def _get_user(self, user_id) -> dict:
         res = self.get(
-            PixivBase.ajax_user.format(user_id=user_id)
+            PixivBase.URL_ajax_user.format(user_id=user_id)
         )
 
         return self._check_response(res)
@@ -231,7 +231,7 @@ class PixivBase(XSession):
             The list is body.users
         """
         res = self.get(
-            PixivBase.ajax_user_following.format(user_id=user_id),
+            PixivBase.URL_ajax_user_following.format(user_id=user_id),
             params={
                 "offset": offset,
                 "limit": min(limit, 90),
@@ -252,7 +252,7 @@ class PixivBase(XSession):
             Recommends list is body.recommendUsers, the length of list <= userNum
         """
         res = self.get(
-            PixivBase.ajax_user_recommends.format(user_id=user_id),
+            PixivBase.URL_ajax_user_recommends.format(user_id=user_id),
             params={
                 "userNum": userNum,
                 "workNum": workNum,
@@ -262,11 +262,11 @@ class PixivBase(XSession):
         return self._check_response(res)
 
     def _get_user_profile_all(self, user_id) -> dict:
-        res = self.get(PixivBase.ajax_user_profile_all.format(user_id=user_id))
+        res = self.get(PixivBase.URL_ajax_user_profile_all.format(user_id=user_id))
         return self._check_response(res)
 
     def _get_user_profile_top(self, user_id) -> dict:
-        res = self.get(PixivBase.ajax_user_profile_top.format(user_id=user_id))
+        res = self.get(PixivBase.URL_ajax_user_profile_top.format(user_id=user_id))
         return self._check_response(res)
 
     @empty_retry()
@@ -288,7 +288,7 @@ class PixivBase(XSession):
             May need cookies to get r18 ranking.
         """
         res = self.get(
-            PixivBase.php_ranking,
+            PixivBase.URL_php_ranking,
             params={"format": "json", "p": p, "content": content, "mode": mode, "date": date}
         )
 
@@ -296,7 +296,7 @@ class PixivBase(XSession):
 
     def _get_logout(self) -> bool:
         """Logout"""
-        res = self.get(PixivBase.php_logout, params={"return_to": "/"})
+        res = self.get(PixivBase.URL_php_logout, params={"return_to": "/"})
         return True
 
     # POST method
@@ -316,7 +316,7 @@ class PixivBase(XSession):
         """
 
         res = self.post(
-            PixivBase.ajax_illusts_bookmarks_add,
+            PixivBase.URL_ajax_illusts_bookmarks_add,
             json={
                 "illust_id": illust_id,
                 "restrict": restrict,
@@ -340,7 +340,7 @@ class PixivBase(XSession):
             type_: No need to care
         """
         res = self.post(
-            PixivBase.php_bookmark_add,
+            PixivBase.URL_php_bookmark_add,
             data={
                 "user_id": user_id,
                 "restrict": restrict,

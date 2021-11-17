@@ -18,22 +18,22 @@ from dateutil.parser import isoparse
 class AliyunDriveBase(XSession):
     """Base api wrapper, don't use it directly."""
 
-    url_host = "https://api.aliyundrive.com"
+    URL_host = "https://api.aliyundrive.com"
 
-    passport_logout = "https://passport.aliyundrive.com/logout.htm"  # ?site=52&toURL=https://www.aliyundrive.com/"
+    URL_passport_logout = "https://passport.aliyundrive.com/logout.htm"  # ?site=52&toURL=https://www.aliyundrive.com/"
 
-    token_refresh = "https://api.aliyundrive.com/token/refresh"
+    URL_token_refresh = "https://api.aliyundrive.com/token/refresh"
 
-    v2_file_get = "https://api.aliyundrive.com/v2/file/get"
-    adrive_v2_file_createwithfolders = "https://api.aliyundrive.com/adrive/v2/file/createWithFolders"
-    v2_file_complete = "https://api.aliyundrive.com/v2/file/complete"
-    adrive_v3_file_search = "https://api.aliyundrive.com/adrive/v3/file/search"
-    adrive_v3_file_list = "https://api.aliyundrive.com/adrive/v3/file/list"
+    URL_v2_file_get = "https://api.aliyundrive.com/v2/file/get"
+    URL_adrive_v2_file_createwithfolders = "https://api.aliyundrive.com/adrive/v2/file/createWithFolders"
+    URL_v2_file_complete = "https://api.aliyundrive.com/v2/file/complete"
+    URL_adrive_v3_file_search = "https://api.aliyundrive.com/adrive/v3/file/search"
+    URL_adrive_v3_file_list = "https://api.aliyundrive.com/adrive/v3/file/list"
 
-    v2_user_get = "https://api.aliyundrive.com/v2/user/get"
-    v2_recyclebin_trash = "https://api.aliyundrive.com/v2/recyclebin/trash"
+    URL_v2_user_get = "https://api.aliyundrive.com/v2/user/get"
+    URL_v2_recyclebin_trash = "https://api.aliyundrive.com/v2/recyclebin/trash"
 
-    v2_databox_get_personal_info = "https://api.aliyundrive.com/v2/databox/get_personal_info"
+    URL_v2_databox_get_personal_info = "https://api.aliyundrive.com/v2/databox/get_personal_info"
 
     def _check_response(self, res: requests.Response) -> dict:
         """Check a json response."""
@@ -56,9 +56,13 @@ class AliyunDriveBase(XSession):
 
         return json_
 
+    ###################################
+    ### Auth operations begin here. ###
+    ###################################
+
     def _get_logout(self) -> bool:
         res = self.get(
-            AliyunDrive.passport_logout,
+            AliyunDrive.URL_passport_logout,
             params={
                 "site": 52,
                 "toURL": "https://www.aliyundrive.com/"
@@ -79,7 +83,7 @@ class AliyunDriveBase(XSession):
         """
 
         res = self.post(
-            AliyunDriveBase.token_refresh,
+            AliyunDriveBase.URL_token_refresh,
             json={"refresh_token": refresh_token}
         )
 
@@ -90,12 +94,12 @@ class AliyunDriveBase(XSession):
     ###################################
 
     def _post_get_personal_info(self) -> dict:
-        res = self.post(AliyunDriveBase.v2_databox_get_personal_info)
+        res = self.post(AliyunDriveBase.URL_v2_databox_get_personal_info)
 
         return self._check_response(res)
 
     def _post_user_get(self) -> dict:
-        res = self.post(AliyunDriveBase.v2_user_get)
+        res = self.post(AliyunDriveBase.URL_v2_user_get)
 
         return self._check_response(res)
 
@@ -105,7 +109,7 @@ class AliyunDriveBase(XSession):
 
     def _post_file_get(self, drive_id: str, file_id: str) -> dict:
         res = self.post(
-            AliyunDriveBase.v2_file_get,
+            AliyunDriveBase.URL_v2_file_get,
             json={
                 "drive_id": drive_id,
                 "file_id": file_id
@@ -164,7 +168,7 @@ class AliyunDriveBase(XSession):
                 })
 
         res = self.post(
-            AliyunDriveBase.adrive_v2_file_createwithfolders,
+            AliyunDriveBase.URL_adrive_v2_file_createwithfolders,
             json=json_data
         )
 
@@ -183,7 +187,7 @@ class AliyunDriveBase(XSession):
         """
 
         res = self.post(
-            AliyunDriveBase.v2_file_complete,
+            AliyunDriveBase.URL_v2_file_complete,
             json={
                 "drive_id": drive_id,
                 "file_id": file_id,
@@ -215,7 +219,7 @@ class AliyunDriveBase(XSession):
             See responses/aliyundrive/adrive_v3_file_list.json
         """
         res = self.post(
-            AliyunDriveBase.adrive_v3_file_search,
+            AliyunDriveBase.URL_adrive_v3_file_search,
             json={
                 "drive_id": drive_id,
                 "query": query,
@@ -251,7 +255,7 @@ class AliyunDriveBase(XSession):
         """
 
         res = self.post(
-            AliyunDriveBase.adrive_v3_file_list,
+            AliyunDriveBase.URL_adrive_v3_file_list,
             json={
                 "drive_id": drive_id,
                 "parent_file_id": parent_file_id,
@@ -358,6 +362,7 @@ class AliyunDrive(AliyunDriveBase):
 
             # set new token info
             self.token_type = refresh_info["token_type"]
+            # BUG: no need to update access token
             self.access_token = refresh_info["access_token"]
             self.refresh_token = refresh_info["refresh_token"]
 

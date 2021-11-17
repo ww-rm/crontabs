@@ -17,24 +17,24 @@ from .base import XSession, empty_retry
 class BilibiliBase(XSession):
     """Base api wrapper of bilibili, don't use it directly."""
 
-    url_host = "https://www.bilibili.com/"
+    URL_host = "https://www.bilibili.com/"
 
-    dynamic_svr_create = "https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/create"
-    dynamic_svr_create_draw = "https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/create_draw"
-    dynamic_svr_rm_dynamic = "https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/rm_dynamic"
-    dynamic_svr_get_dynamic_detail = "https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/get_dynamic_detail"  # ?dynamic_id=539112416787513871"
+    URL_dynamic_svr_create = "https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/create"
+    URL_dynamic_svr_create_draw = "https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/create_draw"
+    URL_dynamic_svr_rm_dynamic = "https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/rm_dynamic"
+    URL_dynamic_svr_get_dynamic_detail = "https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/get_dynamic_detail"  # ?dynamic_id=539112416787513871"
 
-    drawImage_upload = "https://api.vc.bilibili.com/api/v1/drawImage/upload"
-    cover_up = "https://member.bilibili.com/x/vu/web/cover/up"
+    URL_drawImage_upload = "https://api.vc.bilibili.com/api/v1/drawImage/upload"
+    URL_cover_up = "https://member.bilibili.com/x/vu/web/cover/up"
 
-    web_interface_nav = "https://api.bilibili.com/x/web-interface/nav"
+    URL_web_interface_nav = "https://api.bilibili.com/x/web-interface/nav"
 
-    web_login = "https://passport.bilibili.com/x/passport-login/web/login"
-    login_exit = "https://passport.bilibili.com/login/exit/v2"
+    URL_web_login = "https://passport.bilibili.com/x/passport-login/web/login"
+    URL_login_exit = "https://passport.bilibili.com/login/exit/v2"
 
-    passport_login_captcha = "https://passport.bilibili.com/x/passport-login/captcha"  # ?source=main_web"
-    recaptcha_img = "https://api.bilibili.com/x/recaptcha/img"  # ?t=0.46679774852401557&token=7d57eb2167964b25af75aa15d8488a46"
-    web_key = "https://passport.bilibili.com/x/passport-login/web/key"  # ?r=0.4811057511950463"
+    URL_passport_login_captcha = "https://passport.bilibili.com/x/passport-login/captcha"  # ?source=main_web"
+    URL_recaptcha_img = "https://api.bilibili.com/x/recaptcha/img"  # ?t=0.46679774852401557&token=7d57eb2167964b25af75aa15d8488a46"
+    URL_web_key = "https://passport.bilibili.com/x/passport-login/web/key"  # ?r=0.4811057511950463"
 
     @property
     def csrf_token(self) -> str:
@@ -81,7 +81,7 @@ class BilibiliBase(XSession):
         """Get web key
         """
         res = self.get(
-            BilibiliBase.web_key,
+            BilibiliBase.URL_web_key,
             params={"r": r}
         )
         return self._check_response(res)
@@ -99,7 +99,7 @@ class BilibiliBase(XSession):
         img_path = Path(img_path)
         with img_path.open("rb") as f:
             res = self.post(
-                BilibiliBase.drawImage_upload,
+                BilibiliBase.URL_drawImage_upload,
                 files={
                     "file_up": (img_path.name, f, "image/{}".format(imghdr.what(f))),
                     "biz": (None, "draw"),
@@ -119,7 +119,7 @@ class BilibiliBase(XSession):
             see responses folder
         """
         res = self.post(
-            BilibiliBase.cover_up,
+            BilibiliBase.URL_cover_up,
             data={"cover": cover, "csrf": self.csrf_token}
         )
         return self._check_response(res)
@@ -130,7 +130,7 @@ class BilibiliBase(XSession):
             see responses folder
         """
 
-        res = self.get(BilibiliBase.web_interface_nav)
+        res = self.get(BilibiliBase.URL_web_interface_nav)
         return self._check_response(res)
 
     def _get_dynamic_detail(self, dynamic_id: str) -> dict:
@@ -142,7 +142,7 @@ class BilibiliBase(XSession):
             if dynamic exist and being auditing, will has `extra` field in `data.card` and `data.card.extra.is_auditing` == `1`
         """
         res = self.get(
-            BilibiliBase.dynamic_svr_get_dynamic_detail,
+            BilibiliBase.URL_dynamic_svr_get_dynamic_detail,
             params={"dynamic_id": dynamic_id}
         )
         return self._check_response(res)
@@ -162,7 +162,7 @@ class BilibiliBase(XSession):
             ctrl: "[{"location":0,"type":1,"length":7,"data":"xxx"},{"location":7,"type":1,"length":7,"data":"xxx"}]"
         """
         res = self.post(
-            BilibiliBase.dynamic_svr_create,
+            BilibiliBase.URL_dynamic_svr_create,
             data={
                 "content": content,
                 "up_choose_comment": up_choose_comment,
@@ -205,7 +205,7 @@ class BilibiliBase(XSession):
         """
 
         res = self.post(
-            BilibiliBase.dynamic_svr_create_draw,
+            BilibiliBase.URL_dynamic_svr_create_draw,
             data={
                 "content": content,
                 "pictures": json.dumps(pictures),
@@ -239,7 +239,7 @@ class BilibiliBase(XSession):
     def _post_rm_dynamic(self, dynamic_id: str) -> dict:
         """Delete a dynamic"""
         res = self.post(
-            BilibiliBase.dynamic_svr_rm_dynamic,
+            BilibiliBase.URL_dynamic_svr_rm_dynamic,
             data={
                 "dynamic_id": dynamic_id,
                 "csrf": self.csrf_token,
@@ -254,7 +254,7 @@ class BilibiliBase(XSession):
             see responses folder
         """
         res = self.get(
-            BilibiliBase.passport_login_captcha,
+            BilibiliBase.URL_passport_login_captcha,
             params={"source": source}
         )
         return self._check_response(res)
@@ -262,7 +262,7 @@ class BilibiliBase(XSession):
     def _get_recaptcha_img(self, token: str, chunk_size: int = 10485760) -> Iterator[bytes]:
         """Get simple image captcha."""
         res = self.get(
-            BilibiliBase.recaptcha_img,
+            BilibiliBase.URL_recaptcha_img,
             params={"token": token},
             stream=True
         )
@@ -302,12 +302,12 @@ class BilibiliBase(XSession):
         else:
             raise ValueError("Unknown captcha type.")
 
-        res = self.post(BilibiliBase.web_login, data=login_data)
+        res = self.post(BilibiliBase.URL_web_login, data=login_data)
         return self._check_response(res)
 
     def _post_logout(self) -> bool:
         res = self.post(
-            BilibiliBase.login_exit,
+            BilibiliBase.URL_login_exit,
             data={
                 "biliCSRF": self.csrf_token,
                 "gourl": ""
