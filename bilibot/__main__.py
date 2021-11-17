@@ -35,9 +35,7 @@ def run(config: dict):
                 time_delta = (today - last_update_date).total_seconds()
                 # if at least 5 hours before last update
                 if time_delta > 3600*5:
-                    logger.info("{} seconds before last update, try create new one.".format(time_delta))
-                    # update date
-                    bilibot_data["last_update_date"] = (today - timedelta(minutes=10)).isoformat(" ", "seconds")
+                    logger.info("{} seconds before last successful new update, try create new one.".format(time_delta))
 
                     # do create_pixiv_ranking_dynamic
                     ret = bot.create_pixiv_ranking_dynamic(
@@ -47,6 +45,9 @@ def run(config: dict):
                         count=bilibot_data["dynamic_count"] + 1
                     )
                     if ret:
+                        # update date only when success create dynamic
+                        bilibot_data["last_update_date"] = (today - timedelta(minutes=10)).isoformat(" ", "seconds")
+
                         # update count
                         bilibot_data["dynamic_count"] += 1
 
@@ -65,6 +66,9 @@ def run(config: dict):
                 count=bilibot_data["dynamic_count"]
             )
             if ret:
+                # update date only when success create dynamic
+                bilibot_data["last_update_date"] = (today - timedelta(minutes=10)).isoformat(" ", "seconds")
+
                 # update data
                 bilibot_data["latest_dynamic_id"] = ret["dynamic_id"]
                 bilibot_data["illust_history"].extend(ret["illust_ids"])
