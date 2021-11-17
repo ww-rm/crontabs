@@ -13,6 +13,7 @@ import requests
 from .base import XSession, empty_retry
 from datetime import datetime, timezone
 from dateutil.parser import isoparse
+import re
 
 
 class AliyunDriveBase(XSession):
@@ -20,8 +21,20 @@ class AliyunDriveBase(XSession):
 
     URL_host = "https://api.aliyundrive.com"
 
+    URL_sign_in = "https://www.aliyundrive.com/sign/in"
+
+    # ?client_id=25dzX3vbYqktVxyX&redirect_uri=https://www.aliyundrive.com/sign/callback&response_type=code&login_type=custom&state={"origin":"https://www.aliyundrive.com"}"
+    URL_auth_v2_oauth_authorize = "https://auth.aliyundrive.com/v2/oauth/authorize"
+    URL_auth_v2_oauth_token_login = "https://auth.aliyundrive.com/v2/oauth/token_login"
+
+    # lang=zh_cn&appName=aliyun_drive&appEntrance=web&styleType=auto&bizParams=&notLoadSsoView=false&notKeepLogin=false&isMobile=false&ad__pass__q__rememberLogin=false&ad__pass__q__forgotPassword=false&ad__pass__q__licenseMargin=false&ad__pass__q__loginType=normal&hidePhoneCode=true&rnd=0.9290066682151727
+    URL_passport_mini_login = "https://passport.aliyundrive.com/mini_login.htm"
+
+    URL_passport_newlogin_login = "https://passport.aliyundrive.com/newlogin/login.do"  # ?appName=aliyun_drive&fromSite=52&_bx-v=2.0.31"
+
     URL_passport_logout = "https://passport.aliyundrive.com/logout.htm"  # ?site=52&toURL=https://www.aliyundrive.com/"
 
+    URL_token_get = "https://api.aliyundrive.com/token/get"
     URL_token_refresh = "https://api.aliyundrive.com/token/refresh"
 
     URL_v2_file_get = "https://api.aliyundrive.com/v2/file/get"
@@ -56,9 +69,186 @@ class AliyunDriveBase(XSession):
 
         return json_
 
+    def _get_client_id(self) -> str:
+        """Get from client id from sign in html page.
+
+        If can't get id from html page, return a default id "25dzX3vbYqktVxyX".
+        """
+        client_id = "25dzX3vbYqktVxyX"
+
+        res = self.get(AliyunDriveBase.URL_sign_in)
+
+        if res.status_code != 200:
+            self.logger.warning("Failed to get client id from html page, return default id.")
+        else:
+            result = re.findall(r"client_id:[ ]*?['|\"]([a-zA-Z0-9]+?)['|\"]", res.text)
+            if not result:
+                self.logger.warning("Failed to find client_id from html page text, return default id.")
+            else:
+                client_id = result[0]
+
+        return client_id
+
     ###################################
     ### Auth operations begin here. ###
     ###################################
+
+    def _get_v2_oauth_authorize(
+        self, client_id: str,
+        redirect_url: str = "https://www.aliyundrive.com/sign/callback",
+        *,
+        response_type: str = "code", login_type: str = "custom", state: dict = None
+    ) -> str:
+        """Get SESSIONID cookie.
+
+        Args:
+            client_id: get from self._get_client_id.
+
+        Returns:
+            Html page text.
+        """
+        res = self.get(
+            AliyunDriveBase.URL_auth_v2_oauth_authorize,
+            params={
+                "client_id": client_id,
+                "redirect_url": redirect_url,
+                "response_type": response_type,
+                "login_type": login_type,
+                "state": state
+            }
+        )
+
+        if res.status_code != 200:
+            return ""
+        return res.text
+
+    def _post_token_login(self, token: str) -> dict:
+        """Token login.
+
+        Args:
+            token (str): get from `accessToken` in passport login return data `bizExt`.
+        """
+
+        res = self.post(
+            AliyunDriveBase.URL_auth_v2_oauth_token_login,
+            json={"token": token}
+        )
+
+        if res.status_code != 200:
+            return {}
+        return res.json()
+
+    def _get_passport_mini_login(
+        self,
+        appName="aliyun_drive",
+        appEntrance="web",
+        styleType="auto",
+        bizParams="",
+        isMobile=False,
+        lang="zh_cn",
+        rnd=0.9290066682151727,
+        notLoadSsoView=False,
+        notKeepLogin=False,
+        hidePhoneCode=True,
+        ad__pass__q__rememberLogin=False,
+        ad__pass__q__forgotPassword=False,
+        ad__pass__q__licenseMargin=False,
+        ad__pass__q__loginType="normal"
+    ) -> str:
+        """Get cookies and login form data from html page.
+
+        Returns:
+            Html page text.
+
+        Cookies:
+            cookie2, XSRF-TOKEN
+        """
+
+        res = self.get(
+            AliyunDriveBase.URL_passport_mini_login,
+            params={
+                "appName": appName,
+                "appEntrance": appEntrance,
+                "styleType": styleType,
+                "bizParams": bizParams,
+                "isMobile": str(isMobile).lower(),
+                "lang": lang,
+                "rnd": rnd,
+                "notLoadSsoView": str(notLoadSsoView).lower(),
+                "notKeepLogin": str(notKeepLogin).lower(),
+                "hidePhoneCode": str(hidePhoneCode).lower(),
+                "ad__pass__q__rememberLogin": str(ad__pass__q__rememberLogin).lower(),
+                "ad__pass__q__forgotPassword": str(ad__pass__q__forgotPassword).lower,
+                "ad__pass__q__licenseMargin": str(ad__pass__q__licenseMargin).lower(),
+                "ad__pass__q__loginType": ad__pass__q__loginType
+            }
+        )
+
+        if res.status_code != 200:
+            return ""
+        return res.text
+
+    def _post_passport_newlogin_login(
+        self,
+        loginId: str,
+        password2: str,
+        ua: str,
+        bx_ua: str,
+        bx_umidtoken: str,
+        loginFormData: dict,
+        navUserAgent: str,
+        navlanguage: str = "zh-CN",
+        navPlatform: str = "Win32",
+        keepLogin: bool = False,
+        umidGetStatusVal: int = 255,
+        screenPixel: str = "1280x720",
+        deviceId: str = "",
+        *,
+        appName: str = "aliyun_drive",
+        fromSite: int = 52,
+        _bx_v: str = "2.0.31",
+
+    ) -> dict:
+        """
+        Args:
+            loginFormData: Get from mini login html page, include `appName`, `appEntrance`, `_csrf_token`, `umidToken`, `isMobile`, `lang`, `returnUrl`, `hsiz`, `fromSite`, `bizParams` fields.
+            navUserAgent: Same as UA header.
+
+            appName: Used in params.
+            fromSite: Used in params.
+            _bx-v: Used in params.
+        """
+        login_data = {
+            "loginId": loginId,
+            "password2": password2,
+            "ua": ua,
+            "bx-ua": bx_ua,
+            "bx-umidtoken": bx_umidtoken,
+            "navUserAgent": navUserAgent,
+            "navlanguage": navlanguage,
+            "navPlatform": navPlatform,
+            "keepLogin": keepLogin,
+            "umidGetStatusVal": umidGetStatusVal,
+            "screenPixel": screenPixel,
+            "deviceId": deviceId,
+        }
+        login_data.update(loginFormData)
+
+        login_params = {
+            "appName": appName,
+            "fromSite": fromSite,
+            "_bx-v": _bx_v
+        }
+
+        res = self.post(
+            AliyunDriveBase.URL_passport_newlogin_login,
+            params=login_params,
+            data=login_data,
+        )
+
+        if res.status_code != 200:
+            return {}
+        return res.json()
 
     def _get_logout(self) -> bool:
         res = self.get(
@@ -71,6 +261,25 @@ class AliyunDriveBase(XSession):
         if not res.ok:
             return False
         return True
+
+    def _post_token_get(self, code: str, deviceId: str, loginType: str = "normal") -> dict:
+        """Get refresh token.
+
+        Args:
+            code: get from self._get_token_login
+            deviceId: `cna` cookie.
+        """
+
+        res = self.post(
+            AliyunDriveBase.URL_token_get,
+            json={
+                "code": code,
+                "deviceId": deviceId,
+                "loginType": loginType
+            }
+        )
+
+        return self._check_response(res)
 
     def _post_token_refresh(self, refresh_token: str) -> dict:
         """Get new access token.
@@ -296,7 +505,20 @@ class AliyunDrive(AliyunDriveBase):
         self.access_token = ""  # access token added to "Authorization" header
         self.refresh_token = ""  # token used to refresh access token
 
-        self.expire_time = datetime.now(timezone.utc)  # access token expire time
+        self.expire_time = datetime.now(timezone.utc).replace(2020)  # access token expire time
+
+    @property
+    def access_token(self) -> str:
+        """Getter."""
+        return self.__access_token
+
+    @access_token.setter
+    def access_token(self, value: str):
+        """Setter."""
+        self.__access_token = value
+        # update header
+        if self.token_type:
+            self.headers["Authorization"] = self.token_type + " " + self.__access_token
 
     def _get_proof_code(self, filepath: PathLike, version: str = "v1") -> str:
         """Get proof_code of content by access token.
@@ -333,6 +555,9 @@ class AliyunDrive(AliyunDriveBase):
         if file_size <= 0:
             return ""
 
+        # check access token valid before caculate
+        if not self._check_refresh():
+            return ""
         if version == "v1":
             md5_token = hashlib.md5(self.access_token.encode("utf8")).hexdigest()
             start = int(md5_token[0:16], 16) % file_size
@@ -347,11 +572,11 @@ class AliyunDrive(AliyunDriveBase):
     def _check_refresh(self) -> bool:
         """Check token and try refresh it if is about to expire.
 
-        Used before each api call.
+        Used before any api call and access to self.access_token.
         """
 
         # if expire in 5 min
-        if (self.expire_time - datetime.now(timezone.utc)).total_seconds() <= 5*60:
+        if (self.expire_time - datetime.now(timezone.utc)).total_seconds() <= 60:
             self.logger.warning("Token is about to expire, try to auto refresh.")
 
             # try refresh token
@@ -360,19 +585,19 @@ class AliyunDrive(AliyunDriveBase):
                 self.logger.error("Refresh token failed.")
                 return False
 
-            # set new token info
+            # update info
+            self.user_id = refresh_info["user_id"]
+            self.drive_id = refresh_info["default_drive_id"]
+
             self.token_type = refresh_info["token_type"]
-            # BUG: no need to update access token
             self.access_token = refresh_info["access_token"]
             self.refresh_token = refresh_info["refresh_token"]
 
             self.expire_time = isoparse(refresh_info["expire_time"])  # include timezone, utc time
 
-            self.headers["Authorization"] = self.token_type + " " + self.access_token
-
         return True
 
-    def login(self, usrn: str, pwd: str, *, bizExt: str = "", cookies: dict = None) -> bool:
+    def login(self, usrn: str, pwd: str, *, refresh_token: str = "", bizExt: str = "", cookies: dict = None) -> bool:
         """Login.
 
         Args:
@@ -381,31 +606,40 @@ class AliyunDrive(AliyunDriveBase):
         """
 
         # TODO: usrn and pwd login
-
         if usrn and pwd:
             raise NotImplementedError
         else:
-            if not bizExt:
-                return False
+            # refresh token login
+            if refresh_token:
+                self.refresh_token = refresh_token
+                if not self._check_refresh():
+                    return False
+                return True
 
-            login_info = b64decode(bizExt).decode("gbk")
-            login_result = json.loads(login_info)["pds_login_result"]
-            if not login_result:
-                return False
+            # # bizExt login
+            # if bizExt:
+            #     login_info = b64decode(bizExt).decode("gbk")
+            #     login_result = json.loads(login_info)["pds_login_result"]
+            #     if not login_result:
+            #         return False
 
-            self.user_id = login_result["userId"]
-            self.drive_id = login_result["defaultDriveId"]
+            #     # TODO token_get get real token.
 
-            self.token_type = login_result["tokenType"]
-            self.access_token = login_result["accessToken"]
-            self.refresh_token = login_result["refreshToken"]
+            #     self.user_id = login_result["userId"]
+            #     self.drive_id = login_result["defaultDriveId"]
 
-            self.expire_time = isoparse(login_result["expireTime"])  # include timezone, utc time
+            #     self.token_type = login_result["tokenType"]
+            #     self.access_token = login_result["accessToken"]
+            #     self.refresh_token = login_result["refreshToken"]
 
-            self.headers["Authorization"] = self.token_type + " " + self.access_token
+            #     self.expire_time = isoparse(login_result["expireTime"])  # include timezone, utc time
 
-            if cookies:
-                self.cookies.update(cookies)
+            #     return True
+
+            # # cookies login
+            # if cookies:
+            #     self.cookies.update(cookies)
+            #     return True
 
             return True
 
