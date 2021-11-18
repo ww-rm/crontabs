@@ -6,6 +6,9 @@ import json
 from math import ceil
 from os import PathLike
 from pathlib import Path
+from typing import Tuple
+from Crypto.Cipher import PKCS1_v1_5
+from Crypto.PublicKey import RSA
 
 from bs4 import BeautifulSoup
 import requests
@@ -69,25 +72,14 @@ class AliyunDriveBase(XSession):
 
         return json_
 
-    def _get_client_id(self) -> str:
-        """Get from client id from sign in html page.
-
-        If can't get id from html page, return a default id "25dzX3vbYqktVxyX".
-        """
-        client_id = "25dzX3vbYqktVxyX"
+    def _get_sign_in(self) -> str:
+        """Get sign in html page."""
 
         res = self.get(AliyunDriveBase.URL_sign_in)
 
         if res.status_code != 200:
-            self.logger.warning("Failed to get client id from html page, return default id.")
-        else:
-            result = re.findall(r"client_id:[ ]*?['|\"]([a-zA-Z0-9]+?)['|\"]", res.text)
-            if not result:
-                self.logger.warning("Failed to find client_id from html page text, return default id.")
-            else:
-                client_id = result[0]
-
-        return client_id
+            return ""
+        return res.text
 
     ###################################
     ### Auth operations begin here. ###
@@ -496,6 +488,23 @@ class AliyunDrive(AliyunDriveBase):
 
     """
 
+    @staticmethod
+    def _rsa_encrypt(plain: str, n: str, e: str = "10001") -> str:
+        """RSA encrypt.
+
+        Args:
+            n: Modulus in hex string.
+            e: Exponent in hex string.
+
+        Returns:
+            str: Cipher in hex string.
+        """
+        key = RSA.construct((int(n, 16), int(e, 16)))
+        encrypter = PKCS1_v1_5.new(key)
+
+        cipher = encrypter.encrypt(plain.encode("utf8")).hex()
+        return cipher
+
     def __init__(self, interval: float = 0.01) -> None:
         super().__init__(interval=interval)
         self.user_id = ""
@@ -506,6 +515,26 @@ class AliyunDrive(AliyunDriveBase):
         self.refresh_token = ""  # token used to refresh access token
 
         self.expire_time = datetime.now(timezone.utc).replace(2020)  # access token expire time
+
+    @property
+    def client_id(self) -> str:
+        """Get from client id from sign in html page.
+
+        If can't get id from html page, return a default id "25dzX3vbYqktVxyX".
+        """
+        _client_id = "25dzX3vbYqktVxyX"
+
+        sign_html = self._get_sign_in()
+        if not sign_html:
+            self.logger.warning("Failed to get client id from html page, use default id.")
+        else:
+            result = re.findall(r"client_id:[ ]*?['|\"]([a-zA-Z0-9]+?)['|\"]", sign_html)
+            if not result:
+                self.logger.warning("Failed to find client_id from html page text, use default id.")
+            else:
+                _client_id = result[0]
+
+        return _client_id
 
     @property
     def access_token(self) -> str:
@@ -519,6 +548,47 @@ class AliyunDrive(AliyunDriveBase):
         # update header
         if self.token_type:
             self.headers["Authorization"] = self.token_type + " " + self.__access_token
+
+    def _get_login_form_data(self, mini_login_html: str) -> dict:
+        """Find login form data from mini_login_html."""
+
+        result = re.findall(
+            r"['\"]loginFormData['\"][ ]*?:[ ]*?(\{.+?\})",
+            mini_login_html, re.S
+        )
+
+        if not result:
+            self.logger.error("Failed to find login form data from mini_login_html.")
+            return {}
+
+        return json.loads(result[0])
+
+    def _get_pub_n_e(self, mini_login_html: str) -> Tuple[str, str]:
+        """Get Modulus and Exponent from html page.
+
+        Returns:
+            (n, e)
+        """
+        result_e = re.findall(
+            r"['\"]rsaExponent['\"][ ]*?:[ ]*?['\"]([a-zA-Z0-9]+?)['\"]",
+            mini_login_html
+        )
+        if not result_e:
+            self.logger.warning("Failed to find exponent, use default 65537.")
+            e = "10001"
+        else:
+            e = result_e[0]
+        result_n = re.findall(
+            r"['\"]rsaModulus['\"][ ]*?:[ ]*?['\"]([a-zA-Z0-9]+?)['\"]",
+            mini_login_html
+        )
+        if not result_n:
+            self.logger.error("Failed to find Modulus.")
+            n = ""
+        else:
+            n = result_n[0]
+
+        return (n, e)
 
     def _get_proof_code(self, filepath: PathLike, version: str = "v1") -> str:
         """Get proof_code of content by access token.
@@ -607,6 +677,14 @@ class AliyunDrive(AliyunDriveBase):
 
         # TODO: usrn and pwd login
         if usrn and pwd:
+            auth_html = self._get_v2_oauth_authorize(self.client_id)
+            mini_login_html = self._get_passport_mini_login()
+
+            login_form_data = self._get_login_form_data(mini_login_html)
+            pub_n, pub_e = self._get_pub_n_e(mini_login_html)
+            print(pub_n, pub_e)
+
+            exit()
             raise NotImplementedError
         else:
             # refresh token login
