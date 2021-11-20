@@ -138,5 +138,5 @@ def img_add_salt(img_path: PathLike, save_path: PathLike = None) -> Path:
         save_path = img_path
     save_path = Path(save_path)
 
-    cv2.imwrite(img_path.as_posix(), img)
+    cv2.imwrite(save_path.as_posix(), img)
     return img_path
