@@ -1,0 +1,44 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: autodrive
+
+on:
+  schedule:
+    - cron: '0 22 * * *'
+  push:
+    branches: [main]
+
+jobs:
+  dailyrun:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python 3.7.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.7.9
+
+    - name: Install dependencies
+      run: |
+        python3 -m pip install --upgrade pip
+        python3 -m pip install -r requirements.txt
+
+    - name: Config git
+      run: |
+        git config user.email "ww-rm@qq.com"
+        git config user.name "ww-rm"
+
+    - name: Run autodrive
+      run: |
+        python3 -m autodrive "conf/autodrive.json" ${{ secrets.RSAKEY }}
+
+    - name: Commit autodrive
+      run: |
+        git add .
+        bash "scripts/safe_commit.sh" "autorun-autodrive"
+        git pull --no-rebase
+        git push
