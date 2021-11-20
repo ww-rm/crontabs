@@ -1,6 +1,8 @@
-"""Used to make a simple image-video"""
+"""Do some media process."""
 
+import hashlib
 from math import ceil, floor
+from os import PathLike
 from pathlib import Path
 from typing import List, Tuple, Union
 
@@ -12,15 +14,12 @@ import numpy as np
 def load_images(img_paths: List[Union[str, Path]], load_size: tuple = (1080, 1920), padding_mode: str = "full_blurred") -> List[np.ndarray]:
     """Load local images to specified size and `RGB` mode
 
-    Args
-
-    img_paths:
-        A list of image paths to load
-    load_size:
-        A size tuple (height, width) image should resize to, will keep radio
-    padding_mode:
-        Can be "black", "full", "full_darker", "full_blurred",
+    Args:
+        img_paths: A list of image paths to load.
+        load_size: A size tuple (height, width) image should resize to, will keep radio.
+        padding_mode: Can be "black", "full", "full_darker", "full_blurred",
     """
+
     def _resize1(img: np.ndarray) -> np.ndarray:
         """adapt"""
         h, w = img.shape[0], img.shape[1]
@@ -99,19 +98,15 @@ def load_images(img_paths: List[Union[str, Path]], load_size: tuple = (1080, 192
 
 
 def make_video(images: List[np.ndarray], save_path: Union[Path, str], bgm_file: Union[Path, str] = None, each_duration: int = 5) -> Path:
-    """Make video from images loaded by `load_images` and bgm from bgm_file(optinal)
+    """Make video from images loaded by `load_images` and bgm from bgm_file(optinal).
 
-    Args
-
-    images:
-        images loaded by `load_images`, or images in RGB format and the same size
-    save_path:
-        path to save, will auto replace suffix to `.mp4`
-    bgm_file:
-        A audio file to be added to video
-    each_duration:
-        seconds each image should last
+    Args:
+        images: images loaded by `load_images`, or images in RGB format and the same size.
+        save_path: path to save, will auto replace suffix to `.mp4`.
+        bgm_file: A audio file to be added to video.
+        each_duration: seconds each image should last.
     """
+
     save_path = Path(save_path).with_suffix(".mp4")
     img_video = mvp.ImageSequenceClip(images, durations=[each_duration]*len(images))
     if bgm_file:
@@ -121,3 +116,27 @@ def make_video(images: List[np.ndarray], save_path: Union[Path, str], bgm_file: 
     img_video.write_videofile(save_path.as_posix(), fps=24)
     img_video.close()
     return save_path
+
+
+def img_add_salt(img_path: PathLike, save_path: PathLike = None) -> Path:
+    """Add salt to img. 
+
+    If save_path is not given, will overwrite the previous img file.
+    """
+
+    img_path = Path(img_path)
+
+    img_sha1 = hashlib.sha1(img_path.read_bytes()).digest()
+    rnd = np.random.RandomState(np.random.MT19937(int.from_bytes(img_sha1, "big")))
+
+    img: np.ndarray = cv2.imread(img_path.as_posix(), cv2.IMREAD_UNCHANGED)
+
+    salt_mask = rnd.randint(2, size=img.shape, dtype=img.dtype)
+    img = np.bitwise_xor(img, salt_mask)
+
+    if not save_path:
+        save_path = img_path
+    save_path = Path(save_path)
+
+    cv2.imwrite(img_path.as_posix(), img)
+    return img_path
