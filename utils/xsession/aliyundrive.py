@@ -184,18 +184,18 @@ class AliyunDriveBase(XSession):
         self,
         loginId: str,
         password2: str,
-        ua: str,
-        bx_ua: str,
-        bx_umidtoken: str,
-        loginFormData: dict,
-        navUserAgent: str,
+        keepLogin: bool = False,
+        *,
+        loginFormData: dict = None,
+        navUserAgent: str = "",
         navlanguage: str = "zh-CN",
         navPlatform: str = "Win32",
-        keepLogin: bool = False,
         umidGetStatusVal: int = 255,
         screenPixel: str = "1280x720",
+        ua: str = "",
         deviceId: str = "",
-        *,
+        bx_ua: str = "",
+        bx_umidtoken: str = "",
         appName: str = "aliyun_drive",
         fromSite: int = 52,
         _bx_v: str = "2.0.31",
@@ -209,22 +209,35 @@ class AliyunDriveBase(XSession):
             appName: Used in params.
             fromSite: Used in params.
             _bx-v: Used in params.
+
+        Note:
+            2021.11.19. Actually only need `loginId`, `password2`, `keepLogin` fileds.
         """
         login_data = {
             "loginId": loginId,
             "password2": password2,
-            "ua": ua,
-            "bx-ua": bx_ua,
-            "bx-umidtoken": bx_umidtoken,
-            "navUserAgent": navUserAgent,
-            "navlanguage": navlanguage,
-            "navPlatform": navPlatform,
             "keepLogin": keepLogin,
-            "umidGetStatusVal": umidGetStatusVal,
-            "screenPixel": screenPixel,
-            "deviceId": deviceId,
         }
-        login_data.update(loginFormData)
+
+        if ua:
+            login_data1 = {
+                "navUserAgent": navUserAgent,
+                "navlanguage": navlanguage,
+                "navPlatform": navPlatform,
+                "screenPixel": screenPixel,
+                "umidGetStatusVal": umidGetStatusVal,
+                "ua": ua,
+            }
+            login_data1.update(loginFormData)
+            login_data.update(login_data1)
+
+        if bx_ua:
+            login_data2 = {
+                "deviceId": deviceId,
+                "bx-ua": bx_ua,
+                "bx-umidtoken": bx_umidtoken,
+            }
+            login_data.update(login_data2)
 
         login_params = {
             "appName": appName,
@@ -240,7 +253,19 @@ class AliyunDriveBase(XSession):
 
         if res.status_code != 200:
             return {}
-        return res.json()
+
+        # DEBUG
+        # print(res.text)
+
+        try:
+            json_ = res.json()
+        except ValueError:
+            self.logger.error("JsonDeodeError.")
+            return {}
+
+        if json_.get("content", None) is None:
+            return {}
+        return json_["content"]["data"]
 
     def _get_logout(self) -> bool:
         res = self.get(
@@ -667,7 +692,7 @@ class AliyunDrive(AliyunDriveBase):
 
         return True
 
-    def login(self, usrn: str, pwd: str, *, refresh_token: str = "", bizExt: str = "", cookies: dict = None) -> bool:
+    def login(self, usrn: str, pwd: str, *, refresh_token: str = "", cookies: dict = None) -> bool:
         """Login.
 
         Args:
@@ -677,51 +702,39 @@ class AliyunDrive(AliyunDriveBase):
 
         # TODO: usrn and pwd login
         if usrn and pwd:
+            raise NotImplementedError
+
             auth_html = self._get_v2_oauth_authorize(self.client_id)
             mini_login_html = self._get_passport_mini_login()
 
             login_form_data = self._get_login_form_data(mini_login_html)
             pub_n, pub_e = self._get_pub_n_e(mini_login_html)
-            print(pub_n, pub_e)
 
-            exit()
-            raise NotImplementedError
+            login_info = self._post_passport_newlogin_login(
+                usrn,
+                self._rsa_encrypt(pwd, pub_n, pub_e),
+                False,
+            )
+
         else:
             # refresh token login
-            if refresh_token:
-                self.refresh_token = refresh_token
-                if not self._check_refresh():
-                    return False
-                return True
+            if not refresh_token:
+                self.logger.error("Failed to login.")
+                return False
 
-            # # bizExt login
-            # if bizExt:
-            #     login_info = b64decode(bizExt).decode("gbk")
-            #     login_result = json.loads(login_info)["pds_login_result"]
-            #     if not login_result:
-            #         return False
+            self.refresh_token = refresh_token
+            if not self._check_refresh():
+                self.logger.error("Failed to get fresh token and login.")
+                return False
 
-            #     # TODO token_get get real token.
-
-            #     self.user_id = login_result["userId"]
-            #     self.drive_id = login_result["defaultDriveId"]
-
-            #     self.token_type = login_result["tokenType"]
-            #     self.access_token = login_result["accessToken"]
-            #     self.refresh_token = login_result["refreshToken"]
-
-            #     self.expire_time = isoparse(login_result["expireTime"])  # include timezone, utc time
-
-            #     return True
-
-            # # cookies login
-            # if cookies:
-            #     self.cookies.update(cookies)
-            #     return True
+        # optional add some cookies
+        if cookies:
+            self.cookies.update(cookies)
 
             return True
 
     def logout(self) -> bool:
+        # XXX: not really logout
         ret = self._get_logout()
 
         return ret
