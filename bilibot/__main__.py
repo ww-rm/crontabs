@@ -12,7 +12,6 @@ from .bot import Bot
 
 
 def run(config: dict):
-    logger = logging.getLogger(__name__)
     # load bilibot data
     data_path: str = config["data_file"]
     with Path(data_path).open("r", encoding="utf8") as f:
@@ -20,7 +19,7 @@ def run(config: dict):
 
     # main works
     bot = Bot()
-    cookies = dict(map(lambda item: (item[0], _d(item[1])), config["cookies"].items()))
+    cookies = {k: _d(v) for k, v in config["cookies"].items()}
     if bot.login(cookies=cookies):
         today = datetime.utcnow()
 
@@ -106,6 +105,8 @@ def test(config: dict):
 
 
 if __name__ == "__main__":
+    logger = logging.getLogger(__name__)
+
     # parse args
     parser = ArgumentParser()
     parser.add_argument("config")
