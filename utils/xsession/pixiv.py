@@ -3,7 +3,7 @@
 import json
 from os import PathLike
 from pathlib import Path
-from typing import Any, Iterator, Union
+from typing import Any, Iterator, List, Union
 import bs4
 import requests
 from .base import XSession, empty_retry
@@ -192,6 +192,11 @@ class PixivBase(XSession):
 
     @empty_retry()
     def _get_illust(self, illust_id) -> dict:
+        """
+        Note:
+            `userAccount` is unchangable (for normal user)
+            `userName` can change as casual.
+        """
         res = self.get(
             PixivBase.URL_ajax_illust.format(illust_id=illust_id)
         )
@@ -360,7 +365,15 @@ class Pixiv(PixivBase):
     """"""
 
     def download_page(self, page_url: str, page_save_path: PathLike) -> bool:
-        """Download a single page."""
+        """Download a single page.
+
+        Args:
+            The file path to save.
+        """
+
+        if Path(page_save_path).is_file():
+            self.logger.warning("Page file already exist, skip download.")
+            return True
 
         data = self._get_page(page_url)
 
@@ -373,9 +386,45 @@ class Pixiv(PixivBase):
                 f.write(chunk)
         return True
 
-    def download_illust(self, illust_id: str, illust_save_folder: Path) -> bool:
-        """"""
-        raise NotImplementedError
+    def download_illust(self, illust_id: str, illust_save_folder: PathLike) -> List[Path]:
+        """Download all pages of an illust.
+
+        Args:
+            illust_id: id of illust.
+            illust_save_folder (PathLike): pages where to save.
+        The download result may like this:
+            <illust_save_folder>/
+                <illust_id_p0>
+                <illust_id_p1>
+                ...
+
+        Returns:
+            List[Path]: Successfully downloaded page file path.
+        """
+        illust_save_folder = Path(illust_save_folder)
+
+        pages_info = self._get_illust_pages(illust_id)
+
+        if not pages_info:
+            self.logger.error("Failed to get pages info and download.")
+            return False
+
+        result = []
+        flag = True
+        for page_info in pages_info:
+            page_url: str = page_info["urls"]["original"]
+            page_save_path = illust_save_folder.joinpath(page_url.split("/")[-1])
+            if not self.download_page(page_url, page_save_path):
+                flag = False
+                continue
+            result.append(page_save_path)
+
+        if flag:
+            self.logger.info("Download illust {} all pages success.".format(illust_id))
+        else:
+            self.logger.warning("Failed to download some pages in illust {}.".format(illust_id))
+
+        return result
 
     def get_illust(self, illust_id: str) -> dict:
         """Get illust info."""
@@ -386,6 +435,16 @@ class Pixiv(PixivBase):
             self.logger.error("Failed to get {} illust info.".format(illust_id))
             return {}
         return illust_info
+
+    def get_user_top(self, user_id: str) -> dict:
+        """Get user top info."""
+
+        top_info = self._get_user_profile_top(user_id)
+
+        if not top_info:
+            self.logger.error("Failed to get user {} top info.".format(user_id))
+            return {}
+        return top_info
 
     def get_ranking_daily(self, p: int = 1, content: str = "illust", date: str = None, r18: bool = False) -> dict:
         """Get daily ranking info.
