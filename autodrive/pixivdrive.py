@@ -113,7 +113,7 @@ class PixivDrive:
             return False
 
         # upload ranking illusts
-        illust_ids = [e["illust_id"] for e in ranking_info["contents"]]
+        illust_ids = [str(e["illust_id"]) for e in ranking_info["contents"]]
         flag = True
         for id_ in illust_ids:
             if not self.upload_illust(id_):
