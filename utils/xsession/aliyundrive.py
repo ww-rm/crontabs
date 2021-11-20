@@ -727,9 +727,9 @@ class AliyunDrive(AliyunDriveBase):
                 self.logger.error("Failed to get fresh token and login.")
                 return False
 
-        # optional add some cookies
-        if cookies:
-            self.cookies.update(cookies)
+            # optional add some cookies
+            if cookies:
+                self.cookies.update(cookies)
 
             return True
 
