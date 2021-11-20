@@ -57,6 +57,7 @@ class XSession(requests.Session):
         try:
             res = super().request(method, url, *args, **kwargs)
         except Exception as e:
+            print(kwargs)
             raise
             self.logger.error("{}:{}".format(url, e))
             res = requests.Response()
