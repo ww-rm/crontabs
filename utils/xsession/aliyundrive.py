@@ -658,7 +658,7 @@ class AliyunDrive(AliyunDriveBase):
             start = int(md5_token[0:16], 16) % file_size
             with filepath.open("rb") as f:
                 f.seek(start)
-                proof_code = b64encode(f.read(8))
+                proof_code = b64encode(f.read(8)).decode("utf8")
         else:
             raise ValueError("version must be v1")
 
