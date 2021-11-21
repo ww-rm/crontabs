@@ -43,7 +43,7 @@ if __name__ == "__main__":
     fmter = logging.Formatter("{asctime} - {levelname} - {filename} - {lineno} - {message}", "%Y-%m-%d %H:%M:%S", "{")
     fmter.converter = time.gmtime
     if not args.test:
-        root_logger.setLevel(logging.ERROR) # avoid big log file
+        root_logger.setLevel(logging.WARNING) # avoid big log file
         hdler = logging.FileHandler("logs/autodrive.txt", encoding="utf8")
     else:
         root_logger.setLevel(logging.WARNING)

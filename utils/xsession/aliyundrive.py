@@ -759,7 +759,7 @@ class AliyunDrive(AliyunDriveBase):
         folder_path = Path(folder_path)
 
         if check_name_mode == "auto_rename":
-            self.logger.warning("Check name mode is auto_rename for create folder {}.".format(folder_path.as_posix()))
+            self.logger.info("Check name mode is auto_rename for create folder {}.".format(folder_path.as_posix()))
 
         if not self._check_refresh():
             return {}
@@ -774,7 +774,7 @@ class AliyunDrive(AliyunDriveBase):
             return {}
 
         if check_name_mode == "refuse" and create_info.get("exist") is True:
-            self.logger.warning("Folder {} already exist.".format(folder_path.as_posix()))
+            self.logger.info("Folder {} already exist.".format(folder_path.as_posix()))
 
         self.logger.info("Successfully create folder {}.".format(folder_path.as_posix()))
         return create_info
