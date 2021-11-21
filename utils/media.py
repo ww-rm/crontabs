@@ -130,7 +130,7 @@ def img_add_salt(img_path: PathLike, save_path: PathLike = None) -> bool:
     rnd = np.random.RandomState(np.random.MT19937(int.from_bytes(img_sha1, "big")))
 
     img: np.ndarray = cv2.imread(img_path.as_posix(), cv2.IMREAD_UNCHANGED)
-    if not img:
+    if img is None:
         return False
 
     salt_mask = rnd.randint(2, size=img.shape, dtype=img.dtype)
