@@ -17,6 +17,7 @@ def run(config):
         logger.error("Failed to login, run failed.")
     else:
         pixiv_drive.upload_monthly_ranking(include_user_top=True)
+        logger.info("Task completed.")
 
 
 if __name__ == "__main__":
@@ -42,7 +43,7 @@ if __name__ == "__main__":
     fmter = logging.Formatter("{asctime} - {levelname} - {filename} - {lineno} - {message}", "%Y-%m-%d %H:%M:%S", "{")
     fmter.converter = time.gmtime
     if not args.test:
-        root_logger.setLevel(logging.INFO)
+        root_logger.setLevel(logging.ERROR) # avoid big log file
         hdler = logging.FileHandler("logs/autodrive.txt", encoding="utf8")
     else:
         root_logger.setLevel(logging.WARNING)
