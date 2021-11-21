@@ -118,7 +118,7 @@ def make_video(images: List[np.ndarray], save_path: Union[Path, str], bgm_file: 
     return save_path
 
 
-def img_add_salt(img_path: PathLike, save_path: PathLike = None) -> Path:
+def img_add_salt(img_path: PathLike, save_path: PathLike = None) -> bool:
     """Add salt to img. 
 
     If save_path is not given, will overwrite the previous img file.
@@ -130,6 +130,8 @@ def img_add_salt(img_path: PathLike, save_path: PathLike = None) -> Path:
     rnd = np.random.RandomState(np.random.MT19937(int.from_bytes(img_sha1, "big")))
 
     img: np.ndarray = cv2.imread(img_path.as_posix(), cv2.IMREAD_UNCHANGED)
+    if not img:
+        return False
 
     salt_mask = rnd.randint(2, size=img.shape, dtype=img.dtype)
     img = np.bitwise_xor(img, salt_mask)
@@ -139,4 +141,4 @@ def img_add_salt(img_path: PathLike, save_path: PathLike = None) -> Path:
     save_path = Path(save_path)
 
     cv2.imwrite(save_path.as_posix(), img)
-    return img_path
+    return True

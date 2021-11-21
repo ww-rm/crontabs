@@ -93,7 +93,9 @@ class PixivDrive:
 
             if page_local_paths:
                 # add salt to avoid same hash
-                for path in map(media.img_add_salt, page_local_paths):
+                for path in page_local_paths:
+                    if not media.img_add_salt(path):
+                        self.logger.warning("Failed to add salt to page {}, upload original page.".format(path.as_posix()))
                     self.s_adrive.upload_file(user_dir.joinpath(illust_id, path.name), path, check_name_mode="overwrite")
 
                 return True
