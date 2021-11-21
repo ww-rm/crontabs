@@ -26,6 +26,25 @@ jobs:
     - name: Test dailysignin
       run: |
         python3 -m dailysignin "conf/dailysignin.json" ${{ secrets.RSAKEY }} --test
+
+  # autodrive-test:
+
+  #   runs-on: ubuntu-latest
+
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - name: Set up Python 3.7.9
+  #     uses: actions/setup-python@v2
+  #     with:
+  #       python-version: 3.7.9
+  #   - name: Install dependencies
+  #     run: |
+  #       python3 -m pip install --upgrade pip
+  #       python3 -m pip install -r requirements.txt
+
+  #   - name: Test autodrive
+  #     run: |
+  #       python3 -m autodrive "conf/autodrive.json" ${{ secrets.RSAKEY }} --test
   
   # bilibot-test:
 
