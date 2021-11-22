@@ -871,7 +871,7 @@ class AliyunDrive(AliyunDriveBase):
                 flag = False
                 for _ in range(3):
                     res = self.put(upload_url, data=chunk)
-                    if res.ok:
+                    if res.status_code is not None and res.ok:
                         flag = True
                         break
                 if not flag:
