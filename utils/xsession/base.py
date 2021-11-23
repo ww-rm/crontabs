@@ -20,7 +20,7 @@ def empty_retry(times: int = 3, interval: float = 1):
             for i in range(times + 1):
                 # retry log
                 if i > 0:
-                    logging.getLogger(__name__).warning("Retry func {} {} time.".format(func.__name__, i + 1))
+                    logging.getLogger(__name__).warning("Retry func {} {} time.".format(func.__name__, i))
 
                 # call func
                 ret = func(*args, **kwargs)

@@ -371,8 +371,9 @@ class Pixiv(PixivBase):
             The file path to save.
         """
 
-        if Path(page_save_path).is_file():
-            self.logger.warning("Page file already exist, skip download.")
+        page_save_path = Path(page_save_path)
+        if page_save_path.is_file():
+            self.logger.info("Page file {} already exist, skip download.".format(page_save_path.as_posix()))
             return True
 
         data = self._get_page(page_url)
