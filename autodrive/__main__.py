@@ -3,6 +3,7 @@ import logging
 import time
 from argparse import ArgumentParser
 from base64 import b64decode
+from pathlib import Path
 
 import utils
 
@@ -18,6 +19,9 @@ def run(config):
     else:
         pixiv_drive.upload_monthly_ranking(include_user_top=True)
         logger.info("Task completed.")
+
+        # XXX: update refresh_token to config
+        config["refresh_token"] = _e(pixiv_drive.s_adrive.refresh_token or refresh_token)
 
 
 if __name__ == "__main__":
@@ -38,12 +42,16 @@ if __name__ == "__main__":
     rsakey = b64decode(args.rsakey).decode("utf8")
     def _d(p): return utils.secrets.rsa_decrypt(p, rsakey)
 
+    # encrypt
+    rsa_pubkey = b64decode(Path("conf/rsakey/rsa4096.pub.pem").read_text()).decode("utf8")
+    def _e(c): return utils.secrets.rsa_encrypt(c, rsa_pubkey)
+
     # logging config
     root_logger = logging.getLogger()
     fmter = logging.Formatter("{asctime} - {levelname} - {filename} - {lineno} - {message}", "%Y-%m-%d %H:%M:%S", "{")
     fmter.converter = time.gmtime
     if not args.test:
-        root_logger.setLevel(logging.WARNING) # avoid big log file
+        root_logger.setLevel(logging.WARNING)  # avoid big log file
         hdler = logging.FileHandler("logs/autodrive.txt", encoding="utf8")
     else:
         root_logger.setLevel(logging.WARNING)
@@ -52,5 +60,9 @@ if __name__ == "__main__":
     root_logger.addHandler(hdler)
 
     run(config)
+
+    # save config
+    with open(args.config, "w", encoding="utf8") as f:
+        json.dump(config, f, ensure_ascii=False)
 
     logging.shutdown()

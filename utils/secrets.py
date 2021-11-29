@@ -87,7 +87,7 @@ def rsa_decrypt(cipher: str, private_key: str) -> str:
 
     Args:
         cipher: base64 encoded cipher string
-        public_key: PEM, DER, OPENSSH format key string
+        private_key: PEM, DER, OPENSSH format key string
 
     Returns:
         utf8 encoded plain string
