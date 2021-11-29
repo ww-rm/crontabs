@@ -34,18 +34,6 @@ if __name__ == "__main__":
     parser.add_argument("--test", action="store_true", default=False)
     args = parser.parse_args()
 
-    # read config
-    with open(args.config, "r", encoding="utf8") as f:
-        config: dict = json.load(f)
-
-    # read secrets
-    rsakey = b64decode(args.rsakey).decode("utf8")
-    def _d(p): return utils.secrets.rsa_decrypt(p, rsakey)
-
-    # encrypt
-    rsa_pubkey = b64decode(Path("conf/rsakey/rsa4096.pub.pem").read_text()).decode("utf8")
-    def _e(c): return utils.secrets.rsa_encrypt(c, rsa_pubkey)
-
     # logging config
     root_logger = logging.getLogger()
     fmter = logging.Formatter("{asctime} - {levelname} - {filename} - {lineno} - {message}", "%Y-%m-%d %H:%M:%S", "{")
@@ -58,6 +46,18 @@ if __name__ == "__main__":
         hdler = logging.StreamHandler()
     hdler.setFormatter(fmter)
     root_logger.addHandler(hdler)
+
+    # read secrets
+    rsakey = b64decode(args.rsakey).decode("utf8")
+    def _d(p): return utils.secrets.rsa_decrypt(p, rsakey)
+
+    # encrypt
+    rsa_pubkey = b64decode(Path("conf/rsakey/rsa4096.pub.pem").read_text()).decode("utf8")
+    def _e(c): return utils.secrets.rsa_encrypt(c, rsa_pubkey)
+
+    # read config
+    with open(args.config, "r", encoding="utf8") as f:
+        config: dict = json.load(f)
 
     run(config)
 
