@@ -63,6 +63,6 @@ if __name__ == "__main__":
 
     # save config
     with open(args.config, "w", encoding="utf8") as f:
-        json.dump(config, f, ensure_ascii=False, intent=4)
+        json.dump(config, f, ensure_ascii=False, indent=4)
 
     logging.shutdown()
