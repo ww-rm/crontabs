@@ -298,6 +298,7 @@ class AliyunDriveBase(XSession):
 
         return self._check_response(res)
 
+    @empty_retry()
     def _post_token_refresh(self, refresh_token: str) -> dict:
         """Get new access token.
 
