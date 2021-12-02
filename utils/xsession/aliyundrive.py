@@ -664,6 +664,7 @@ class AliyunDrive(AliyunDriveBase):
 
         return proof_code
 
+    @empty_retry()
     def _check_refresh(self) -> bool:
         """Check token and try refresh it if is about to expire.
 
