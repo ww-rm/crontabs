@@ -408,7 +408,7 @@ class Pixiv(PixivBase):
 
         if not pages_info:
             self.logger.error("Failed to get pages info and download.")
-            return False
+            return []
 
         result = []
         flag = True
