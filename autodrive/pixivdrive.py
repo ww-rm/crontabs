@@ -124,7 +124,7 @@ class PixivDrive:
         if not flag:
             self.logger.warning("Failed to upload some illusts.")
 
-        # upload users in rannking top illusts
+        # upload users in ranking top illusts
         if include_user_top:
             illust_ids = set()
             user_ids = [e["user_id"] for e in ranking_info["contents"]]

@@ -199,7 +199,6 @@ class AliyunDriveBase(XSession):
         appName: str = "aliyun_drive",
         fromSite: int = 52,
         _bx_v: str = "2.0.31",
-
     ) -> dict:
         """
         Args:
