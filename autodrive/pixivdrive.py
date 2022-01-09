@@ -117,9 +117,12 @@ class PixivDrive:
         # upload ranking illusts
         illust_ids = [str(e["illust_id"]) for e in ranking_info["contents"]]
         flag = True
+        print("##### DEBUG 1 BEGIN #####")
         for id_ in illust_ids:
+            print(id_, end=";")
             if not self.upload_illust(id_):
                 flag = False
+        print("\n##### DEBUG 1 END #####")
 
         if not flag:
             self.logger.warning("Failed to upload some illusts.")
@@ -128,16 +131,22 @@ class PixivDrive:
         if include_user_top:
             illust_ids = set()
             user_ids = [e["user_id"] for e in ranking_info["contents"]]
+            print("##### DEBUG 2 BEGIN #####")
             for id_ in user_ids:
+                print(id_, end=";")
                 top_info = self.s_pixiv.get_user_top(id_)
                 if top_info:
                     for illust_id in top_info["illusts"].keys():
                         illust_ids.add(str(illust_id))
+            print("\n##### DEBUG 2 END #####")
 
             flag = True
+            print("##### DEBUG 3 BEGIN #####")
             for id_ in illust_ids:
+                print(id_, end=";")
                 if not self.upload_illust(id_):
                     flag = False
+            print("\n##### DEBUG 3 END #####")
             if not flag:
                 self.logger.warning("Failed to upload some user top illusts.")
 
