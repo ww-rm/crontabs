@@ -108,21 +108,21 @@ class PixivDrive:
         Args:
             include_user_top (bool): Whether to upload top illusts of users in ranking as well.
         """
-
+        print("##### DEBUG 0 BEGIN #####", flush=True)
         ranking_info = self.s_pixiv.get_ranking_monthly()
-
+        print("\n##### DEBUG 0 END #####", flush=True)
         if not ranking_info:
             return False
 
         # upload ranking illusts
         illust_ids = [str(e["illust_id"]) for e in ranking_info["contents"]]
         flag = True
-        print("##### DEBUG 1 BEGIN #####")
+        print("##### DEBUG 1 BEGIN #####", flush=True)
         for id_ in illust_ids:
-            print(id_, end=";")
+            print(id_, end=";", flush=True)
             if not self.upload_illust(id_):
                 flag = False
-        print("\n##### DEBUG 1 END #####")
+        print("\n##### DEBUG 1 END #####", flush=True)
 
         if not flag:
             self.logger.warning("Failed to upload some illusts.")
@@ -131,22 +131,22 @@ class PixivDrive:
         if include_user_top:
             illust_ids = set()
             user_ids = [e["user_id"] for e in ranking_info["contents"]]
-            print("##### DEBUG 2 BEGIN #####")
+            # print("##### DEBUG 2 BEGIN #####")
             for id_ in user_ids:
-                print(id_, end=";")
+                # print(id_, end=";")
                 top_info = self.s_pixiv.get_user_top(id_)
                 if top_info:
                     for illust_id in top_info["illusts"].keys():
                         illust_ids.add(str(illust_id))
-            print("\n##### DEBUG 2 END #####")
+            # print("\n##### DEBUG 2 END #####")
 
             flag = True
-            print("##### DEBUG 3 BEGIN #####")
+            # print("##### DEBUG 3 BEGIN #####")
             for id_ in illust_ids:
-                print(id_, end=";")
+                # print(id_, end=";")
                 if not self.upload_illust(id_):
                     flag = False
-            print("\n##### DEBUG 3 END #####")
+            # print("\n##### DEBUG 3 END #####")
             if not flag:
                 self.logger.warning("Failed to upload some user top illusts.")
 
