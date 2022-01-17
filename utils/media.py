@@ -1,6 +1,7 @@
 """Do some media process."""
 
 import hashlib
+import secrets
 from math import ceil, floor
 from os import PathLike
 from pathlib import Path
@@ -127,7 +128,7 @@ def img_add_salt(img_path: PathLike, save_path: PathLike = None) -> bool:
     img_path = Path(img_path)
 
     img_sha1 = hashlib.sha1(img_path.read_bytes()).digest()
-    rnd = np.random.RandomState(np.random.MT19937(int.from_bytes(img_sha1, "big")))
+    rnd = np.random.RandomState(np.random.MT19937(int.from_bytes(img_sha1 + secrets.token_bytes(32), "big")))
 
     img: np.ndarray = cv2.imread(img_path.as_posix(), cv2.IMREAD_UNCHANGED)
     if img is None:
