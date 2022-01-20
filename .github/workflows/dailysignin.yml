@@ -27,6 +27,7 @@ jobs:
       run: |
         git config user.email "ww-rm@qq.com"
         git config user.name "ww-rm"
+        git pull --no-rebase
 
     - name: Run dailysignin
       run: |
