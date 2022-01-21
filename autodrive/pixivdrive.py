@@ -142,7 +142,7 @@ class PixivDrive:
 
             flag = True
             print("##### DEBUG 3 BEGIN #####", flush=True)
-            print("Num: ", len(illust_ids))
+            print("Num: ", len(illust_ids), flush=True)
             for id_ in illust_ids:
                 print(id_, end=";", flush=True)
                 if not self.upload_illust(id_):
