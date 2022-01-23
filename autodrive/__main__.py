@@ -47,6 +47,10 @@ if __name__ == "__main__":
     hdler.setFormatter(fmter)
     root_logger.addHandler(hdler)
 
+    ####### DEBUG #######
+    root_logger.addHandler(logging.StreamHandler())
+    #####################
+
     # read secrets
     rsakey = b64decode(args.rsakey).decode("utf8")
     def _d(p): return utils.secrets.rsa_decrypt(p, rsakey)

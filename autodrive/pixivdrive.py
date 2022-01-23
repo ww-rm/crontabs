@@ -119,7 +119,7 @@ class PixivDrive:
         flag = True
         print("##### DEBUG 1 BEGIN #####", flush=True)
         for id_ in illust_ids:
-            print(id_, end=";", flush=True)
+            # print(id_, end=";", flush=True)
             if not self.upload_illust(id_):
                 flag = False
         print("\n##### DEBUG 1 END #####", flush=True)
@@ -133,7 +133,7 @@ class PixivDrive:
             user_ids = [e["user_id"] for e in ranking_info["contents"]]
             print("##### DEBUG 2 BEGIN #####", flush=True)
             for id_ in user_ids:
-                print(id_, end=";", flush=True)
+                # print(id_, end=";", flush=True)
                 top_info = self.s_pixiv.get_user_top(id_)
                 if top_info:
                     for illust_id in top_info["illusts"].keys():
@@ -144,7 +144,7 @@ class PixivDrive:
             print("##### DEBUG 3 BEGIN #####", flush=True)
             print("Num: ", len(illust_ids), flush=True)
             for id_ in illust_ids:
-                print(id_, end=";", flush=True)
+                # print(id_, end=";", flush=True)
                 if not self.upload_illust(id_):
                     flag = False
             print("\n##### DEBUG 3 END #####", flush=True)
