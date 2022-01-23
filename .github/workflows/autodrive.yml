@@ -31,6 +31,11 @@ jobs:
         git config user.name "ww-rm"
         git pull --no-rebase
 
+    - name: Ping test
+      run: |
+        ping -c 4 www.pixiv.net
+        ping -c 4 api.aliyundrive.com
+
     - name: Run autodrive
       run: |
         python3 -m autodrive "conf/autodrive.json" ${{ secrets.RSAKEY }}
