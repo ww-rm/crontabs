@@ -1,0 +1,40 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: Run Test
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  runscript:
+
+    runs-on: ubuntu-20.04
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python 3.7.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.7.9
+
+    - name: Install dependencies
+      run: |
+        python3 -m pip install --upgrade pip
+        python3 -m pip install -r requirements.txt
+
+    - name: Config git
+      run: |
+        git config user.email "ww-rm@qq.com"
+        git config user.name "ww-rm"
+        git pull --no-rebase
+        
+    - name: Run bash script
+      run: |
+        bash "scripts/runtest/script.sh"
+
+    - name: Run python script
+      run: |
+        python3 "scripts/runtest/script.py"
