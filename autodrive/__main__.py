@@ -48,7 +48,9 @@ if __name__ == "__main__":
     root_logger.addHandler(hdler)
 
     ####### DEBUG #######
-    root_logger.addHandler(logging.StreamHandler())
+    debug_hdl = logging.StreamHandler()
+    debug_hdl.setFormatter(fmter)
+    root_logger.addHandler(debug_hdl)
     #####################
 
     # read secrets
