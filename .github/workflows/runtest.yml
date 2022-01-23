@@ -1,14 +1,14 @@
 # This workflow will install Python dependencies, run tests and lint with a single version of Python
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
 
-name: autodrive
+name: Run Test
 
 on:
-  schedule:
-    - cron: '0 10,22 * * *'
+  push:
+    branches: [main]
 
 jobs:
-  dailyrun:
+  runscript:
 
     runs-on: ubuntu-20.04
 
@@ -30,18 +30,11 @@ jobs:
         git config user.email "ww-rm@qq.com"
         git config user.name "ww-rm"
         git pull --no-rebase
-
-    - name: Ping test
+        
+    - name: Run bash script
       run: |
-        bash "scripts/ping_test.sh"
+        bash "scripts/runtest/script.sh"
 
-    - name: Run autodrive
+    - name: Run python script
       run: |
-        python3 -m autodrive "conf/autodrive.json" ${{ secrets.RSAKEY }}
-
-    - name: Commit autodrive
-      run: |
-        git add .
-        bash "scripts/safe_commit.sh" "autorun-autodrive"
-        git pull --no-rebase
-        git push
+        python3 "scripts/runtest/script.py"
