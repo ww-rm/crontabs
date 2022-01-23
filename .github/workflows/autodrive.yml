@@ -33,8 +33,7 @@ jobs:
 
     - name: Ping test
       run: |
-        ping -c 4 www.pixiv.net
-        ping -c 4 api.aliyundrive.com
+        bash "scripts/ping_test.sh"
 
     - name: Run autodrive
       run: |
