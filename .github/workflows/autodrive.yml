@@ -33,7 +33,7 @@ jobs:
 
     - name: Connection test
       run: |
-        python3 "scripts/connection_test.py"
+        bash "scripts/connection_test.sh"
 
     - name: Run autodrive
       run: |
