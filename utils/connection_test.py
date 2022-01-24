@@ -7,6 +7,7 @@ import requests
 def test_connection(url: str, count: int = 4) -> str:
     times = []
     for i in range(count):
+        time.sleep(0.1)
         t_start = time.perf_counter()
         try:
             requests.head(url)
