@@ -32,9 +32,11 @@ jobs:
         git pull --no-rebase
         
     - name: Run bash script
+      if: always()
       run: |
         bash "scripts/runtest/script.sh"
 
     - name: Run python script
+      if: always()
       run: |
         python3 "scripts/runtest/script.py"
