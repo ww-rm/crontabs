@@ -31,9 +31,9 @@ jobs:
         git config user.name "ww-rm"
         git pull --no-rebase
 
-    - name: Ping test
+    - name: Connection test
       run: |
-        bash "scripts/ping_test.sh"
+        python3 "scripts/connection_test.py"
 
     - name: Run autodrive
       run: |

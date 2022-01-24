@@ -9,7 +9,7 @@ if __name__ == "__main__":
     times = []
     for i in range(4):
         start = time.perf_counter()
-        r = requests.head("https://www.api.aliyundrive.com")
+        r = requests.head("https://api.aliyundrive.com")
         end = time.perf_counter()
         times.append(end-start)
 
