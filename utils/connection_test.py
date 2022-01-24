@@ -26,8 +26,8 @@ def test_connection(url: str, count: int = 4) -> str:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("url", type=str, required=True, help="Site url to test.")
-    parser.add_argument("-c", dest="count", type=int, required=False, help="Times to test.", default=4)
+    parser.add_argument("url", type=str, help="Site url to test.")
+    parser.add_argument("-c", dest="count", type=int, help="Times to test.", default=4)
 
     args = parser.parse_args()
 
