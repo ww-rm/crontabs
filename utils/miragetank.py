@@ -79,11 +79,15 @@ class MirageTank:
         return cv2.imwrite(PurePath(save_path).with_suffix(".png").as_posix(), mirage)
 
     @staticmethod
-    def make_mirage(cover_path, secret_path, save_path):
+    def make_mirage(cover_path, secret_path, save_path) -> bool:
         """make a mirage image with three paths"""
         cover, secret = MirageTank.load_cover_and_secret(cover_path, secret_path)
-        mirage = MirageTank.makeimg(cover, secret)
-        MirageTank.save_mirage(mirage, save_path)
+        if isinstance(cover, np.ndarray) and isinstance(secret, np.ndarray):
+            mirage = MirageTank.makeimg(cover, secret)
+            MirageTank.save_mirage(mirage, save_path)
+            return True
+        else:
+            return False
 
 
 if __name__ == "__main__":

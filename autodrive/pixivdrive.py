@@ -1,7 +1,9 @@
-from os import PathLike
-from utils import media, xsession
-from pathlib import Path
 import logging
+from os import PathLike
+from pathlib import Path
+
+from utils import media, xsession
+from utils.miragetank import MirageTank
 
 
 class PixivDrive:
@@ -55,54 +57,91 @@ class PixivDrive:
         self.logger.info("Login success.")
         return True
 
-    def upload_illust(self, illust_id: str) -> bool:
+    def upload_illust(self, illust_id: str, mirage_cover_path: PathLike = None) -> bool:
         """Upload a illust to root_dir.
 
         The directory tree may like this:
             <root_dir>/
-                <user_id - username>
+                <user_id>
+                    <user_name>
                     <illust_id>
                         <illust_id_p0>
                         <illust_id_p1>
                         ...
+                    <illust_id_mirage>
+                        ...
                     <illust_id>
                         ...
-                <artist_id>
                     ...
+
+        Args:
+            illust_id (str): illust id
+            mirage_cover_path (PathLike): When supported, if illust is R18, 
+                will also upload mirage version using this image as cover
         """
 
         illust_info = self.s_pixiv.get_illust(illust_id)
 
-        if illust_info:
-            user_id = illust_info["userId"]
-            username = illust_info["userName"]
+        if not illust_info:
+            return False
 
-            # root_dir/user_id
-            user_dir = self.root_dir.joinpath(user_id)
+        user_id = illust_info["userId"]
+        username = illust_info["userName"]
 
-            # use a folder to record current username
-            self.s_adrive.create_folder(user_dir.joinpath(username))
+        # root_dir/user_id
+        user_dir = self.root_dir.joinpath(user_id)
 
-            # tmp download folder
-            # tmp/illust_id
-            illust_local_save_folder = Path("tmp", illust_id)
-            illust_local_save_folder.mkdir(parents=True, exist_ok=True)
+        # use a folder to record current username
+        self.s_adrive.create_folder(user_dir.joinpath(username))
 
-            # tmp/illust_id/page_p0.png
-            page_local_paths = self.s_pixiv.download_illust(illust_id, illust_local_save_folder)
+        # tmp download folder
+        # tmp/illust_id
+        illust_local_save_folder = Path("tmp", illust_id)
+        illust_local_save_folder.mkdir(parents=True, exist_ok=True)
 
-            if page_local_paths:
-                # add salt to avoid same hash
-                for path in page_local_paths:
-                    if not media.img_add_salt(path):
-                        self.logger.warning("Failed to add salt to page {}, upload original page.".format(path.as_posix()))
-                    self.s_adrive.upload_file(user_dir.joinpath(illust_id, path.name), path, check_name_mode="overwrite")
+        # tmp/illust_id/page_p0.png
+        page_local_paths = self.s_pixiv.download_illust(illust_id, illust_local_save_folder)
 
-                return True
+        # if is R18, upload extra mirage version
 
-        return False
+        if not page_local_paths:
+            return False
 
-    def upload_monthly_ranking(self, *, include_user_top: bool = False) -> bool:
+        # add salt to avoid same hash
+        for path in page_local_paths:
+            if not media.img_add_salt(path):
+                self.logger.warning("Failed to add salt to page {}, upload original page.".format(path.as_posix()))
+            self.s_adrive.upload_file(
+                user_dir.joinpath(illust_id, path.name),
+                path,
+                check_name_mode="overwrite"
+            )
+
+        # if is R18, make mirage version
+        if illust_info["restrict"] and mirage_cover_path:
+            illust_mirage_local_save_folder = Path("tmp", "{}_mirage".format(illust_id))
+            illust_mirage_local_save_folder.mkdir(parents=True, exist_ok=True)
+
+            # make mirage and upload
+            for path in page_local_paths:
+                save_path = illust_mirage_local_save_folder.joinpath(path.name)
+                if MirageTank.make_mirage(mirage_cover_path, path, save_path):
+                    self.s_adrive.upload_file(
+                        user_dir.joinpath("{}_mirage".format(illust_id), save_path.name),
+                        save_path,
+                        check_name_mode="overwrite"
+                    )
+                else:
+                    self.logger.warning("Failed to make mirage for page {}.".format(path.as_posix()))
+
+        return True
+
+    def upload_monthly_ranking(
+        self,
+        *,
+        include_user_top: bool = False,
+        mirage_cover_path: PathLike = None
+    ) -> bool:
         """Upload pixiv monthly ranking illusts.
 
         Args:
@@ -145,7 +184,7 @@ class PixivDrive:
             print("Num: ", len(illust_ids), flush=True)
             for id_ in illust_ids:
                 # print(id_, end=";", flush=True)
-                if not self.upload_illust(id_):
+                if not self.upload_illust(id_, mirage_cover_path):
                     flag = False
             print("\n##### DEBUG 3 END #####", flush=True)
             if not flag:
