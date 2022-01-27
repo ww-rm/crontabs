@@ -1,5 +1,5 @@
 import logging
-from os import PathLike
+from os import PathLike, sep
 from pathlib import Path
 
 from utils import media, xsession
@@ -119,6 +119,10 @@ class PixivDrive:
 
         # if is R18, make mirage version
         if illust_info["restrict"] and mirage_cover_path:
+            # DEBUG
+            print("R18:", illust_id, sep="", end=";", flush=True)
+            # DEBUG
+            self.logger.info("Try make mirage for illust {}.".format(illust_id))
             illust_mirage_local_save_folder = Path("tmp", "{}_mirage".format(illust_id))
             illust_mirage_local_save_folder.mkdir(parents=True, exist_ok=True)
 
