@@ -1,5 +1,5 @@
 import argparse
-from pathlib import PurePath
+from pathlib import Path
 
 import cv2
 import numpy as np
@@ -69,14 +69,14 @@ class MirageTank:
     def load_cover_and_secret(cover_path, secret_path):
         """load cover and secret in correct format"""
         return (
-            cv2.imread(cover_path, cv2.IMREAD_GRAYSCALE),
-            cv2.imread(secret_path, cv2.IMREAD_GRAYSCALE)
+            cv2.imread(Path(cover_path).as_posix(), cv2.IMREAD_GRAYSCALE),
+            cv2.imread(Path(secret_path).as_posix(), cv2.IMREAD_GRAYSCALE)
         )
 
     @staticmethod
     def save_mirage(mirage, save_path):
         """save mirage in correct format"""
-        return cv2.imwrite(PurePath(save_path).with_suffix(".png").as_posix(), mirage)
+        return cv2.imwrite(Path(save_path).with_suffix(".png").as_posix(), mirage)
 
     @staticmethod
     def make_mirage(cover_path, secret_path, save_path) -> bool:
