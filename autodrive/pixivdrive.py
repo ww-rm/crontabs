@@ -119,7 +119,7 @@ class PixivDrive:
             )
 
         # if is R18, make mirage version
-        if illust_info["restrict"] and mirage_cover_path:
+        if illust_info["xRestrict"] and mirage_cover_path:
             # DEBUG
             print("R18:", illust_id, sep="", end=";", flush=True)
             # DEBUG

@@ -196,6 +196,7 @@ class PixivBase(XSession):
         Note:
             `userAccount` is unchangable (for normal user)
             `userName` can change as casual.
+            `xRestrict`: 0 is all-age, 1 is R18, 2 is R18-G
         """
         res = self.get(
             PixivBase.URL_ajax_illust.format(illust_id=illust_id)
