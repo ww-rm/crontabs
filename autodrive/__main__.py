@@ -17,8 +17,8 @@ def run(config):
     if not pixiv_drive.login(refresh_token=refresh_token, p_cookies=p_cookies):
         logger.error("Failed to login, run failed.")
     else:
-        pixiv_drive.upload_illust("87954599", "./data/lena_gray.bmp")
-        exit(-1)
+        # pixiv_drive.upload_illust("87954599", "./data/lena_gray.bmp")
+        # exit(-1)
         pixiv_drive.upload_monthly_ranking(include_user_top=True, mirage_cover_path=config["mirage_cover_path"])
         logger.info("Task completed.")
 
