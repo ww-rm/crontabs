@@ -130,7 +130,8 @@ class PixivDrive:
             # make mirage and upload
             for path in page_local_paths:
                 save_path = illust_mirage_local_save_folder.joinpath(path.name)
-                if MirageTank.make_mirage(mirage_cover_path, path, save_path):
+                save_path = MirageTank.make_mirage(mirage_cover_path, path, save_path)
+                if save_path:
                     self.s_adrive.upload_file(
                         user_dir.joinpath("{}_mirage".format(illust_id), save_path.name),
                         save_path,

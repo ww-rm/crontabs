@@ -1,5 +1,6 @@
 import argparse
 from pathlib import Path
+from typing import Tuple
 
 import cv2
 import numpy as np
@@ -8,7 +9,7 @@ import numpy as np
 class MirageTank:
 
     @staticmethod
-    def _mergeimg(cover, secret):
+    def _mergeimg(cover, secret) -> np.ndarray:
         """merge cover over secret"""
         # 需要是灰度图
         # 转换图片数据类型为浮点数
@@ -32,7 +33,7 @@ class MirageTank:
         return mirage
 
     @staticmethod
-    def _adjustimg(cover, secret):
+    def _adjustimg(cover, secret) -> Tuple[np.ndarray, np.ndarray]:
         """adjust image to fit mergimg function"""
         # 图像需要是灰度图
 
@@ -66,7 +67,7 @@ class MirageTank:
         return MirageTank._mergeimg(cover, secret)
 
     @staticmethod
-    def load_cover_and_secret(cover_path, secret_path):
+    def load_cover_and_secret(cover_path, secret_path) -> Tuple[np.ndarray, np.ndarray]:
         """load cover and secret in correct format"""
         return (
             cv2.imread(Path(cover_path).as_posix(), cv2.IMREAD_GRAYSCALE),
@@ -74,20 +75,21 @@ class MirageTank:
         )
 
     @staticmethod
-    def save_mirage(mirage, save_path):
+    def save_mirage(mirage, save_path) -> Path:
         """save mirage in correct format"""
-        return cv2.imwrite(Path(save_path).with_suffix(".png").as_posix(), mirage)
+        save_path = Path(save_path).with_suffix(".png")
+        cv2.imwrite(save_path.as_posix(), mirage)
+        return save_path
 
     @staticmethod
-    def make_mirage(cover_path, secret_path, save_path) -> bool:
+    def make_mirage(cover_path, secret_path, save_path) -> Path:
         """make a mirage image with three paths"""
         cover, secret = MirageTank.load_cover_and_secret(cover_path, secret_path)
         if isinstance(cover, np.ndarray) and isinstance(secret, np.ndarray):
             mirage = MirageTank.makeimg(cover, secret)
-            MirageTank.save_mirage(mirage, save_path)
-            return True
+            return MirageTank.save_mirage(mirage, save_path)
         else:
-            return False
+            return None
 
 
 if __name__ == "__main__":
