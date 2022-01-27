@@ -172,7 +172,7 @@ class PixivDrive:
             user_ids = [e["user_id"] for e in ranking_info["contents"]]
             print("##### DEBUG 2 BEGIN #####", flush=True)
             for id_ in user_ids:
-                # print(id_, end=";", flush=True)
+                print(id_, end=";", flush=True)
                 top_info = self.s_pixiv.get_user_top(id_)
                 if top_info:
                     for illust_id in top_info["illusts"].keys():
