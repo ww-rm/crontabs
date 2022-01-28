@@ -1,4 +1,5 @@
 import argparse
+from os import PathLike
 from pathlib import Path
 from typing import Tuple
 
@@ -96,6 +97,36 @@ class MirageTank:
         if isinstance(cover, np.ndarray) and isinstance(secret, np.ndarray):
             mirage = MirageTank.makeimg(cover, secret)
             return MirageTank.save_mirage(mirage, save_path)
+        else:
+            return None
+
+    
+
+class BlackTank:
+    @staticmethod
+    def _adjustimg(img: np.ndarray) -> np.ndarray:
+        img_black = np.zeros(img.shape, dtype=np.uint8)
+        img_alpha = 255 - img
+
+        img_out = np.stack([img_black, img_black, img_black, img_alpha], axis=2)
+        return img_out
+
+    @staticmethod
+    def load_img(img_path: PathLike) -> np.ndarray:
+        return cv2.imread(Path(img_path).as_posix(), cv2.IMREAD_GRAYSCALE)
+
+    @staticmethod
+    def save_img(img: np.ndarray, save_path: PathLike) -> Path:
+        save_path = Path(save_path).with_suffix(".png")
+        cv2.imwrite(save_path.as_posix(), img)
+        return save_path
+
+    @staticmethod
+    def make_blacktank(img_path: PathLike, save_path: PathLike) -> Path:
+        img = BlackTank.load_img(img_path)
+        if isinstance(img, np.ndarray):
+            img = BlackTank._adjustimg(img)
+            return BlackTank.save_img(img, save_path)
         else:
             return None
 
