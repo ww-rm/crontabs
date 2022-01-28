@@ -128,7 +128,7 @@ def img_add_salt(img_path: PathLike, save_path: PathLike = None, *, random_salt:
     img_path = Path(img_path)
 
     img_hash = hashlib.sha256(img_path.read_bytes()).digest()
-    
+
     if random_salt:
         rnd = np.random.RandomState(np.random.MT19937(int.from_bytes(img_hash + secrets.token_bytes(32), "big")))
     else:
@@ -147,3 +147,18 @@ def img_add_salt(img_path: PathLike, save_path: PathLike = None, *, random_salt:
 
     cv2.imwrite(save_path.as_posix(), img)
     return True
+
+
+def make_blacktank(img_path: PathLike, save_path: PathLike) -> Path:
+    """Hide image info into alpha channel. Return save_path if success, else None."""
+    img = cv2.imread(Path(img_path).as_posix(), cv2.IMREAD_GRAYSCALE)
+    if isinstance(img, np.ndarray):
+        img_black = np.zeros(img.shape, dtype=np.uint8)
+        img_alpha = 255 - img
+        img_out = np.stack([img_black, img_black, img_black, img_alpha], axis=2)
+
+        save_path = Path(save_path).with_suffix(".png")
+        cv2.imwrite(save_path.as_posix(), img_out)
+        return save_path
+    else:
+        return None

@@ -3,7 +3,6 @@ from os import PathLike
 from pathlib import Path
 
 from utils import media, xsession
-from utils.miragetank import BlackTank
 
 
 class PixivDrive:
@@ -130,7 +129,7 @@ class PixivDrive:
             # make mirage and upload
             for path in page_local_paths:
                 save_path = illust_mirage_local_save_folder.joinpath(path.name)
-                save_path = BlackTank.make_blacktank(path, save_path)
+                save_path = media.make_blacktank(path, save_path)
 
                 if save_path:
                     self.s_adrive.upload_file(
