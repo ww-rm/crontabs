@@ -131,7 +131,7 @@ class PixivDrive:
                 save_path = illust_mirage_local_save_folder.joinpath(path.name)
 
                 if mirage_cover_path:
-                    save_path = MirageTank.make_mirage(mirage_cover_path, path, save_path)
+                    save_path = MirageTank.make_mirage(path, mirage_cover_path, save_path)
                 else:
                     save_path = BlackTank.make_blacktank(path, save_path)
 
