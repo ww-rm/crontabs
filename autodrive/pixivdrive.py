@@ -114,8 +114,7 @@ class PixivDrive:
             self.s_adrive.upload_file(
                 user_dir.joinpath(illust_id, path.name),
                 path,
-                check_name_mode="overwrite",
-                try_rapid_upload=False
+                check_name_mode="overwrite"
             )
 
         # if is R18, make mirage version
@@ -135,8 +134,7 @@ class PixivDrive:
                     self.s_adrive.upload_file(
                         user_dir.joinpath("{}_mirage".format(illust_id), save_path.name),
                         save_path,
-                        check_name_mode="overwrite",
-                        try_rapid_upload=False
+                        check_name_mode="overwrite"
                     )
                 else:
                     self.logger.warning("Failed to make mirage for page {}.".format(path.as_posix()))
