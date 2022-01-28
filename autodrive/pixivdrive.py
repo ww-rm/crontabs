@@ -1,9 +1,9 @@
 import logging
-from os import PathLike, sep
+from os import PathLike
 from pathlib import Path
 
 from utils import media, xsession
-from utils.miragetank import BlackTank, MirageTank
+from utils.miragetank import BlackTank
 
 
 class PixivDrive:
@@ -57,7 +57,7 @@ class PixivDrive:
         self.logger.info("Login success.")
         return True
 
-    def upload_illust(self, illust_id: str, mirage_cover_path: PathLike = None) -> bool:
+    def upload_illust(self, illust_id: str) -> bool:
         """Upload a illust to root_dir.
 
         The directory tree may like this:
@@ -76,8 +76,9 @@ class PixivDrive:
 
         Args:
             illust_id (str): illust id
-            mirage_cover_path (PathLike): When supported, if illust is R18, 
-                will also upload mirage version using this image as cover, else will use blacktank for R18
+
+        Note: 
+            will use blacktank for R18
         """
 
         illust_info = self.s_pixiv.get_illust(illust_id)
@@ -129,11 +130,7 @@ class PixivDrive:
             # make mirage and upload
             for path in page_local_paths:
                 save_path = illust_mirage_local_save_folder.joinpath(path.name)
-
-                if mirage_cover_path:
-                    save_path = MirageTank.make_mirage(path, mirage_cover_path, save_path)
-                else:
-                    save_path = BlackTank.make_blacktank(path, save_path)
+                save_path = BlackTank.make_blacktank(path, save_path)
 
                 if save_path:
                     self.s_adrive.upload_file(
