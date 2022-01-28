@@ -77,7 +77,7 @@ class PixivDrive:
         Args:
             illust_id (str): illust id
             mirage_cover_path (PathLike): When supported, if illust is R18, 
-                will also upload mirage version using this image as cover
+                will also upload mirage version using this image as cover, else will use blacktank for R18
         """
 
         illust_info = self.s_pixiv.get_illust(illust_id)
@@ -118,7 +118,7 @@ class PixivDrive:
             )
 
         # if is R18, make mirage version
-        if illust_info["xRestrict"] and mirage_cover_path:
+        if illust_info["xRestrict"]:
             # DEBUG
             print("R18:", illust_id, sep="", end=";", flush=True)
             # DEBUG
@@ -129,8 +129,12 @@ class PixivDrive:
             # make mirage and upload
             for path in page_local_paths:
                 save_path = illust_mirage_local_save_folder.joinpath(path.name)
-                # save_path = MirageTank.make_mirage(mirage_cover_path, path, save_path)
-                save_path = BlackTank.make_blacktank(path, save_path)
+
+                if mirage_cover_path:
+                    save_path = MirageTank.make_mirage(mirage_cover_path, path, save_path)
+                else:
+                    save_path = BlackTank.make_blacktank(path, save_path)
+
                 if save_path:
                     self.s_adrive.upload_file(
                         user_dir.joinpath("{}_mirage".format(illust_id), save_path.name),
