@@ -37,17 +37,25 @@ class MirageTank:
         """adjust image to fit mergimg function"""
         # 图像需要是灰度图
 
+        c_height, c_width = cover.shape
         s_height, s_width = secret.shape
 
+        if (c_height / c_width) > (s_height / s_width):
+            # same width
+            cover = cv2.resize(
+                cover,
+                (s_width, int(c_height*s_width/c_width + 0.5)),
+                interpolation=cv2.INTER_CUBIC
+            )
+        else:
+            # same height
+            cover = cv2.resize(
+                cover,
+                (int(c_width*s_height/c_height + 0.5), s_height),
+                interpolation=cv2.INTER_CUBIC
+            )
+
         c_height, c_width = cover.shape
-
-        if c_height < s_height:
-            cover = cv2.resize(cover, (int(c_width*s_height/c_height + 0.5), s_height), interpolation=cv2.INTER_CUBIC)
-            c_height, c_width = cover.shape
-
-        if c_width < s_width:
-            cover = cv2.resize(cover, (s_width, int(c_height*s_width/c_width + 0.5)), interpolation=cv2.INTER_CUBIC)
-            c_height, c_width = cover.shape
 
         delta_height = c_height - s_height
         delta_width = c_width - s_width

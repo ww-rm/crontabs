@@ -127,12 +127,12 @@ def img_add_salt(img_path: PathLike, save_path: PathLike = None, *, random_salt:
 
     img_path = Path(img_path)
 
-    img_sha1 = hashlib.sha1(img_path.read_bytes()).digest()
+    img_hash = hashlib.sha256(img_path.read_bytes()).digest()
     
     if random_salt:
-        rnd = np.random.RandomState(np.random.MT19937(int.from_bytes(img_sha1 + secrets.token_bytes(32), "big")))
+        rnd = np.random.RandomState(np.random.MT19937(int.from_bytes(img_hash + secrets.token_bytes(32), "big")))
     else:
-        rnd = np.random.RandomState(np.random.MT19937(int.from_bytes(img_sha1, "big")))
+        rnd = np.random.RandomState(np.random.MT19937(int.from_bytes(img_hash, "big")))
 
     img: np.ndarray = cv2.imread(img_path.as_posix(), cv2.IMREAD_UNCHANGED)
     if not isinstance(img, np.ndarray):
