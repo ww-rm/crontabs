@@ -373,7 +373,7 @@ class Pixiv(PixivBase):
         """
 
         page_save_path = Path(page_save_path)
-        if page_save_path.is_file():
+        if page_save_path.is_file() and page_save_path.stat().st_size > 0:
             self.logger.info("Page file {} already exist, skip download.".format(page_save_path.as_posix()))
             return True
 
