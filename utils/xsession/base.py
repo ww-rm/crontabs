@@ -60,8 +60,8 @@ class XSession(requests.Session):
             self.logger.error("{}:{}".format(url, e))
             res = requests.Response()
             res.url = url  # keep url info
+            return res
         else:
             if not res.ok:
                 self.logger.warning("{}:{}".format(url, res.status_code))
-        finally:
             return res
