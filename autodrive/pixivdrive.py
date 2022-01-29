@@ -145,8 +145,7 @@ class PixivDrive:
     def upload_monthly_ranking(
         self,
         *,
-        include_user_top: bool = False,
-        mirage_cover_path: PathLike = None
+        include_user_top: bool = False
     ) -> bool:
         """Upload pixiv monthly ranking illusts.
 
@@ -190,7 +189,7 @@ class PixivDrive:
             print("Num: ", len(illust_ids), flush=True)
             for id_ in illust_ids:
                 # print(id_, end=";", flush=True)
-                if not self.upload_illust(id_, mirage_cover_path):
+                if not self.upload_illust(id_):
                     flag = False
             print("\n##### DEBUG 3 END #####", flush=True)
             if not flag:
