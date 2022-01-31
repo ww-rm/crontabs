@@ -404,6 +404,7 @@ class Pixiv(PixivBase):
             List[Path]: Successfully downloaded page file path.
         """
         illust_save_folder = Path(illust_save_folder)
+        illust_save_folder.mkdir(parents=True, exist_ok=True)
 
         pages_info = self._get_illust_pages(illust_id)
 
