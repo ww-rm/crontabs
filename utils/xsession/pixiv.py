@@ -449,6 +449,16 @@ class Pixiv(PixivBase):
             return {}
         return top_info
 
+    def get_user_all(self, user_id: str) -> dict:
+        """Get user all illust info."""
+
+        all_info = self._get_user_profile_all(user_id)
+
+        if not all_info:
+            self.logger.error("Failed to get user {} all info.".format(user_id))
+            return {}
+        return all_info
+
     def get_ranking_daily(self, p: int = 1, content: str = "illust", date: str = None, r18: bool = False) -> dict:
         """Get daily ranking info.
 
