@@ -830,3 +830,11 @@
 2022-02-03 11:40:22 - ERROR - base.py - 60 - https://i.pximg.net/img-original/img/2021/11/02/00/18/12/93858618_p0.png:('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
 2022-02-03 11:40:22 - ERROR - pixiv.py - 111 - Failed to get page from https://i.pximg.net/img-original/img/2021/11/02/00/18/12/93858618_p0.png.
 2022-02-03 11:40:23 - WARNING - base.py - 23 - Retry func _get_page 1 time.
+2022-02-04 10:15:50 - WARNING - aliyundrive.py - 676 - Token is about to expire, try to auto refresh.
+2022-02-04 10:42:51 - ERROR - base.py - 60 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=None)
+2022-02-04 10:42:51 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/86093895/86093895_p0.png.
+2022-02-04 10:58:46 - ERROR - base.py - 60 - https://www.pixiv.net/ajax/illust/89160415:HTTPSConnectionPool(host='www.pixiv.net', port=443): Read timed out. (read timeout=None)
+2022-02-04 10:58:47 - WARNING - base.py - 23 - Retry func _get_illust 1 time.
+2022-02-04 12:22:38 - ERROR - base.py - 60 - https://www.pixiv.net/ajax/illust/93910212:HTTPSConnectionPool(host='www.pixiv.net', port=443): Read timed out. (read timeout=None)
+2022-02-04 12:22:39 - WARNING - base.py - 23 - Retry func _get_illust 1 time.
+2022-02-04 12:22:40 - WARNING - aliyundrive.py - 676 - Token is about to expire, try to auto refresh.
