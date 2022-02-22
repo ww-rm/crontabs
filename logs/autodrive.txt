@@ -1136,3 +1136,14 @@
 2022-02-21 11:13:13 - ERROR - pixiv.py - 111 - Failed to get page from https://i.pximg.net/img-original/img/2020/01/06/00/44/56/78739260_p0.jpg.
 2022-02-21 11:13:14 - WARNING - base.py - 23 - Retry func _get_page 1 time.
 2022-02-21 22:16:54 - WARNING - aliyundrive.py - 676 - Token is about to expire, try to auto refresh.
+2022-02-22 22:17:05 - WARNING - aliyundrive.py - 676 - Token is about to expire, try to auto refresh.
+2022-02-22 23:09:45 - ERROR - base.py - 60 - https://api.aliyundrive.com/v2/file/complete:('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+2022-02-22 23:09:45 - ERROR - aliyundrive.py - 890 - Failed to complete upload file tmp/95029158/95029158_p0.jpg.
+2022-02-22 23:10:53 - ERROR - base.py - 60 - https://i.pximg.net/img-original/img/2022/02/22/02/49/33/96031944_p0.jpg:('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2022-02-22 23:10:53 - ERROR - pixiv.py - 111 - Failed to get page from https://i.pximg.net/img-original/img/2022/02/22/02/49/33/96031944_p0.jpg.
+2022-02-22 23:10:54 - WARNING - base.py - 23 - Retry func _get_page 1 time.
+2022-02-22 23:39:54 - ERROR - base.py - 60 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=None)
+2022-02-22 23:39:54 - ERROR - aliyundrive.py - 774 - Failed to create folder pixiv/17706054/Aibek.
+2022-02-22 23:55:46 - ERROR - base.py - 60 - https://www.pixiv.net/ajax/illust/90991428/pages:HTTPSConnectionPool(host='www.pixiv.net', port=443): Read timed out. (read timeout=None)
+2022-02-22 23:55:46 - ERROR - pixiv.py - 412 - Failed to get pages info and download.
+2022-02-22 23:59:30 - WARNING - pixivdrive.py - 196 - Failed to upload some user top illusts.
