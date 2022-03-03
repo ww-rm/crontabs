@@ -17,12 +17,12 @@ def run(config: dict):
     keys: dict = config["keys"]
  
     # cysll_com.Signer(_d(keys["cysll.com"]["usrn"]), _d(keys["cysll.com"]["pwd"])).signin()
-    acgwcy_com.Signer(_d(keys["51acgwcy.com"]["usrn"]), _d(keys["51acgwcy.com"]["pwd"])).signin()
-    www_hmoe1_net.Signer(_d(keys["www.hmoe1.net"]["usrn"]), _d(keys["www.hmoe1.net"]["pwd"])).signin()
+    # acgwcy_com.Signer(_d(keys["51acgwcy.com"]["usrn"]), _d(keys["51acgwcy.com"]["pwd"])).signin()
+    # www_hmoe1_net.Signer(_d(keys["www.hmoe1.net"]["usrn"]), _d(keys["www.hmoe1.net"]["pwd"])).signin()
     
     jike0_com.Signer(_d(keys["jike0.com"]["usrn"]), _d(keys["jike0.com"]["pwd"])).signin()
     # yingyun_pw.Signer(_d(keys["yingyun-f.pw"]["usrn"]), _d(keys["yingyun-f.pw"]["pwd"])).signin()
-    socloud_me.Signer(_d(keys["socloud.me"]["usrn"]), _d(keys["socloud.me"]["pwd"])).signin()
+    # socloud_me.Signer(_d(keys["socloud.me"]["usrn"]), _d(keys["socloud.me"]["pwd"])).signin()
     ssru6_pw.Signer(_d(keys["ssru6.pw"]["usrn"]), _d(keys["ssru6.pw"]["pwd"])).signin()
     freevpn_cyou.Signer(_d(keys["freevpn.cyou"]["usrn"]), _d(keys["freevpn.cyou"]["pwd"])).signin()
 
