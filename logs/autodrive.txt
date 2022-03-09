@@ -1735,3 +1735,96 @@
 2022-03-07 23:54:06 - ERROR - base.py - 60 - https://www.pixiv.net/ajax/illust/90780868:HTTPSConnectionPool(host='www.pixiv.net', port=443): Read timed out. (read timeout=None)
 2022-03-07 23:54:07 - WARNING - base.py - 23 - Retry func _get_illust 1 time.
 2022-03-08 22:15:18 - WARNING - aliyundrive.py - 676 - Token is about to expire, try to auto refresh.
+2022-03-09 10:16:27 - WARNING - aliyundrive.py - 676 - Token is about to expire, try to auto refresh.
+2022-03-09 10:32:15 - ERROR - base.py - 60 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=None)
+2022-03-09 10:32:15 - ERROR - aliyundrive.py - 774 - Failed to create folder pixiv/483730/あるてら.
+2022-03-09 10:48:01 - ERROR - base.py - 60 - https://www.pixiv.net/ajax/illust/96102271/pages:HTTPSConnectionPool(host='www.pixiv.net', port=443): Read timed out. (read timeout=None)
+2022-03-09 10:48:01 - ERROR - pixiv.py - 412 - Failed to get pages info and download.
+2022-03-09 10:51:17 - WARNING - pixivdrive.py - 172 - Failed to upload some illusts.
+2022-03-09 11:47:09 - ERROR - base.py - 60 - https://i.pximg.net/img-original/img/2019/09/08/18/27/42/76617100_p0.png:('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2022-03-09 11:47:09 - ERROR - pixiv.py - 111 - Failed to get page from https://i.pximg.net/img-original/img/2019/09/08/18/27/42/76617100_p0.png.
+2022-03-09 11:47:10 - WARNING - base.py - 23 - Retry func _get_page 1 time.
+2022-03-09 12:11:40 - WARNING - base.py - 66 - https://api.aliyundrive.com/v2/file/complete:429
+2022-03-09 12:11:40 - ERROR - aliyundrive.py - 65 - https://api.aliyundrive.com/v2/file/complete:JsonValueError.
+2022-03-09 12:11:40 - ERROR - aliyundrive.py - 890 - Failed to complete upload file tmp/93329462/93329462_p12.png.
+2022-03-09 12:11:41 - WARNING - base.py - 66 - https://api.aliyundrive.com/v2/file/complete:429
+2022-03-09 12:11:41 - ERROR - aliyundrive.py - 65 - https://api.aliyundrive.com/v2/file/complete:JsonValueError.
+2022-03-09 12:11:41 - ERROR - aliyundrive.py - 890 - Failed to complete upload file tmp/93329462/93329462_p13.png.
+2022-03-09 12:11:43 - WARNING - base.py - 66 - https://api.aliyundrive.com/v2/file/complete:429
+2022-03-09 12:11:43 - ERROR - aliyundrive.py - 65 - https://api.aliyundrive.com/v2/file/complete:JsonValueError.
+2022-03-09 12:11:43 - ERROR - aliyundrive.py - 890 - Failed to complete upload file tmp/93329462/93329462_p14.png.
+2022-03-09 12:11:48 - WARNING - base.py - 66 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429
+2022-03-09 12:11:48 - ERROR - aliyundrive.py - 65 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2022-03-09 12:11:48 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/93329462_mirage/93329462_p3.png.
+2022-03-09 12:11:49 - WARNING - base.py - 66 - https://api.aliyundrive.com/v2/file/complete:429
+2022-03-09 12:11:49 - ERROR - aliyundrive.py - 65 - https://api.aliyundrive.com/v2/file/complete:JsonValueError.
+2022-03-09 12:11:49 - ERROR - aliyundrive.py - 890 - Failed to complete upload file tmp/93329462_mirage/93329462_p4.png.
+2022-03-09 12:11:56 - WARNING - base.py - 66 - https://api.aliyundrive.com/v2/file/complete:429
+2022-03-09 12:11:56 - ERROR - aliyundrive.py - 65 - https://api.aliyundrive.com/v2/file/complete:JsonValueError.
+2022-03-09 12:11:56 - ERROR - aliyundrive.py - 890 - Failed to complete upload file tmp/93329462_mirage/93329462_p8.png.
+2022-03-09 12:11:58 - WARNING - base.py - 66 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429
+2022-03-09 12:11:58 - ERROR - aliyundrive.py - 65 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2022-03-09 12:11:58 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/93329462_mirage/93329462_p10.png.
+2022-03-09 12:12:02 - WARNING - base.py - 66 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429
+2022-03-09 12:12:02 - ERROR - aliyundrive.py - 65 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2022-03-09 12:12:02 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/93329462_mirage/93329462_p13.png.
+2022-03-09 12:12:02 - WARNING - base.py - 66 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429
+2022-03-09 12:12:02 - ERROR - aliyundrive.py - 65 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2022-03-09 12:12:02 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/93329462_mirage/93329462_p14.png.
+2022-03-09 12:12:03 - WARNING - base.py - 66 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429
+2022-03-09 12:12:03 - ERROR - aliyundrive.py - 65 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2022-03-09 12:12:03 - ERROR - aliyundrive.py - 774 - Failed to create folder pixiv/143114/ニナハチ(にじゅ).
+2022-03-09 12:12:09 - WARNING - base.py - 66 - https://api.aliyundrive.com/v2/file/complete:429
+2022-03-09 12:12:09 - ERROR - aliyundrive.py - 65 - https://api.aliyundrive.com/v2/file/complete:JsonValueError.
+2022-03-09 12:12:09 - ERROR - aliyundrive.py - 890 - Failed to complete upload file tmp/95754277/95754277_p0.png.
+2022-03-09 12:12:10 - WARNING - base.py - 66 - https://api.aliyundrive.com/v2/file/complete:429
+2022-03-09 12:12:10 - ERROR - aliyundrive.py - 65 - https://api.aliyundrive.com/v2/file/complete:JsonValueError.
+2022-03-09 12:12:10 - ERROR - aliyundrive.py - 890 - Failed to complete upload file tmp/95754277/95754277_p1.png.
+2022-03-09 12:12:16 - WARNING - base.py - 66 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429
+2022-03-09 12:12:16 - ERROR - aliyundrive.py - 65 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2022-03-09 12:12:16 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/95754277/95754277_p5.png.
+2022-03-09 12:12:18 - WARNING - base.py - 66 - https://api.aliyundrive.com/v2/file/complete:429
+2022-03-09 12:12:18 - ERROR - aliyundrive.py - 65 - https://api.aliyundrive.com/v2/file/complete:JsonValueError.
+2022-03-09 12:12:18 - ERROR - aliyundrive.py - 890 - Failed to complete upload file tmp/95754277/95754277_p6.png.
+2022-03-09 12:12:22 - WARNING - base.py - 66 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429
+2022-03-09 12:12:22 - ERROR - aliyundrive.py - 65 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2022-03-09 12:12:22 - ERROR - aliyundrive.py - 774 - Failed to create folder pixiv/33076135/SOLar@fanbox.
+2022-03-09 12:12:24 - WARNING - base.py - 66 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429
+2022-03-09 12:12:24 - ERROR - aliyundrive.py - 65 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2022-03-09 12:12:24 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/92607194/92607194_p0.png.
+2022-03-09 12:12:26 - WARNING - base.py - 66 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429
+2022-03-09 12:12:26 - ERROR - aliyundrive.py - 65 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2022-03-09 12:12:26 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/96270406/96270406_p0.jpg.
+2022-03-09 12:12:27 - WARNING - base.py - 66 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429
+2022-03-09 12:12:27 - ERROR - aliyundrive.py - 65 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2022-03-09 12:12:27 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/96270406/96270406_p2.jpg.
+2022-03-09 12:12:29 - WARNING - base.py - 66 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429
+2022-03-09 12:12:29 - ERROR - aliyundrive.py - 65 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2022-03-09 12:12:29 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/95257276/95257276_p0.jpg.
+2022-03-09 12:12:31 - WARNING - base.py - 66 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429
+2022-03-09 12:12:31 - ERROR - aliyundrive.py - 65 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2022-03-09 12:12:31 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/96029547/96029547_p0.jpg.
+2022-03-09 12:12:33 - WARNING - base.py - 66 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429
+2022-03-09 12:12:33 - ERROR - aliyundrive.py - 65 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2022-03-09 12:12:33 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/91445347/91445347_p0.png.
+2022-03-09 12:12:34 - WARNING - base.py - 66 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429
+2022-03-09 12:12:34 - ERROR - aliyundrive.py - 65 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2022-03-09 12:12:34 - ERROR - aliyundrive.py - 774 - Failed to create folder pixiv/3584828/よし男.
+2022-03-09 12:12:44 - WARNING - base.py - 66 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429
+2022-03-09 12:12:44 - ERROR - aliyundrive.py - 65 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2022-03-09 12:12:44 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/95074739/95074739_p0.png.
+2022-03-09 12:12:47 - WARNING - base.py - 66 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429
+2022-03-09 12:12:47 - ERROR - aliyundrive.py - 65 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2022-03-09 12:12:47 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/93714005/93714005_p0.jpg.
+2022-03-09 12:12:49 - WARNING - base.py - 66 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429
+2022-03-09 12:12:49 - ERROR - aliyundrive.py - 65 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2022-03-09 12:12:49 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/95817528/95817528_p0.jpg.
+2022-03-09 12:13:07 - WARNING - base.py - 66 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429
+2022-03-09 12:13:07 - ERROR - aliyundrive.py - 65 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2022-03-09 12:13:07 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/86274175/86274175_p0.png.
+2022-03-09 12:13:07 - WARNING - base.py - 66 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429
+2022-03-09 12:13:07 - ERROR - aliyundrive.py - 65 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2022-03-09 12:13:07 - ERROR - aliyundrive.py - 774 - Failed to create folder pixiv/306422/Hong.
+2022-03-09 12:13:17 - WARNING - base.py - 66 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429
+2022-03-09 12:13:17 - ERROR - aliyundrive.py - 65 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2022-03-09 12:13:17 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/93016418/93016418_p0.png.
