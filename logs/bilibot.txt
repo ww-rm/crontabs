@@ -2546,3 +2546,7 @@
 2022-04-22 00:52:35 - INFO - bot.py - 248 - Create ranking dynamic Success!
 2022-04-22 06:07:42 - INFO - __main__.py - 37 - 20903 seconds before last successful new update, try create new one.
 2022-04-22 06:08:13 - INFO - bot.py - 248 - Create ranking dynamic Success!
+2022-04-22 08:10:01 - ERROR - base.py - 60 - https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/get_dynamic_detail:HTTPSConnectionPool(host='api.vc.bilibili.com', port=443): Max retries exceeded with url: /dynamic_svr/v1/dynamic_svr/get_dynamic_detail?dynamic_id=651844145944461330 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f945fd24910>: Failed to establish a new connection: [Errno 110] Connection timed out'))
+2022-04-22 08:10:01 - ERROR - bilibili.py - 458 - Failed to get detail of dynamic 651844145944461330.
+2022-04-22 08:10:01 - INFO - __main__.py - 59 - Last dynamic don't exist, redo create dynamic task.
+2022-04-22 08:10:27 - INFO - bot.py - 248 - Create ranking dynamic Success!
