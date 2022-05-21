@@ -1,4 +1,5 @@
 import logging
+import random
 from os import PathLike
 from pathlib import Path
 
@@ -183,6 +184,12 @@ class PixivDrive:
                     for illust_id in top_info["illusts"].keys():
                         illust_ids.add(str(illust_id))
             print("\n##### DEBUG 2 END #####", flush=True)
+
+            # limit to 500 illust ids
+            illust_ids = list(illust_ids)
+            for _ in range(10000):
+                random.shuffle(illust_ids)
+            illust_ids = illust_ids[:500]
 
             flag = True
             print("##### DEBUG 3 BEGIN #####", flush=True)
