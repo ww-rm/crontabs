@@ -10,7 +10,7 @@ on:
 jobs:
   dailyrun:
 
-    runs-on: ubuntu-18.04
+    runs-on: windows-2019
 
     steps:
     - uses: actions/checkout@v2
@@ -22,8 +22,8 @@ jobs:
 
     - name: Install dependencies
       run: |
-        python3 -m pip install --upgrade pip
-        python3 -m pip install -r requirements.txt
+        python -m pip install --upgrade pip
+        python -m pip install -r requirements.txt
 
     - name: Config git
       run: |
@@ -33,15 +33,15 @@ jobs:
 
     - name: Connection test
       run: |
-        bash "scripts/connection_test.sh"
+        cmd /k "scripts\connection_test.bat"
 
     - name: Run autodrive
       run: |
-        python3 -m autodrive "conf/autodrive.json" ${{ secrets.RSAKEY }}
+        python -m autodrive "conf/autodrive.json" ${{ secrets.RSAKEY }}
 
     - name: Commit autodrive
       run: |
         git add .
-        bash "scripts/safe_commit.sh" "autorun-autodrive"
+        cmd /k "scripts\safe_commit.bat" "autorun-autodrive"
         git pull --no-rebase
         git push
