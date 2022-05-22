@@ -191,9 +191,11 @@ class PixivDrive:
                 random.shuffle(illust_ids)
             illust_ids = illust_ids[:500]
 
-            flag = True
             print("##### DEBUG 3 BEGIN #####", flush=True)
+            print(illust_ids)
             print("Num: ", len(illust_ids), flush=True)
+
+            flag = True
             for id_ in illust_ids:
                 print(id_, end=";", flush=True)
                 if not self.upload_illust(id_):
