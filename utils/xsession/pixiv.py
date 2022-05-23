@@ -135,10 +135,9 @@ class PixivBase(XSession):
             return {}
         return json_
 
-    def __init__(self, interval: float = 0.01, max_retries: int = 3, timeout: Union[Tuple[float, float], float] = 30,
-                 domain_fronting: bool = False) -> None:
+    def __init__(self) -> None:
         """
-        Args:
+        Properties:
             domain_fronting (bool): Whether use domain fronting.
 
         Note:
@@ -150,10 +149,18 @@ class PixivBase(XSession):
                 headers: {"Host": "www.pixiv.net"}
                 verify: False
         """
-        super().__init__(interval, max_retries, timeout)
+        super().__init__()
         self.headers["Referer"] = PixivBase.URL_www
-        self.domain_fronting = domain_fronting
-        if domain_fronting:
+        self.domain_fronting = False
+
+    @property
+    def domain_fronting(self):
+        return self.__domain_fronting
+
+    @domain_fronting.setter
+    def domain_fronting(self, value: bool):
+        self.__domain_fronting = value
+        if value:
             self.logger.warning("Domain fronting is enabled.")
 
     def _get_csrf_token(self) -> str:

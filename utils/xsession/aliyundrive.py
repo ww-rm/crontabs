@@ -530,8 +530,8 @@ class AliyunDrive(AliyunDriveBase):
         cipher = encrypter.encrypt(plain.encode("utf8")).hex()
         return cipher
 
-    def __init__(self, interval: float = 0.01) -> None:
-        super().__init__(interval=interval)
+    def __init__(self) -> None:
+        super().__init__()
         self.user_id = ""
         self.drive_id = ""
 
