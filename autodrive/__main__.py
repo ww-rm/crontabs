@@ -2,7 +2,6 @@ import json
 import logging
 import time
 from argparse import ArgumentParser
-from base64 import b64decode
 from pathlib import Path
 
 import utils
@@ -32,7 +31,7 @@ if __name__ == "__main__":
     # parse args
     parser = ArgumentParser()
     parser.add_argument("config")
-    parser.add_argument("rsakey")
+    parser.add_argument("runkey")
     parser.add_argument("--test", action="store_true", default=False)
     args = parser.parse_args()
 
@@ -56,21 +55,17 @@ if __name__ == "__main__":
     #####################
 
     # read secrets
-    rsakey = b64decode(args.rsakey).decode("utf8")
-    def _d(p): return utils.secrets.rsa_decrypt(p, rsakey)
-
-    # encrypt
-    rsa_pubkey = b64decode(Path("conf/rsakey/rsa4096.pub.pem").read_text()).decode("utf8")
-    def _e(c): return utils.secrets.rsa_encrypt(c, rsa_pubkey)
+    def _e(p): return utils.secrets.aes256_enc_cbc(p, args.runkey)
+    def _d(c): return utils.secrets.aes256_dec_cbc(c, args.runkey)
 
     # read config
-    with open(args.config, "r", encoding="utf8") as f:
+    with Path(args.config).open("r", encoding="utf8") as f:
         config: dict = json.load(f)
 
     run(config)
 
     # save config
-    with open(args.config, "w", encoding="utf8") as f:
+    with Path(args.config).open("w", encoding="utf8") as f:
         json.dump(config, f, ensure_ascii=False, indent=4)
 
     logging.shutdown()

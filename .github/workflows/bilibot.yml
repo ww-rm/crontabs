@@ -31,7 +31,7 @@ jobs:
 
     - name: Run bilibot
       run: |
-        python3 -m bilibot "conf/bilibot.json" ${{ secrets.RSAKEY }}
+        python3 -m bilibot "conf/bilibot.json" ${{ secrets.RUNKEY }}
     - name: Commit bilibot
       run: |
         git add .

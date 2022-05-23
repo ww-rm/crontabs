@@ -25,7 +25,7 @@ jobs:
 
     - name: Test dailysignin
       run: |
-        python3 -m dailysignin "conf/dailysignin.json" ${{ secrets.RSAKEY }} --test
+        python3 -m dailysignin "conf/dailysignin.json" ${{ secrets.RUNKEY }} --test
 
   # autodrive-test:
 
@@ -44,7 +44,7 @@ jobs:
 
   #   - name: Test autodrive
   #     run: |
-  #       python3 -m autodrive "conf/autodrive.json" ${{ secrets.RSAKEY }} --test
+  #       python3 -m autodrive "conf/autodrive.json" ${{ secrets.RUNKEY }} --test
   
   # bilibot-test:
 
@@ -63,4 +63,4 @@ jobs:
 
   #   - name: Test bilibot
   #     run: |
-  #       python3 -m bilibot "conf/bilibot.json" ${{ secrets.RSAKEY }} --test
+  #       python3 -m bilibot "conf/bilibot.json" ${{ secrets.RUNKEY }} --test

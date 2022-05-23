@@ -4,12 +4,12 @@ from .base import BaseSigner
 
 
 class Signer(BaseSigner):
-    site_name = "www.hmoe1.net"
-    url_admin = "https://www.hmoe1.net/wp-admin/admin-ajax.php"
+    site_name = "www.hmoe11.net"
+    url_admin = f"https://{site_name}/wp-admin/admin-ajax.php"
 
     def __init__(self, usrn: str, pwd: str, useproxies=False) -> None:
         super().__init__(usrn, pwd, useproxies=useproxies)
-        self.s.headers["Referer"] = "https://www.hmoe1.net/"
+        self.s.headers["Referer"] = f"https://{self.site_name}/"
 
     def _get_nonce(self) -> str:
         res = self.s.get(
@@ -62,7 +62,7 @@ class Signer(BaseSigner):
             self.url_admin,
             params={
                 "action": "e6986f0c2322e89f0b93500144425f88",
-                "redirectUrl": "https://www.hmoe1.net/"
+                "redirectUrl": f"https://{self.site_name}/"
             }
         )
 

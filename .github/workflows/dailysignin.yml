@@ -31,7 +31,7 @@ jobs:
 
     - name: Run dailysignin
       run: |
-        python3 -m dailysignin "conf/dailysignin.json" ${{ secrets.RSAKEY }}
+        python3 -m dailysignin "conf/dailysignin.json" ${{ secrets.RUNKEY }}
     - name: Commit dailysignin
       run: |
         git add .

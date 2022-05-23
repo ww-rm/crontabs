@@ -2,7 +2,6 @@ import json
 import logging
 import time
 from argparse import ArgumentParser
-from base64 import b64decode
 from datetime import datetime, timedelta
 from pathlib import Path
 
@@ -110,17 +109,16 @@ if __name__ == "__main__":
     # parse args
     parser = ArgumentParser()
     parser.add_argument("config")
-    parser.add_argument("rsakey")
+    parser.add_argument("runkey")
     parser.add_argument("--test", action="store_true", default=False)
     args = parser.parse_args()
 
     # read config
-    with open(args.config, "r", encoding="utf8") as f:
+    with Path(args.config).open("r", encoding="utf8") as f:
         config: dict = json.load(f)
 
     # read secrets
-    rsakey = b64decode(args.rsakey).decode("utf8")
-    def _d(p): return utils.secrets.rsa_decrypt(p, rsakey)
+    def _d(c): return utils.secrets.aes256_dec_cbc(c, args.runkey)
 
     # logging config
     root_logger = logging.getLogger()

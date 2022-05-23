@@ -5,9 +5,9 @@ from .base import BaseSigner
 
 class Signer(BaseSigner):
     site_name = "jike0.com"
-    url_login = "https://jike0.com/auth/login"
-    url_signin = "https://jike0.com/user/checkin"
-    url_logout = "https://jike0.com/user/logout"
+    url_login = f"https://{site_name}/auth/login"
+    url_signin = f"https://{site_name}/user/checkin"
+    url_logout = f"https://{site_name}/user/logout"
 
     def _login(self) -> bool:
         res = self.s.post(

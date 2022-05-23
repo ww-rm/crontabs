@@ -5,9 +5,9 @@ from .base import BaseSigner
 
 class Signer(BaseSigner):
     site_name = "freevpn.cyou"
-    url_login = "https://freevpn.cyou/auth/login"
-    url_signin = "https://freevpn.cyou/user/checkin"
-    url_logout = "https://freevpn.cyou/user/logout"
+    url_login = f"https://{site_name}/auth/login"
+    url_signin = f"https://{site_name}/user/checkin"
+    url_logout = f"https://{site_name}/user/logout"
 
     def _login(self) -> bool:
         res = self.s.post(

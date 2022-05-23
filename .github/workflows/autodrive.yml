@@ -37,7 +37,7 @@ jobs:
 
     - name: Run autodrive
       run: |
-        python -m autodrive "conf/autodrive.json" ${{ secrets.RSAKEY }}
+        python -m autodrive "conf/autodrive.json" ${{ secrets.RUNKEY }}
 
     - name: Commit autodrive
       run: |

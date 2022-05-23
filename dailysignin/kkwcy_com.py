@@ -4,10 +4,10 @@ from .base import BaseSigner
 
 
 class Signer(BaseSigner):
-    site_name = "51acgwcy.com"
-    url_login = "https://51acgwcy.com/wp-json/jwt-auth/v1/token"
-    url_signin = "https://51acgwcy.com/wp-json/b2/v1/userMission"
-    url_logout = "https://51acgwcy.com/wp-json/b2/v1/loginOut"
+    site_name = "kkwcy.com"
+    url_login = f"https://{site_name}/wp-json/jwt-auth/v1/token"
+    url_signin = f"https://{site_name}/wp-json/b2/v1/userMission"
+    url_logout = f"https://{site_name}/wp-json/b2/v1/loginOut"
 
     def _login(self) -> bool:
         res = self.s.post(
