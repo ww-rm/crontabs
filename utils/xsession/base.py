@@ -45,11 +45,11 @@ class XSession(requests.Session):
     If anything wrong happened in a request, return an empty `Response` object, keeping url info and logging error info using `logging` module.
     """
 
-    def __init__(self, interval: float = 0.01, max_retry: int = 3, timeout: Union[Tuple[float, float], float] = 30) -> None:
+    def __init__(self, interval: float = 0.01, max_retries: int = 3, timeout: Union[Tuple[float, float], float] = 30) -> None:
         """
         Args:
             interval (float): Seconds between each request. Minimum to 0.01.
-            max_retry (int): max retry times.
+            max_retries (int): max retry times.
             timeout: same as timeout param to `requests.request`
         """
         super().__init__()
@@ -58,8 +58,8 @@ class XSession(requests.Session):
         self.logger = logging.getLogger(__name__)
 
         # set default adapter max retry
-        self.mount("https://", HTTPAdapter(max_retries=max_retry))
-        self.mount("http://", HTTPAdapter(max_retries=max_retry))
+        self.mount("https://", HTTPAdapter(max_retries=max_retries))
+        self.mount("http://", HTTPAdapter(max_retries=max_retries))
 
     def request(self, method, url, *args, **kwargs) -> requests.Response:
         sleep(self.interval)
