@@ -54,7 +54,7 @@ class XSession(requests.Session):
 
     def request(self, method, url, *args, **kwargs) -> requests.Response:
         sleep(self.interval)
-        # kwargs.setdefault("timeout", 10.0)
+        kwargs.setdefault("timeout", 60) # timeout to avoid suspended
         try:
             res = super().request(method, url, *args, **kwargs)
         except Exception as e:
