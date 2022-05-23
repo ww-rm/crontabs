@@ -3,7 +3,7 @@
 import json
 from os import PathLike
 from pathlib import Path
-from typing import Any, Iterator, List, Union
+from typing import Any, Iterator, List, Tuple, Union
 import bs4
 import requests
 from .base import XSession, empty_retry
@@ -83,8 +83,8 @@ class PixivBase(XSession):
             return {}
         return json_
 
-    def __init__(self, interval: float = 0.01) -> None:
-        super().__init__(interval=interval)
+    def __init__(self, interval: float = 0.01, max_retries: int = 3, timeout: Union[Tuple[float, float], float] = 30) -> None:
+        super().__init__(interval, max_retries, timeout)
         self.headers["Referer"] = PixivBase.URL_host
 
     def _get_csrf_token(self) -> str:
@@ -198,7 +198,8 @@ class PixivBase(XSession):
             `xRestrict`: 0 is all-age, 1 is R18, 2 is R18-G
         """
         res = self.get(
-            PixivBase.URL_ajax_illust.format(illust_id=illust_id)
+            PixivBase.URL_ajax_illust.format(illust_id=illust_id),
+
         )
 
         return self._check_response(res)

@@ -3,8 +3,10 @@
 import logging
 from functools import wraps
 from time import sleep
+from typing import Tuple, Union
 
 import requests
+from requests.adapters import HTTPAdapter
 
 
 def empty_retry(times: int = 3, interval: float = 1):
@@ -43,18 +45,25 @@ class XSession(requests.Session):
     If anything wrong happened in a request, return an empty `Response` object, keeping url info and logging error info using `logging` module.
     """
 
-    def __init__(self, interval: float = 0.01) -> None:
+    def __init__(self, interval: float = 0.01, max_retries: int = 3, timeout: Union[Tuple[float, float], float] = 30) -> None:
         """
         Args:
             interval (float): Seconds between each request. Minimum to 0.01.
+            max_retries (int): max retry times.
+            timeout: same as timeout param to `requests.request`
         """
         super().__init__()
         self.interval = max(0.01, interval)
+        self.timeout = timeout
         self.logger = logging.getLogger(__name__)
+
+        # set default adapter max retry
+        self.mount("https://", HTTPAdapter(max_retries=max_retries))
+        self.mount("http://", HTTPAdapter(max_retries=max_retries))
 
     def request(self, method, url, *args, **kwargs) -> requests.Response:
         sleep(self.interval)
-        kwargs.setdefault("timeout", 60) # timeout to avoid suspended
+        kwargs.setdefault("timeout", self.timeout)  # timeout to avoid suspended
         try:
             res = super().request(method, url, *args, **kwargs)
         except Exception as e:

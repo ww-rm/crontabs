@@ -5,12 +5,12 @@ name: autodrive
 
 on:
   schedule:
-    - cron: '0 */2 * * *'
+    - cron: '0 10,22 * * *'
 
 jobs:
   dailyrun:
 
-    runs-on: windows-2019
+    runs-on: ubuntu-20.04
 
     steps:
     - uses: actions/checkout@v2
@@ -22,8 +22,8 @@ jobs:
 
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
-        python -m pip install -r requirements.txt
+        python3 -m pip install --upgrade pip
+        python3 -m pip install -r requirements.txt
 
     - name: Config git
       run: |
@@ -33,15 +33,15 @@ jobs:
 
     - name: Connection test
       run: |
-        cmd /k "scripts\connection_test.bat"
+        bash "scripts/connection_test.sh"
 
     - name: Run autodrive
       run: |
-        python -m autodrive "conf/autodrive.json" ${{ secrets.RUNKEY }}
+        python3 -m autodrive "conf/autodrive.json" ${{ secrets.RUNKEY }}
 
     - name: Commit autodrive
       run: |
         git add .
-        cmd /k "scripts\safe_commit.bat" "autorun-autodrive"
+        bash "scripts/safe_commit.sh" "autorun-autodrive"
         git pull --no-rebase
         git push
