@@ -185,11 +185,12 @@ class PixivDrive:
                         illust_ids.add(str(illust_id))
             print("\n##### DEBUG 2 END #####", flush=True)
 
-            # limit to 500 illust ids
+            # shuffle
             illust_ids = list(illust_ids)
             for _ in range(10000):
                 random.shuffle(illust_ids)
-            illust_ids = illust_ids[:500]
+            # limit to 500 illust ids
+            # illust_ids = illust_ids[:500]
 
             print("##### DEBUG 3 BEGIN #####", flush=True)
             print(illust_ids)
