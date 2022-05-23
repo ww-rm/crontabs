@@ -7,11 +7,63 @@ from typing import Any, Iterator, List, Tuple, Union
 import bs4
 import requests
 from .base import XSession, empty_retry
+from urllib.parse import urlsplit, urlunsplit
+
+PIXIV_HOSTS = {
+    # # PIXIV
+    # # *.pximg.net 210.140.92.(138-147)
+    "s.pximg.net":      "210.140.92.141",
+    "i.pximg.net":      "210.140.92.141",
+
+    # # pixiv DNS
+    "ns1.pixiv.net":    "210.140.131.236",
+    "ns2.pixiv.net":    "210.140.131.238",
+
+    # # *.pixiv.net 210.140.131.(199-223, 226-229)
+    "pixiv.net":        "210.140.131.222",
+    "m.pixiv.net":      "210.140.131.222",
+    "help.pixiv.net":   "210.140.131.222",
+    "factory.pixiv.net": "210.140.131.222",
+    "touch.pixiv.net":  "210.140.131.222",
+    "p2.pixiv.net":     "210.140.131.222",
+    "payment.pixiv.net": "210.140.131.222",
+    "ssl.pixiv.net":    "210.140.131.222",
+    "chat.pixiv.net":   "210.140.131.222",
+    "blog.pixiv.net":   "210.140.131.222",
+    "en.dic.pixiv.net": "210.140.131.222",
+    "genepixiv.pr.pixiv.net": "210.140.131.222",
+    "inside.pixiv.net": "210.140.131.222",
+
+    # # CF but real IP the same as above
+    "www.pixiv.net":    "210.140.92.186",
+    "fanbox.pixiv.net": "210.140.131.222",
+    "goods.pixiv.net":  "210.140.131.222",
+    "sensei.pixiv.net": "210.140.131.222",
+    "app-api.pixiv.net": "210.140.131.222",
+
+    # # *.pixiv.net 210.140.131.(144-153)
+    "imgaz.pixiv.net":  "210.140.131.145",
+    "i1.pixiv.net":     "210.140.131.145",
+    "comic.pixiv.net":  "210.140.131.145",
+    "novel.pixiv.net":  "210.140.131.145",
+    "source.pixiv.net": "210.140.131.145",
+    "sketch.pixiv.net": "210.140.174.37",
+
+    # # CF unknown real IP
+    "accounts.pixiv.net": "210.140.131.222",
+    "dev.pixiv.net":    "210.140.131.222",
+    "festa.pixiv.net":  "210.140.131.222",
+    "times.pixiv.net":  "210.140.131.222",
+    "iracon.pixiv.net": "210.140.131.222",
+    "matsuri.pixiv.net": "210.140.131.222",
+    "doc.pixiv.net":    "210.140.131.222",
+    "g-client-proxy.pixiv.net": "210.140.131.222"
+}
 
 
 class PixivBase(XSession):
     # lang=zh
-    URL_host = "https://www.pixiv.net"
+    URL_www = "https://www.pixiv.net"
 
     # api
     URL_api_login = "https://accounts.pixiv.net/api/login"
@@ -83,16 +135,53 @@ class PixivBase(XSession):
             return {}
         return json_
 
-    def __init__(self, interval: float = 0.01, max_retries: int = 3, timeout: Union[Tuple[float, float], float] = 30) -> None:
+    def __init__(self, interval: float = 0.01, max_retries: int = 3, timeout: Union[Tuple[float, float], float] = 30,
+                 domain_fronting: bool = False) -> None:
+        """
+        Args:
+            domain_fronting (bool): Whether use domain fronting.
+
+        Note:
+            When use domain fronting, it will replace `domain` of url to ip address, 
+            and keep correct `Host` header in headers, and it will NOT verify SSLCertVerification.
+
+            For example:
+                url: "https://www.pixiv.net/ajax/top/illust" ==> "https://210.140.131.210/ajax/top/illust"
+                headers: {"Host": "www.pixiv.net"}
+                verify: False
+        """
         super().__init__(interval, max_retries, timeout)
-        self.headers["Referer"] = PixivBase.URL_host
+        self.headers["Referer"] = PixivBase.URL_www
+        self.domain_fronting = domain_fronting
+        if domain_fronting:
+            self.logger.warning("Domain fronting is enabled.")
 
     def _get_csrf_token(self) -> str:
         """Get x-csrf-token"""
-        html = self.get(PixivBase.URL_host).text
+        html = self.get(PixivBase.URL_www).text
         soup = bs4.BeautifulSoup(html, "lxml")
         token = json.loads(soup.find("meta", {"id": "meta-global-data"}).attrs.get("content", "{}")).get("token", "")
         return token
+
+    def request(self, method, url, *args, **kwargs) -> requests.Response:
+        if self.domain_fronting:
+            components = list(urlsplit(url))
+
+            # add Host header
+            if "headers" not in kwargs:
+                kwargs["headers"] = {"Host": components[1]}
+            else:
+                kwargs["headers"]["Host"] = components[1]
+
+            # replace netloc
+            components[1] = PIXIV_HOSTS.get(components[1], components[1])
+
+            # NOT verify
+            kwargs["verify"] = False
+
+            url = urlunsplit(components)
+
+        return super().request(method, url, *args, **kwargs)
 
     # GET method
 

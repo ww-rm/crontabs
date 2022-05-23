@@ -17,7 +17,7 @@ from .base import XSession, empty_retry
 class BilibiliBase(XSession):
     """Base api wrapper of bilibili, don't use it directly."""
 
-    URL_host = "https://www.bilibili.com/"
+    URL_www = "https://www.bilibili.com/"
 
     URL_dynamic_svr_create = "https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/create"
     URL_dynamic_svr_create_draw = "https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/create_draw"

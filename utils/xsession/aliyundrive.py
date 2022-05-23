@@ -22,7 +22,7 @@ import re
 class AliyunDriveBase(XSession):
     """Base api wrapper, don't use it directly."""
 
-    URL_host = "https://api.aliyundrive.com"
+    URL_api = "https://api.aliyundrive.com"
 
     URL_sign_in = "https://www.aliyundrive.com/sign/in"
 
