@@ -97,20 +97,19 @@ class PixivBase(XSession):
     # GET method
 
     @empty_retry()
-    def _get_page(self, page_url: str, chunk_size: int = 10485760) -> Iterator[bytes]:
+    def _get_page(self, page_url: str) -> bytes:
         """
         Args:
             page_url (str): url to get page from.
-            chunk_size (str): To avoid huge memory usage, default to 10 MB.
 
         Returns:
-            Return empty bytes when failed, otherwise a bytes iterator.
+            Return empty bytes when failed.
         """
         res = self.get(page_url, stream=True)
         if res.status_code != 200:
             self.logger.error("Failed to get page from {}.".format(page_url))
             return b""  # Need to make bool False
-        return res.iter_content(chunk_size)
+        return res.content
 
     def _get_top_illust(self, mode="all") -> dict:
         """Get top illusts by mode.
@@ -383,9 +382,7 @@ class Pixiv(PixivBase):
             self.logger.error("Failed to download page {}.".format(page_url))
             return False
 
-        with Path(page_save_path).open("wb") as f:
-            for chunk in data:
-                f.write(chunk)
+        Path(page_save_path).write_bytes(data)
         return True
 
     def download_illust(self, illust_id: str, illust_save_folder: PathLike) -> List[Path]:
