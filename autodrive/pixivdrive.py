@@ -153,21 +153,21 @@ class PixivDrive:
         Args:
             include_user_top (bool): Whether to upload top illusts of users in ranking as well.
         """
-        print("##### DEBUG 0 BEGIN #####", flush=True)
+        # print("##### DEBUG 0 BEGIN #####", flush=True)
         ranking_info = self.s_pixiv.get_ranking_monthly()
-        print("\n##### DEBUG 0 END #####", flush=True)
+        # print("\n##### DEBUG 0 END #####", flush=True)
         if not ranking_info:
             return False
 
         # upload ranking illusts
         illust_ids = [str(e["illust_id"]) for e in ranking_info["contents"]]
         flag = True
-        print("##### DEBUG 1 BEGIN #####", flush=True)
+        # print("##### DEBUG 1 BEGIN #####", flush=True)
         for id_ in illust_ids:
             # print(id_, end=";", flush=True)
             if not self.upload_illust(id_):
                 flag = False
-        print("\n##### DEBUG 1 END #####", flush=True)
+        # print("\n##### DEBUG 1 END #####", flush=True)
 
         if not flag:
             self.logger.warning("Failed to upload some illusts.")
@@ -176,32 +176,32 @@ class PixivDrive:
         if include_user_top:
             illust_ids = set()
             user_ids = [e["user_id"] for e in ranking_info["contents"]]
-            print("##### DEBUG 2 BEGIN #####", flush=True)
+            # print("##### DEBUG 2 BEGIN #####", flush=True)
             for id_ in user_ids:
-                print(id_, end=";", flush=True)
+                # print(id_, end=";", flush=True)
                 top_info = self.s_pixiv.get_user_top(id_)
                 if top_info:
                     for illust_id in top_info["illusts"].keys():
                         illust_ids.add(str(illust_id))
-            print("\n##### DEBUG 2 END #####", flush=True)
+            # print("\n##### DEBUG 2 END #####", flush=True)
 
             # shuffle
             illust_ids = list(illust_ids)
-            for _ in range(10000):
+            for _ in range(1000):
                 random.shuffle(illust_ids)
             # limit to 500 illust ids
             # illust_ids = illust_ids[:500]
 
-            print("##### DEBUG 3 BEGIN #####", flush=True)
-            print(illust_ids)
-            print("Num: ", len(illust_ids), flush=True)
+            # print("##### DEBUG 3 BEGIN #####", flush=True)
+            # print(illust_ids)
+            # print("Num: ", len(illust_ids), flush=True)
 
             flag = True
             for id_ in illust_ids:
-                print(id_, end=";", flush=True)
+                # print(id_, end=";", flush=True)
                 if not self.upload_illust(id_):
                     flag = False
-            print("\n##### DEBUG 3 END #####", flush=True)
+            # print("\n##### DEBUG 3 END #####", flush=True)
             if not flag:
                 self.logger.warning("Failed to upload some user top illusts.")
 
