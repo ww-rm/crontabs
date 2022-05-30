@@ -3669,3 +3669,12 @@
 2022-05-29 11:33:01 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/94863669/94863669_p0.jpg.
 2022-05-29 22:20:12 - WARNING - aliyundrive.py - 676 - Token is about to expire, try to auto refresh.
 2022-05-29 23:12:09 - WARNING - connectionpool.py - 752 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2021/12/04/12/17/38/94553131_p0.png
+2022-05-30 10:23:01 - WARNING - aliyundrive.py - 676 - Token is about to expire, try to auto refresh.
+2022-05-30 10:47:59 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500
+2022-05-30 10:47:59 - ERROR - aliyundrive.py - 70 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:Redis command timed out; nested exception is io.lettuce.core.RedisCommandTimeoutException: Command timed out after 3 second(s)
+2022-05-30 10:47:59 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/95291252/95291252_p3.jpg.
+2022-05-30 11:03:10 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2022-05-30 11:03:10 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/96897530/96897530_p0.jpg.
+2022-05-30 11:13:14 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500
+2022-05-30 11:13:14 - ERROR - aliyundrive.py - 70 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:timeout
+2022-05-30 11:13:14 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/97230962/97230962_p3.png.
