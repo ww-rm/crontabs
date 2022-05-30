@@ -3678,3 +3678,7 @@
 2022-05-30 11:13:14 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500
 2022-05-30 11:13:14 - ERROR - aliyundrive.py - 70 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:timeout
 2022-05-30 11:13:14 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/97230962/97230962_p3.png.
+2022-05-30 22:21:12 - WARNING - aliyundrive.py - 676 - Token is about to expire, try to auto refresh.
+2022-05-30 22:38:11 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2022-05-30 22:38:11 - ERROR - aliyundrive.py - 774 - Failed to create folder pixiv/6334904/Blue_Gk.
+2022-05-30 23:14:14 - WARNING - connectionpool.py - 752 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='www.pixiv.net', port=443): Read timed out. (read timeout=30)")': /ajax/illust/98040780
