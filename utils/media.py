@@ -23,27 +23,27 @@ def load_images(img_paths: List[Union[str, Path]], load_size: tuple = (1080, 192
 
     def _resize1(img: np.ndarray) -> np.ndarray:
         """adapt"""
-        h, w = img.shape[0], img.shape[1]
-        if h/w > load_size[0]/load_size[1]:
+        _h, _w = img.shape[0], img.shape[1]
+        if _h/_w > load_size[0]/load_size[1]:
             # same height
-            h, w = int(load_size[0]), int(load_size[0]*(w/h))
-            return cv2.resize(img, (w, h), interpolation=cv2.INTER_CUBIC)
+            h, w = int(load_size[0]), int(load_size[0]*(_w/_h))
+            return cv2.resize(img, (w, h), interpolation=(cv2.INTER_CUBIC if _w < w else cv2.INTER_LINEAR))
         else:
             # same width
-            h, w = int(load_size[1]*(h/w)), int(load_size[1])
-            return cv2.resize(img, (w, h), interpolation=cv2.INTER_CUBIC)
+            h, w = int(load_size[1]*(_h/_w)), int(load_size[1])
+            return cv2.resize(img, (w, h), interpolation=(cv2.INTER_CUBIC if _h < h else cv2.INTER_LINEAR))
 
     def _resize2(img: np.ndarray) -> np.ndarray:
         """pad"""
-        h, w = img.shape[0], img.shape[1]
-        if h/w > load_size[0]/load_size[1]:
+        _h, _w = img.shape[0], img.shape[1]
+        if _h/_w > load_size[0]/load_size[1]:
             # same width
-            h, w = int(load_size[1]*(h/w)), int(load_size[1])
-            img = cv2.resize(img, (w, h), interpolation=cv2.INTER_CUBIC)
+            h, w = int(load_size[1]*(_h/_w)), int(load_size[1])
+            img = cv2.resize(img, (w, h), interpolation=(cv2.INTER_CUBIC if _h < h else cv2.INTER_LINEAR))
         else:
             # same height
-            h, w = int(load_size[0]), int(load_size[0]*(w/h))
-            img = cv2.resize(img, (w, h), interpolation=cv2.INTER_CUBIC)
+            h, w = int(load_size[0]), int(load_size[0]*(_w/_h))
+            img = cv2.resize(img, (w, h), interpolation=(cv2.INTER_CUBIC if _w < w else cv2.INTER_LINEAR))
         # crop
         delta_h, delta_w = img.shape[0] - load_size[0], img.shape[1] - load_size[1]
         if delta_h > 0:
