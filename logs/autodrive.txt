@@ -3749,3 +3749,7 @@
 2022-06-02 23:01:58 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/97197809/97197809_p3.png.
 2022-06-02 23:08:13 - WARNING - pixivdrive.py - 114 - Failed to add salt to page tmp/97819416/97819416_ugoira0.gif, upload original page.
 2022-06-02 23:08:14 - WARNING - pixivdrive.py - 142 - Failed to make mirage for page tmp/97819416/97819416_ugoira0.gif.
+2022-06-03 10:23:28 - WARNING - aliyundrive.py - 676 - Token is about to expire, try to auto refresh.
+2022-06-03 10:27:52 - WARNING - connectionpool.py - 752 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='www.pixiv.net', port=443): Read timed out. (read timeout=30)")': /ajax/illust/98732107
+2022-06-03 11:22:30 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2022-06-03 11:22:30 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/98182623/98182623_p0.png.
