@@ -3771,3 +3771,9 @@
 2022-06-03 23:08:38 - WARNING - connectionpool.py - 752 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f23a0a76310>: Failed to establish a new connection: [Errno 101] Network is unreachable')': /adrive/v2/file/createWithFolders
 2022-06-03 23:09:15 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
 2022-06-03 23:09:15 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/98322260/98322260_p0.png.
+2022-06-04 10:19:30 - WARNING - aliyundrive.py - 676 - Token is about to expire, try to auto refresh.
+2022-06-04 10:33:57 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2022-06-04 10:33:57 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/95694604/95694604_p0.jpg.
+2022-06-04 10:34:47 - WARNING - connectionpool.py - 752 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/05/08/17/00/01/98201866_p0.jpg
+2022-06-04 10:42:40 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2022-06-04 10:42:40 - ERROR - aliyundrive.py - 890 - Failed to complete upload file tmp/98224664/98224664_p0.png.
