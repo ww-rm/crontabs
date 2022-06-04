@@ -3777,3 +3777,7 @@
 2022-06-04 10:34:47 - WARNING - connectionpool.py - 752 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/05/08/17/00/01/98201866_p0.jpg
 2022-06-04 10:42:40 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
 2022-06-04 10:42:40 - ERROR - aliyundrive.py - 890 - Failed to complete upload file tmp/98224664/98224664_p0.png.
+2022-06-04 22:17:45 - WARNING - aliyundrive.py - 676 - Token is about to expire, try to auto refresh.
+2022-06-04 22:38:25 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2022-06-04 22:38:25 - ERROR - aliyundrive.py - 774 - Failed to create folder pixiv/20728711/WERI.
+2022-06-04 22:40:27 - WARNING - connectionpool.py - 752 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7fdf9ea7ad50>: Failed to establish a new connection: [Errno 101] Network is unreachable')': /adrive/v2/file/createWithFolders
