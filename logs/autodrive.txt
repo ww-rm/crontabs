@@ -3929,3 +3929,9 @@
 2022-06-14 11:09:46 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/86355945/86355945_p0.png.
 2022-06-14 11:12:00 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
 2022-06-14 11:12:00 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/98295361/98295361_p2.png.
+2022-06-14 22:16:55 - WARNING - aliyundrive.py - 676 - Token is about to expire, try to auto refresh.
+2022-06-14 23:00:25 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2022-06-14 23:00:25 - ERROR - aliyundrive.py - 774 - Failed to create folder pixiv/13992671/木なこ@金曜東C-13a.
+2022-06-14 23:04:10 - WARNING - connectionpool.py - 752 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7fc8fe19e250>: Failed to establish a new connection: [Errno 101] Network is unreachable')': /adrive/v2/file/createWithFolders
+2022-06-14 23:04:41 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2022-06-14 23:04:41 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/98576412/98576412_p0.jpg.
