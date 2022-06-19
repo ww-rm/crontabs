@@ -3993,3 +3993,23 @@
 2022-06-18 22:39:45 - WARNING - connectionpool.py - 752 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='www.pixiv.net', port=443): Read timed out. (read timeout=30)")': /ajax/illust/95981953/pages
 2022-06-18 22:44:53 - WARNING - pixivdrive.py - 114 - Failed to add salt to page tmp/97819416/97819416_ugoira0.gif, upload original page.
 2022-06-18 22:44:53 - WARNING - pixivdrive.py - 142 - Failed to make mirage for page tmp/97819416/97819416_ugoira0.gif.
+2022-06-19 10:19:38 - WARNING - aliyundrive.py - 676 - Token is about to expire, try to auto refresh.
+2022-06-19 10:28:59 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2022-06-19 10:28:59 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/79442251/79442251_p2.jpg.
+2022-06-19 10:29:34 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2022-06-19 10:29:34 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/79442251/79442251_p8.jpg.
+2022-06-19 10:30:12 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2022-06-19 10:30:12 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/98492755/98492755_p1.jpg.
+2022-06-19 10:33:20 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2022-06-19 10:33:20 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/91775726_mirage/91775726_p2.png.
+2022-06-19 10:37:09 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2022-06-19 10:37:09 - ERROR - aliyundrive.py - 890 - Failed to complete upload file tmp/98508914/98508914_p0.jpg.
+2022-06-19 11:07:18 - WARNING - pixivdrive.py - 114 - Failed to add salt to page tmp/97819416/97819416_ugoira0.gif, upload original page.
+2022-06-19 11:07:18 - WARNING - pixivdrive.py - 142 - Failed to make mirage for page tmp/97819416/97819416_ugoira0.gif.
+2022-06-19 11:08:28 - WARNING - connectionpool.py - 752 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/04/25/23/01/28/97881099_p0.png
+2022-06-19 11:17:51 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2022-06-19 11:17:51 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/97952438/97952438_p0.png.
+2022-06-19 11:18:30 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2022-06-19 11:18:30 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/92901076/92901076_p0.jpg.
+2022-06-19 11:19:39 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2022-06-19 11:19:39 - ERROR - aliyundrive.py - 774 - Failed to create folder pixiv/2671042/方向錯亂.
