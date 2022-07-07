@@ -4372,3 +4372,7 @@
 2022-07-07 11:28:45 - WARNING - connectionpool.py - 752 - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f5104182f10>: Failed to establish a new connection: [Errno 101] Network is unreachable')': /adrive/v2/file/createWithFolders
 2022-07-07 11:30:10 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
 2022-07-07 11:30:10 - ERROR - aliyundrive.py - 774 - Failed to create folder pixiv/27350443/Leviathan.
+2022-07-07 22:19:52 - WARNING - aliyundrive.py - 676 - Token is about to expire, try to auto refresh.
+2022-07-07 23:08:01 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500
+2022-07-07 23:08:01 - ERROR - aliyundrive.py - 70 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:Redis command timed out; nested exception is io.lettuce.core.RedisCommandTimeoutException: Command timed out after 3 second(s)
+2022-07-07 23:08:01 - ERROR - aliyundrive.py - 774 - Failed to create folder pixiv/5594793/Silver.
