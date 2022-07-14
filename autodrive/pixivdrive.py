@@ -93,7 +93,7 @@ class PixivDrive:
         user_dir = self.root_dir.joinpath(user_id)
 
         # use a folder to record current username
-        self.s_adrive.create_folder(user_dir.joinpath(username))
+        self.s_adrive.create_folder(user_dir.joinpath(f"{username} - {user_id}"))
 
         # tmp download folder
         # tmp/illust_id
