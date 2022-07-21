@@ -4680,3 +4680,27 @@
 2022-07-21 11:12:00 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429
 2022-07-21 11:12:00 - ERROR - aliyundrive.py - 65 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
 2022-07-21 11:12:00 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/98765505/98765505_p2.jpg.
+2022-07-21 22:19:53 - WARNING - aliyundrive.py - 676 - Token is about to expire, try to auto refresh.
+2022-07-21 22:26:42 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500
+2022-07-21 22:26:42 - ERROR - aliyundrive.py - 70 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:Unexpected character ('<' (code 60)): expected a valid value (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+ at [Source: (byte[])"<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html>
+<head><title>429 Too Many Requests</title></head>
+<body>
+<center><h1>429 Too Many Requests</h1></center>
+<hr><center>tengine</center>
+</body>
+</html>
+"; line: 1, column: 2]
+2022-07-21 22:26:42 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/98031768_mirage/98031768_p23.png.
+2022-07-21 22:52:45 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2022-07-21 22:52:45 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/96868200/96868200_p0.jpg.
+2022-07-21 22:53:16 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2022-07-21 22:53:16 - ERROR - aliyundrive.py - 774 - Failed to create folder pixiv/27350443/Leviathan - 27350443.
+2022-07-21 22:53:47 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2022-07-21 22:53:47 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/99254597/99254597_p0.png.
+2022-07-21 22:54:17 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2022-07-21 22:54:17 - ERROR - aliyundrive.py - 774 - Failed to create folder pixiv/4588267/Fukuro袋子 - 4588267.
+2022-07-21 22:54:50 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2022-07-21 22:54:50 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/97186359/97186359_p0.jpg.
+2022-07-21 23:12:17 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/06/30/21/53/19/99409097_p0.jpg
