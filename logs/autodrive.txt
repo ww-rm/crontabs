@@ -4819,3 +4819,10 @@
 2022-07-29 11:46:17 - ERROR - aliyundrive.py - 879 - File tmp/97936657/97936657_p14.jpg Part 1 upload failed.
 2022-07-29 22:19:40 - WARNING - aliyundrive.py - 676 - Token is about to expire, try to auto refresh.
 2022-07-29 23:06:01 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/03/18/11/16/09/96991580_p0.jpg
+2022-07-30 10:20:34 - WARNING - aliyundrive.py - 676 - Token is about to expire, try to auto refresh.
+2022-07-30 10:43:01 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2022-07-30 10:43:01 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/98482665/98482665_p0.jpg.
+2022-07-30 10:56:58 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2022-07-30 10:56:58 - ERROR - aliyundrive.py - 890 - Failed to complete upload file tmp/98010891/98010891_p0.png.
+2022-07-30 11:25:13 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2022-07-30 11:25:13 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/98408777/98408777_p1.jpg.
