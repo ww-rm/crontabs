@@ -9,8 +9,10 @@ from pathlib import Path
 
 import utils
 
-from . import (freevpn_cyou, jike0_com, kkwcy_com, www_pepsicola_me,
-               ssru6_pw, www_bilibili_com, www_hmoe11_net)
+from dailysignin import owo_ecycloud_com
+
+from . import (freevpn_cyou, jike0_com, kkwcy_com, ssru6_pw, www_bilibili_com,
+               www_hmoe11_net, www_pepsicola_me)
 
 
 def run(config: dict):
@@ -24,6 +26,7 @@ def run(config: dict):
     ssru6_pw.Signer(_d(keys["ssru6.pw"]["usrn"]), _d(keys["ssru6.pw"]["pwd"])).signin()
     freevpn_cyou.Signer(_d(keys["freevpn.cyou"]["usrn"]), _d(keys["freevpn.cyou"]["pwd"])).signin()
     www_pepsicola_me.Signer(_d(keys["www.pepsicola.me"]["usrn"]), _d(keys["www.pepsicola.me"]["pwd"])).signin()
+    owo_ecycloud_com.Signer(_d(keys["owo.ecycloud.com"]["usrn"]), _d(keys["owo.ecycloud.com"]["pwd"])).signin()
 
     cookies = dict(map(lambda item: (item[0], _d(item[1])), keys["www.bilibili.com"]["cookies"].items()))
     www_bilibili_com.Signer("", "", cookies=cookies).signin()
