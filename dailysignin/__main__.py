@@ -9,7 +9,7 @@ from pathlib import Path
 
 import utils
 
-from . import (freevpn_cyou, jike0_com, kkwcy_com, socloud_me, www_q88q_cyou,
+from . import (freevpn_cyou, jike0_com, kkwcy_com, www_pepsicola_me,
                ssru6_pw, www_bilibili_com, www_hmoe11_net)
 
 
@@ -21,10 +21,9 @@ def run(config: dict):
     www_hmoe11_net.Signer(_d(keys["www.hmoe11.net"]["usrn"]), _d(keys["www.hmoe11.net"]["pwd"])).signin()
 
     jike0_com.Signer(_d(keys["jike0.com"]["usrn"]), _d(keys["jike0.com"]["pwd"])).signin()
-    # socloud_me.Signer(_d(keys["socloud.me"]["usrn"]), _d(keys["socloud.me"]["pwd"])).signin()
     ssru6_pw.Signer(_d(keys["ssru6.pw"]["usrn"]), _d(keys["ssru6.pw"]["pwd"])).signin()
-    # www_q88q_cyou.Signer(_d(keys["www.q88q.cyou"]["usrn"]), _d(keys["www.q88q.cyou"]["pwd"])).signin()
     freevpn_cyou.Signer(_d(keys["freevpn.cyou"]["usrn"]), _d(keys["freevpn.cyou"]["pwd"])).signin()
+    www_pepsicola_me.Signer(_d(keys["www.pepsicola.me"]["usrn"]), _d(keys["www.pepsicola.me"]["pwd"])).signin()
 
     cookies = dict(map(lambda item: (item[0], _d(item[1])), keys["www.bilibili.com"]["cookies"].items()))
     www_bilibili_com.Signer("", "", cookies=cookies).signin()
