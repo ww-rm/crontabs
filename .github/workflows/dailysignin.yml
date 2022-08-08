@@ -27,7 +27,7 @@ jobs:
       run: |
         git config user.email "ww-rm@qq.com"
         git config user.name "ww-rm"
-        git pull --no-rebase
+        git pull --ff
 
     - name: Run dailysignin
       run: |
@@ -36,5 +36,5 @@ jobs:
       run: |
         git add .
         bash "scripts/safe_commit.sh" "autorun-dailysignin"
-        git pull --no-rebase
+        git pull --ff
         git push
