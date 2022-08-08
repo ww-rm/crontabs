@@ -5085,3 +5085,79 @@
 2022-08-07 10:49:01 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/07/02/15/21/41/99447543_p0.png
 2022-08-07 11:08:01 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='bj29-enet.cn-beijing.data.alicloudccp.com', port=443): Read timed out. (read timeout=30)")': /QrPZMvE4%2F889478%2F62ef9cf37754fe3f011f4165b845dae116e6e790%2F62ef9cf3a1a1622389004e038c27751fbd1ba5a2?partNumber=1&security-token=CAIS%2BgF1q6Ft5B2yfSjIr5fCfODio74Q8ImRW2TAtkUeNedEm5%2F%2Bgzz2IHFPeHJrBeAYt%2FoxmW1X5vwSlq5rR4QAXlDfNXnKOweYqVHPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLukMWr%2Fwq3PIdp2ma447NWQlLnzyCMvvJ9OVDFyN0aKEnH7J%2Bq%2FzxhTPrMnpkSlacGoABZ3qBRNbziASodgTqzwIDBZGI5H%2BVOwi5Wnp6E%2B5kJp0jts8cdkFcPigBzmK3SBI2XEQHH2EBoxfj6Julg0C1JtbSAQuFPhz6GGVFaae1XZ9VuZajjWWPD3miXWREdnd95Evk5wnGfG3sN3YIN5mlDqhpPEJtPQaty5JylFt31uQ%3D&uploadId=C321F32C358D43779DA417B6C7F051CE&x-oss-access-key-id=STS.NTw7ZVNa1GKzYBqREK9hhtZUa&x-oss-expires=1659874051&x-oss-signature=%2BQh5OcKODQ2z%2FXsIuMHtRrq4dkCnheUFrRKZ0ZYZeWI%3D&x-oss-signature-version=OSS2
 2022-08-07 22:19:03 - WARNING - aliyundrive.py - 676 - Token is about to expire, try to auto refresh.
+2022-08-08 10:23:01 - WARNING - aliyundrive.py - 676 - Token is about to expire, try to auto refresh.
+2022-08-08 10:29:20 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2022-08-08 10:29:20 - ERROR - aliyundrive.py - 774 - Failed to create folder pixiv/771029/東みなつ - 771029.
+2022-08-08 10:31:46 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500
+2022-08-08 10:31:46 - ERROR - aliyundrive.py - 70 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:Redis command timed out; nested exception is io.lettuce.core.RedisCommandTimeoutException: Command timed out after 3 second(s)
+2022-08-08 10:31:46 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/97290238/97290238_p0.jpg.
+2022-08-08 10:32:39 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500
+2022-08-08 10:32:39 - ERROR - aliyundrive.py - 70 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:Redis command timed out; nested exception is io.lettuce.core.RedisCommandTimeoutException: Command timed out after 3 second(s)
+2022-08-08 10:32:39 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/89194776/89194776_p11.png.
+2022-08-08 10:33:30 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500
+2022-08-08 10:33:30 - ERROR - aliyundrive.py - 70 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:Redis command timed out; nested exception is io.lettuce.core.RedisCommandTimeoutException: Command timed out after 3 second(s)
+2022-08-08 10:33:30 - ERROR - aliyundrive.py - 774 - Failed to create folder pixiv/32544133/上ノ竜 - 32544133.
+2022-08-08 10:33:58 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429
+2022-08-08 10:33:58 - ERROR - aliyundrive.py - 65 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2022-08-08 10:33:58 - ERROR - aliyundrive.py - 774 - Failed to create folder pixiv/46392336/ショットガンマン - 46392336.
+2022-08-08 10:34:42 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500
+2022-08-08 10:34:42 - ERROR - aliyundrive.py - 70 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:Redis command timed out; nested exception is io.lettuce.core.RedisCommandTimeoutException: io.lettuce.core.RedisCommandTimeoutException: Command timed out after 3 second(s)
+2022-08-08 10:34:42 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/97842347/97842347_p0.jpg.
+2022-08-08 10:34:54 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500
+2022-08-08 10:34:54 - ERROR - aliyundrive.py - 70 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:Redis command timed out; nested exception is io.lettuce.core.RedisCommandTimeoutException: Command timed out after 3 second(s)
+2022-08-08 10:34:54 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/96611220_mirage/96611220_p1.png.
+2022-08-08 10:35:44 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/07/15/11/11/17/99734686_p0.jpg
+2022-08-08 10:36:24 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500
+2022-08-08 10:36:24 - ERROR - aliyundrive.py - 70 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:Redis command timed out; nested exception is io.lettuce.core.RedisCommandTimeoutException: io.lettuce.core.RedisCommandTimeoutException: Command timed out after 3 second(s)
+2022-08-08 10:36:24 - ERROR - aliyundrive.py - 774 - Failed to create folder pixiv/4357504/そらなにいろ - 4357504.
+2022-08-08 10:38:33 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500
+2022-08-08 10:38:33 - ERROR - aliyundrive.py - 70 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:Redis command timed out; nested exception is io.lettuce.core.RedisCommandTimeoutException: Command timed out after 3 second(s)
+2022-08-08 10:38:33 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/99657995/99657995_p0.jpg.
+2022-08-08 10:40:25 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500
+2022-08-08 10:40:25 - ERROR - aliyundrive.py - 70 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:Redis command timed out; nested exception is io.lettuce.core.RedisCommandTimeoutException: io.lettuce.core.RedisCommandTimeoutException: Command timed out after 3 second(s)
+2022-08-08 10:40:25 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/88922153/88922153_p0.jpg.
+2022-08-08 10:41:27 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500
+2022-08-08 10:41:27 - ERROR - aliyundrive.py - 70 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:Redis command timed out; nested exception is io.lettuce.core.RedisCommandTimeoutException: io.lettuce.core.RedisCommandTimeoutException: Command timed out after 3 second(s)
+2022-08-08 10:41:27 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/97856230/97856230_p20.jpg.
+2022-08-08 10:45:37 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500
+2022-08-08 10:45:37 - ERROR - aliyundrive.py - 70 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:Redis command timed out; nested exception is io.lettuce.core.RedisCommandTimeoutException: Command timed out after 3 second(s)
+2022-08-08 10:45:37 - ERROR - aliyundrive.py - 774 - Failed to create folder pixiv/1878082/モ誰 - 1878082.
+2022-08-08 10:45:57 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500
+2022-08-08 10:45:57 - ERROR - aliyundrive.py - 70 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:Redis command timed out; nested exception is io.lettuce.core.RedisCommandTimeoutException: Command timed out after 3 second(s)
+2022-08-08 10:45:57 - ERROR - aliyundrive.py - 774 - Failed to create folder pixiv/20670939/阿戈魔AGM - 20670939.
+2022-08-08 10:50:04 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:504
+2022-08-08 10:50:04 - ERROR - aliyundrive.py - 65 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2022-08-08 10:50:04 - ERROR - aliyundrive.py - 774 - Failed to create folder pixiv/10509347/しろまんた - 10509347.
+2022-08-08 10:50:12 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:504
+2022-08-08 10:50:12 - ERROR - aliyundrive.py - 65 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2022-08-08 10:50:12 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/99774473/99774473_p0.jpg.
+2022-08-08 10:50:37 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500
+2022-08-08 10:50:37 - ERROR - aliyundrive.py - 70 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:Redis command timed out; nested exception is io.lettuce.core.RedisCommandTimeoutException: Command timed out after 3 second(s)
+2022-08-08 10:50:37 - ERROR - aliyundrive.py - 774 - Failed to create folder pixiv/4338012/hews - 4338012.
+2022-08-08 10:52:40 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500
+2022-08-08 10:52:40 - ERROR - aliyundrive.py - 70 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:Redis command timed out; nested exception is io.lettuce.core.RedisCommandTimeoutException: Command timed out after 3 second(s)
+2022-08-08 10:52:40 - ERROR - aliyundrive.py - 774 - Failed to create folder pixiv/10509347/しろまんた - 10509347.
+2022-08-08 10:54:32 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500
+2022-08-08 10:54:32 - ERROR - aliyundrive.py - 70 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:Redis command timed out; nested exception is io.lettuce.core.RedisCommandTimeoutException: io.lettuce.core.RedisCommandTimeoutException: Command timed out after 3 second(s)
+2022-08-08 10:54:32 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/94594943/94594943_p0.jpg.
+2022-08-08 11:03:17 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500
+2022-08-08 11:03:17 - ERROR - aliyundrive.py - 70 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:Redis command timed out; nested exception is io.lettuce.core.RedisCommandTimeoutException: Command timed out after 3 second(s)
+2022-08-08 11:03:17 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/99654801/99654801_p0.jpg.
+2022-08-08 11:05:00 - WARNING - base.py - 100 - https://api.aliyundrive.com/v2/file/complete:429
+2022-08-08 11:05:00 - ERROR - aliyundrive.py - 65 - https://api.aliyundrive.com/v2/file/complete:JsonValueError.
+2022-08-08 11:05:00 - ERROR - aliyundrive.py - 890 - Failed to complete upload file tmp/99653962/99653962_p0.jpg.
+2022-08-08 11:07:03 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500
+2022-08-08 11:07:03 - ERROR - aliyundrive.py - 70 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:Redis command timed out; nested exception is io.lettuce.core.RedisCommandTimeoutException: Command timed out after 3 second(s)
+2022-08-08 11:07:03 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/99975763/99975763_p0.jpg.
+2022-08-08 11:09:15 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500
+2022-08-08 11:09:15 - ERROR - aliyundrive.py - 70 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:Redis command timed out; nested exception is io.lettuce.core.RedisCommandTimeoutException: Command timed out after 3 second(s)
+2022-08-08 11:09:15 - ERROR - aliyundrive.py - 774 - Failed to create folder pixiv/1472125/アバンドン蘭花 - 1472125.
+2022-08-08 11:17:03 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500
+2022-08-08 11:17:03 - ERROR - aliyundrive.py - 70 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:Redis command timed out; nested exception is io.lettuce.core.RedisCommandTimeoutException: io.lettuce.core.RedisCommandTimeoutException: Command timed out after 3 second(s)
+2022-08-08 11:17:03 - ERROR - aliyundrive.py - 774 - Failed to create folder pixiv/20670939/阿戈魔AGM - 20670939.
+2022-08-08 11:17:52 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500
+2022-08-08 11:17:52 - ERROR - aliyundrive.py - 70 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:Redis command timed out; nested exception is io.lettuce.core.RedisCommandTimeoutException: Command timed out after 3 second(s)
+2022-08-08 11:17:52 - ERROR - aliyundrive.py - 774 - Failed to create folder pixiv/2131660/荻pote@8/5~24個展 - 2131660.
+2022-08-08 11:20:35 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500
+2022-08-08 11:20:35 - ERROR - aliyundrive.py - 70 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:Redis command timed out; nested exception is io.lettuce.core.RedisCommandTimeoutException: Command timed out after 3 second(s)
+2022-08-08 11:20:35 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/97853981_mirage/97853981_p5.png.
