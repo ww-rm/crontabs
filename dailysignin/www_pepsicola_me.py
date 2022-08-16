@@ -40,7 +40,7 @@ class Signer(BaseSigner):
         order_num = res.json()["data"]
         res = self.s.post(
             self.url_checkout,
-            data={"trade_no": order_num, "method": 3}
+            data={"trade_no": order_num, "method": 4}
         )
         if res.status_code != 200:
             return False
@@ -61,7 +61,7 @@ class Signer(BaseSigner):
         order_num = res.json()["data"]
         res = self.s.post(
             self.url_checkout,
-            data={"trade_no": order_num, "method": 3}
+            data={"trade_no": order_num, "method": 4}
         )
 
         if res.status_code != 200:
