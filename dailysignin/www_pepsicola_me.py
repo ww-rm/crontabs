@@ -26,6 +26,13 @@ class Signer(BaseSigner):
         )
         if res.status_code != 200:
             return False
+
+        try:
+            auth_data = res.json()["data"]
+        except (ValueError, KeyError):
+            return False
+
+        self.s.headers["authorization"] = auth_data["auth_data"]
         return True
 
     def _renew(self) -> bool:
