@@ -11,8 +11,8 @@ import utils
 
 from dailysignin import owo_ecycloud_com
 
-from . import (freevpn_cyou, jike0_com, kkwcy_com, ssru6_pw, www_bilibili_com,
-               www_hmoe11_net, www_pepsicola_me)
+from . import (dash_pepsicola_me, freevpn_cyou, jike0_com, kkwcy_com, ssru6_pw, www_bilibili_com,
+               www_hmoe11_net)
 
 
 def run(config: dict):
@@ -25,7 +25,7 @@ def run(config: dict):
     jike0_com.Signer(_d(keys["jike0.com"]["usrn"]), _d(keys["jike0.com"]["pwd"])).signin()
     ssru6_pw.Signer(_d(keys["ssru6.pw"]["usrn"]), _d(keys["ssru6.pw"]["pwd"])).signin()
     freevpn_cyou.Signer(_d(keys["freevpn.cyou"]["usrn"]), _d(keys["freevpn.cyou"]["pwd"])).signin()
-    www_pepsicola_me.Signer(_d(keys["www.pepsicola.me"]["usrn"]), _d(keys["www.pepsicola.me"]["pwd"])).signin()
+    dash_pepsicola_me.Signer(_d(keys["dash.pepsicola.me"]["usrn"]), _d(keys["dash.pepsicola.me"]["pwd"])).signin()
     owo_ecycloud_com.Signer(_d(keys["owo.ecycloud.com"]["usrn"]), _d(keys["owo.ecycloud.com"]["pwd"])).signin()
 
     cookies = dict(map(lambda item: (item[0], _d(item[1])), keys["www.bilibili.com"]["cookies"].items()))
