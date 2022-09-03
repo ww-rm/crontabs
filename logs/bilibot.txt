@@ -10852,3 +10852,13 @@
 2022-09-03 12:28:14 - ERROR - base.py - 36 - All retries failed in func _post_draw_image_upload.
 2022-09-03 12:28:42 - ERROR - bilibili.py - 434 - Failed to upload all pictures.
 2022-09-03 12:28:42 - ERROR - bot.py - 239 - Failed to create ranking dynamic.
+2022-09-03 14:02:31 - INFO - __main__.py - 58 - Last dynamic don't exist, redo create dynamic task.
+2022-09-03 14:04:06 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/06/20/00/00/10/99170622_p0.jpg
+2022-09-03 14:19:22 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2021/06/30/19/15/48/90915938_p0.png
+2022-09-03 14:22:33 - ERROR - base.py - 94 - https://api.vc.bilibili.com/api/v1/drawImage/upload:HTTPSConnectionPool(host='api.vc.bilibili.com', port=443): Read timed out. (read timeout=30)
+2022-09-03 14:22:34 - WARNING - base.py - 25 - Retry func _post_draw_image_upload 1 time.
+2022-09-03 14:23:05 - ERROR - base.py - 94 - https://api.vc.bilibili.com/api/v1/drawImage/upload:HTTPSConnectionPool(host='api.vc.bilibili.com', port=443): Read timed out. (read timeout=30)
+2022-09-03 14:23:06 - WARNING - base.py - 25 - Retry func _post_draw_image_upload 2 time.
+2022-09-03 14:23:38 - ERROR - base.py - 94 - https://api.vc.bilibili.com/api/v1/drawImage/upload:HTTPSConnectionPool(host='api.vc.bilibili.com', port=443): Read timed out. (read timeout=30)
+2022-09-03 14:23:39 - WARNING - base.py - 25 - Retry func _post_draw_image_upload 3 time.
+2022-09-03 14:23:51 - INFO - bot.py - 248 - Create ranking dynamic Success!
