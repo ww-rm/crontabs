@@ -6626,3 +6626,8 @@
 2022-09-08 11:24:02 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='www.pixiv.net', port=443): Read timed out. (read timeout=30)")': /ajax/illust/98687283
 2022-09-08 11:25:24 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='www.pixiv.net', port=443): Read timed out. (read timeout=30)")': /ajax/illust/98083210/pages
 2022-09-08 11:26:13 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='www.pixiv.net', port=443): Read timed out. (read timeout=30)")': /ajax/illust/99508888
+2022-09-08 22:21:56 - WARNING - aliyundrive.py - 676 - Token is about to expire, try to auto refresh.
+2022-09-08 22:51:19 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2021/08/19/00/23/57/92089325_p0.jpg
+2022-09-08 22:55:25 - WARNING - pixivdrive.py - 114 - Failed to add salt to page tmp/99353013/99353013_p0.gif, upload original page.
+2022-09-08 23:20:49 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2022-09-08 23:20:49 - ERROR - aliyundrive.py - 774 - Failed to create folder pixiv/31133701/カンザリン - 31133701.
