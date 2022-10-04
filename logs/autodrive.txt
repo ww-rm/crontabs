@@ -8261,3 +8261,8 @@
 2022-10-04 11:18:02 - ERROR - aliyundrive.py - 65 - https://api.aliyundrive.com/v2/file/complete:JsonValueError.
 2022-10-04 11:18:02 - ERROR - aliyundrive.py - 890 - Failed to complete upload file tmp/98582673/98582673_p0.jpg.
 2022-10-04 11:34:49 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/07/05/00/00/03/99508183_p0.jpg
+2022-10-04 22:24:14 - WARNING - aliyundrive.py - 676 - Token is about to expire, try to auto refresh.
+2022-10-04 22:28:04 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2022-10-04 22:28:04 - ERROR - aliyundrive.py - 774 - Failed to create folder pixiv/3869665/河CY - 3869665.
+2022-10-04 23:04:43 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2022-10-04 23:04:43 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/94181446/94181446_p0.png.
