@@ -1,3 +1,4 @@
+import json
 import logging
 import random
 from os import PathLike
@@ -100,9 +101,19 @@ class PixivDrive:
         illust_local_save_folder = Path("tmp", illust_id)
         illust_local_save_folder.mkdir(parents=True, exist_ok=True)
 
+        # upload illust info json file
+        illust_info_local_save_path = illust_local_save_folder.joinpath(f"{illust_id}.json.txt")
+        illust_info_local_save_path.write_text(json.dumps(illust_info, ensure_ascii=False, indent=4), encoding="utf8")
+        self.s_adrive.upload_file(
+            user_dir.joinpath(illust_id, illust_info_local_save_path.name),
+            illust_info_local_save_path,
+            check_name_mode="overwrite"
+        )
+
         # tmp/illust_id/page_p0.png
         page_local_paths = self.s_pixiv.download_illust(illust_id, illust_local_save_folder)
 
+        # upload pages
         # if is R18, upload extra mirage version
 
         if not page_local_paths:
