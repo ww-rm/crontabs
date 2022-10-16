@@ -6,7 +6,7 @@ import json
 from math import ceil
 from os import PathLike
 from pathlib import Path
-from typing import Tuple
+from typing import Callable, Tuple
 from Crypto.Cipher import PKCS1_v1_5
 from Crypto.PublicKey import RSA
 
@@ -21,7 +21,7 @@ import re
 
 class AliyunDriveBase(XSession):
     """Base api wrapper, don't use it directly."""
-
+    URL_www = "https://www.aliyundrive.com/"
     URL_api = "https://api.aliyundrive.com"
 
     URL_sign_in = "https://www.aliyundrive.com/sign/in"
@@ -43,6 +43,7 @@ class AliyunDriveBase(XSession):
     URL_v2_file_get = "https://api.aliyundrive.com/v2/file/get"
     URL_adrive_v2_file_createwithfolders = "https://api.aliyundrive.com/adrive/v2/file/createWithFolders"
     URL_v2_file_complete = "https://api.aliyundrive.com/v2/file/complete"
+    URL_v2_get_file_download_url = "https://api.aliyundrive.com/v2/file/get_download_url"
     URL_adrive_v3_file_search = "https://api.aliyundrive.com/adrive/v3/file/search"
     URL_adrive_v3_file_list = "https://api.aliyundrive.com/adrive/v3/file/list"
 
@@ -50,6 +51,10 @@ class AliyunDriveBase(XSession):
     URL_v2_recyclebin_trash = "https://api.aliyundrive.com/v2/recyclebin/trash"
 
     URL_v2_databox_get_personal_info = "https://api.aliyundrive.com/v2/databox/get_personal_info"
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.headers["Referer"] = AliyunDriveBase.URL_www
 
     def _check_response(self, res: requests.Response) -> dict:
         """Check a json response."""
@@ -459,6 +464,7 @@ class AliyunDriveBase(XSession):
 
         return self._check_response(res)
 
+    @empty_retry()
     def _post_file_list(
         self,
         drive_id: str, parent_file_id: str = "root",
@@ -497,6 +503,17 @@ class AliyunDriveBase(XSession):
             }
         )
 
+        return self._check_response(res)
+
+    def _post_file_get_download_url(self, drive_id: str, file_id: str):
+        """"""
+        res = self.post(
+            AliyunDriveBase.URL_v2_get_file_download_url,
+            json={
+                "drive_id": drive_id,
+                "file_id": file_id
+            }
+        )
         return self._check_response(res)
 
 
@@ -693,6 +710,35 @@ class AliyunDrive(AliyunDriveBase):
 
         return True
 
+    def _get_file_id(self, path: str) -> str:
+        """
+        Get file id by path in drive
+
+        Args:
+            path: file drive path relative to root, can use slash or backslash to seperate.
+
+        Returns:
+            Empty string if not found, "root" for empty string path.
+        """
+        path_parts = Path(path).parts
+
+        # use list to find file id
+        current_id = "root"
+        for part in path_parts:
+            list_info = self._post_file_list(self.drive_id, current_id)
+            if not list_info:
+                return ""
+
+            # find children id
+            for item in list_info["items"]:
+                if item["name"] == part:
+                    current_id = item["file_id"]
+                    break  # found next id
+            else:
+                return ""  # not found in list
+
+        return current_id
+
     def login(self, usrn: str, pwd: str, *, refresh_token: str = "", cookies: dict = None) -> bool:
         """Login.
 
@@ -743,19 +789,26 @@ class AliyunDrive(AliyunDriveBase):
     def create_folder(
         self,
         folder_path: PathLike,
-        parent_file_id: str = "root", check_name_mode: str = "refuse"
+        parent_file_id: str = "root",
+        *,
+        parent_folder_path: PathLike = "",
+        check_name_mode: str = "refuse"
     ) -> dict:
         """Create folder of specified path in drive.
 
         Args:
             folder_path (PathLike): The full path of folder to be created, can be multi-level.
             parent_file_id (str): The parent node of node to be operated. Can be "root" or a string of node id.
+            parent_folder_path (PathLike): The parent path relative to root.
             check_name_mode (str): Can be "auto_rename" or "refuse".
 
         Returns:
             Return empty if failed, 
             else see responses/aliyundrive/adrive_v2_file_createWithFolders.json
         """
+
+        if not parent_file_id:
+            parent_file_id = self._get_file_id(parent_folder_path)
 
         folder_path = Path(folder_path)
 
@@ -783,7 +836,9 @@ class AliyunDrive(AliyunDriveBase):
     def upload_file(
         self,
         file_upload_path: PathLike, file_local_path: PathLike,
-        parent_file_id: str = "root", check_name_mode: str = "refuse", try_rapid_upload: bool = True
+        parent_file_id: str = "root", *,
+        parent_folder_path: PathLike = "",
+        check_name_mode: str = "refuse", try_rapid_upload: bool = True
     ) -> dict:
         """Upload a file to specified path.
 
@@ -799,6 +854,9 @@ class AliyunDrive(AliyunDriveBase):
             else see responses/aliyundrive/adrive_v2_file_createWithFolders.json
                 and responses/aliyundrive/v2_file_complete.json
         """
+
+        if not parent_file_id:
+            parent_file_id = self._get_file_id(parent_folder_path)
 
         CHUNK_SIZE = 10*1024*1024
 
@@ -893,6 +951,41 @@ class AliyunDrive(AliyunDriveBase):
         self.logger.info("Successfully upload file {}.".format(filepath.as_posix()))
         return complete_info
 
+    def download_file(
+        self,
+        file_local_path: PathLike,
+        file_id: str,
+        *,
+        file_drive_path: str = "",
+        chunk_size: int = 10*1024*1024
+    ) -> bool:
+        """Download a file to local storage.
+
+        Args:
+            file_local_path: where to save file.
+            file_id: id of file in drive, if empty string, need provide file_drive_path
+            file_drive_path: file path relative to root in drive
+        """
+        if not file_id:
+            if not file_drive_path:
+                return ValueError("Need provide valid file_id or file_drive_path.")
+            file_id = self._get_file_id(file_drive_path)
+
+        download_url_info = self._post_file_get_download_url(self.drive_id, file_id)
+        if not download_url_info:
+            return False
+
+        download_url = download_url_info["url"]
+        res = self.get(download_url, stream=True)
+        if not res.ok:
+            return False
+
+        with Path(file_local_path).open("wb") as f:
+            for chunk in res.iter_content(chunk_size):
+                f.write(chunk)
+
+        return True
+
     def search_file(
         self,
         name: str,
@@ -965,8 +1058,30 @@ class AliyunDrive(AliyunDriveBase):
             return {}
         return list_info
 
+    def move_file(self, file_id: str):
+        """"""
+
+    def rename_file(self, file_id: str, new_name: str):
+        """"""
+
     def delete_file(self, file_id: str):
         """Move file or folder to trash."""
 
-    def download_file(self, file_id: str, file_save_path: PathLike):
-        "Download a file to local storage."
+    def do_file_r(self, callback: Callable):
+        """"""
+
+    def move_file_r(self):
+        """"""
+
+    def download_file_r(self):
+        """Recursive download files"""
+
+    def upload_file_r(
+        self,
+        file_upload_path: PathLike, file_local_path: PathLike,
+        parent_file_id: str = "root", check_name_mode: str = "refuse", try_rapid_upload: bool = True
+    ) -> dict:
+        """Recursive upload files."""
+
+    def delete_file_r(self):
+        """"""
