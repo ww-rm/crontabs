@@ -971,6 +971,7 @@ class AliyunDrive(AliyunDriveBase):
                 return ValueError("Need provide valid file_id or file_drive_path.")
             file_id = self._get_file_id(file_drive_path)
 
+        if not self._check_refresh(): return False
         download_url_info = self._post_file_get_download_url(self.drive_id, file_id)
         if not download_url_info:
             return False
@@ -1014,7 +1015,10 @@ class AliyunDrive(AliyunDriveBase):
             query += " and (parent_file_id = \"{}\"".format(parent_file_id)
 
         if category:
-            query += " and (category = \"{}\"".format(category)
+            query += " and ({} = \"{}\"".format(
+                "type" if category == "folder" else "category",
+                category
+            )
 
         if not self._check_refresh():
             return {}
