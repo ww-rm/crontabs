@@ -8826,3 +8826,18 @@
 2022-10-16 11:36:57 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
 2022-10-16 11:36:57 - ERROR - aliyundrive.py - 848 - Failed to get create info of file tmp/101936674/101936674_p0.png.
 2022-10-16 11:40:46 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/08/01/22/26/34/100163584_p0.png
+2022-10-16 22:23:12 - WARNING - aliyundrive.py - 676 - Token is about to expire, try to auto refresh.
+2022-10-16 23:44:00 - WARNING - base.py - 100 - https://www.pixiv.net/ajax/illust/101792726:404
+2022-10-16 23:44:00 - ERROR - pixiv.py - 114 - https://www.pixiv.net/ajax/illust/101792726:该作品已被删除，或作品ID不存在。
+2022-10-16 23:44:01 - WARNING - base.py - 25 - Retry func _get_illust 1 time.
+2022-10-16 23:44:01 - WARNING - base.py - 100 - https://www.pixiv.net/ajax/illust/101792726:404
+2022-10-16 23:44:01 - ERROR - pixiv.py - 114 - https://www.pixiv.net/ajax/illust/101792726:该作品已被删除，或作品ID不存在。
+2022-10-16 23:44:02 - WARNING - base.py - 25 - Retry func _get_illust 2 time.
+2022-10-16 23:44:02 - WARNING - base.py - 100 - https://www.pixiv.net/ajax/illust/101792726:404
+2022-10-16 23:44:02 - ERROR - pixiv.py - 114 - https://www.pixiv.net/ajax/illust/101792726:该作品已被删除，或作品ID不存在。
+2022-10-16 23:44:03 - WARNING - base.py - 25 - Retry func _get_illust 3 time.
+2022-10-16 23:44:03 - WARNING - base.py - 100 - https://www.pixiv.net/ajax/illust/101792726:404
+2022-10-16 23:44:03 - ERROR - pixiv.py - 114 - https://www.pixiv.net/ajax/illust/101792726:该作品已被删除，或作品ID不存在。
+2022-10-16 23:44:04 - ERROR - base.py - 36 - All retries failed in func _get_illust.
+2022-10-16 23:44:04 - ERROR - pixiv.py - 532 - Failed to get 101792726 illust info.
+2022-10-16 23:47:13 - WARNING - pixivdrive.py - 217 - Failed to upload some user top illusts.
