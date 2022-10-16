@@ -201,7 +201,7 @@ class PixivBase(XSession):
         Returns:
             Return empty bytes when failed.
         """
-        res = self.get(page_url, stream=True)
+        res = self.get(page_url)
         if res.status_code != 200:
             self.logger.error("Failed to get page from {}.".format(page_url))
             return b""  # Need to make bool False
