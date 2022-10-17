@@ -14,7 +14,7 @@ def empty_retry(times: int = 3, interval: float = 1):
 
     Args:
         times (int): Times to retry.
-        interval (float): Interval between each retry, in seconds.
+        interval (float): Interval between each retry, in seconds, increase 1s each retry.
     """
     def decorator(func):
         @wraps(func)
@@ -29,8 +29,8 @@ def empty_retry(times: int = 3, interval: float = 1):
                 if ret:
                     return ret
 
-                # sleep for interval
-                sleep(interval)
+                # sleep for interval, increase 1s each retry
+                sleep(interval + i)
 
             # all retry failed
             logging.getLogger(__name__).error("All retries failed in func {}.".format(func.__name__))
