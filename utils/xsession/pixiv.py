@@ -207,6 +207,7 @@ class PixivBase(XSession):
             return b""  # Need to make bool False
         return res.content
 
+    @false_retry()
     def _get_top_illust(self, mode="all") -> dict:
         """Get top illusts by mode.
 
@@ -300,12 +301,14 @@ class PixivBase(XSession):
 
         return self._check_response(res)
 
+    @false_retry()
     def _get_illust_pages(self, illust_id) -> list:
         res = self.get(
             PixivBase.URL_ajax_illust_pages.format(illust_id=illust_id)
         )
         return self._check_response(res)
 
+    @false_retry()
     def _get_illust_recommend_init(self, illust_id, limit=1) -> dict:
         """details.keys()"""
         res = self.get(
@@ -314,6 +317,7 @@ class PixivBase(XSession):
         )
         return self._check_response(res)
 
+    @false_retry()
     def _get_user(self, user_id) -> dict:
         res = self.get(
             PixivBase.URL_ajax_user.format(user_id=user_id)
@@ -321,6 +325,7 @@ class PixivBase(XSession):
 
         return self._check_response(res)
 
+    @false_retry()
     def _get_user_following(self, user_id, offset, limit=50, rest="show") -> dict:
         """Get following list of a user
 
@@ -342,6 +347,7 @@ class PixivBase(XSession):
         )
         return self._check_response(res)
 
+    @false_retry()
     def _get_user_recommends(self, user_id, userNum=100, workNum=3, isR18=True) -> dict:
         """Get recommends of a user
 
@@ -363,10 +369,12 @@ class PixivBase(XSession):
         )
         return self._check_response(res)
 
+    @false_retry()
     def _get_user_profile_all(self, user_id) -> dict:
         res = self.get(PixivBase.URL_ajax_user_profile_all.format(user_id=user_id))
         return self._check_response(res)
 
+    @false_retry()
     def _get_user_profile_top(self, user_id) -> dict:
         res = self.get(PixivBase.URL_ajax_user_profile_top.format(user_id=user_id))
         return self._check_response(res)
