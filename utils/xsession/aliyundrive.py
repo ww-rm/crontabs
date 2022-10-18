@@ -891,7 +891,7 @@ class AliyunDrive(AliyunDriveBase):
         if not parent_file_id:
             parent_file_id = self._get_file_id(parent_folder_path)
 
-        CHUNK_SIZE = 10*1024*1024
+        PART_SIZE = 10*1024*1024  # divide single file to parts
 
         filepath = Path(file_local_path)
 
@@ -899,7 +899,7 @@ class AliyunDrive(AliyunDriveBase):
         file_size = filepath.stat().st_size
 
         part_info_list = []
-        for i in range(ceil(file_size / CHUNK_SIZE) or 1):
+        for i in range(ceil(file_size / PART_SIZE) or 1):
             # at least one part
             part_info_list.append({"part_number": i + 1})
 
@@ -957,7 +957,7 @@ class AliyunDrive(AliyunDriveBase):
         with filepath.open("rb") as f:
             for part_info in create_info["part_info_list"]:
                 upload_url = part_info["upload_url"]
-                chunk = f.read(CHUNK_SIZE)
+                chunk = f.read(PART_SIZE)
 
                 # try 3 times
                 flag = False
@@ -1111,8 +1111,11 @@ class AliyunDrive(AliyunDriveBase):
         """"""
         raise NotImplementedError
 
-    def rename_file(self, file_id: str, new_name: str):
-        """"""
+    def rename_file(self, file_id: str, name: str, *, check_name_mode: str = "refuse"):
+        """
+        Args:
+            check_name_mode: only "refuse", no need to care.
+        """
         raise NotImplementedError
 
     def delete_file(self, file_id: str, *, file_drive_path: str = "") -> bool:
