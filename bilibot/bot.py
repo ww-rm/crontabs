@@ -2,7 +2,7 @@ import logging
 import random
 from pathlib import Path
 from typing import Iterable, List, Union
-from utils.xsession.base import empty_retry
+from utils.xsession.base import false_retry
 
 from utils import media, xsession
 
@@ -145,7 +145,7 @@ class Bot:
 
         return success_illust_info[:num]
 
-    @empty_retry()
+    @false_retry()
     def _get_random_bgm(self, playlist: List[int]) -> dict:
         """
         Args

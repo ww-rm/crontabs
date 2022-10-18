@@ -2,7 +2,7 @@ from os import PathLike
 from pathlib import Path
 from typing import Iterator
 import requests
-from .base import XSession, empty_retry
+from .base import XSession, false_retry
 
 
 class KuwoMusicBase(XSession):
@@ -98,7 +98,7 @@ class KuwoMusicBase(XSession):
 
         return self._check_response(res)
 
-    @empty_retry()
+    @false_retry()
     def _get_song_data(self, song_url: str, chunk_size: int = 10485760) -> Iterator[bytes]:
         """"""
         res = self.get(song_url, stream=True)

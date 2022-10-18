@@ -11,7 +11,7 @@ import requests
 from Crypto.Cipher import PKCS1_v1_5
 from Crypto.PublicKey import RSA
 
-from .base import XSession, empty_retry
+from .base import XSession, false_retry
 
 
 class BilibiliBase(XSession):
@@ -86,7 +86,7 @@ class BilibiliBase(XSession):
         )
         return self._check_response(res)
 
-    @empty_retry()
+    @false_retry()
     def _post_draw_image_upload(self, img_path: PathLike) -> dict:
         """Upload a image and get url on static server.
 

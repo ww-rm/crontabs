@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import Any, Iterator, List, Tuple, Union
 import bs4
 import requests
-from .base import XSession, empty_retry
+from .base import XSession, false_retry
 from urllib.parse import urlsplit, urlunsplit
 
 PIXIV_HOSTS = {
@@ -192,7 +192,7 @@ class PixivBase(XSession):
 
     # GET method
 
-    @empty_retry()
+    @false_retry()
     def _get_page(self, page_url: str) -> bytes:
         """
         Args:
@@ -285,7 +285,7 @@ class PixivBase(XSession):
         )
         return self._check_response(res)
 
-    @empty_retry()
+    @false_retry()
     def _get_illust(self, illust_id) -> dict:
         """
         Note:
@@ -371,7 +371,7 @@ class PixivBase(XSession):
         res = self.get(PixivBase.URL_ajax_user_profile_top.format(user_id=user_id))
         return self._check_response(res)
 
-    @empty_retry()
+    @false_retry()
     def _get_ranking(self, p=1, content="all", mode="daily", date: str = None) -> dict:
         """Get ranking, limit 50 illusts info in one page
 

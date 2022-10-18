@@ -9,8 +9,8 @@ import requests
 from requests.adapters import HTTPAdapter
 
 
-def empty_retry(times: int = 3, interval: float = 1):
-    """Retry when a func returns empty
+def false_retry(times: int = 3, interval: float = 1):
+    """Retry when a func returns false
 
     Args:
         times (int): Times to retry.

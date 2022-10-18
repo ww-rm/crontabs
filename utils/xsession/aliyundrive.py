@@ -13,7 +13,7 @@ from Crypto.PublicKey import RSA
 from bs4 import BeautifulSoup
 import requests
 
-from .base import XSession, empty_retry
+from .base import XSession, false_retry
 from datetime import datetime, timezone
 from dateutil.parser import isoparse
 import re
@@ -302,7 +302,7 @@ class AliyunDriveBase(XSession):
 
         return self._check_response(res)
 
-    @empty_retry()
+    @false_retry()
     def _post_token_refresh(self, refresh_token: str) -> dict:
         """Get new access token.
 
@@ -464,7 +464,7 @@ class AliyunDriveBase(XSession):
 
         return self._check_response(res)
 
-    @empty_retry()
+    @false_retry()
     def _post_file_list(
         self,
         drive_id: str, parent_file_id: str = "root",
@@ -695,7 +695,7 @@ class AliyunDrive(AliyunDriveBase):
 
         return proof_code
 
-    @empty_retry()
+    @false_retry()
     def _check_refresh(self) -> bool:
         """Check token and try refresh it if is about to expire.
 

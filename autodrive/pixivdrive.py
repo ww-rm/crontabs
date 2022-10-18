@@ -217,3 +217,6 @@ class PixivDrive:
                 self.logger.warning("Failed to upload some user top illusts.")
 
         return True
+
+    def check_illust_info_json(self):
+        """"""
