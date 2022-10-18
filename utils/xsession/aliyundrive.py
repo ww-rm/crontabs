@@ -1332,13 +1332,12 @@ class AliyunDrive(AliyunDriveBase):
                     if punish_flag == 2:
                         print(top_path)
                         # move to trash
-                        ret = self._post_recyclebin_trash(self.drive_id, top["info"]["file_id"])
-                        if not ret:
-                            self.logger.warning(f"Failed to move file {top_path} to trash, please check it manully.")
-                        else:
+                        if self._post_recyclebin_trash(self.drive_id, top["info"]["file_id"]):
                             # add to result
                             result["usage"] += top["info"]["size"]
                             result["files"][top_path] = top["info"]
+                        else:
+                            self.logger.warning(f"Failed to move file {top_path} to trash, please check it manully.")
                 nodes.pop()
             else:
                 self.logger.warning(f"Unknown node type {top_type} of node {top_path}, popup and skip it.")
