@@ -27,8 +27,8 @@ class AliyunDriveBase(XSession):
     URL_sign_in = "https://www.aliyundrive.com/sign/in"
 
     # ?client_id=25dzX3vbYqktVxyX&redirect_uri=https://www.aliyundrive.com/sign/callback&response_type=code&login_type=custom&state={"origin":"https://www.aliyundrive.com"}"
-    URL_auth_v2_oauth_authorize = "https://auth.aliyundrive.com/v2/oauth/authorize"
-    URL_auth_v2_oauth_token_login = "https://auth.aliyundrive.com/v2/oauth/token_login"
+    URL_v2_oauth_authorize = "https://auth.aliyundrive.com/v2/oauth/authorize"
+    URL_v2_oauth_token_login = "https://auth.aliyundrive.com/v2/oauth/token_login"
 
     # lang=zh_cn&appName=aliyun_drive&appEntrance=web&styleType=auto&bizParams=&notLoadSsoView=false&notKeepLogin=false&isMobile=false&ad__pass__q__rememberLogin=false&ad__pass__q__forgotPassword=false&ad__pass__q__licenseMargin=false&ad__pass__q__loginType=normal&hidePhoneCode=true&rnd=0.9290066682151727
     URL_passport_mini_login = "https://passport.aliyundrive.com/mini_login.htm"
@@ -41,14 +41,15 @@ class AliyunDriveBase(XSession):
     URL_token_refresh = "https://api.aliyundrive.com/token/refresh"
 
     URL_v2_file_get = "https://api.aliyundrive.com/v2/file/get"
-    URL_adrive_v2_file_createwithfolders = "https://api.aliyundrive.com/adrive/v2/file/createWithFolders"
     URL_v2_file_complete = "https://api.aliyundrive.com/v2/file/complete"
     URL_v2_get_file_download_url = "https://api.aliyundrive.com/v2/file/get_download_url"
+    URL_v2_recyclebin_trash = "https://api.aliyundrive.com/v2/recyclebin/trash"
+    URL_adrive_v2_file_createwithfolders = "https://api.aliyundrive.com/adrive/v2/file/createWithFolders"
     URL_adrive_v3_file_search = "https://api.aliyundrive.com/adrive/v3/file/search"
     URL_adrive_v3_file_list = "https://api.aliyundrive.com/adrive/v3/file/list"
+    URL_v3_file_update = "https://api.aliyundrive.com/v3/file/update"
 
     URL_v2_user_get = "https://api.aliyundrive.com/v2/user/get"
-    URL_v2_recyclebin_trash = "https://api.aliyundrive.com/v2/recyclebin/trash"
 
     URL_v2_databox_get_personal_info = "https://api.aliyundrive.com/v2/databox/get_personal_info"
 
@@ -105,7 +106,7 @@ class AliyunDriveBase(XSession):
             Html page text.
         """
         res = self.get(
-            AliyunDriveBase.URL_auth_v2_oauth_authorize,
+            AliyunDriveBase.URL_v2_oauth_authorize,
             params={
                 "client_id": client_id,
                 "redirect_url": redirect_url,
@@ -127,7 +128,7 @@ class AliyunDriveBase(XSession):
         """
 
         res = self.post(
-            AliyunDriveBase.URL_auth_v2_oauth_token_login,
+            AliyunDriveBase.URL_v2_oauth_token_login,
             json={"token": token}
         )
 
@@ -532,6 +533,20 @@ class AliyunDriveBase(XSession):
             return False
         return True
 
+    def _post_file_update(self, drive_id: str, file_id: str, name: str, *, check_name_mode: str = "refuse"):
+        """Return empty if can't rename, else the file info."""
+
+        res = self.post(
+            AliyunDriveBase.URL_v3_file_update,
+            json={
+                "drive_id": drive_id,
+                "file_id": file_id,
+                "name": name,
+                "check_name_mode": check_name_mode
+            }
+        )
+        return self._check_response(res)
+
 
 class AliyunDrive(AliyunDriveBase):
     """
@@ -541,7 +556,6 @@ class AliyunDrive(AliyunDriveBase):
     https://ynuf.aliapp.org/service/um.json -> Res: tn, id
     https://passport.aliyundrive.com/newlogin/login.do -> bizExt
     https://auth.aliyundrive.com/v2/oauth/token_login -> ...
-
     """
 
     @staticmethod
@@ -1176,9 +1190,6 @@ class AliyunDrive(AliyunDriveBase):
 
         return result
 
-    def move_file_r(self):
-        """"""
-
     def download_file_r(self):
         """Recursive download files"""
 
@@ -1188,9 +1199,6 @@ class AliyunDrive(AliyunDriveBase):
         parent_file_id: str = "root", check_name_mode: str = "refuse", try_rapid_upload: bool = True
     ) -> dict:
         """Recursive upload files."""
-
-    def delete_file_r(self):
-        """"""
 
     def disk_usage(
         self,
