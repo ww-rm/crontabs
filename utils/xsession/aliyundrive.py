@@ -353,6 +353,7 @@ class AliyunDriveBase(XSession):
         )
         return self._check_response(res)
 
+    @false_retry()
     def _post_file_create_with_folders(
         self,
         drive_id: str, name: str,
@@ -410,6 +411,7 @@ class AliyunDriveBase(XSession):
 
         return self._check_response(res)
 
+    @false_retry()
     def _post_file_complete(self, drive_id: str, file_id: str, upload_id: str) -> dict:
         """Used to complete file upload.
 
@@ -513,7 +515,7 @@ class AliyunDriveBase(XSession):
 
         return self._check_response(res)
 
-    @false_retry
+    @false_retry()
     def _post_recyclebin_list(
         self,
         drive_id: str,
@@ -549,6 +551,7 @@ class AliyunDriveBase(XSession):
 
         return self._check_response(res)
 
+    @false_retry()
     def _post_file_get_download_url(self, drive_id: str, file_id: str) -> dict:
         """"""
         res = self.post(
