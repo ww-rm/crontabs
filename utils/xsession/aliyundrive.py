@@ -6,7 +6,7 @@ import json
 from math import ceil
 from os import PathLike
 from pathlib import Path
-from typing import Callable, Tuple
+from typing import Callable, Generator, Iterator, Tuple
 from Crypto.Cipher import PKCS1_v1_5
 from Crypto.PublicKey import RSA
 
@@ -27,8 +27,8 @@ class AliyunDriveBase(XSession):
     URL_sign_in = "https://www.aliyundrive.com/sign/in"
 
     # ?client_id=25dzX3vbYqktVxyX&redirect_uri=https://www.aliyundrive.com/sign/callback&response_type=code&login_type=custom&state={"origin":"https://www.aliyundrive.com"}"
-    URL_v2_oauth_authorize = "https://auth.aliyundrive.com/v2/oauth/authorize"
-    URL_v2_oauth_token_login = "https://auth.aliyundrive.com/v2/oauth/token_login"
+    URL_auth_v2_oauth_authorize = "https://auth.aliyundrive.com/v2/oauth/authorize"
+    URL_auth_v2_oauth_token_login = "https://auth.aliyundrive.com/v2/oauth/token_login"
 
     # lang=zh_cn&appName=aliyun_drive&appEntrance=web&styleType=auto&bizParams=&notLoadSsoView=false&notKeepLogin=false&isMobile=false&ad__pass__q__rememberLogin=false&ad__pass__q__forgotPassword=false&ad__pass__q__licenseMargin=false&ad__pass__q__loginType=normal&hidePhoneCode=true&rnd=0.9290066682151727
     URL_passport_mini_login = "https://passport.aliyundrive.com/mini_login.htm"
@@ -40,18 +40,22 @@ class AliyunDriveBase(XSession):
     URL_token_get = "https://api.aliyundrive.com/token/get"
     URL_token_refresh = "https://api.aliyundrive.com/token/refresh"
 
+    URL_v2_databox_get_personal_info = "https://api.aliyundrive.com/v2/databox/get_personal_info"
+    URL_v2_user_get = "https://api.aliyundrive.com/v2/user/get"
     URL_v2_file_get = "https://api.aliyundrive.com/v2/file/get"
+    URL_v2_file_move = "https://api.aliyundrive.com/v2/file/move"
     URL_v2_file_complete = "https://api.aliyundrive.com/v2/file/complete"
     URL_v2_get_file_download_url = "https://api.aliyundrive.com/v2/file/get_download_url"
-    URL_v2_recyclebin_trash = "https://api.aliyundrive.com/v2/recyclebin/trash"
+    URL_v2_recyclebin_trash = "https://api.aliyundrive.com/v2/recyclebin/trash"  # 204
+    URL_v2_recyclebin_restore = "https://api.aliyundrive.com/v2/recyclebin/restore"  # 204
     URL_adrive_v2_file_createwithfolders = "https://api.aliyundrive.com/adrive/v2/file/createWithFolders"
+    URL_adrive_v2_recyclebin_list = "https://api.aliyundrive.com/adrive/v2/recyclebin/list"
+
+    URL_v3_batch = "https://api.aliyundrive.com/v3/batch"
+    URL_v3_file_update = "https://api.aliyundrive.com/v3/file/update"
+    URL_v3_file_delete = "https://api.aliyundrive.com/v3/file/delete"
     URL_adrive_v3_file_search = "https://api.aliyundrive.com/adrive/v3/file/search"
     URL_adrive_v3_file_list = "https://api.aliyundrive.com/adrive/v3/file/list"
-    URL_v3_file_update = "https://api.aliyundrive.com/v3/file/update"
-
-    URL_v2_user_get = "https://api.aliyundrive.com/v2/user/get"
-
-    URL_v2_databox_get_personal_info = "https://api.aliyundrive.com/v2/databox/get_personal_info"
 
     def __init__(self) -> None:
         super().__init__()
@@ -106,7 +110,7 @@ class AliyunDriveBase(XSession):
             Html page text.
         """
         res = self.get(
-            AliyunDriveBase.URL_v2_oauth_authorize,
+            AliyunDriveBase.URL_auth_v2_oauth_authorize,
             params={
                 "client_id": client_id,
                 "redirect_url": redirect_url,
@@ -128,7 +132,7 @@ class AliyunDriveBase(XSession):
         """
 
         res = self.post(
-            AliyunDriveBase.URL_v2_oauth_token_login,
+            AliyunDriveBase.URL_auth_v2_oauth_token_login,
             json={"token": token}
         )
 
@@ -509,6 +513,42 @@ class AliyunDriveBase(XSession):
 
         return self._check_response(res)
 
+    @false_retry
+    def _post_recyclebin_list(
+        self,
+        drive_id: str,
+        order_by: str = "name", order_direction: str = "ASC",
+        marker: str = "", limit: int = 200,
+        *,
+        image_thumbnail_process: str = "image/resize,w_400/format,jpeg",
+        video_thumbnail_process: str = "video/snapshot,t_1000,f_jpg,ar_auto,w_400"
+    ):
+        """List items of recyclebin.
+
+        Args:
+            drive_id: ID.
+            parent_file_id (str): The parent folder of folder to be operated. Can be "root" or a string of file id.
+            limit (int): Limit number of results, max to 200
+            marker: from `next_marker`, used to get next page.
+            order_by (str): ["name", "updated_at", "created_at", "size"]
+            order_direction (str): ["ASC" | "DESC"]
+        """
+
+        res = self.post(
+            AliyunDriveBase.URL_adrive_v2_recyclebin_list,
+            json={
+                "drive_id": drive_id,
+                "limit": limit,
+                "order_by": order_by,
+                "order_direction": order_direction,
+                "marker": marker,
+                "image_thumbnail_process": image_thumbnail_process,
+                "video_thumbnail_process": video_thumbnail_process
+            }
+        )
+
+        return self._check_response(res)
+
     def _post_file_get_download_url(self, drive_id: str, file_id: str) -> dict:
         """"""
         res = self.post(
@@ -529,12 +569,42 @@ class AliyunDriveBase(XSession):
                 "file_id": file_id
             }
         )
-        if res.status_code != 204:
+        if not res.ok:
+            return False
+        return True
+
+    def _post_recyclebin_restore(self, drive_id: str, file_id: str) -> bool:
+        """Status Code: 204 (No Content)"""
+        res = self.post(
+            AliyunDriveBase.URL_v2_recyclebin_restore,
+            json={
+                "drive_id": drive_id,
+                "file_id": file_id
+            }
+        )
+        if not res.ok:
+            return False
+        return True
+
+    def _post_file_delete(self, drive_id: str, file_id: str) -> bool:
+        """Status Code: 204 (No Content)"""
+        res = self.post(
+            AliyunDriveBase.URL_v3_file_delete,
+            json={
+                "drive_id": drive_id,
+                "file_id": file_id
+            }
+        )
+        if not res.ok:
             return False
         return True
 
     def _post_file_update(self, drive_id: str, file_id: str, name: str, *, check_name_mode: str = "refuse"):
-        """Return empty if can't rename, else the file info."""
+        """Return empty if can't rename, else the file info.
+        
+        Args:
+            check_name_mode: only "refuse", no need to care.
+        """
 
         res = self.post(
             AliyunDriveBase.URL_v3_file_update,
@@ -547,8 +617,34 @@ class AliyunDriveBase(XSession):
         )
         return self._check_response(res)
 
+    def _post_file_move(self, drive_id: str, file_id: str, to_drive_id: str, to_parent_file_id: str, *, check_name_mode: str = "ignore"):
+        """Move file or folder to other folder.
+
+        Args:
+            to_drive_id: same as drive id
+            to_parent_file_id: dest file id.
+            check_name_mode: ["ignore" | "refuse" | "autorename"]
+        """
+
+        res = self.post(
+            AliyunDriveBase.URL_v2_file_move,
+            json={
+                "drive_id": drive_id,
+                "file_id": file_id,
+                "to_drive_id": to_drive_id,
+                "to_parent_file_id": to_parent_file_id,
+                "check_name_mode": check_name_mode
+            }
+        )
+
+        return self._check_response(res)
+
 
 class AliyunDrive(AliyunDriveBase):
+    """
+    Methods:
+        Recommand to use file id, or keep empty file id, and supply file drive path.
+    """
     """
     https://auth.aliyundrive.com/v2/oauth/authorize -> Cookie: SESSIONID
     https://passport.aliyundrive.com/mini_login.htm -> Cookie: cookie2, t, XSRF-TOKEN. "form-data"
@@ -738,7 +834,7 @@ class AliyunDrive(AliyunDriveBase):
 
         return True
 
-    def _get_file_id(self, path: str) -> str:
+    def _get_file_id(self, path: PathLike) -> str:
         """
         Get file id by path in drive
 
@@ -753,12 +849,8 @@ class AliyunDrive(AliyunDriveBase):
         # use list to find file id
         current_id = "root"
         for part in path_parts:
-            children = self.list_file(current_id)
-            if not children:
-                return ""
-
             # find children id
-            for item in children:
+            for item in self.glob_file(current_id):
                 if item["name"] == part:
                     current_id = item["file_id"]
                     break  # found next id
@@ -823,7 +915,7 @@ class AliyunDrive(AliyunDriveBase):
         folder_path: PathLike,
         parent_file_id: str = "root",
         *,
-        parent_folder_path: PathLike = "",
+        parent_file_drive_path: PathLike = "",
         check_name_mode: str = "refuse"
     ) -> dict:
         """Create folder of specified path in drive.
@@ -831,7 +923,7 @@ class AliyunDrive(AliyunDriveBase):
         Args:
             folder_path (PathLike): The full path of folder to be created, can be multi-level.
             parent_file_id (str): The parent node of node to be operated. Can be "root" or a string of node id.
-            parent_folder_path (PathLike): The parent path relative to root.
+            parent_file_drive_path (PathLike): The parent path relative to root.
             check_name_mode (str): Can be "auto_rename" or "refuse".
 
         Returns:
@@ -840,7 +932,7 @@ class AliyunDrive(AliyunDriveBase):
         """
 
         if not parent_file_id:
-            parent_file_id = self._get_file_id(parent_folder_path)
+            parent_file_id = self._get_file_id(parent_file_drive_path)
 
         folder_path = Path(folder_path)
 
@@ -870,7 +962,7 @@ class AliyunDrive(AliyunDriveBase):
         file_upload_path: PathLike, file_local_path: PathLike,
         parent_file_id: str = "root",
         *,
-        parent_folder_path: PathLike = "",
+        parent_file_drive_path: PathLike = "",
         check_name_mode: str = "refuse", try_rapid_upload: bool = True
     ) -> dict:
         """Upload a file to specified path.
@@ -889,7 +981,7 @@ class AliyunDrive(AliyunDriveBase):
         """
 
         if not parent_file_id:
-            parent_file_id = self._get_file_id(parent_folder_path)
+            parent_file_id = self._get_file_id(parent_file_drive_path)
 
         PART_SIZE = 10*1024*1024  # divide single file to parts
 
@@ -1001,7 +1093,7 @@ class AliyunDrive(AliyunDriveBase):
         """
         if not file_id:
             if not file_drive_path:
-                return ValueError("Need provide valid file_id or file_drive_path.")
+                return ValueError("Need provide valid file_id or file_drive_path, can't be root or empty.")
             file_id = self._get_file_id(file_drive_path)
 
         if not self._check_refresh():
@@ -1069,14 +1161,14 @@ class AliyunDrive(AliyunDriveBase):
             return {}
         return search_info
 
-    def list_file(
+    def glob_file(
         self,
         file_id: str = "root",
         *,
-        file_driver_path: PathLike = "",
+        file_drive_path: PathLike = "",
         order_by: str = "name", order_direction: str = "ASC", limit: int = -1
-    ) -> list:
-        """List files in a folder.
+    ):
+        """Glob files in a folder.
 
         Args:
             parent_file_id (str): The parent file id. Can be "root" or a string of file id.
@@ -1084,49 +1176,137 @@ class AliyunDrive(AliyunDriveBase):
             order_direction (str): ["ASC" | "DESC"]
             limit (int): Limit min number of results, <=0 for all result.
 
-        Returns:
+        Yields:
             Return empty when failed or file type, else see responses folder.
         """
-        result = []
+
         if not self._check_refresh():
-            return {}
+            return None
         if not file_id:
-            file_id = self._get_file_id(file_driver_path)
+            file_id = self._get_file_id(file_drive_path)
 
         # iter all data
-        list_info = self._post_file_list(self.drive_id, file_id, order_by, order_direction, "")
-        result.extend(list_info.get("items", []))
-        next_marker = list_info.get("next_marker", "")
-        while next_marker:
-            # limit result size
-            if limit > 0 and len(result) >= limit:
-                break
+        count = 0
+        next_marker = ""
+        while True:
+            # fetch items
             list_info = self._post_file_list(self.drive_id, file_id, order_by, order_direction, next_marker)
-            result.extend(list_info.get("items", []))
+            buffer = list_info.get("items", [])
             next_marker = list_info.get("next_marker", "")
+            for item in buffer:
+                yield item
+                count += 1
+                # limit result size
+                if limit > 0 and count >= limit:
+                    return None
+            # no more data
+            if not next_marker:
+                break
 
-        return result if limit <= 0 else result[:limit]
+        return None
 
-    def move_file(self, file_id: str):
-        """"""
-        raise NotImplementedError
+    def get_file_info(self, file_id: str, *, file_drive_path: str = ""):
+        """Get file info."""
 
-    def rename_file(self, file_id: str, name: str, *, check_name_mode: str = "refuse"):
+        if not file_id:
+            file_id = self._get_file_id(file_drive_path)
+
+        return self._post_file_get(self.drive_id, file_id)
+
+    def move_file(self, file_id: str, to_parent_file_id: str, *, file_drive_path: str = "", to_parent_file_drive_path: str = "", check_name_mode: str = "ignore"):
         """
         Args:
+            check_name_mode: ["ignore" | "refuse" | "autorename"]
+        """
+
+        if not file_id:
+            file_id = self._get_file_id(file_drive_path)
+        if not to_parent_file_id:
+            to_parent_file_id = self._get_file_id(to_parent_file_drive_path)
+
+        return self._post_file_move(
+            self.drive_id, file_id,
+            self.drive_id, to_parent_file_id,
+            check_name_mode
+        )
+
+    def rename_file(self, file_id: str, name: str, *, file_drive_path: str = "", check_name_mode: str = "refuse") -> dict:
+        """
+        Args:
+            name: new name for file or folder, full name with suffix.
             check_name_mode: only "refuse", no need to care.
         """
-        raise NotImplementedError
+        if not file_id:
+            if not file_drive_path:
+                return ValueError("Need provide valid file_id or file_drive_path, can't be root or empty.")
+            file_id = self._get_file_id(file_drive_path)
 
-    def delete_file(self, file_id: str, *, file_drive_path: str = "") -> bool:
-        """Move file or folder to trash."""
+        return self._post_file_update(self.drive_id, file_id, name, check_name_mode)
+
+    def glob_recyclebin(
+        self,
+        *,
+        order_by: str = "name", order_direction: str = "ASC", limit: int = -1
+    ):
+        """Glob files in recyclebin.
+
+        Args:
+            order_by (str): ["name", "updated_at", "created_at", "size"]
+            order_direction (str): ["ASC" | "DESC"]
+            limit (int): Limit min number of results, <=0 for all result.
+
+        Yields:
+            Return empty when failed or file type, else see responses folder.
+        """
+
+        if not self._check_refresh():
+            return None
+
+        # iter all data
+        count = 0
+        next_marker = ""
+        while True:
+            # fetch items
+            list_info = self._post_recyclebin_list(self.drive_id, order_by, order_direction, next_marker)
+            buffer = list_info.get("items", [])
+            next_marker = list_info.get("next_marker", "")
+            for item in buffer:
+                yield item
+                count += 1
+                # limit result size
+                if limit > 0 and count >= limit:
+                    return None
+            # no more data
+            if not next_marker:
+                break
+
+        return None
+
+    def remove_file(self, file_id: str, *, file_drive_path: str = "") -> bool:
+        """Move file or folder to recyclebin."""
 
         if not file_id:
             if not file_drive_path:
-                return ValueError("Need provide valid file_id or file_drive_path.")
+                return ValueError("Need provide valid file_id or file_drive_path, can't be root or empty.")
             file_id = self._get_file_id(file_drive_path)
 
         return self._post_recyclebin_trash(self.drive_id, file_id)
+
+    def restore_file(self, file_id: str) -> bool:
+        """Restore file or folder to trash."""
+
+        return self._post_recyclebin_restore(self.drive_id, file_id)
+
+    def delete_file(self, file_id: str, *, file_drive_path: str = "") -> bool:
+        """Permanently delete a file or folder. Use `remove_file` instead."""
+        raise NotImplementedError("Use `remove_file` instead.")
+
+        if not file_id:
+            if not file_drive_path:
+                return ValueError("Need provide valid file_id or file_drive_path, can't be root or empty.")
+            file_id = self._get_file_id(file_drive_path)
+
+        return self._post_file_delete(self.drive_id, file_id)
 
     ####################################
     ########## High Level API ##########
@@ -1154,8 +1334,8 @@ class AliyunDrive(AliyunDriveBase):
             file_id = self._get_file_id(file_drive_path)
 
         # backtracking method
-        root_info = self._post_file_get(self.drive_id, file_id)
-        nodes_info = self.list_file(file_id) if root_info["type"] == "folder" else []
+        root_info = self.get_file_info(file_id)
+        nodes_info = list(self.glob_file(file_id)) if root_info["type"] == "folder" else []
         nodes = [{"info": root_info, "nodes": nodes_info, "next": 0}]
         while nodes:
             top = nodes[-1]
@@ -1175,7 +1355,7 @@ class AliyunDrive(AliyunDriveBase):
                         "next": 0
                     }
                     # add nodes info when folder child
-                    child["nodes"] = self.list_file(child_info["file_id"]) if child_info["type"] == "folder" else []
+                    child["nodes"] = list(self.glob_file(child_info["file_id"])) if child_info["type"] == "folder" else []
                     nodes.append(child)
                     top["next"] += 1
             # file nodes
@@ -1229,8 +1409,8 @@ class AliyunDrive(AliyunDriveBase):
             file_id = self._get_file_id(file_drive_path)
 
         # backtracking method
-        root_info = self._post_file_get(self.drive_id, file_id)
-        nodes_info = self.list_file(file_id) if root_info["type"] == "folder" else []
+        root_info = self.get_file_info(file_id)
+        nodes_info = list(self.glob_file(file_id)) if root_info["type"] == "folder" else []
         nodes = [{"info": root_info, "nodes": nodes_info, "next": 0}]
         while nodes:
             top = nodes[-1]
@@ -1250,7 +1430,7 @@ class AliyunDrive(AliyunDriveBase):
                         "next": 0
                     }
                     # add nodes info when folder child
-                    child["nodes"] = self.list_file(child_info["file_id"]) if child_info["type"] == "folder" else []
+                    child["nodes"] = list(self.glob_file(child_info["file_id"])) if child_info["type"] == "folder" else []
                     nodes.append(child)
                     top["next"] += 1
             # file nodes
@@ -1292,8 +1472,8 @@ class AliyunDrive(AliyunDriveBase):
             file_id = self._get_file_id(file_drive_path)
 
         # backtracking method
-        root_info = self._post_file_get(self.drive_id, file_id)
-        nodes_info = self.list_file(file_id) if root_info["type"] == "folder" else []
+        root_info = self.get_file_info(file_id)
+        nodes_info = list(self.glob_file(file_id)) if root_info["type"] == "folder" else []
         nodes = [{"info": root_info, "nodes": nodes_info, "next": 0}]
         while nodes:
             top = nodes[-1]
@@ -1313,7 +1493,7 @@ class AliyunDrive(AliyunDriveBase):
                         "next": 0
                     }
                     # add nodes info when folder child
-                    child["nodes"] = self.list_file(child_info["file_id"]) if child_info["type"] == "folder" else []
+                    child["nodes"] = list(self.glob_file(child_info["file_id"])) if child_info["type"] == "folder" else []
                     nodes.append(child)
                     top["next"] += 1
             # file nodes
@@ -1326,13 +1506,12 @@ class AliyunDrive(AliyunDriveBase):
                     if punish_flag == 2:
                         print(top_path)
                         # move to trash
-                        ret = self._post_recyclebin_trash(self.drive_id, top["info"]["file_id"])
-                        if not ret:
-                            self.logger.warning(f"Failed to move file {top_path} to trash, please check it manully.")
-                        else:
+                        if self.remove_file(top["info"]["file_id"]):
                             # add to result
                             result["usage"] += top["info"]["size"]
                             result["files"][top_path] = top["info"]
+                        else:
+                            self.logger.warning(f"Failed to move file {top_path} to trash, please check it manully.")
                 nodes.pop()
             else:
                 self.logger.warning(f"Unknown node type {top_type} of node {top_path}, popup and skip it.")
