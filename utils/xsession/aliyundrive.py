@@ -6,7 +6,7 @@ import json
 from math import ceil
 from os import PathLike
 from pathlib import Path
-from typing import Callable, Tuple
+from typing import Callable, Generator, Iterator, Tuple
 from Crypto.Cipher import PKCS1_v1_5
 from Crypto.PublicKey import RSA
 
@@ -40,19 +40,18 @@ class AliyunDriveBase(XSession):
     URL_token_get = "https://api.aliyundrive.com/token/get"
     URL_token_refresh = "https://api.aliyundrive.com/token/refresh"
 
+    URL_v2_databox_get_personal_info = "https://api.aliyundrive.com/v2/databox/get_personal_info"
+    URL_v2_user_get = "https://api.aliyundrive.com/v2/user/get"
     URL_v2_file_get = "https://api.aliyundrive.com/v2/file/get"
     URL_v2_file_complete = "https://api.aliyundrive.com/v2/file/complete"
     URL_v2_get_file_download_url = "https://api.aliyundrive.com/v2/file/get_download_url"
     URL_v2_recyclebin_trash = "https://api.aliyundrive.com/v2/recyclebin/trash"
     URL_adrive_v2_file_createwithfolders = "https://api.aliyundrive.com/adrive/v2/file/createWithFolders"
 
+    URL_v3_batch = "https://api.aliyundrive.com/v3/batch"
     URL_v3_file_update = "https://api.aliyundrive.com/v3/file/update"
     URL_adrive_v3_file_search = "https://api.aliyundrive.com/adrive/v3/file/search"
     URL_adrive_v3_file_list = "https://api.aliyundrive.com/adrive/v3/file/list"
-
-    URL_v2_user_get = "https://api.aliyundrive.com/v2/user/get"
-
-    URL_v2_databox_get_personal_info = "https://api.aliyundrive.com/v2/databox/get_personal_info"
 
     def __init__(self) -> None:
         super().__init__()
@@ -739,7 +738,7 @@ class AliyunDrive(AliyunDriveBase):
 
         return True
 
-    def _get_file_id(self, path: str) -> str:
+    def _get_file_id(self, path: PathLike) -> str:
         """
         Get file id by path in drive
 
@@ -754,12 +753,8 @@ class AliyunDrive(AliyunDriveBase):
         # use list to find file id
         current_id = "root"
         for part in path_parts:
-            children = self.list_file(current_id)
-            if not children:
-                return ""
-
             # find children id
-            for item in children:
+            for item in self.glob_file(current_id):
                 if item["name"] == part:
                     current_id = item["file_id"]
                     break  # found next id
@@ -1070,14 +1065,14 @@ class AliyunDrive(AliyunDriveBase):
             return {}
         return search_info
 
-    def list_file(
+    def glob_file(
         self,
         file_id: str = "root",
         *,
         file_driver_path: PathLike = "",
         order_by: str = "name", order_direction: str = "ASC", limit: int = -1
-    ) -> list:
-        """List files in a folder.
+    ):
+        """Glob files in a folder.
 
         Args:
             parent_file_id (str): The parent file id. Can be "root" or a string of file id.
@@ -1085,28 +1080,34 @@ class AliyunDrive(AliyunDriveBase):
             order_direction (str): ["ASC" | "DESC"]
             limit (int): Limit min number of results, <=0 for all result.
 
-        Returns:
+        Yields:
             Return empty when failed or file type, else see responses folder.
         """
-        result = []
+
         if not self._check_refresh():
-            return {}
+            return None
         if not file_id:
             file_id = self._get_file_id(file_driver_path)
 
         # iter all data
-        list_info = self._post_file_list(self.drive_id, file_id, order_by, order_direction, "")
-        result.extend(list_info.get("items", []))
-        next_marker = list_info.get("next_marker", "")
-        while next_marker:
-            # limit result size
-            if limit > 0 and len(result) >= limit:
-                break
+        count = 0
+        next_marker = ""
+        while True:
+            # fetch items
             list_info = self._post_file_list(self.drive_id, file_id, order_by, order_direction, next_marker)
-            result.extend(list_info.get("items", []))
+            buffer = list_info.get("items", [])
             next_marker = list_info.get("next_marker", "")
+            for item in buffer:
+                yield item
+                count += 1
+                # limit result size
+                if limit > 0 and count >= limit:
+                    return None
+            # no more data
+            if not next_marker:
+                break
 
-        return result if limit <= 0 else result[:limit]
+        return None
 
     def move_file(self, file_id: str):
         """"""
@@ -1162,7 +1163,7 @@ class AliyunDrive(AliyunDriveBase):
 
         # backtracking method
         root_info = self._post_file_get(self.drive_id, file_id)
-        nodes_info = self.list_file(file_id) if root_info["type"] == "folder" else []
+        nodes_info = list(self.glob_file(file_id)) if root_info["type"] == "folder" else []
         nodes = [{"info": root_info, "nodes": nodes_info, "next": 0}]
         while nodes:
             top = nodes[-1]
@@ -1182,7 +1183,7 @@ class AliyunDrive(AliyunDriveBase):
                         "next": 0
                     }
                     # add nodes info when folder child
-                    child["nodes"] = self.list_file(child_info["file_id"]) if child_info["type"] == "folder" else []
+                    child["nodes"] = list(self.glob_file(child_info["file_id"])) if child_info["type"] == "folder" else []
                     nodes.append(child)
                     top["next"] += 1
             # file nodes
@@ -1237,7 +1238,7 @@ class AliyunDrive(AliyunDriveBase):
 
         # backtracking method
         root_info = self._post_file_get(self.drive_id, file_id)
-        nodes_info = self.list_file(file_id) if root_info["type"] == "folder" else []
+        nodes_info = list(self.glob_file(file_id)) if root_info["type"] == "folder" else []
         nodes = [{"info": root_info, "nodes": nodes_info, "next": 0}]
         while nodes:
             top = nodes[-1]
@@ -1257,7 +1258,7 @@ class AliyunDrive(AliyunDriveBase):
                         "next": 0
                     }
                     # add nodes info when folder child
-                    child["nodes"] = self.list_file(child_info["file_id"]) if child_info["type"] == "folder" else []
+                    child["nodes"] = list(self.glob_file(child_info["file_id"])) if child_info["type"] == "folder" else []
                     nodes.append(child)
                     top["next"] += 1
             # file nodes
@@ -1300,7 +1301,7 @@ class AliyunDrive(AliyunDriveBase):
 
         # backtracking method
         root_info = self._post_file_get(self.drive_id, file_id)
-        nodes_info = self.list_file(file_id) if root_info["type"] == "folder" else []
+        nodes_info = list(self.glob_file(file_id)) if root_info["type"] == "folder" else []
         nodes = [{"info": root_info, "nodes": nodes_info, "next": 0}]
         while nodes:
             top = nodes[-1]
@@ -1320,7 +1321,7 @@ class AliyunDrive(AliyunDriveBase):
                         "next": 0
                     }
                     # add nodes info when folder child
-                    child["nodes"] = self.list_file(child_info["file_id"]) if child_info["type"] == "folder" else []
+                    child["nodes"] = list(self.glob_file(child_info["file_id"])) if child_info["type"] == "folder" else []
                     nodes.append(child)
                     top["next"] += 1
             # file nodes
