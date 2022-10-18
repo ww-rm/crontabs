@@ -1001,7 +1001,7 @@ class AliyunDrive(AliyunDriveBase):
         """
         if not file_id:
             if not file_drive_path:
-                return ValueError("Need provide valid file_id or file_drive_path.")
+                return ValueError("Need provide valid file_id or file_drive_path, can't be root or empty.")
             file_id = self._get_file_id(file_drive_path)
 
         if not self._check_refresh():
@@ -1111,19 +1111,25 @@ class AliyunDrive(AliyunDriveBase):
         """"""
         raise NotImplementedError
 
-    def rename_file(self, file_id: str, name: str, *, check_name_mode: str = "refuse"):
+    def rename_file(self, file_id: str, name: str, *, file_drive_path: str = "", check_name_mode: str = "refuse") -> dict:
         """
         Args:
+            name: new name for file or folder, full name with suffix.
             check_name_mode: only "refuse", no need to care.
         """
-        raise NotImplementedError
+        if not file_id:
+            if not file_drive_path:
+                return ValueError("Need provide valid file_id or file_drive_path, can't be root or empty.")
+            file_id = self._get_file_id(file_drive_path)
+
+        return self._post_file_update(self.drive_id, file_id, name, check_name_mode)
 
     def delete_file(self, file_id: str, *, file_drive_path: str = "") -> bool:
         """Move file or folder to trash."""
 
         if not file_id:
             if not file_drive_path:
-                return ValueError("Need provide valid file_id or file_drive_path.")
+                return ValueError("Need provide valid file_id or file_drive_path, can't be root or empty.")
             file_id = self._get_file_id(file_drive_path)
 
         return self._post_recyclebin_trash(self.drive_id, file_id)
