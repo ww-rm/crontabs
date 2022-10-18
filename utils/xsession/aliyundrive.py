@@ -1174,6 +1174,14 @@ class AliyunDrive(AliyunDriveBase):
 
         return None
 
+    def get_file_info(self, file_id: str, *, file_drive_path: str = ""):
+        """Get file info."""
+
+        if not file_id:
+            file_id = self._get_file_id(file_drive_path)
+
+        return self._post_file_get(self.drive_id, file_id)
+
     def move_file(self, file_id: str):
         """"""
         raise NotImplementedError
@@ -1282,7 +1290,7 @@ class AliyunDrive(AliyunDriveBase):
             file_id = self._get_file_id(file_drive_path)
 
         # backtracking method
-        root_info = self._post_file_get(self.drive_id, file_id)
+        root_info = self.get_file_info(file_id)
         nodes_info = list(self.glob_file(file_id)) if root_info["type"] == "folder" else []
         nodes = [{"info": root_info, "nodes": nodes_info, "next": 0}]
         while nodes:
@@ -1357,7 +1365,7 @@ class AliyunDrive(AliyunDriveBase):
             file_id = self._get_file_id(file_drive_path)
 
         # backtracking method
-        root_info = self._post_file_get(self.drive_id, file_id)
+        root_info = self.get_file_info(file_id)
         nodes_info = list(self.glob_file(file_id)) if root_info["type"] == "folder" else []
         nodes = [{"info": root_info, "nodes": nodes_info, "next": 0}]
         while nodes:
@@ -1420,7 +1428,7 @@ class AliyunDrive(AliyunDriveBase):
             file_id = self._get_file_id(file_drive_path)
 
         # backtracking method
-        root_info = self._post_file_get(self.drive_id, file_id)
+        root_info = self.get_file_info(file_id)
         nodes_info = list(self.glob_file(file_id)) if root_info["type"] == "folder" else []
         nodes = [{"info": root_info, "nodes": nodes_info, "next": 0}]
         while nodes:
@@ -1454,7 +1462,7 @@ class AliyunDrive(AliyunDriveBase):
                     if punish_flag == 2:
                         print(top_path)
                         # move to trash
-                        if self._post_recyclebin_trash(self.drive_id, top["info"]["file_id"]):
+                        if self.remove_file(top["info"]["file_id"]):
                             # add to result
                             result["usage"] += top["info"]["size"]
                             result["files"][top_path] = top["info"]
