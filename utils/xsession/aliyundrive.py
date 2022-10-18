@@ -52,6 +52,7 @@ class AliyunDriveBase(XSession):
 
     URL_v3_batch = "https://api.aliyundrive.com/v3/batch"
     URL_v3_file_update = "https://api.aliyundrive.com/v3/file/update"
+    URL_v3_file_delete = "https://api.aliyundrive.com/v3/file/delete"
     URL_adrive_v3_file_search = "https://api.aliyundrive.com/adrive/v3/file/search"
     URL_adrive_v3_file_list = "https://api.aliyundrive.com/adrive/v3/file/list"
 
@@ -567,7 +568,7 @@ class AliyunDriveBase(XSession):
                 "file_id": file_id
             }
         )
-        if res.status_code != 204:
+        if not res.ok:
             return False
         return True
 
@@ -580,7 +581,20 @@ class AliyunDriveBase(XSession):
                 "file_id": file_id
             }
         )
-        if res.status_code != 204:
+        if not res.ok:
+            return False
+        return True
+
+    def _post_file_delete(self, drive_id: str, file_id: str) -> bool:
+        """Status Code: 204 (No Content)"""
+        res = self.post(
+            AliyunDriveBase.URL_v3_file_delete,
+            json={
+                "drive_id": drive_id,
+                "file_id": file_id
+            }
+        )
+        if not res.ok:
             return False
         return True
 
@@ -1216,8 +1230,8 @@ class AliyunDrive(AliyunDriveBase):
 
         return None
 
-    def delete_file(self, file_id: str, *, file_drive_path: str = "") -> bool:
-        """Move file or folder to trash."""
+    def remove_file(self, file_id: str, *, file_drive_path: str = "") -> bool:
+        """Move file or folder to recyclebin."""
 
         if not file_id:
             if not file_drive_path:
@@ -1230,6 +1244,17 @@ class AliyunDrive(AliyunDriveBase):
         """Restore file or folder to trash."""
 
         return self._post_recyclebin_restore(self.drive_id, file_id)
+
+    def delete_file(self, file_id: str, *, file_drive_path: str = "") -> bool:
+        """Permanently delete a file or folder. Use `remove_file` instead."""
+        raise NotImplementedError("Use `remove_file` instead.")
+
+        if not file_id:
+            if not file_drive_path:
+                return ValueError("Need provide valid file_id or file_drive_path, can't be root or empty.")
+            file_id = self._get_file_id(file_drive_path)
+
+        return self._post_file_delete(self.drive_id, file_id)
 
     ####################################
     ########## High Level API ##########
