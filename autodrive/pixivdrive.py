@@ -3,6 +3,7 @@ import logging
 import random
 from os import PathLike
 from pathlib import Path
+import re
 
 from utils import media, xsession
 
@@ -218,5 +219,39 @@ class PixivDrive:
 
         return True
 
-    def check_illust_info_json(self):
-        """"""
+    def check_illust_info_json(self) -> bool:
+        """Used to upload missing `illust_info.json.txt` files."""
+
+        for user_folder in self.s_adrive.glob_file("", file_drive_path=self.root_dir):
+            user_id = user_folder["name"]
+            for illust_folder in self.s_adrive.glob_file(user_folder["file_id"]):
+                # check if exist <illust_id>.json.txt
+                illust_id: str = illust_folder["name"]
+
+                # check valid illust folder
+                if not re.search(r"^[0-9]*$", illust_id):
+                    continue
+
+                illust_info_filename = f"{illust_id}.json.txt"
+                for file in self.s_adrive.glob_file(illust_folder["file_id"]):
+                    if file["name"] == illust_info_filename and file["size"] > 1024:
+                        break  # already exist
+                else:
+                    # upload info json
+                    print(f"Try append illust {illust_id} info json")
+                    illust_info = self.s_pixiv.get_illust(illust_id)
+                    if not illust_info:
+                        self.logger.warning(f"Failed to get illust {illust_id} info, skip it.")
+                        continue
+
+                    local_save_path = Path("tmp", user_id, illust_id, illust_info_filename)
+                    local_save_path.parent.mkdir(parents=True, exist_ok=True)
+                    local_save_path.write_text(json.dumps(illust_info, ensure_ascii=False, indent=4), encoding="utf8")
+                    self.s_adrive.upload_file(
+                        illust_info_filename,
+                        local_save_path,
+                        illust_folder["file_id"],
+                        check_name_mode="overwrite"
+                    )
+
+        return True
