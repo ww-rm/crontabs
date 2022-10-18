@@ -45,8 +45,10 @@ class AliyunDriveBase(XSession):
     URL_v2_file_get = "https://api.aliyundrive.com/v2/file/get"
     URL_v2_file_complete = "https://api.aliyundrive.com/v2/file/complete"
     URL_v2_get_file_download_url = "https://api.aliyundrive.com/v2/file/get_download_url"
-    URL_v2_recyclebin_trash = "https://api.aliyundrive.com/v2/recyclebin/trash"
+    URL_v2_recyclebin_trash = "https://api.aliyundrive.com/v2/recyclebin/trash"  # 204
+    URL_v2_recyclebin_restore = "https://api.aliyundrive.com/v2/recyclebin/restore"  # 204
     URL_adrive_v2_file_createwithfolders = "https://api.aliyundrive.com/adrive/v2/file/createWithFolders"
+    URL_adrive_v2_recyclebin_list = "https://api.aliyundrive.com/adrive/v2/recyclebin/list"
 
     URL_v3_batch = "https://api.aliyundrive.com/v3/batch"
     URL_v3_file_update = "https://api.aliyundrive.com/v3/file/update"
@@ -509,6 +511,42 @@ class AliyunDriveBase(XSession):
 
         return self._check_response(res)
 
+    @false_retry
+    def _post_recyclebin_list(
+        self,
+        drive_id: str,
+        order_by: str = "name", order_direction: str = "ASC",
+        marker: str = "", limit: int = 200,
+        *,
+        image_thumbnail_process: str = "image/resize,w_400/format,jpeg",
+        video_thumbnail_process: str = "video/snapshot,t_1000,f_jpg,ar_auto,w_400"
+    ):
+        """List items of recyclebin.
+
+        Args:
+            drive_id: ID.
+            parent_file_id (str): The parent folder of folder to be operated. Can be "root" or a string of file id.
+            limit (int): Limit number of results, max to 200
+            marker: from `next_marker`, used to get next page.
+            order_by (str): ["name", "updated_at", "created_at", "size"]
+            order_direction (str): ["ASC" | "DESC"]
+        """
+
+        res = self.post(
+            AliyunDriveBase.URL_adrive_v2_recyclebin_list,
+            json={
+                "drive_id": drive_id,
+                "limit": limit,
+                "order_by": order_by,
+                "order_direction": order_direction,
+                "marker": marker,
+                "image_thumbnail_process": image_thumbnail_process,
+                "video_thumbnail_process": video_thumbnail_process
+            }
+        )
+
+        return self._check_response(res)
+
     def _post_file_get_download_url(self, drive_id: str, file_id: str) -> dict:
         """"""
         res = self.post(
@@ -524,6 +562,19 @@ class AliyunDriveBase(XSession):
         """Status Code: 204 (No Content)"""
         res = self.post(
             AliyunDriveBase.URL_v2_recyclebin_trash,
+            json={
+                "drive_id": drive_id,
+                "file_id": file_id
+            }
+        )
+        if res.status_code != 204:
+            return False
+        return True
+
+    def _post_recyclebin_restore(self, drive_id: str, file_id: str) -> bool:
+        """Status Code: 204 (No Content)"""
+        res = self.post(
+            AliyunDriveBase.URL_v2_recyclebin_restore,
             json={
                 "drive_id": drive_id,
                 "file_id": file_id
@@ -1126,6 +1177,45 @@ class AliyunDrive(AliyunDriveBase):
 
         return self._post_file_update(self.drive_id, file_id, name, check_name_mode)
 
+    def glob_recyclebin(
+        self,
+        *,
+        order_by: str = "name", order_direction: str = "ASC", limit: int = -1
+    ):
+        """Glob files in recyclebin.
+
+        Args:
+            order_by (str): ["name", "updated_at", "created_at", "size"]
+            order_direction (str): ["ASC" | "DESC"]
+            limit (int): Limit min number of results, <=0 for all result.
+
+        Yields:
+            Return empty when failed or file type, else see responses folder.
+        """
+
+        if not self._check_refresh():
+            return None
+
+        # iter all data
+        count = 0
+        next_marker = ""
+        while True:
+            # fetch items
+            list_info = self._post_recyclebin_list(self.drive_id, order_by, order_direction, next_marker)
+            buffer = list_info.get("items", [])
+            next_marker = list_info.get("next_marker", "")
+            for item in buffer:
+                yield item
+                count += 1
+                # limit result size
+                if limit > 0 and count >= limit:
+                    return None
+            # no more data
+            if not next_marker:
+                break
+
+        return None
+
     def delete_file(self, file_id: str, *, file_drive_path: str = "") -> bool:
         """Move file or folder to trash."""
 
@@ -1135,6 +1225,16 @@ class AliyunDrive(AliyunDriveBase):
             file_id = self._get_file_id(file_drive_path)
 
         return self._post_recyclebin_trash(self.drive_id, file_id)
+
+    def restore_file(self, file_id: str, *, file_drive_path: str = "") -> bool:
+        """Restore file or folder to trash."""
+
+        if not file_id:
+            if not file_drive_path:
+                return ValueError("Need provide valid file_id or file_drive_path, can't be root or empty.")
+            file_id = self._get_file_id(file_drive_path)
+
+        return self._post_recyclebin_restore(self.drive_id, file_id)
 
     ####################################
     ########## High Level API ##########
