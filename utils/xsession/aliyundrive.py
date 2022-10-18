@@ -600,7 +600,11 @@ class AliyunDriveBase(XSession):
         return True
 
     def _post_file_update(self, drive_id: str, file_id: str, name: str, *, check_name_mode: str = "refuse"):
-        """Return empty if can't rename, else the file info."""
+        """Return empty if can't rename, else the file info.
+        
+        Args:
+            check_name_mode: only "refuse", no need to care.
+        """
 
         res = self.post(
             AliyunDriveBase.URL_v3_file_update,
