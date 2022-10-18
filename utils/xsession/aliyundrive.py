@@ -1226,13 +1226,8 @@ class AliyunDrive(AliyunDriveBase):
 
         return self._post_recyclebin_trash(self.drive_id, file_id)
 
-    def restore_file(self, file_id: str, *, file_drive_path: str = "") -> bool:
+    def restore_file(self, file_id: str) -> bool:
         """Restore file or folder to trash."""
-
-        if not file_id:
-            if not file_drive_path:
-                return ValueError("Need provide valid file_id or file_drive_path, can't be root or empty.")
-            file_id = self._get_file_id(file_drive_path)
 
         return self._post_recyclebin_restore(self.drive_id, file_id)
 
