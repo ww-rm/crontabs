@@ -43,6 +43,7 @@ class AliyunDriveBase(XSession):
     URL_v2_databox_get_personal_info = "https://api.aliyundrive.com/v2/databox/get_personal_info"
     URL_v2_user_get = "https://api.aliyundrive.com/v2/user/get"
     URL_v2_file_get = "https://api.aliyundrive.com/v2/file/get"
+    URL_v2_file_move = "https://api.aliyundrive.com/v2/file/move"
     URL_v2_file_complete = "https://api.aliyundrive.com/v2/file/complete"
     URL_v2_get_file_download_url = "https://api.aliyundrive.com/v2/file/get_download_url"
     URL_v2_recyclebin_trash = "https://api.aliyundrive.com/v2/recyclebin/trash"  # 204
@@ -612,8 +613,34 @@ class AliyunDriveBase(XSession):
         )
         return self._check_response(res)
 
+    def _post_file_move(self, drive_id: str, file_id: str, to_drive_id: str, to_parent_file_id: str, *, check_name_mode: str = "ignore"):
+        """Move file or folder to other folder.
+
+        Args:
+            to_drive_id: same as drive id
+            to_parent_file_id: dest file id.
+            check_name_mode: ["ignore" | "refuse" | "autorename"]
+        """
+
+        res = self.post(
+            AliyunDriveBase.URL_v2_file_move,
+            json={
+                "drive_id": drive_id,
+                "file_id": file_id,
+                "to_drive_id": to_drive_id,
+                "to_parent_file_id": to_parent_file_id,
+                "check_name_mode": check_name_mode
+            }
+        )
+
+        return self._check_response(res)
+
 
 class AliyunDrive(AliyunDriveBase):
+    """
+    Methods:
+        Recommand to use file id, or keep empty file id, and supply file drive path.
+    """
     """
     https://auth.aliyundrive.com/v2/oauth/authorize -> Cookie: SESSIONID
     https://passport.aliyundrive.com/mini_login.htm -> Cookie: cookie2, t, XSRF-TOKEN. "form-data"
@@ -884,7 +911,7 @@ class AliyunDrive(AliyunDriveBase):
         folder_path: PathLike,
         parent_file_id: str = "root",
         *,
-        parent_folder_path: PathLike = "",
+        parent_file_drive_path: PathLike = "",
         check_name_mode: str = "refuse"
     ) -> dict:
         """Create folder of specified path in drive.
@@ -892,7 +919,7 @@ class AliyunDrive(AliyunDriveBase):
         Args:
             folder_path (PathLike): The full path of folder to be created, can be multi-level.
             parent_file_id (str): The parent node of node to be operated. Can be "root" or a string of node id.
-            parent_folder_path (PathLike): The parent path relative to root.
+            parent_file_drive_path (PathLike): The parent path relative to root.
             check_name_mode (str): Can be "auto_rename" or "refuse".
 
         Returns:
@@ -901,7 +928,7 @@ class AliyunDrive(AliyunDriveBase):
         """
 
         if not parent_file_id:
-            parent_file_id = self._get_file_id(parent_folder_path)
+            parent_file_id = self._get_file_id(parent_file_drive_path)
 
         folder_path = Path(folder_path)
 
@@ -931,7 +958,7 @@ class AliyunDrive(AliyunDriveBase):
         file_upload_path: PathLike, file_local_path: PathLike,
         parent_file_id: str = "root",
         *,
-        parent_folder_path: PathLike = "",
+        parent_file_drive_path: PathLike = "",
         check_name_mode: str = "refuse", try_rapid_upload: bool = True
     ) -> dict:
         """Upload a file to specified path.
@@ -950,7 +977,7 @@ class AliyunDrive(AliyunDriveBase):
         """
 
         if not parent_file_id:
-            parent_file_id = self._get_file_id(parent_folder_path)
+            parent_file_id = self._get_file_id(parent_file_drive_path)
 
         PART_SIZE = 10*1024*1024  # divide single file to parts
 
@@ -1134,7 +1161,7 @@ class AliyunDrive(AliyunDriveBase):
         self,
         file_id: str = "root",
         *,
-        file_driver_path: PathLike = "",
+        file_drive_path: PathLike = "",
         order_by: str = "name", order_direction: str = "ASC", limit: int = -1
     ):
         """Glob files in a folder.
@@ -1152,7 +1179,7 @@ class AliyunDrive(AliyunDriveBase):
         if not self._check_refresh():
             return None
         if not file_id:
-            file_id = self._get_file_id(file_driver_path)
+            file_id = self._get_file_id(file_drive_path)
 
         # iter all data
         count = 0
@@ -1182,9 +1209,22 @@ class AliyunDrive(AliyunDriveBase):
 
         return self._post_file_get(self.drive_id, file_id)
 
-    def move_file(self, file_id: str):
-        """"""
-        raise NotImplementedError
+    def move_file(self, file_id: str, to_parent_file_id: str, *, file_drive_path: str = "", to_parent_file_drive_path: str = "", check_name_mode: str = "ignore"):
+        """
+        Args:
+            check_name_mode: ["ignore" | "refuse" | "autorename"]
+        """
+
+        if not file_id:
+            file_id = self._get_file_id(file_drive_path)
+        if not to_parent_file_id:
+            to_parent_file_id = self._get_file_id(to_parent_file_drive_path)
+
+        return self._post_file_move(
+            self.drive_id, file_id,
+            self.drive_id, to_parent_file_id,
+            check_name_mode
+        )
 
     def rename_file(self, file_id: str, name: str, *, file_drive_path: str = "", check_name_mode: str = "refuse") -> dict:
         """
