@@ -604,7 +604,7 @@ class AliyunDriveBase(XSession):
 
     def _post_file_update(self, drive_id: str, file_id: str, name: str, *, check_name_mode: str = "refuse"):
         """Return empty if can't rename, else the file info.
-        
+
         Args:
             check_name_mode: only "refuse", no need to care.
         """
@@ -1174,7 +1174,7 @@ class AliyunDrive(AliyunDriveBase):
         """Glob files in a folder.
 
         Args:
-            parent_file_id (str): The parent file id. Can be "root" or a string of file id.
+            file_id (str): The parent file id. Can be "root" or a string of file id.
             order_by (str): ["name", "updated_at", "created_at", "size"]
             order_direction (str): ["ASC" | "DESC"]
             limit (int): Limit min number of results, <=0 for all result.
@@ -1315,66 +1315,45 @@ class AliyunDrive(AliyunDriveBase):
     ########## High Level API ##########
     ####################################
 
-    def do_file_r(self, callback: Callable[[dict], bool], file_id: str, *, file_drive_path: PathLike = ""):
+    def glob_file_r(
+        self,
+        file_id: str = "root",
+        *,
+        file_drive_path: PathLike = "",
+        order_by: str = "name", order_direction: str = "ASC"
+    ):
         """
         Args:
-            callback: {"info": dict, "nodes": list, "next": int} -> bool
-            return True if do something.
+            order_by (str): ["name", "updated_at", "created_at", "size"]
+            order_direction (str): ["ASC" | "DESC"]
 
         Returns:
             dict: {"usage": int, "files": {"path": file_info}}
             Files hit the callback.
         """
 
-        result = {
-            "usage": 0,
-            "files": {},
-        }
-
         if not self._check_refresh():
-            return result
+            return None
         if not file_id:
             file_id = self._get_file_id(file_drive_path)
 
         # backtracking method
         root_info = self.get_file_info(file_id)
-        nodes_info = list(self.glob_file(file_id)) if root_info["type"] == "folder" else []
-        nodes = [{"info": root_info, "nodes": nodes_info, "next": 0}]
+        nodes = [self.glob_file(file_id, order_by=order_by, order_direction=order_direction) if root_info["type"] == "folder" else iter([])]
         while nodes:
             top = nodes[-1]
-            top_type = top["info"]["type"]
-            top_path = "/".join(n["info"]["name"] for n in nodes)
-
-            # folder nodes
-            if top_type == "folder":
-                # all processed
-                if top["next"] >= len(top["nodes"]):
-                    nodes.pop()
-                # next node
-                else:
-                    child_info = top["nodes"][top["next"]]
-                    child = {
-                        "info": child_info,
-                        "next": 0
-                    }
-                    # add nodes info when folder child
-                    child["nodes"] = list(self.glob_file(child_info["file_id"])) if child_info["type"] == "folder" else []
-                    nodes.append(child)
-                    top["next"] += 1
-            # file nodes
-            elif top_type == "file":
-                # add info
-                if callback(top):
-                    print(f"Callback hit: {top_path}")
-                    self.logger.info(f"Callback hit: {top_path}")
-                    result["usage"] += top["info"]["size"]
-                    result["files"][top_path] = top["info"]
+            try:
+                # get next child
+                current = next(top)
+            except StopIteration:
+                # popup parent
                 nodes.pop()
             else:
-                self.logger.warning(f"Unknown node type {top_type} of node {top_path}, popup and skip it.")
-                nodes.pop()
+                if current["type"] == "folder":
+                    nodes.append(self.glob_file(current["file_id"], order_by=order_by, order_direction=order_direction))
+                yield current
 
-        return result
+        return None
 
     def download_file_r(self):
         """Recursive download files"""
