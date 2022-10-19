@@ -4,6 +4,7 @@ import random
 from os import PathLike
 from pathlib import Path
 import re
+import shutil
 
 from utils import media, xsession
 
@@ -255,3 +256,48 @@ class PixivDrive:
                     )
 
         return True
+
+    def clean_dateset(self, dataset_dir: PathLike, *, add_user_all: bool = False):
+        """Check and clean dataset downloaded in drive. 
+        Will try to download missing illusts and remove unavailable folders and illusts.
+
+        Args:
+            dataset_dir: the dataset root dir., may like `~/pixiv`.
+            add_user_all: whether add user all illusts.
+        """
+
+        for user_folder in Path(dataset_dir).iterdir():
+            user_id = user_folder.name
+            if add_user_all:
+                user_all_info = self.s_pixiv.get_user_all(user_id)
+                if not user_all_info:
+                    self.logger.warning(f"Failed to add user {user_id} all illusts, skip.")
+                else:
+                    for illust_id in user_all_info["illusts"]:
+                        self.s_pixiv.download_illust(illust_id, user_folder.joinpath(illust_id))
+
+            # check illusts
+            for illust_folder in user_folder.iterdir():
+                # check if exist <illust_id>.json.txt
+                illust_id = illust_folder.name
+
+                # delete invalid folder
+                if not re.search(r"^[0-9]*$", illust_id):
+                    shutil.rmtree(illust_folder)
+                # check files all existed and download them
+                else:
+                    # check info json file
+                    info_json_file = illust_folder.joinpath(f"{illust_id}.json.txt")
+                    if not info_json_file.is_file() or info_json_file.stat().st_size <= 1024:
+                        illust_info = self.s_pixiv.get_illust(illust_id)
+                        if not illust_info:
+                            self.logger.error(f"Failed to get {info_json_file}, json info file save error.")
+                            continue
+                        # save info file
+                        info_json_file.write_text(json.dumps(illust_info, ensure_ascii=False, indent=4), encoding="utf8")
+
+                    # check illust pages
+                    paths = self.s_pixiv.download_illust(illust_id, illust_folder)
+                    if len(paths) <= 0:
+                        self.logger.error(f"Illust folder {illust_folder} has no illust downloaded, try to remove it manually.")
+                        continue
