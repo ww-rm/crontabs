@@ -1094,6 +1094,11 @@ class AliyunDrive(AliyunDriveBase):
             file_id: id of file in drive, if empty string, need provide file_drive_path
             file_drive_path: file path relative to root in drive
         """
+        file_local_path = Path(file_local_path)
+        if file_local_path.is_file() and file_local_path.stat().st_size > 0:
+            self.logger.info("File {} already exist, skip download.".format(file_local_path.as_posix()))
+            return True
+
         if not file_id:
             if not file_drive_path:
                 return ValueError("Need provide valid file_id or file_drive_path, can't be root or empty.")
@@ -1110,7 +1115,7 @@ class AliyunDrive(AliyunDriveBase):
         if not res.ok:
             return False
 
-        with Path(file_local_path).open("wb") as f:
+        with file_local_path.open("wb") as f:
             for chunk in res.iter_content(chunk_size):
                 f.write(chunk)
 
