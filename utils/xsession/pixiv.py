@@ -531,6 +531,16 @@ class Pixiv(PixivBase):
 
         return result
 
+    def get_illust_pages(self, illust_id, str) -> dict:
+        """Get illust page info."""
+
+        page_info = self._get_illust_pages(illust_id)
+
+        if not page_info:
+            self.logger.error("Failed to get {} illust page info.".format(illust_id))
+            return {}
+        return page_info
+
     def get_illust(self, illust_id: str) -> dict:
         """Get illust info."""
 
