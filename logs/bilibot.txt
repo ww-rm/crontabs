@@ -13175,3 +13175,14 @@
 2022-10-19 16:17:51 - ERROR - bot.py - 239 - Failed to create ranking dynamic.
 2022-10-19 18:20:57 - INFO - __main__.py - 36 - 51609 seconds before last successful new update, try create new one.
 2022-10-19 18:21:51 - INFO - bot.py - 248 - Create ranking dynamic Success!
+2022-10-19 20:07:52 - INFO - __main__.py - 58 - Last dynamic don't exist, redo create dynamic task.
+2022-10-19 20:09:04 - ERROR - base.py - 94 - https://api.vc.bilibili.com/api/v1/drawImage/upload:HTTPSConnectionPool(host='api.vc.bilibili.com', port=443): Read timed out. (read timeout=30)
+2022-10-19 20:09:05 - WARNING - base.py - 25 - Retry func _post_draw_image_upload 1 time.
+2022-10-19 20:09:36 - ERROR - base.py - 94 - https://api.vc.bilibili.com/api/v1/drawImage/upload:HTTPSConnectionPool(host='api.vc.bilibili.com', port=443): Read timed out. (read timeout=30)
+2022-10-19 20:09:38 - WARNING - base.py - 25 - Retry func _post_draw_image_upload 2 time.
+2022-10-19 20:10:09 - ERROR - base.py - 94 - https://api.vc.bilibili.com/api/v1/drawImage/upload:HTTPSConnectionPool(host='api.vc.bilibili.com', port=443): Read timed out. (read timeout=30)
+2022-10-19 20:10:12 - WARNING - base.py - 25 - Retry func _post_draw_image_upload 3 time.
+2022-10-19 20:10:43 - ERROR - base.py - 94 - https://api.vc.bilibili.com/api/v1/drawImage/upload:HTTPSConnectionPool(host='api.vc.bilibili.com', port=443): Read timed out. (read timeout=30)
+2022-10-19 20:10:47 - ERROR - base.py - 36 - All retries failed in func _post_draw_image_upload.
+2022-10-19 20:11:08 - ERROR - bilibili.py - 434 - Failed to upload all pictures.
+2022-10-19 20:11:08 - ERROR - bot.py - 239 - Failed to create ranking dynamic.
