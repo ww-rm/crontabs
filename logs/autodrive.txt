@@ -10770,3 +10770,13 @@
 2022-11-05 13:00:38 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
 2022-11-05 13:01:08 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
 2022-11-05 13:01:10 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2022-11-05 22:18:51 - WARNING - aliyundrive.py - 820 - Token is about to expire, try to auto refresh.
+2022-11-05 22:34:07 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/04/22/00/16/44/97786352_p0.jpg
+2022-11-05 23:06:09 - WARNING - pixivdrive.py - 127 - Failed to add salt to page tmp/99353013/99353013_p0.gif, upload original page.
+2022-11-05 23:18:42 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/03/06/09/00/01/96712529_p0.jpg
+2022-11-05 23:55:19 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2021/10/02/21/09/37/93175543_p0.jpg
+2022-11-06 00:17:52 - WARNING - aliyundrive.py - 820 - Token is about to expire, try to auto refresh.
+2022-11-06 00:18:26 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/09/21/18/28/29/101385667_p0.jpg
+2022-11-06 00:39:13 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+2022-11-06 00:39:14 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
+2022-11-06 00:41:07 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/02/20/11/22/56/96385662_p0.jpg
