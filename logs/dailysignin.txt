@@ -3483,3 +3483,18 @@
 2022-11-27 21:12:01 - ERROR - bilibili.py - 70 - https://api.bilibili.com/x/web-interface/nav:-101:账号未登录
 2022-11-27 21:12:01 - ERROR - bilibili.py - 467 - Failed to get web nav info.
 2022-11-27 21:12:01 - WARNING - base.py - 47 - www.bilibili.com:Failed to sign in.
+2022-11-28 21:10:48 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x7f71e49f1f70>, 'Connection to kkwcy.com timed out. (connect timeout=30)')': /wp-json/jwt-auth/v1/token
+2022-11-28 21:11:18 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x7f71e49ea520>, 'Connection to kkwcy.com timed out. (connect timeout=30)')': /wp-json/jwt-auth/v1/token
+2022-11-28 21:11:48 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x7f71e49ea610>, 'Connection to kkwcy.com timed out. (connect timeout=30)')': /wp-json/jwt-auth/v1/token
+2022-11-28 21:12:18 - ERROR - base.py - 94 - https://kkwcy.com/wp-json/jwt-auth/v1/token:HTTPSConnectionPool(host='kkwcy.com', port=443): Max retries exceeded with url: /wp-json/jwt-auth/v1/token (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x7f71e49f1d90>, 'Connection to kkwcy.com timed out. (connect timeout=30)'))
+2022-11-28 21:12:18 - ERROR - base.py - 43 - kkwcy.com:Failed to login.
+2022-11-28 21:12:23 - INFO - base.py - 54 - www.hmoe11.net:All Success!
+2022-11-28 21:12:25 - INFO - base.py - 54 - jike0.com:All Success!
+2022-11-28 21:12:26 - INFO - base.py - 54 - ssru6.pw:All Success!
+2022-11-28 21:12:27 - INFO - base.py - 54 - freevpn.cyou:All Success!
+2022-11-28 21:12:29 - WARNING - base.py - 47 - dash.pepsicola.me:Failed to sign in.
+2022-11-28 21:12:30 - WARNING - base.py - 100 - https://owo.ecycloud.com/auth/login:403
+2022-11-28 21:12:30 - ERROR - base.py - 43 - owo.ecycloud.com:Failed to login.
+2022-11-28 21:12:30 - ERROR - bilibili.py - 70 - https://api.bilibili.com/x/web-interface/nav:-101:账号未登录
+2022-11-28 21:12:30 - ERROR - bilibili.py - 467 - Failed to get web nav info.
+2022-11-28 21:12:30 - WARNING - base.py - 47 - www.bilibili.com:Failed to sign in.
