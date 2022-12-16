@@ -12146,3 +12146,17 @@
 2022-12-15 22:15:54 - WARNING - aliyundrive.py - 820 - Token is about to expire, try to auto refresh.
 2022-12-16 00:14:55 - WARNING - aliyundrive.py - 820 - Token is about to expire, try to auto refresh.
 2022-12-16 00:23:47 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/08/02/00/00/33/100166355_p0.png
+2022-12-16 10:18:03 - WARNING - aliyundrive.py - 820 - Token is about to expire, try to auto refresh.
+2022-12-16 10:18:05 - WARNING - base.py - 100 - https://www.pixiv.net/ranking.php:403
+2022-12-16 10:18:05 - ERROR - pixiv.py - 130 - https://www.pixiv.net/ranking.php?format=json&p=1&content=illust&mode=monthly:JsonValueError.
+2022-12-16 10:18:06 - WARNING - base.py - 25 - Retry func _get_ranking 1 time.
+2022-12-16 10:18:06 - WARNING - base.py - 100 - https://www.pixiv.net/ranking.php:403
+2022-12-16 10:18:06 - ERROR - pixiv.py - 130 - https://www.pixiv.net/ranking.php?format=json&p=1&content=illust&mode=monthly:JsonValueError.
+2022-12-16 10:18:08 - WARNING - base.py - 25 - Retry func _get_ranking 2 time.
+2022-12-16 10:18:08 - WARNING - base.py - 100 - https://www.pixiv.net/ranking.php:403
+2022-12-16 10:18:08 - ERROR - pixiv.py - 130 - https://www.pixiv.net/ranking.php?format=json&p=1&content=illust&mode=monthly:JsonValueError.
+2022-12-16 10:18:11 - WARNING - base.py - 25 - Retry func _get_ranking 3 time.
+2022-12-16 10:18:11 - WARNING - base.py - 100 - https://www.pixiv.net/ranking.php:403
+2022-12-16 10:18:11 - ERROR - pixiv.py - 130 - https://www.pixiv.net/ranking.php?format=json&p=1&content=illust&mode=monthly:JsonValueError.
+2022-12-16 10:18:15 - ERROR - base.py - 36 - All retries failed in func _get_ranking.
+2022-12-16 10:18:15 - ERROR - pixiv.py - 619 - Failed to get monthly ranking info 1:illust:None.
