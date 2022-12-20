@@ -448,3 +448,77 @@
 2022-12-20 08:03:47 - ERROR - pixiv.py - 130 - https://www.pixiv.net/ranking.php?format=json&p=1&content=illust&mode=monthly:JsonValueError.
 2022-12-20 08:03:51 - ERROR - base.py - 36 - All retries failed in func _get_ranking.
 2022-12-20 08:03:51 - ERROR - pixiv.py - 619 - Failed to get monthly ranking info 1:illust:None.
+2022-12-20 10:18:49 - WARNING - aliyundrive.py - 820 - Token is about to expire, try to auto refresh.
+2022-12-20 10:20:32 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/11/21/08/04/59/102972448_p0.png
+2022-12-20 10:33:37 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/10/27/12/10/40/102266523_p0.jpg
+2022-12-20 10:35:05 - WARNING - pixivdrive.py - 127 - Failed to add salt to page tmp/102104429/102104429_p0.gif, upload original page.
+2022-12-20 10:35:05 - WARNING - pixivdrive.py - 155 - Failed to make mirage for page tmp/102104429/102104429_p0.gif.
+2022-12-20 10:37:23 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2022-12-20 10:37:24 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2022-12-20 11:03:23 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/11/06/00/00/12/102546056_p0.png
+2022-12-20 11:14:24 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/09/15/00/00/11/101230280_p0.png
+2022-12-20 11:16:48 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/03/06/00/56/50/96707266_p0.png
+2022-12-20 11:39:28 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2021/07/09/00/15/19/91109347_p0.png
+2022-12-20 11:42:33 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2022-12-20 11:42:34 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
+2022-12-20 12:04:41 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2019/12/18/00/21/34/78346755_p0.png
+2022-12-20 12:17:51 - WARNING - aliyundrive.py - 820 - Token is about to expire, try to auto refresh.
+2022-12-20 12:23:29 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/12/11/01/26/58/103506490_p0.jpg
+2022-12-20 12:25:01 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/12/11/00/08/27/103504359_p0.jpg
+2022-12-20 12:32:10 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0bc1ef9316715395301412885e2d00","resultCode":"InternalError"}
+2022-12-20 12:32:10 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2022-12-20 12:32:11 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2022-12-20 12:32:45 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0bc1ef9316715395648895735e2d00","resultCode":"InternalError"}
+2022-12-20 12:32:45 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2022-12-20 12:32:46 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2022-12-20 12:33:31 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2022-12-20 12:33:31 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2022-12-20 12:33:32 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2022-12-20 12:35:54 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2022-12-20 12:35:54 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2022-12-20 12:35:55 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2022-12-20 12:36:34 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0bc1407f16715397940953290e4986","resultCode":"InternalError"}
+2022-12-20 12:36:34 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2022-12-20 12:36:35 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2022-12-20 12:38:07 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0bc1407f16715398865802016e4986","resultCode":"InternalError"}
+2022-12-20 12:38:07 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2022-12-20 12:38:08 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2022-12-20 12:39:22 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0bc1ef2c16715399624241358e4b09","resultCode":"InternalError"}
+2022-12-20 12:39:22 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2022-12-20 12:39:23 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2022-12-20 12:39:29 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0bc1ef2c16715399689021941e4b09","resultCode":"InternalError"}
+2022-12-20 12:39:29 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2022-12-20 12:39:30 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2022-12-20 12:40:09 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2022-12-20 12:40:09 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2022-12-20 12:40:10 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2022-12-20 12:43:01 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2022-12-20 12:43:01 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2022-12-20 12:43:02 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2022-12-20 12:43:16 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2022-12-20 12:43:16 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2022-12-20 12:43:17 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2022-12-20 12:43:31 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0bc1407916715402111207870edff0","resultCode":"InternalError"}
+2022-12-20 12:43:31 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2022-12-20 12:43:32 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2022-12-20 12:45:48 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0bc13b0416715403480633306e4a69","resultCode":"InternalError"}
+2022-12-20 12:45:48 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2022-12-20 12:45:49 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2022-12-20 12:47:13 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/06/26/19/06/00/99319406_p0.jpg
+2022-12-20 12:47:19 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2022-12-20 12:47:19 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2022-12-20 12:47:20 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2022-12-20 12:47:20 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2022-12-20 12:47:20 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2022-12-20 12:47:22 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2022-12-20 13:19:07 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/11/15/20/17/49/102818281_p0.jpg
+2022-12-20 13:19:43 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/08/10/17/35/41/100377329_p0.jpg
+2022-12-20 13:33:30 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/08/16/00/00/13/100516134_p0.jpg
