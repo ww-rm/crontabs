@@ -15,7 +15,7 @@ class PixivDrive:
         "https": "http://127.0.0.1:10809"
     }
     headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:88.0) Gecko/20100101 Firefox/88.0"
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:98.0) Gecko/20100101 Firefox/98.0"
     }
 
     def __init__(self, root_dir: PathLike = "pixiv") -> None:
