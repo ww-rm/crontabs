@@ -115,6 +115,10 @@ class Bot:
                 for illust_id in illust_ids:
                     illust_info = s_pixiv.get_illust(illust_id)
                     if illust_info:
+                        if not illust_info["urls"]["original"]:
+                            self.logger.warning(f"Failed to get {illust_id} urls, skip it.")
+                            continue
+
                         if int(illust_info["sl"]) <= sl:
                             dynamic_illust_info.append(
                                 {
