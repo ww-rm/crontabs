@@ -97,5 +97,5 @@ class XSession(requests.Session):
             return res
         else:
             if not res.ok:
-                self.logger.warning("{}:{}".format(url, res.status_code))
+                self.logger.warning("{}:{}:{}".format(url, res.status_code, res.text))
             return res
