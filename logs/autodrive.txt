@@ -1622,3 +1622,12 @@ Thank you very much!</p>
 2023-01-19 12:20:37 - WARNING - base.py - 25 - Retry func _post_token_refresh 3 time.
 2023-01-19 12:27:25 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/11/21/00/00/14/102964807_p0.jpg
 2023-01-19 12:40:14 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/03/01/18/33/50/96607932_p0.png
+2023-01-19 22:16:48 - WARNING - aliyundrive.py - 820 - Token is about to expire, try to auto refresh.
+2023-01-19 23:00:56 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2023/01/06/00/00/08/104270153_p0.jpg
+2023-01-19 23:31:30 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-01-19 23:31:31 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-01-19 23:32:01 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-01-19 23:32:03 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2023-01-19 23:32:33 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-01-19 23:32:36 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2023-01-19 23:41:46 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/08/31/22/32/45/100902575_p0.png
