@@ -1903,3 +1903,91 @@ Thank you very much!</p>
 2023-01-28 01:03:49 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2021/06/12/22/34/38/90508469_p0.png
 2023-01-28 01:15:36 - WARNING - pixivdrive.py - 127 - Failed to add salt to page tmp/85162550/85162550_ugoira0.gif, upload original page.
 2023-01-28 01:27:38 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/10/22/07/03/12/102128724_p0.png
+2023-01-28 10:16:55 - WARNING - aliyundrive.py - 820 - Token is about to expire, try to auto refresh.
+2023-01-28 10:23:06 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2023/01/02/20/30/02/104172970_p0.png
+2023-01-28 10:52:13 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:504:Gateway Timeout
+2023-01-28 10:52:13 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-01-28 10:52:14 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-01-28 10:52:17 - WARNING - pixivdrive.py - 127 - Failed to add salt to page tmp/103162723/103162723_ugoira0.gif, upload original page.
+2023-01-28 10:52:18 - WARNING - pixivdrive.py - 155 - Failed to make mirage for page tmp/103162723/103162723_ugoira0.gif.
+2023-01-28 11:07:23 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/02/24/19/54/52/95829120_p0.jpg
+2023-01-28 11:53:45 - WARNING - pixivdrive.py - 127 - Failed to add salt to page tmp/85162550/85162550_ugoira0.gif, upload original page.
+2023-01-28 12:15:56 - WARNING - aliyundrive.py - 820 - Token is about to expire, try to auto refresh.
+2023-01-28 12:17:09 - WARNING - pixivdrive.py - 127 - Failed to add salt to page tmp/104875961/104875961_ugoira0.gif, upload original page.
+2023-01-28 12:17:12 - WARNING - pixivdrive.py - 155 - Failed to make mirage for page tmp/104875961/104875961_ugoira0.gif.
+2023-01-28 12:29:39 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:502:<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html>
+<head><title>502 Bad Gateway</title></head>
+<body>
+<center><h1>502 Bad Gateway</h1></center>
+ Sorry for the inconvenience.<br/>
+Please report this message and include the following information to us.<br/>
+Thank you very much!</p>
+<table>
+<tr>
+<td>URL:</td>
+<td>https://api.aliyundrive.com/adrive/v2/file/createWithFolders</td>
+</tr>
+<tr>
+<td>Server:</td>
+<td>security-pgw-90b2f6b7d69951d209f28a873243d040-n8lwh</td>
+</tr>
+<tr>
+<td>Date:</td>
+<td>2023/01/28 20:29:39</td>
+</tr>
+</table>
+<hr/>Powered by Tengine<hr><center>tengine</center>
+</body>
+</html>
+
+2023-01-28 12:29:39 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-01-28 12:29:40 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-01-28 12:40:57 - WARNING - base.py - 100 - https://api.aliyundrive.com/v2/file/complete:429:Blocked by Sentinel (flow limiting)
+2023-01-28 12:40:57 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/v2/file/complete:JsonValueError.
+2023-01-28 12:40:58 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
+2023-01-28 12:56:56 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:Blocked by Sentinel (flow limiting)
+2023-01-28 12:56:56 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-01-28 12:56:57 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-01-28 12:57:57 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:Blocked by Sentinel (flow limiting)
+2023-01-28 12:57:57 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-01-28 12:57:58 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-01-28 13:04:56 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0080da16749110958065983e5250","resultCode":"InternalError"}
+2023-01-28 13:04:56 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-01-28 13:04:57 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-01-28 13:05:56 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-01-28 13:05:56 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-01-28 13:05:57 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-01-28 13:12:00 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))': /ajax/illust/102830102
+2023-01-28 13:13:15 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070aa16749115946075215e6943","resultCode":"InternalError"}
+2023-01-28 13:13:15 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-01-28 13:13:16 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-01-28 13:13:58 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-01-28 13:13:58 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-01-28 13:13:59 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-01-28 13:15:36 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0080dd16749117360847666e53aa","resultCode":"InternalError"}
+2023-01-28 13:15:36 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-01-28 13:15:37 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-01-28 13:16:15 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-01-28 13:16:15 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-01-28 13:16:16 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-01-28 13:16:43 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070a916749118026318951e5b51","resultCode":"InternalError"}
+2023-01-28 13:16:43 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-01-28 13:16:44 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-01-28 13:17:37 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-01-28 13:17:37 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-01-28 13:17:38 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-01-28 13:19:02 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-01-28 13:19:02 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-01-28 13:19:03 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-01-28 13:19:48 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-01-28 13:19:48 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-01-28 13:19:49 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-01-28 13:19:50 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0080db16749119899862665e3c8e","resultCode":"InternalError"}
+2023-01-28 13:19:50 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-01-28 13:19:52 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
