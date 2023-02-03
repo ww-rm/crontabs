@@ -2310,3 +2310,8 @@ Thank you very much!</p>
 2023-02-02 13:31:57 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
 2023-02-02 13:31:58 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
 2023-02-02 13:42:58 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/11/13/21/45/53/102767889_p0.jpg
+2023-02-02 22:16:26 - WARNING - aliyundrive.py - 820 - Token is about to expire, try to auto refresh.
+2023-02-03 00:15:26 - WARNING - aliyundrive.py - 820 - Token is about to expire, try to auto refresh.
+2023-02-03 00:45:01 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"QueryTimeoutException","message":"Redis command timed out; nested exception is io.lettuce.core.RedisCommandTimeoutException: Command timed out after 3 second(s)","requestId":"0a0070aa16753850976737160e00fd","resultCode":"QueryTimeoutException"}
+2023-02-03 00:45:01 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:Redis command timed out; nested exception is io.lettuce.core.RedisCommandTimeoutException: Command timed out after 3 second(s)
+2023-02-03 00:45:02 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
