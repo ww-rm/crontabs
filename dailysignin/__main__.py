@@ -26,10 +26,10 @@ def run(config: dict):
     ssru6_pw.Signer(_d(keys["ssru6.pw"]["usrn"]), _d(keys["ssru6.pw"]["pwd"])).signin()
     freevpn_cyou.Signer(_d(keys["freevpn.cyou"]["usrn"]), _d(keys["freevpn.cyou"]["pwd"])).signin()
     dash_pepsicola_me.Signer(_d(keys["dash.pepsicola.me"]["usrn"]), _d(keys["dash.pepsicola.me"]["pwd"])).signin()
-    owo_ecycloud_com.Signer(_d(keys["owo.ecycloud.com"]["usrn"]), _d(keys["owo.ecycloud.com"]["pwd"])).signin()
+    # owo_ecycloud_com.Signer(_d(keys["owo.ecycloud.com"]["usrn"]), _d(keys["owo.ecycloud.com"]["pwd"])).signin()
 
     cookies = dict(map(lambda item: (item[0], _d(item[1])), keys["www.bilibili.com"]["cookies"].items()))
-    www_bilibili_com.Signer("", "", cookies=cookies).signin()
+    # www_bilibili_com.Signer("", "", cookies=cookies).signin()
 
 
 if __name__ == "__main__":
