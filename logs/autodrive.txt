@@ -3168,3 +3168,748 @@ Thank you very much!</p>
 2023-02-05 22:34:50 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/07/19/00/00/13/99827901_p0.png
 2023-02-05 23:14:52 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/10/26/00/00/16/102233064_p0.jpg
 2023-02-06 00:14:38 - WARNING - aliyundrive.py - 820 - Token is about to expire, try to auto refresh.
+2023-02-06 10:19:03 - WARNING - aliyundrive.py - 820 - Token is about to expire, try to auto refresh.
+2023-02-06 10:19:22 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 10:19:22 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 10:19:23 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 10:20:12 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0080e216756788118636832ed95b","resultCode":"InternalError"}
+2023-02-06 10:20:12 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 10:20:13 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 10:23:44 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070ae16756790236473175eef82","resultCode":"InternalError"}
+2023-02-06 10:23:44 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 10:23:45 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 10:24:23 - WARNING - base.py - 100 - https://api.aliyundrive.com/v2/file/complete:504:Gateway Timeout
+2023-02-06 10:24:23 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/v2/file/complete:JsonValueError.
+2023-02-06 10:24:24 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
+2023-02-06 10:29:29 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0080e316756793690651705e1f4b","resultCode":"InternalError"}
+2023-02-06 10:29:29 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 10:29:30 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 10:39:13 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 10:39:13 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 10:39:14 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 10:41:41 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070a816756801014634525eb210","resultCode":"InternalError"}
+2023-02-06 10:41:41 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 10:41:42 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 10:41:43 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070a816756801030014734eb210","resultCode":"InternalError"}
+2023-02-06 10:41:43 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 10:41:45 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2023-02-06 10:43:57 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 10:43:57 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 10:43:58 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 10:44:42 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 10:44:42 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 10:44:43 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 10:45:12 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070ab16756803121487001edeb6","resultCode":"InternalError"}
+2023-02-06 10:45:12 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 10:45:13 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 10:45:35 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/11/26/00/00/08/103094723_p0.jpg
+2023-02-06 10:45:48 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 10:45:48 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 10:45:49 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 10:46:34 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 10:46:34 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 10:46:35 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 10:49:01 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/07/12/00/04/05/99663916_p0.png
+2023-02-06 10:51:50 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070a816756807099612685eb216","resultCode":"InternalError"}
+2023-02-06 10:51:50 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 10:51:51 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 10:53:08 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070ad16756807877735839e2400","resultCode":"InternalError"}
+2023-02-06 10:53:08 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 10:53:09 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 10:55:32 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 10:55:32 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 10:55:33 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:02:16 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 11:02:16 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 11:02:17 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:04:26 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0080e216756814659904186ed958","resultCode":"InternalError"}
+2023-02-06 11:04:26 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 11:04:27 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:07:16 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 11:07:16 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 11:07:17 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:07:32 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 11:07:32 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 11:07:33 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:08:53 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 11:08:53 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 11:08:54 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:09:20 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 11:09:20 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 11:09:21 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:12:45 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 11:12:45 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 11:12:46 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:15:13 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070a916756821130033740e9df0","resultCode":"InternalError"}
+2023-02-06 11:15:13 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 11:15:14 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:15:51 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070a916756821513814319e9df0","resultCode":"InternalError"}
+2023-02-06 11:15:51 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 11:15:52 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:18:53 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 11:18:53 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 11:18:54 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:19:28 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 11:19:28 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 11:19:29 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:21:01 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 11:21:01 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 11:21:02 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:23:28 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070a916756826077001943e9dee","resultCode":"InternalError"}
+2023-02-06 11:23:28 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 11:23:29 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:24:18 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/02/15/17/35/33/96276618_p0.png
+2023-02-06 11:26:08 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070a916756827683404821e9df6","resultCode":"InternalError"}
+2023-02-06 11:26:08 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 11:26:09 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:26:35 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 11:26:35 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 11:26:36 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:27:09 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 11:27:09 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 11:27:10 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:28:45 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070aa16756829248821440edcea","resultCode":"InternalError"}
+2023-02-06 11:28:45 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 11:28:46 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:29:33 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070aa16756829733823573edcea","resultCode":"InternalError"}
+2023-02-06 11:29:33 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 11:29:35 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:29:55 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 11:29:55 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 11:29:56 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:30:34 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 11:30:34 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 11:30:35 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:31:11 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 11:31:11 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 11:31:12 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:31:53 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 11:31:53 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 11:31:54 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:31:54 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 11:31:54 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 11:31:56 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2023-02-06 11:32:33 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 11:32:33 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 11:32:34 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:33:00 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 11:33:00 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 11:33:01 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:33:14 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070ab16756831931465761edebf","resultCode":"InternalError"}
+2023-02-06 11:33:14 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 11:33:15 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:35:14 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 11:35:14 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 11:35:15 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:35:27 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 11:35:27 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 11:35:28 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:36:54 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 11:36:54 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 11:36:55 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:37:16 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 11:37:16 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 11:37:17 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:38:10 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070aa16756834899213984edce6","resultCode":"InternalError"}
+2023-02-06 11:38:10 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 11:38:11 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:40:17 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 11:40:17 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 11:40:18 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:40:29 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070aa16756836290647261edce2","resultCode":"InternalError"}
+2023-02-06 11:40:29 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 11:40:30 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:41:09 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070aa16756836687207509edce2","resultCode":"InternalError"}
+2023-02-06 11:41:09 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 11:41:10 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:41:28 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 11:41:28 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 11:41:29 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:43:05 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070a816756837845503486eb217","resultCode":"InternalError"}
+2023-02-06 11:43:05 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 11:43:06 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:43:08 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 11:43:08 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 11:43:09 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:45:42 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 11:45:42 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 11:45:43 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:46:31 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0080e316756839904326587e1f49","resultCode":"InternalError"}
+2023-02-06 11:46:31 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 11:46:32 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:46:54 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 11:46:54 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 11:46:55 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:51:00 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 11:51:00 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 11:51:01 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:53:27 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 11:53:27 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 11:53:28 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:54:00 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 11:54:00 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 11:54:01 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:54:46 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070a916756844859482554e9df8","resultCode":"InternalError"}
+2023-02-06 11:54:46 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 11:54:47 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:54:57 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 11:54:57 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 11:54:58 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:55:49 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070ad16756845484898183e2406","resultCode":"InternalError"}
+2023-02-06 11:55:49 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 11:55:50 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:56:39 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070ad16756845989185053e2406","resultCode":"InternalError"}
+2023-02-06 11:56:39 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 11:56:40 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:56:42 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/12/10/20/27/23/103496981_p0.jpg
+2023-02-06 11:57:03 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070ad16756846232852850e2406","resultCode":"InternalError"}
+2023-02-06 11:57:03 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 11:57:04 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:57:09 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 11:57:09 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 11:57:10 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:57:18 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 11:57:18 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 11:57:19 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:57:20 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 11:57:20 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 11:57:21 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:57:25 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 11:57:25 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 11:57:26 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:57:30 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 11:57:30 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 11:57:31 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:57:58 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0080e316756846782141196e1f4d","resultCode":"InternalError"}
+2023-02-06 11:57:58 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 11:57:59 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:58:06 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 11:58:06 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 11:58:07 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:58:25 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 11:58:25 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 11:58:26 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:58:31 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0080e316756847106967458e1f4d","resultCode":"InternalError"}
+2023-02-06 11:58:31 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 11:58:32 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 11:58:41 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 11:58:41 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 11:58:42 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:00:09 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0080e316756848083301711e1f4d","resultCode":"InternalError"}
+2023-02-06 12:00:09 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:00:10 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:00:46 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:00:46 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:00:47 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:00:50 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070ad16756848495606391e2407","resultCode":"InternalError"}
+2023-02-06 12:00:50 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:00:51 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:01:07 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070ad16756848668291645e2407","resultCode":"InternalError"}
+2023-02-06 12:01:07 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:01:08 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:01:26 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:01:26 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:01:27 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:02:25 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:02:25 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:02:26 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:02:52 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:02:52 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:02:53 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:02:58 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0080e316756849777116505e1f51","resultCode":"InternalError"}
+2023-02-06 12:02:58 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:02:59 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:03:03 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:03:03 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:03:04 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:03:07 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0080e316756849869468472e1f51","resultCode":"InternalError"}
+2023-02-06 12:03:07 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:03:08 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:03:19 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:03:19 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:03:20 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:03:24 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:03:24 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:03:25 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:04:08 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:04:08 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:04:09 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:05:04 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0080e216756851038506864ed964","resultCode":"InternalError"}
+2023-02-06 12:05:04 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:05:05 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:05:57 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:05:57 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:05:58 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:06:43 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:06:43 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:06:44 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:07:39 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070a916756852589755302e9ded","resultCode":"InternalError"}
+2023-02-06 12:07:39 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:07:40 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:08:42 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070a916756853215381669e9ded","resultCode":"InternalError"}
+2023-02-06 12:08:42 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:08:43 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:09:19 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:09:19 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:09:20 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:09:28 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:09:28 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:09:29 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:09:30 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:09:30 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:09:31 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:09:41 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0080e316756853802735335e1f4f","resultCode":"InternalError"}
+2023-02-06 12:09:41 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:09:42 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:10:05 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:10:05 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:10:06 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:10:10 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:10:10 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:10:11 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:10:17 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0080e316756854169013039e1f4f","resultCode":"InternalError"}
+2023-02-06 12:10:17 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:10:18 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:10:31 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:10:31 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:10:32 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:11:35 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0080e316756854948657185e1f4f","resultCode":"InternalError"}
+2023-02-06 12:11:35 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:11:36 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:14:23 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070ae16756856627716290eef83","resultCode":"InternalError"}
+2023-02-06 12:14:23 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:14:24 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:14:28 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070ae16756856675237107eef83","resultCode":"InternalError"}
+2023-02-06 12:14:28 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:14:29 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:14:42 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:14:42 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:14:43 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:14:51 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:14:51 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:14:52 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:14:59 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:14:59 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:15:00 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:15:38 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070ae16756857383934698eef83","resultCode":"InternalError"}
+2023-02-06 12:15:38 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:15:39 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:16:31 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:16:31 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:16:32 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:17:13 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:17:13 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:17:14 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:17:32 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0080e316756858517195211e1f4b","resultCode":"InternalError"}
+2023-02-06 12:17:32 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:17:33 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:17:44 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0080e316756858639487400e1f4b","resultCode":"InternalError"}
+2023-02-06 12:17:44 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:17:45 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:18:04 - WARNING - aliyundrive.py - 820 - Token is about to expire, try to auto refresh.
+2023-02-06 12:18:10 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:18:10 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:18:11 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:18:38 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:18:38 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:18:39 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:19:50 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:19:50 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:19:51 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:20:09 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070a816756860083717878eb21a","resultCode":"InternalError"}
+2023-02-06 12:20:09 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:20:10 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:20:18 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070a816756860172451431eb21a","resultCode":"InternalError"}
+2023-02-06 12:20:18 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:20:19 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:20:45 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:20:45 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:20:46 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:20:58 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:20:58 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:20:59 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:21:25 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070aa16756860848594732edce9","resultCode":"InternalError"}
+2023-02-06 12:21:25 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:21:26 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:21:30 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070aa16756860902645781edce9","resultCode":"InternalError"}
+2023-02-06 12:21:30 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:21:31 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:21:42 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:21:42 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:21:43 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:23:04 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:23:04 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:23:05 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:23:13 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:23:13 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:23:14 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:23:49 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:23:49 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:23:50 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:24:06 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:24:06 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:24:07 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:24:13 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0080e316756862524845314e1f4c","resultCode":"InternalError"}
+2023-02-06 12:24:13 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:24:14 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:24:38 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:24:38 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:24:39 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:25:10 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:25:10 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:25:11 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:27:23 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0080e316756864424102949e1f4e","resultCode":"InternalError"}
+2023-02-06 12:27:23 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:27:24 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:28:24 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:28:24 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:28:25 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:30:31 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070a916756866305117016e9df2","resultCode":"InternalError"}
+2023-02-06 12:30:31 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:30:32 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:32:40 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:32:40 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:32:41 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:33:56 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:33:56 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:33:57 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:34:20 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:34:20 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:34:21 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:34:47 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:34:47 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:34:48 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:35:15 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:35:15 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:35:16 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:35:48 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:35:48 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:35:49 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:36:08 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070ae16756869681815542eef85","resultCode":"InternalError"}
+2023-02-06 12:36:08 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:36:09 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:36:31 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:36:31 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:36:32 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:36:57 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:36:57 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:36:58 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:37:34 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070ad16756870539827901e23fa","resultCode":"InternalError"}
+2023-02-06 12:37:34 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:37:35 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:37:43 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070ad16756870630901656e23fa","resultCode":"InternalError"}
+2023-02-06 12:37:43 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:37:44 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:37:56 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070ad16756870758254034e23fa","resultCode":"InternalError"}
+2023-02-06 12:37:56 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:37:57 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:38:44 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:38:44 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:38:45 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:38:46 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:38:46 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:38:48 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2023-02-06 12:39:30 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070ad16756871701533301e23fa","resultCode":"InternalError"}
+2023-02-06 12:39:30 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:39:31 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:39:48 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:39:48 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:39:49 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:40:02 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070a916756872014698862e9dec","resultCode":"InternalError"}
+2023-02-06 12:40:02 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:40:03 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:40:11 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070a916756872105223297e9dec","resultCode":"InternalError"}
+2023-02-06 12:40:11 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:40:12 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:40:32 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:40:32 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:40:33 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:40:37 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:40:37 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:40:38 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:41:10 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:41:10 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:41:11 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:41:32 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070a916756872914832259e9dec","resultCode":"InternalError"}
+2023-02-06 12:41:32 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:41:33 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:42:00 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070a916756873195877659e9dec","resultCode":"InternalError"}
+2023-02-06 12:42:00 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:42:01 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:42:33 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070ab16756873528313991edeb1","resultCode":"InternalError"}
+2023-02-06 12:42:33 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:42:34 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:42:34 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:42:34 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:42:36 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2023-02-06 12:42:50 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:42:50 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:42:51 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:43:15 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:43:15 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:43:16 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:43:54 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070ab16756874334187868edeb1","resultCode":"InternalError"}
+2023-02-06 12:43:54 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:43:55 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:44:17 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:44:17 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:44:18 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:44:29 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:44:29 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:44:30 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:44:31 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:44:31 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:44:32 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:44:51 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:44:51 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:44:52 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:44:52 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070aa16756874921853579edce3","resultCode":"InternalError"}
+2023-02-06 12:44:52 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:44:54 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2023-02-06 12:45:17 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070aa16756875166967998edce3","resultCode":"InternalError"}
+2023-02-06 12:45:17 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:45:18 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:45:37 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:45:37 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:45:38 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:45:39 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:45:39 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:45:40 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:46:16 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:46:16 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:46:17 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:46:18 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:46:18 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:46:19 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:46:22 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:46:22 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:46:23 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:46:48 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:46:48 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:46:49 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:47:29 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:47:29 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:47:30 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:47:30 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:47:30 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:47:32 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2023-02-06 12:47:48 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:47:48 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:47:49 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:48:00 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:48:00 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:48:01 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:48:02 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:48:02 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:48:03 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:48:10 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:48:10 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:48:11 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:48:33 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070a916756877123515649e9df9","resultCode":"InternalError"}
+2023-02-06 12:48:33 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:48:34 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:49:34 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070a916756877742003502e9df9","resultCode":"InternalError"}
+2023-02-06 12:49:34 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:49:35 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:50:48 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:50:48 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:50:49 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:50:57 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:50:57 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:50:58 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:50:59 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:50:59 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:51:01 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2023-02-06 12:51:06 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070a816756878656964989eb21a","resultCode":"InternalError"}
+2023-02-06 12:51:06 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:51:07 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:51:31 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:51:31 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:51:32 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:52:18 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:52:18 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:52:19 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:52:19 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:52:19 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:52:21 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2023-02-06 12:52:34 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070a816756879538875012eb21a","resultCode":"InternalError"}
+2023-02-06 12:52:34 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:52:35 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:53:00 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:53:00 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:53:01 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:54:03 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070a816756880424513916eb20e","resultCode":"InternalError"}
+2023-02-06 12:54:03 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:54:04 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:54:30 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:54:30 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:54:31 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:55:12 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070a816756881117026905eb20e","resultCode":"InternalError"}
+2023-02-06 12:55:12 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:55:13 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:55:51 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070ae16756881512064807eef90","resultCode":"InternalError"}
+2023-02-06 12:55:51 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:55:52 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:56:47 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070ae16756882063201258eef90","resultCode":"InternalError"}
+2023-02-06 12:56:47 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:56:48 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:57:01 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2023/01/03/01/02/00/104182561_p0.jpg
+2023-02-06 12:57:09 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:57:09 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:57:10 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:57:25 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:57:25 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:57:26 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:57:30 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070ae16756882502994244eef90","resultCode":"InternalError"}
+2023-02-06 12:57:30 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:57:31 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:58:13 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:58:13 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:58:14 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:58:29 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:58:29 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:58:30 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:58:47 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:58:47 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:58:48 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:59:07 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 12:59:07 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 12:59:08 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 12:59:42 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070ad16756883820244257e2408","resultCode":"InternalError"}
+2023-02-06 12:59:42 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 12:59:43 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 13:00:08 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/11/04/01/17/36/102493657_p0.jpg
+2023-02-06 13:00:12 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 13:00:12 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 13:00:13 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 13:00:28 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 13:00:28 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 13:00:29 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 13:00:38 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 13:00:38 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 13:00:39 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 13:00:40 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 13:00:40 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 13:00:42 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2023-02-06 13:00:48 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/03/20/13/40/05/97043452_p0.jpg
+2023-02-06 13:00:57 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070ad16756884566347723e2405","resultCode":"InternalError"}
+2023-02-06 13:00:57 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 13:00:58 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 13:01:35 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070ad16756884946987371e2405","resultCode":"InternalError"}
+2023-02-06 13:01:35 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 13:01:36 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 13:01:40 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 13:01:40 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 13:01:41 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 13:01:54 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 13:01:54 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 13:01:55 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 13:03:03 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 13:03:03 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 13:03:04 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 13:03:12 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070ad16756885921693302e2405","resultCode":"InternalError"}
+2023-02-06 13:03:12 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 13:03:13 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 13:03:31 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070ae16756886109061354eef81","resultCode":"InternalError"}
+2023-02-06 13:03:31 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 13:03:32 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 13:03:45 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070ae16756886249124522eef81","resultCode":"InternalError"}
+2023-02-06 13:03:45 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 13:03:46 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 13:03:55 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 13:03:55 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 13:03:56 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 13:03:57 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:{"code":"InternalError","message":"No content to map due to end-of-input\n at [Source: (byte[])\"\"; line: 1, column: 0]","requestId":"0a0070ae16756886370906979eef81","resultCode":"InternalError"}
+2023-02-06 13:03:57 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:500:No content to map due to end-of-input
+ at [Source: (byte[])""; line: 1, column: 0]
+2023-02-06 13:03:59 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2023-02-06 13:04:09 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 13:04:09 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 13:04:10 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 13:04:34 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 13:04:34 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 13:04:35 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 13:05:11 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 13:05:11 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 13:05:12 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-02-06 13:05:56 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:429:
+2023-02-06 13:05:56 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-02-06 13:05:57 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
