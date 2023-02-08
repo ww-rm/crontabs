@@ -4415,3 +4415,11 @@ Thank you very much!</p>
 2023-02-08 00:22:47 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2021/08/31/05/10/10/92394562_p0.jpg
 2023-02-08 00:40:32 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/08/03/15/19/33/100201700_p0.png
 2023-02-08 00:46:52 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/09/26/00/16/42/101491103_p0.jpg
+2023-02-08 10:20:26 - WARNING - aliyundrive.py - 820 - Token is about to expire, try to auto refresh.
+2023-02-08 11:49:35 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-02-08 11:49:36 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
+2023-02-08 11:50:06 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-02-08 11:50:08 - WARNING - base.py - 25 - Retry func _post_file_complete 2 time.
+2023-02-08 12:10:56 - WARNING - base.py - 100 - https://api.aliyundrive.com/v2/file/complete:429:Blocked by Sentinel (flow limiting)
+2023-02-08 12:10:56 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/v2/file/complete:JsonValueError.
+2023-02-08 12:10:57 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
