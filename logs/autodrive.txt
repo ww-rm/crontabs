@@ -8987,3 +8987,21 @@ Thank you very much!</p>
 2023-03-19 12:47:18 - WARNING - pixivdrive.py - 127 - Failed to add salt to page tmp/104875961/104875961_ugoira0.gif, upload original page.
 2023-03-19 12:47:18 - WARNING - pixivdrive.py - 155 - Failed to make mirage for page tmp/104875961/104875961_ugoira0.gif.
 2023-03-19 12:59:23 - WARNING - pixivdrive.py - 127 - Failed to add salt to page tmp/69627398/69627398_p0.gif, upload original page.
+2023-03-20 10:19:19 - WARNING - aliyundrive.py - 820 - Token is about to expire, try to auto refresh.
+2023-03-20 10:31:04 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-20 10:31:05 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-03-20 10:31:35 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-20 10:31:37 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2023-03-20 10:32:07 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-20 10:32:10 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2023-03-20 10:32:41 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-20 10:32:45 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2023-03-20 10:32:45 - ERROR - aliyundrive.py - 954 - Failed to create folder pixiv/31133701/カンザリン - 31133701.
+2023-03-20 10:33:15 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-20 10:33:16 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-03-20 10:51:16 - WARNING - pixivdrive.py - 127 - Failed to add salt to page tmp/104875961/104875961_ugoira0.gif, upload original page.
+2023-03-20 10:51:17 - WARNING - pixivdrive.py - 155 - Failed to make mirage for page tmp/104875961/104875961_ugoira0.gif.
+2023-03-20 11:21:51 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2020/10/31/00/30/05/85340093_p0.jpg
+2023-03-20 11:33:41 - WARNING - pixivdrive.py - 127 - Failed to add salt to page tmp/69627398/69627398_p0.gif, upload original page.
+2023-03-20 11:55:14 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2023/02/14/06/01/00/105362272_p0.jpg
+2023-03-20 12:00:15 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2023/01/08/01/27/13/104330693_p0.jpg
