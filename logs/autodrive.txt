@@ -10008,3 +10008,220 @@ Thank you very much!</p>
 2023-03-26 00:35:13 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
 2023-03-26 00:40:52 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2023/01/09/21/48/43/104386551_p0.jpg
 2023-03-26 00:53:28 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/11/06/02/18/27/102549978_p0.png
+2023-03-26 10:15:41 - WARNING - aliyundrive.py - 820 - Token is about to expire, try to auto refresh.
+2023-03-26 10:22:07 - WARNING - pixivdrive.py - 127 - Failed to add salt to page tmp/104875961/104875961_ugoira0.gif, upload original page.
+2023-03-26 10:22:07 - WARNING - pixivdrive.py - 155 - Failed to make mirage for page tmp/104875961/104875961_ugoira0.gif.
+2023-03-26 10:26:09 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-26 10:26:10 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
+2023-03-26 10:28:39 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-26 10:28:40 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-03-26 10:32:34 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2023/03/01/20/07/54/105823483_p0.jpg
+2023-03-26 10:46:09 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/12/06/08/58/48/103381255_p0.png
+2023-03-26 10:50:51 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='cn-beijing-data.aliyundrive.net', port=443): Read timed out. (read timeout=30)")': /btyGOLrw%2F889478%2F63ee0fb342e689a450c8475db8b284a726342a54%2F6420236d49db415f89f74166b3b1ff62669b4694?partNumber=1&security-token=CAIS%2BgF1q6Ft5B2yfSjIr5DfJuLtoYVv9fSGNX%2F9j1gHOdVK3J%2BcsTz2IHFPeHJrBeAYt%2FoxmW1X5vwSlq5rR4QAXlDfNSXSZlXNqVHPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLukMWr%2Fwq3PIdp2ma447NWQlLnzyCMvvJ9OVDFyN0aKEnH7J%2Bq%2FzxhTPrMnpkSlacGoABgKP9zmTcLcRjoiIUFhNONq3gVmrI%2FPQXzaOAwvr%2F3c%2FZC2g9Fn1Zc%2BLKEMx4ZhLPBLt6Xdc4BxjrZRrMDUWkkacsNzM3ugcElIcF14V2WSqAjFTFNeH5thBDo%2BzP8xunY94Wc7lrt1Mp8VEAjEz3jfvKBPflXUmbS6i6oybKtlw%3D&uploadId=24C2832584024C258A75DE3FFF62F64B&x-oss-access-key-id=STS.NSjmXYLZNB6m7YLkXR5Zf3Z7S&x-oss-expires=1679831421&x-oss-signature=4TBVVd%2B%2FdAVwSUnkyXQf6N%2BkyUDxvqHtmwZmQaPp%2FNI%3D&x-oss-signature-version=OSS2
+2023-03-26 10:50:53 - WARNING - base.py - 100 - https://cn-beijing-data.aliyundrive.net/btyGOLrw%2F889478%2F63ee0fb342e689a450c8475db8b284a726342a54%2F6420236d49db415f89f74166b3b1ff62669b4694?partNumber=1&security-token=CAIS%2BgF1q6Ft5B2yfSjIr5DfJuLtoYVv9fSGNX%2F9j1gHOdVK3J%2BcsTz2IHFPeHJrBeAYt%2FoxmW1X5vwSlq5rR4QAXlDfNSXSZlXNqVHPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLukMWr%2Fwq3PIdp2ma447NWQlLnzyCMvvJ9OVDFyN0aKEnH7J%2Bq%2FzxhTPrMnpkSlacGoABgKP9zmTcLcRjoiIUFhNONq3gVmrI%2FPQXzaOAwvr%2F3c%2FZC2g9Fn1Zc%2BLKEMx4ZhLPBLt6Xdc4BxjrZRrMDUWkkacsNzM3ugcElIcF14V2WSqAjFTFNeH5thBDo%2BzP8xunY94Wc7lrt1Mp8VEAjEz3jfvKBPflXUmbS6i6oybKtlw%3D&uploadId=24C2832584024C258A75DE3FFF62F64B&x-oss-access-key-id=STS.NSjmXYLZNB6m7YLkXR5Zf3Z7S&x-oss-expires=1679831421&x-oss-signature=4TBVVd%2B%2FdAVwSUnkyXQf6N%2BkyUDxvqHtmwZmQaPp%2FNI%3D&x-oss-signature-version=OSS2:409:<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+  <Code>PartAlreadyExist</Code>
+  <Message>For sequential multipart upload, you can't overwrite uploaded parts.</Message>
+  <RequestId>6420238C4361E63635E9CE3F</RequestId>
+  <HostId>cn-beijing-data.aliyundrive.net</HostId>
+  <PartEtag>"6C8366A80D3B2A7A8739EFA3A3019901"</PartEtag>
+  <PartNumber>1</PartNumber>
+  <EC>0042-00000108</EC>
+</Error>
+
+2023-03-26 10:50:53 - WARNING - base.py - 100 - https://cn-beijing-data.aliyundrive.net/btyGOLrw%2F889478%2F63ee0fb342e689a450c8475db8b284a726342a54%2F6420236d49db415f89f74166b3b1ff62669b4694?partNumber=1&security-token=CAIS%2BgF1q6Ft5B2yfSjIr5DfJuLtoYVv9fSGNX%2F9j1gHOdVK3J%2BcsTz2IHFPeHJrBeAYt%2FoxmW1X5vwSlq5rR4QAXlDfNSXSZlXNqVHPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLukMWr%2Fwq3PIdp2ma447NWQlLnzyCMvvJ9OVDFyN0aKEnH7J%2Bq%2FzxhTPrMnpkSlacGoABgKP9zmTcLcRjoiIUFhNONq3gVmrI%2FPQXzaOAwvr%2F3c%2FZC2g9Fn1Zc%2BLKEMx4ZhLPBLt6Xdc4BxjrZRrMDUWkkacsNzM3ugcElIcF14V2WSqAjFTFNeH5thBDo%2BzP8xunY94Wc7lrt1Mp8VEAjEz3jfvKBPflXUmbS6i6oybKtlw%3D&uploadId=24C2832584024C258A75DE3FFF62F64B&x-oss-access-key-id=STS.NSjmXYLZNB6m7YLkXR5Zf3Z7S&x-oss-expires=1679831421&x-oss-signature=4TBVVd%2B%2FdAVwSUnkyXQf6N%2BkyUDxvqHtmwZmQaPp%2FNI%3D&x-oss-signature-version=OSS2:409:<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+  <Code>PartAlreadyExist</Code>
+  <Message>For sequential multipart upload, you can't overwrite uploaded parts.</Message>
+  <RequestId>6420238D4361E6363566D03F</RequestId>
+  <HostId>cn-beijing-data.aliyundrive.net</HostId>
+  <PartEtag>"6C8366A80D3B2A7A8739EFA3A3019901"</PartEtag>
+  <PartNumber>1</PartNumber>
+  <EC>0042-00000108</EC>
+</Error>
+
+2023-03-26 10:50:53 - WARNING - base.py - 100 - https://cn-beijing-data.aliyundrive.net/btyGOLrw%2F889478%2F63ee0fb342e689a450c8475db8b284a726342a54%2F6420236d49db415f89f74166b3b1ff62669b4694?partNumber=1&security-token=CAIS%2BgF1q6Ft5B2yfSjIr5DfJuLtoYVv9fSGNX%2F9j1gHOdVK3J%2BcsTz2IHFPeHJrBeAYt%2FoxmW1X5vwSlq5rR4QAXlDfNSXSZlXNqVHPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLukMWr%2Fwq3PIdp2ma447NWQlLnzyCMvvJ9OVDFyN0aKEnH7J%2Bq%2FzxhTPrMnpkSlacGoABgKP9zmTcLcRjoiIUFhNONq3gVmrI%2FPQXzaOAwvr%2F3c%2FZC2g9Fn1Zc%2BLKEMx4ZhLPBLt6Xdc4BxjrZRrMDUWkkacsNzM3ugcElIcF14V2WSqAjFTFNeH5thBDo%2BzP8xunY94Wc7lrt1Mp8VEAjEz3jfvKBPflXUmbS6i6oybKtlw%3D&uploadId=24C2832584024C258A75DE3FFF62F64B&x-oss-access-key-id=STS.NSjmXYLZNB6m7YLkXR5Zf3Z7S&x-oss-expires=1679831421&x-oss-signature=4TBVVd%2B%2FdAVwSUnkyXQf6N%2BkyUDxvqHtmwZmQaPp%2FNI%3D&x-oss-signature-version=OSS2:409:<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+  <Code>PartAlreadyExist</Code>
+  <Message>For sequential multipart upload, you can't overwrite uploaded parts.</Message>
+  <RequestId>6420238D4361E63635C5D03F</RequestId>
+  <HostId>cn-beijing-data.aliyundrive.net</HostId>
+  <PartEtag>"6C8366A80D3B2A7A8739EFA3A3019901"</PartEtag>
+  <PartNumber>1</PartNumber>
+  <EC>0042-00000108</EC>
+</Error>
+
+2023-03-26 10:50:53 - ERROR - aliyundrive.py - 1065 - File tmp/105071160/105071160_p1.jpg Part 1 upload failed.
+2023-03-26 11:03:10 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='cn-beijing-data.aliyundrive.net', port=443): Read timed out. (read timeout=30)")': /P183U2QK%2F889478%2F63b806ff6cbd488f474d49f58295e4f18606505a%2F64202650cd7263d4f2ef45c3830383921ecbc5f2?partNumber=1&security-token=CAIS%2BgF1q6Ft5B2yfSjIr5f7A8DDuJJVzYO4WGrGr1RjWOwYrpX9qDz2IHFPeHJrBeAYt%2FoxmW1X5vwSlq5rR4QAXlDfNXesS1XNqVHPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLukMWr%2Fwq3PIdp2ma447NWQlLnzyCMvvJ9OVDFyN0aKEnH7J%2Bq%2FzxhTPrMnpkSlacGoABebXHCcYts9anP3M9ezsqrYCg3ff0FCZ3fBWIRvXHQlTvAX%2FNQtj7%2Fcu1WkXpGCTEfbNlc32MbBhMQdHxe6ximsD2KyEBOxAcOQoq4xOIOiP1zhc1i%2FgPdvHjOxUrvxPgU0Lz6ll1F285DC6rfC9FuNR4JqeCEsVsG4pJYr%2Bmg%2BA%3D&uploadId=B988D065E1594A4192614BFD8CA0DA83&x-oss-access-key-id=STS.NTNHzwUMtzASZLwKT6Tc4APVJ&x-oss-expires=1679832160&x-oss-signature=8i6vpJOR4RPku6SFezlOGVr%2FGQzSvgsuwBUZBhoj5os%3D&x-oss-signature-version=OSS2
+2023-03-26 11:03:12 - WARNING - base.py - 100 - https://cn-beijing-data.aliyundrive.net/P183U2QK%2F889478%2F63b806ff6cbd488f474d49f58295e4f18606505a%2F64202650cd7263d4f2ef45c3830383921ecbc5f2?partNumber=1&security-token=CAIS%2BgF1q6Ft5B2yfSjIr5f7A8DDuJJVzYO4WGrGr1RjWOwYrpX9qDz2IHFPeHJrBeAYt%2FoxmW1X5vwSlq5rR4QAXlDfNXesS1XNqVHPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLukMWr%2Fwq3PIdp2ma447NWQlLnzyCMvvJ9OVDFyN0aKEnH7J%2Bq%2FzxhTPrMnpkSlacGoABebXHCcYts9anP3M9ezsqrYCg3ff0FCZ3fBWIRvXHQlTvAX%2FNQtj7%2Fcu1WkXpGCTEfbNlc32MbBhMQdHxe6ximsD2KyEBOxAcOQoq4xOIOiP1zhc1i%2FgPdvHjOxUrvxPgU0Lz6ll1F285DC6rfC9FuNR4JqeCEsVsG4pJYr%2Bmg%2BA%3D&uploadId=B988D065E1594A4192614BFD8CA0DA83&x-oss-access-key-id=STS.NTNHzwUMtzASZLwKT6Tc4APVJ&x-oss-expires=1679832160&x-oss-signature=8i6vpJOR4RPku6SFezlOGVr%2FGQzSvgsuwBUZBhoj5os%3D&x-oss-signature-version=OSS2:409:<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+  <Code>PartAlreadyExist</Code>
+  <Message>For sequential multipart upload, you can't overwrite uploaded parts.</Message>
+  <RequestId>6420267028336B3533943FE0</RequestId>
+  <HostId>cn-beijing-data.aliyundrive.net</HostId>
+  <PartEtag>"1B45B6808B40BA8914454626F1D09BFA"</PartEtag>
+  <PartNumber>1</PartNumber>
+  <EC>0042-00000108</EC>
+</Error>
+
+2023-03-26 11:03:12 - WARNING - base.py - 100 - https://cn-beijing-data.aliyundrive.net/P183U2QK%2F889478%2F63b806ff6cbd488f474d49f58295e4f18606505a%2F64202650cd7263d4f2ef45c3830383921ecbc5f2?partNumber=1&security-token=CAIS%2BgF1q6Ft5B2yfSjIr5f7A8DDuJJVzYO4WGrGr1RjWOwYrpX9qDz2IHFPeHJrBeAYt%2FoxmW1X5vwSlq5rR4QAXlDfNXesS1XNqVHPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLukMWr%2Fwq3PIdp2ma447NWQlLnzyCMvvJ9OVDFyN0aKEnH7J%2Bq%2FzxhTPrMnpkSlacGoABebXHCcYts9anP3M9ezsqrYCg3ff0FCZ3fBWIRvXHQlTvAX%2FNQtj7%2Fcu1WkXpGCTEfbNlc32MbBhMQdHxe6ximsD2KyEBOxAcOQoq4xOIOiP1zhc1i%2FgPdvHjOxUrvxPgU0Lz6ll1F285DC6rfC9FuNR4JqeCEsVsG4pJYr%2Bmg%2BA%3D&uploadId=B988D065E1594A4192614BFD8CA0DA83&x-oss-access-key-id=STS.NTNHzwUMtzASZLwKT6Tc4APVJ&x-oss-expires=1679832160&x-oss-signature=8i6vpJOR4RPku6SFezlOGVr%2FGQzSvgsuwBUZBhoj5os%3D&x-oss-signature-version=OSS2:409:<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+  <Code>PartAlreadyExist</Code>
+  <Message>For sequential multipart upload, you can't overwrite uploaded parts.</Message>
+  <RequestId>6420267028336B3533EC3FE0</RequestId>
+  <HostId>cn-beijing-data.aliyundrive.net</HostId>
+  <PartEtag>"1B45B6808B40BA8914454626F1D09BFA"</PartEtag>
+  <PartNumber>1</PartNumber>
+  <EC>0042-00000108</EC>
+</Error>
+
+2023-03-26 11:03:12 - WARNING - base.py - 100 - https://cn-beijing-data.aliyundrive.net/P183U2QK%2F889478%2F63b806ff6cbd488f474d49f58295e4f18606505a%2F64202650cd7263d4f2ef45c3830383921ecbc5f2?partNumber=1&security-token=CAIS%2BgF1q6Ft5B2yfSjIr5f7A8DDuJJVzYO4WGrGr1RjWOwYrpX9qDz2IHFPeHJrBeAYt%2FoxmW1X5vwSlq5rR4QAXlDfNXesS1XNqVHPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLukMWr%2Fwq3PIdp2ma447NWQlLnzyCMvvJ9OVDFyN0aKEnH7J%2Bq%2FzxhTPrMnpkSlacGoABebXHCcYts9anP3M9ezsqrYCg3ff0FCZ3fBWIRvXHQlTvAX%2FNQtj7%2Fcu1WkXpGCTEfbNlc32MbBhMQdHxe6ximsD2KyEBOxAcOQoq4xOIOiP1zhc1i%2FgPdvHjOxUrvxPgU0Lz6ll1F285DC6rfC9FuNR4JqeCEsVsG4pJYr%2Bmg%2BA%3D&uploadId=B988D065E1594A4192614BFD8CA0DA83&x-oss-access-key-id=STS.NTNHzwUMtzASZLwKT6Tc4APVJ&x-oss-expires=1679832160&x-oss-signature=8i6vpJOR4RPku6SFezlOGVr%2FGQzSvgsuwBUZBhoj5os%3D&x-oss-signature-version=OSS2:409:<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+  <Code>PartAlreadyExist</Code>
+  <Message>For sequential multipart upload, you can't overwrite uploaded parts.</Message>
+  <RequestId>6420267028336B35332240E0</RequestId>
+  <HostId>cn-beijing-data.aliyundrive.net</HostId>
+  <PartEtag>"1B45B6808B40BA8914454626F1D09BFA"</PartEtag>
+  <PartNumber>1</PartNumber>
+  <EC>0042-00000108</EC>
+</Error>
+
+2023-03-26 11:03:12 - ERROR - aliyundrive.py - 1065 - File tmp/103284245/103284245.json.txt Part 1 upload failed.
+2023-03-26 11:06:56 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-26 11:06:57 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
+2023-03-26 11:07:27 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-26 11:07:29 - WARNING - base.py - 25 - Retry func _post_file_complete 2 time.
+2023-03-26 11:07:59 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-26 11:08:02 - WARNING - base.py - 25 - Retry func _post_file_complete 3 time.
+2023-03-26 11:08:32 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-26 11:08:36 - ERROR - base.py - 36 - All retries failed in func _post_file_complete.
+2023-03-26 11:08:36 - ERROR - aliyundrive.py - 1076 - Failed to complete upload file tmp/102695687/102695687_p2.jpg.
+2023-03-26 11:09:07 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-26 11:09:08 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-03-26 11:10:36 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='cn-beijing-data.aliyundrive.net', port=443): Read timed out. (read timeout=30)")': /AxK8kE7s%2F889478%2F6416f4ee8471385c1ca4406d96bb1387e3c4b378%2F6420280ebb8b56e16b4c4469bc718eb47db1ed85?partNumber=1&security-token=CAIS%2BgF1q6Ft5B2yfSjIr5eBLunehbdr%2BZSCe3%2F8r3g6WeZUiZD7kTz2IHFPeHJrBeAYt%2FoxmW1X5vwSlq5rR4QAXlDfNSzZIVXNqVHPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLukMWr%2Fwq3PIdp2ma447NWQlLnzyCMvvJ9OVDFyN0aKEnH7J%2Bq%2FzxhTPrMnpkSlacGoABAkMh7ozLTHRWVOYLxRRyB6OAuYyISIse5FNA3XpdXlK2KXW0P2k1UH8q4EclpgT3OfbIhpFFLh86KSjY2GGIXKk%2FK7pHzOOpnZFYsMGticyivlN0NuYAtXEjJNgqQ0ffi5ctgu6DNB%2F8DgnWqp0%2B83ridnhvc1fE4u6t34BL7qg%3D&uploadId=74BB6842011F4AFEB83730EEBB2B2FDE&x-oss-access-key-id=STS.NT4eSjhhJNViyYMKxoUixfUPs&x-oss-expires=1679832606&x-oss-signature=vchx%2Fb2OAglZftEOrm62esC28Kp%2FoYm1fZKYmjXsheY%3D&x-oss-signature-version=OSS2
+2023-03-26 11:11:24 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2023/03/08/20/04/57/106029456_p0.jpg
+2023-03-26 11:23:23 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='cn-beijing-data.aliyundrive.net', port=443): Read timed out. (read timeout=30)")': /7OyRN3u3%2F889478%2F6374d54de1aad32e5b01446d99c67e9cc30ae0df%2F64202b0d196d0957db53413b9d82979c3650cd75?partNumber=1&security-token=CAIS%2BgF1q6Ft5B2yfSjIr5eADv7NgLVR4KCpY0P11mcAT955laDpqTz2IHFPeHJrBeAYt%2FoxmW1X5vwSlq5rR4QAXlDfNUvIDFbNqVHPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLukMWr%2Fwq3PIdp2ma447NWQlLnzyCMvvJ9OVDFyN0aKEnH7J%2Bq%2FzxhTPrMnpkSlacGoABWAk4MqIfc92YNoFUCy%2F46TF7MZ8vv%2B0Q5%2BZmroRorJr2mCgkpTWA%2FjgZ22fla%2FuUWVMIzt3mb%2FwWhUNIwYeKoRIqOfN5eF10Y6OhRRYdlethTbFVrzCudHnSLNu69%2FbhfSQ1NxJwNu6ChqOf6B4%2B1X5eg6wgdYoFGUqPQoHn%2Bvw%3D&uploadId=D8F5FB08A0EB40F88357567C95C689EF&x-oss-access-key-id=STS.NT5EDymjpWbBaeD2gUCQUzeBK&x-oss-expires=1679833373&x-oss-signature=O8EZsahppXMgdIqlOAE%2FezWCCUH6k2yoTFgFqFjo2sA%3D&x-oss-signature-version=OSS2
+2023-03-26 11:23:25 - WARNING - base.py - 100 - https://cn-beijing-data.aliyundrive.net/7OyRN3u3%2F889478%2F6374d54de1aad32e5b01446d99c67e9cc30ae0df%2F64202b0d196d0957db53413b9d82979c3650cd75?partNumber=1&security-token=CAIS%2BgF1q6Ft5B2yfSjIr5eADv7NgLVR4KCpY0P11mcAT955laDpqTz2IHFPeHJrBeAYt%2FoxmW1X5vwSlq5rR4QAXlDfNUvIDFbNqVHPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLukMWr%2Fwq3PIdp2ma447NWQlLnzyCMvvJ9OVDFyN0aKEnH7J%2Bq%2FzxhTPrMnpkSlacGoABWAk4MqIfc92YNoFUCy%2F46TF7MZ8vv%2B0Q5%2BZmroRorJr2mCgkpTWA%2FjgZ22fla%2FuUWVMIzt3mb%2FwWhUNIwYeKoRIqOfN5eF10Y6OhRRYdlethTbFVrzCudHnSLNu69%2FbhfSQ1NxJwNu6ChqOf6B4%2B1X5eg6wgdYoFGUqPQoHn%2Bvw%3D&uploadId=D8F5FB08A0EB40F88357567C95C689EF&x-oss-access-key-id=STS.NT5EDymjpWbBaeD2gUCQUzeBK&x-oss-expires=1679833373&x-oss-signature=O8EZsahppXMgdIqlOAE%2FezWCCUH6k2yoTFgFqFjo2sA%3D&x-oss-signature-version=OSS2:409:<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+  <Code>PartAlreadyExist</Code>
+  <Message>For sequential multipart upload, you can't overwrite uploaded parts.</Message>
+  <RequestId>64202B2C2341A337327F32B6</RequestId>
+  <HostId>cn-beijing-data.aliyundrive.net</HostId>
+  <PartEtag>"CF48430205C3F991F0CE04C2E0FF297B"</PartEtag>
+  <PartNumber>1</PartNumber>
+  <EC>0042-00000108</EC>
+</Error>
+
+2023-03-26 11:23:26 - WARNING - base.py - 100 - https://cn-beijing-data.aliyundrive.net/7OyRN3u3%2F889478%2F6374d54de1aad32e5b01446d99c67e9cc30ae0df%2F64202b0d196d0957db53413b9d82979c3650cd75?partNumber=1&security-token=CAIS%2BgF1q6Ft5B2yfSjIr5eADv7NgLVR4KCpY0P11mcAT955laDpqTz2IHFPeHJrBeAYt%2FoxmW1X5vwSlq5rR4QAXlDfNUvIDFbNqVHPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLukMWr%2Fwq3PIdp2ma447NWQlLnzyCMvvJ9OVDFyN0aKEnH7J%2Bq%2FzxhTPrMnpkSlacGoABWAk4MqIfc92YNoFUCy%2F46TF7MZ8vv%2B0Q5%2BZmroRorJr2mCgkpTWA%2FjgZ22fla%2FuUWVMIzt3mb%2FwWhUNIwYeKoRIqOfN5eF10Y6OhRRYdlethTbFVrzCudHnSLNu69%2FbhfSQ1NxJwNu6ChqOf6B4%2B1X5eg6wgdYoFGUqPQoHn%2Bvw%3D&uploadId=D8F5FB08A0EB40F88357567C95C689EF&x-oss-access-key-id=STS.NT5EDymjpWbBaeD2gUCQUzeBK&x-oss-expires=1679833373&x-oss-signature=O8EZsahppXMgdIqlOAE%2FezWCCUH6k2yoTFgFqFjo2sA%3D&x-oss-signature-version=OSS2:409:<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+  <Code>PartAlreadyExist</Code>
+  <Message>For sequential multipart upload, you can't overwrite uploaded parts.</Message>
+  <RequestId>64202B2D2341A337327733B6</RequestId>
+  <HostId>cn-beijing-data.aliyundrive.net</HostId>
+  <PartEtag>"CF48430205C3F991F0CE04C2E0FF297B"</PartEtag>
+  <PartNumber>1</PartNumber>
+  <EC>0042-00000108</EC>
+</Error>
+
+2023-03-26 11:23:26 - WARNING - base.py - 100 - https://cn-beijing-data.aliyundrive.net/7OyRN3u3%2F889478%2F6374d54de1aad32e5b01446d99c67e9cc30ae0df%2F64202b0d196d0957db53413b9d82979c3650cd75?partNumber=1&security-token=CAIS%2BgF1q6Ft5B2yfSjIr5eADv7NgLVR4KCpY0P11mcAT955laDpqTz2IHFPeHJrBeAYt%2FoxmW1X5vwSlq5rR4QAXlDfNUvIDFbNqVHPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLukMWr%2Fwq3PIdp2ma447NWQlLnzyCMvvJ9OVDFyN0aKEnH7J%2Bq%2FzxhTPrMnpkSlacGoABWAk4MqIfc92YNoFUCy%2F46TF7MZ8vv%2B0Q5%2BZmroRorJr2mCgkpTWA%2FjgZ22fla%2FuUWVMIzt3mb%2FwWhUNIwYeKoRIqOfN5eF10Y6OhRRYdlethTbFVrzCudHnSLNu69%2FbhfSQ1NxJwNu6ChqOf6B4%2B1X5eg6wgdYoFGUqPQoHn%2Bvw%3D&uploadId=D8F5FB08A0EB40F88357567C95C689EF&x-oss-access-key-id=STS.NT5EDymjpWbBaeD2gUCQUzeBK&x-oss-expires=1679833373&x-oss-signature=O8EZsahppXMgdIqlOAE%2FezWCCUH6k2yoTFgFqFjo2sA%3D&x-oss-signature-version=OSS2:409:<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+  <Code>PartAlreadyExist</Code>
+  <Message>For sequential multipart upload, you can't overwrite uploaded parts.</Message>
+  <RequestId>64202B2E2341A33732AB33B6</RequestId>
+  <HostId>cn-beijing-data.aliyundrive.net</HostId>
+  <PartEtag>"CF48430205C3F991F0CE04C2E0FF297B"</PartEtag>
+  <PartNumber>1</PartNumber>
+  <EC>0042-00000108</EC>
+</Error>
+
+2023-03-26 11:23:26 - ERROR - aliyundrive.py - 1065 - File tmp/100355644/100355644_p0.jpg Part 1 upload failed.
+2023-03-26 11:23:42 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2023/03/18/00/01/20/106307478_p0.jpg
+2023-03-26 11:47:44 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/12/01/14/22/47/103247008_p0.jpg
+2023-03-26 12:06:01 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-26 12:06:02 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-03-26 12:06:32 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-26 12:06:34 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2023-03-26 12:07:04 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-26 12:07:07 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2023-03-26 12:07:38 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-26 12:07:42 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2023-03-26 12:07:42 - ERROR - aliyundrive.py - 954 - Failed to create folder pixiv/162475/煎茶 - 162475.
+2023-03-26 12:08:12 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-26 12:08:13 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-03-26 12:08:43 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-26 12:08:45 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2023-03-26 12:09:15 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-26 12:09:18 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2023-03-26 12:14:42 - WARNING - aliyundrive.py - 820 - Token is about to expire, try to auto refresh.
+2023-03-26 12:16:44 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='cn-beijing-data.aliyundrive.net', port=443): Read timed out. (read timeout=30)")': /fQxnv0Ns%2F889478%2F638f386475f7e420b15c4425b5fac3f3b110c986%2F6420378e291b86a9ac344743be769f15c5f67bbe?partNumber=1&security-token=CAIS%2BgF1q6Ft5B2yfSjIr5eCJuyFp75jhvuYUGXSoFIbZ%2F5ZrJbumDz2IHFPeHJrBeAYt%2FoxmW1X5vwSlq5rR4QAXlDfNSqxdVXNqVHPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLukMWr%2Fwq3PIdp2ma447NWQlLnzyCMvvJ9OVDFyN0aKEnH7J%2Bq%2FzxhTPrMnpkSlacGoABbInwDTBxz5gR9RlPr809uiC4ofwi8wuhLidKRG9QMfPg5RaE8VY6BlaGpP26DTCE7UxoDIv3fvBpvi%2FbzGV4bOnxrPxYzuynPjaHCVcRyiRr3M3jtbfOqmouCSa0MufZFw3%2FEfWCltwsTiixy3wPhXb%2FV2eukbcHVFxqZxksP%2BQ%3D&uploadId=C9120A6ECFA04C3F9F8175783BFCBAF4&x-oss-access-key-id=STS.NT7mV1JaB19sRCcDRNkquCSEz&x-oss-expires=1679836574&x-oss-signature=1LZUbygB02Dcju%2B8%2FqG0cKY%2FoMNK50ppzSvZDj%2FhgWs%3D&x-oss-signature-version=OSS2
+2023-03-26 12:16:46 - WARNING - base.py - 100 - https://cn-beijing-data.aliyundrive.net/fQxnv0Ns%2F889478%2F638f386475f7e420b15c4425b5fac3f3b110c986%2F6420378e291b86a9ac344743be769f15c5f67bbe?partNumber=1&security-token=CAIS%2BgF1q6Ft5B2yfSjIr5eCJuyFp75jhvuYUGXSoFIbZ%2F5ZrJbumDz2IHFPeHJrBeAYt%2FoxmW1X5vwSlq5rR4QAXlDfNSqxdVXNqVHPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLukMWr%2Fwq3PIdp2ma447NWQlLnzyCMvvJ9OVDFyN0aKEnH7J%2Bq%2FzxhTPrMnpkSlacGoABbInwDTBxz5gR9RlPr809uiC4ofwi8wuhLidKRG9QMfPg5RaE8VY6BlaGpP26DTCE7UxoDIv3fvBpvi%2FbzGV4bOnxrPxYzuynPjaHCVcRyiRr3M3jtbfOqmouCSa0MufZFw3%2FEfWCltwsTiixy3wPhXb%2FV2eukbcHVFxqZxksP%2BQ%3D&uploadId=C9120A6ECFA04C3F9F8175783BFCBAF4&x-oss-access-key-id=STS.NT7mV1JaB19sRCcDRNkquCSEz&x-oss-expires=1679836574&x-oss-signature=1LZUbygB02Dcju%2B8%2FqG0cKY%2FoMNK50ppzSvZDj%2FhgWs%3D&x-oss-signature-version=OSS2:409:<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+  <Code>PartAlreadyExist</Code>
+  <Message>For sequential multipart upload, you can't overwrite uploaded parts.</Message>
+  <RequestId>642037AD9B96733137358F40</RequestId>
+  <HostId>cn-beijing-data.aliyundrive.net</HostId>
+  <PartEtag>"FFFD8C928C89FD61984BBB803DC9B5E0"</PartEtag>
+  <PartNumber>1</PartNumber>
+  <EC>0042-00000108</EC>
+</Error>
+
+2023-03-26 12:16:46 - WARNING - base.py - 100 - https://cn-beijing-data.aliyundrive.net/fQxnv0Ns%2F889478%2F638f386475f7e420b15c4425b5fac3f3b110c986%2F6420378e291b86a9ac344743be769f15c5f67bbe?partNumber=1&security-token=CAIS%2BgF1q6Ft5B2yfSjIr5eCJuyFp75jhvuYUGXSoFIbZ%2F5ZrJbumDz2IHFPeHJrBeAYt%2FoxmW1X5vwSlq5rR4QAXlDfNSqxdVXNqVHPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLukMWr%2Fwq3PIdp2ma447NWQlLnzyCMvvJ9OVDFyN0aKEnH7J%2Bq%2FzxhTPrMnpkSlacGoABbInwDTBxz5gR9RlPr809uiC4ofwi8wuhLidKRG9QMfPg5RaE8VY6BlaGpP26DTCE7UxoDIv3fvBpvi%2FbzGV4bOnxrPxYzuynPjaHCVcRyiRr3M3jtbfOqmouCSa0MufZFw3%2FEfWCltwsTiixy3wPhXb%2FV2eukbcHVFxqZxksP%2BQ%3D&uploadId=C9120A6ECFA04C3F9F8175783BFCBAF4&x-oss-access-key-id=STS.NT7mV1JaB19sRCcDRNkquCSEz&x-oss-expires=1679836574&x-oss-signature=1LZUbygB02Dcju%2B8%2FqG0cKY%2FoMNK50ppzSvZDj%2FhgWs%3D&x-oss-signature-version=OSS2:409:<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+  <Code>PartAlreadyExist</Code>
+  <Message>For sequential multipart upload, you can't overwrite uploaded parts.</Message>
+  <RequestId>642037AE9B96733137F48F40</RequestId>
+  <HostId>cn-beijing-data.aliyundrive.net</HostId>
+  <PartEtag>"FFFD8C928C89FD61984BBB803DC9B5E0"</PartEtag>
+  <PartNumber>1</PartNumber>
+  <EC>0042-00000108</EC>
+</Error>
+
+2023-03-26 12:16:46 - WARNING - base.py - 100 - https://cn-beijing-data.aliyundrive.net/fQxnv0Ns%2F889478%2F638f386475f7e420b15c4425b5fac3f3b110c986%2F6420378e291b86a9ac344743be769f15c5f67bbe?partNumber=1&security-token=CAIS%2BgF1q6Ft5B2yfSjIr5eCJuyFp75jhvuYUGXSoFIbZ%2F5ZrJbumDz2IHFPeHJrBeAYt%2FoxmW1X5vwSlq5rR4QAXlDfNSqxdVXNqVHPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLukMWr%2Fwq3PIdp2ma447NWQlLnzyCMvvJ9OVDFyN0aKEnH7J%2Bq%2FzxhTPrMnpkSlacGoABbInwDTBxz5gR9RlPr809uiC4ofwi8wuhLidKRG9QMfPg5RaE8VY6BlaGpP26DTCE7UxoDIv3fvBpvi%2FbzGV4bOnxrPxYzuynPjaHCVcRyiRr3M3jtbfOqmouCSa0MufZFw3%2FEfWCltwsTiixy3wPhXb%2FV2eukbcHVFxqZxksP%2BQ%3D&uploadId=C9120A6ECFA04C3F9F8175783BFCBAF4&x-oss-access-key-id=STS.NT7mV1JaB19sRCcDRNkquCSEz&x-oss-expires=1679836574&x-oss-signature=1LZUbygB02Dcju%2B8%2FqG0cKY%2FoMNK50ppzSvZDj%2FhgWs%3D&x-oss-signature-version=OSS2:409:<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+  <Code>PartAlreadyExist</Code>
+  <Message>For sequential multipart upload, you can't overwrite uploaded parts.</Message>
+  <RequestId>642037AE9B96733137229040</RequestId>
+  <HostId>cn-beijing-data.aliyundrive.net</HostId>
+  <PartEtag>"FFFD8C928C89FD61984BBB803DC9B5E0"</PartEtag>
+  <PartNumber>1</PartNumber>
+  <EC>0042-00000108</EC>
+</Error>
+
+2023-03-26 12:16:46 - ERROR - aliyundrive.py - 1065 - File tmp/103260928/103260928_p1.jpg Part 1 upload failed.
+2023-03-26 12:21:44 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2023/02/14/06/01/00/105362272_p0.jpg
+2023-03-26 12:26:35 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='cn-beijing-data.aliyundrive.net', port=443): Read timed out. (read timeout=30)")': /CDyE8yHP%2F889478%2F6345f9f77f593f0bfef242f9bf0abe4dccbdb40d%2F642039dd5ce01ed0f3434d4c9af88b76c23dedf0?partNumber=1&security-token=CAIS%2BgF1q6Ft5B2yfSjIr5fWEsrMm%2Bhzx5WRUk2Dvmk8eeBI15LDjTz2IHFPeHJrBeAYt%2FoxmW1X5vwSlq5rR4QAXlDfNRXVEFXNqVHPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLukMWr%2Fwq3PIdp2ma447NWQlLnzyCMvvJ9OVDFyN0aKEnH7J%2Bq%2FzxhTPrMnpkSlacGoABOYjd0LOm8PKFg5rWLygRzpeom9448BEp9h4dhDimhUo72OwDI6umg5RT5Z%2Bhr3EpdT8gCRLSUj37RhLimO1yv6MTjJUQrJ15351htDbK9%2FbCGjjN0v6zdA%2FLvZNC%2FFttSpJh2GLYqU6hR9X852mIeknkpgtOLp776LFvEYkHSTM%3D&uploadId=4B8EF5100F604AC99E17B824E710D721&x-oss-access-key-id=STS.NTcYpxv7RpWzPk2Ziiuod8Who&x-oss-expires=1679837165&x-oss-signature=joZ0GboEbl7btICGfPFkk3PJNbYkvJJTo7KOZXSMoz4%3D&x-oss-signature-version=OSS2
+2023-03-26 12:26:38 - WARNING - base.py - 100 - https://cn-beijing-data.aliyundrive.net/CDyE8yHP%2F889478%2F6345f9f77f593f0bfef242f9bf0abe4dccbdb40d%2F642039dd5ce01ed0f3434d4c9af88b76c23dedf0?partNumber=1&security-token=CAIS%2BgF1q6Ft5B2yfSjIr5fWEsrMm%2Bhzx5WRUk2Dvmk8eeBI15LDjTz2IHFPeHJrBeAYt%2FoxmW1X5vwSlq5rR4QAXlDfNRXVEFXNqVHPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLukMWr%2Fwq3PIdp2ma447NWQlLnzyCMvvJ9OVDFyN0aKEnH7J%2Bq%2FzxhTPrMnpkSlacGoABOYjd0LOm8PKFg5rWLygRzpeom9448BEp9h4dhDimhUo72OwDI6umg5RT5Z%2Bhr3EpdT8gCRLSUj37RhLimO1yv6MTjJUQrJ15351htDbK9%2FbCGjjN0v6zdA%2FLvZNC%2FFttSpJh2GLYqU6hR9X852mIeknkpgtOLp776LFvEYkHSTM%3D&uploadId=4B8EF5100F604AC99E17B824E710D721&x-oss-access-key-id=STS.NTcYpxv7RpWzPk2Ziiuod8Who&x-oss-expires=1679837165&x-oss-signature=joZ0GboEbl7btICGfPFkk3PJNbYkvJJTo7KOZXSMoz4%3D&x-oss-signature-version=OSS2:409:<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+  <Code>PartAlreadyExist</Code>
+  <Message>For sequential multipart upload, you can't overwrite uploaded parts.</Message>
+  <RequestId>642039FC9000D83630E560BD</RequestId>
+  <HostId>cn-beijing-data.aliyundrive.net</HostId>
+  <PartEtag>"8B627CAFE229CDF26D35EBC1C76EE697"</PartEtag>
+  <PartNumber>1</PartNumber>
+  <EC>0042-00000108</EC>
+</Error>
+
+2023-03-26 12:26:39 - WARNING - base.py - 100 - https://cn-beijing-data.aliyundrive.net/CDyE8yHP%2F889478%2F6345f9f77f593f0bfef242f9bf0abe4dccbdb40d%2F642039dd5ce01ed0f3434d4c9af88b76c23dedf0?partNumber=1&security-token=CAIS%2BgF1q6Ft5B2yfSjIr5fWEsrMm%2Bhzx5WRUk2Dvmk8eeBI15LDjTz2IHFPeHJrBeAYt%2FoxmW1X5vwSlq5rR4QAXlDfNRXVEFXNqVHPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLukMWr%2Fwq3PIdp2ma447NWQlLnzyCMvvJ9OVDFyN0aKEnH7J%2Bq%2FzxhTPrMnpkSlacGoABOYjd0LOm8PKFg5rWLygRzpeom9448BEp9h4dhDimhUo72OwDI6umg5RT5Z%2Bhr3EpdT8gCRLSUj37RhLimO1yv6MTjJUQrJ15351htDbK9%2FbCGjjN0v6zdA%2FLvZNC%2FFttSpJh2GLYqU6hR9X852mIeknkpgtOLp776LFvEYkHSTM%3D&uploadId=4B8EF5100F604AC99E17B824E710D721&x-oss-access-key-id=STS.NTcYpxv7RpWzPk2Ziiuod8Who&x-oss-expires=1679837165&x-oss-signature=joZ0GboEbl7btICGfPFkk3PJNbYkvJJTo7KOZXSMoz4%3D&x-oss-signature-version=OSS2:409:<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+  <Code>PartAlreadyExist</Code>
+  <Message>For sequential multipart upload, you can't overwrite uploaded parts.</Message>
+  <RequestId>642039FE9000D836300263BD</RequestId>
+  <HostId>cn-beijing-data.aliyundrive.net</HostId>
+  <PartEtag>"8B627CAFE229CDF26D35EBC1C76EE697"</PartEtag>
+  <PartNumber>1</PartNumber>
+  <EC>0042-00000108</EC>
+</Error>
+
+2023-03-26 12:26:40 - WARNING - base.py - 100 - https://cn-beijing-data.aliyundrive.net/CDyE8yHP%2F889478%2F6345f9f77f593f0bfef242f9bf0abe4dccbdb40d%2F642039dd5ce01ed0f3434d4c9af88b76c23dedf0?partNumber=1&security-token=CAIS%2BgF1q6Ft5B2yfSjIr5fWEsrMm%2Bhzx5WRUk2Dvmk8eeBI15LDjTz2IHFPeHJrBeAYt%2FoxmW1X5vwSlq5rR4QAXlDfNRXVEFXNqVHPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLukMWr%2Fwq3PIdp2ma447NWQlLnzyCMvvJ9OVDFyN0aKEnH7J%2Bq%2FzxhTPrMnpkSlacGoABOYjd0LOm8PKFg5rWLygRzpeom9448BEp9h4dhDimhUo72OwDI6umg5RT5Z%2Bhr3EpdT8gCRLSUj37RhLimO1yv6MTjJUQrJ15351htDbK9%2FbCGjjN0v6zdA%2FLvZNC%2FFttSpJh2GLYqU6hR9X852mIeknkpgtOLp776LFvEYkHSTM%3D&uploadId=4B8EF5100F604AC99E17B824E710D721&x-oss-access-key-id=STS.NTcYpxv7RpWzPk2Ziiuod8Who&x-oss-expires=1679837165&x-oss-signature=joZ0GboEbl7btICGfPFkk3PJNbYkvJJTo7KOZXSMoz4%3D&x-oss-signature-version=OSS2:409:<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+  <Code>PartAlreadyExist</Code>
+  <Message>For sequential multipart upload, you can't overwrite uploaded parts.</Message>
+  <RequestId>642039FF9000D83630EB63BD</RequestId>
+  <HostId>cn-beijing-data.aliyundrive.net</HostId>
+  <PartEtag>"8B627CAFE229CDF26D35EBC1C76EE697"</PartEtag>
+  <PartNumber>1</PartNumber>
+  <EC>0042-00000108</EC>
+</Error>
+
+2023-03-26 12:26:40 - ERROR - aliyundrive.py - 1065 - File tmp/101868669/101868669_p2.jpg Part 1 upload failed.
+2023-03-26 12:35:40 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/07/27/00/00/17/100018860_p0.png
