@@ -10272,3 +10272,352 @@ Thank you very much!</p>
 2023-03-27 23:53:34 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/12/24/00/01/46/103842796_p0.jpg
 2023-03-28 00:07:09 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/11/14/22/12/10/102795925_p0.jpg
 2023-03-28 00:14:54 - WARNING - aliyundrive.py - 820 - Token is about to expire, try to auto refresh.
+2023-03-28 10:18:23 - WARNING - aliyundrive.py - 820 - Token is about to expire, try to auto refresh.
+2023-03-28 10:26:39 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-28 10:26:40 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
+2023-03-28 10:28:31 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-28 10:28:32 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
+2023-03-28 10:31:29 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2021/08/27/01/20/03/92285926_p0.png
+2023-03-28 10:37:46 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-28 10:37:47 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-03-28 10:40:14 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-28 10:40:15 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-03-28 10:44:16 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:504:<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html>
+<head><title>504 Gateway Time-out</title></head>
+<body>
+<center><h1>504 Gateway Time-out</h1></center>
+ Sorry for the inconvenience.<br/>
+Please report this message and include the following information to us.<br/>
+Thank you very much!</p>
+<table>
+<tr>
+<td>URL:</td>
+<td>https://api.aliyundrive.com/adrive/v2/file/createWithFolders</td>
+</tr>
+<tr>
+<td>Server:</td>
+<td>security-pgw-90b2f6b7d69951d209f28a873243d040-ltght</td>
+</tr>
+<tr>
+<td>Date:</td>
+<td>2023/03/28 18:44:16</td>
+</tr>
+</table>
+<hr/>Powered by Tengine<hr><center>tengine</center>
+</body>
+</html>
+
+2023-03-28 10:44:16 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-03-28 10:44:17 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-03-28 10:47:00 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-28 10:47:01 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-03-28 10:47:19 - WARNING - base.py - 100 - https://api.aliyundrive.com/v2/file/complete:502:<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html>
+<head><title>502 Bad Gateway</title></head>
+<body>
+<center><h1>502 Bad Gateway</h1></center>
+ Sorry for the inconvenience.<br/>
+Please report this message and include the following information to us.<br/>
+Thank you very much!</p>
+<table>
+<tr>
+<td>URL:</td>
+<td>https://api.aliyundrive.com/v2/file/complete</td>
+</tr>
+<tr>
+<td>Server:</td>
+<td>security-pgw-90b2f6b7d69951d209f28a873243d040-8kd9c</td>
+</tr>
+<tr>
+<td>Date:</td>
+<td>2023/03/28 18:47:19</td>
+</tr>
+</table>
+<hr/>Powered by Tengine<hr><center>tengine</center>
+</body>
+</html>
+
+2023-03-28 10:47:19 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/v2/file/complete:JsonValueError.
+2023-03-28 10:47:20 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
+2023-03-28 10:47:21 - WARNING - base.py - 100 - https://api.aliyundrive.com/v2/file/complete:502:<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html>
+<head><title>502 Bad Gateway</title></head>
+<body>
+<center><h1>502 Bad Gateway</h1></center>
+ Sorry for the inconvenience.<br/>
+Please report this message and include the following information to us.<br/>
+Thank you very much!</p>
+<table>
+<tr>
+<td>URL:</td>
+<td>https://api.aliyundrive.com/v2/file/complete</td>
+</tr>
+<tr>
+<td>Server:</td>
+<td>security-pgw-90b2f6b7d69951d209f28a873243d040-8kd9c</td>
+</tr>
+<tr>
+<td>Date:</td>
+<td>2023/03/28 18:47:20</td>
+</tr>
+</table>
+<hr/>Powered by Tengine<hr><center>tengine</center>
+</body>
+</html>
+
+2023-03-28 10:47:21 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/v2/file/complete:JsonValueError.
+2023-03-28 10:47:23 - WARNING - base.py - 25 - Retry func _post_file_complete 2 time.
+2023-03-28 10:47:25 - WARNING - base.py - 100 - https://api.aliyundrive.com/v2/file/complete:502:<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html>
+<head><title>502 Bad Gateway</title></head>
+<body>
+<center><h1>502 Bad Gateway</h1></center>
+ Sorry for the inconvenience.<br/>
+Please report this message and include the following information to us.<br/>
+Thank you very much!</p>
+<table>
+<tr>
+<td>URL:</td>
+<td>https://api.aliyundrive.com/v2/file/complete</td>
+</tr>
+<tr>
+<td>Server:</td>
+<td>security-pgw-90b2f6b7d69951d209f28a873243d040-8kd9c</td>
+</tr>
+<tr>
+<td>Date:</td>
+<td>2023/03/28 18:47:23</td>
+</tr>
+</table>
+<hr/>Powered by Tengine<hr><center>tengine</center>
+</body>
+</html>
+
+2023-03-28 10:47:25 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/v2/file/complete:JsonValueError.
+2023-03-28 10:47:28 - WARNING - base.py - 25 - Retry func _post_file_complete 3 time.
+2023-03-28 10:48:18 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:502:<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html>
+<head><title>502 Bad Gateway</title></head>
+<body>
+<center><h1>502 Bad Gateway</h1></center>
+ Sorry for the inconvenience.<br/>
+Please report this message and include the following information to us.<br/>
+Thank you very much!</p>
+<table>
+<tr>
+<td>URL:</td>
+<td>https://api.aliyundrive.com/adrive/v2/file/createWithFolders</td>
+</tr>
+<tr>
+<td>Server:</td>
+<td>security-pgw-90b2f6b7d69951d209f28a873243d040-8kd9c</td>
+</tr>
+<tr>
+<td>Date:</td>
+<td>2023/03/28 18:48:18</td>
+</tr>
+</table>
+<hr/>Powered by Tengine<hr><center>tengine</center>
+</body>
+</html>
+
+2023-03-28 10:48:18 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-03-28 10:48:19 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-03-28 10:50:06 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-28 10:50:07 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-03-28 10:50:43 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-28 10:50:44 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
+2023-03-28 10:50:49 - WARNING - base.py - 100 - https://api.aliyundrive.com/v2/file/complete:502:<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html>
+<head><title>502 Bad Gateway</title></head>
+<body>
+<center><h1>502 Bad Gateway</h1></center>
+ Sorry for the inconvenience.<br/>
+Please report this message and include the following information to us.<br/>
+Thank you very much!</p>
+<table>
+<tr>
+<td>URL:</td>
+<td>https://api.aliyundrive.com/v2/file/complete</td>
+</tr>
+<tr>
+<td>Server:</td>
+<td>security-pgw-90b2f6b7d69951d209f28a873243d040-8kd9c</td>
+</tr>
+<tr>
+<td>Date:</td>
+<td>2023/03/28 18:50:49</td>
+</tr>
+</table>
+<hr/>Powered by Tengine<hr><center>tengine</center>
+</body>
+</html>
+
+2023-03-28 10:50:49 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/v2/file/complete:JsonValueError.
+2023-03-28 10:50:50 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
+2023-03-28 10:50:50 - WARNING - base.py - 100 - https://api.aliyundrive.com/v2/file/complete:502:<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html>
+<head><title>502 Bad Gateway</title></head>
+<body>
+<center><h1>502 Bad Gateway</h1></center>
+ Sorry for the inconvenience.<br/>
+Please report this message and include the following information to us.<br/>
+Thank you very much!</p>
+<table>
+<tr>
+<td>URL:</td>
+<td>https://api.aliyundrive.com/v2/file/complete</td>
+</tr>
+<tr>
+<td>Server:</td>
+<td>security-pgw-90b2f6b7d69951d209f28a873243d040-8kd9c</td>
+</tr>
+<tr>
+<td>Date:</td>
+<td>2023/03/28 18:50:50</td>
+</tr>
+</table>
+<hr/>Powered by Tengine<hr><center>tengine</center>
+</body>
+</html>
+
+2023-03-28 10:50:50 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/v2/file/complete:JsonValueError.
+2023-03-28 10:50:52 - WARNING - base.py - 25 - Retry func _post_file_complete 2 time.
+2023-03-28 10:51:31 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:504:<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html>
+<head><title>504 Gateway Time-out</title></head>
+<body>
+<center><h1>504 Gateway Time-out</h1></center>
+ Sorry for the inconvenience.<br/>
+Please report this message and include the following information to us.<br/>
+Thank you very much!</p>
+<table>
+<tr>
+<td>URL:</td>
+<td>https://api.aliyundrive.com/adrive/v2/file/createWithFolders</td>
+</tr>
+<tr>
+<td>Server:</td>
+<td>security-pgw-90b2f6b7d69951d209f28a873243d040-8kd9c</td>
+</tr>
+<tr>
+<td>Date:</td>
+<td>2023/03/28 18:51:30</td>
+</tr>
+</table>
+<hr/>Powered by Tengine<hr><center>tengine</center>
+</body>
+</html>
+
+2023-03-28 10:51:31 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-03-28 10:51:32 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-03-28 10:52:04 - WARNING - base.py - 100 - https://api.aliyundrive.com/v2/file/complete:502:<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html>
+<head><title>502 Bad Gateway</title></head>
+<body>
+<center><h1>502 Bad Gateway</h1></center>
+ Sorry for the inconvenience.<br/>
+Please report this message and include the following information to us.<br/>
+Thank you very much!</p>
+<table>
+<tr>
+<td>URL:</td>
+<td>https://api.aliyundrive.com/v2/file/complete</td>
+</tr>
+<tr>
+<td>Server:</td>
+<td>security-pgw-90b2f6b7d69951d209f28a873243d040-8kd9c</td>
+</tr>
+<tr>
+<td>Date:</td>
+<td>2023/03/28 18:52:04</td>
+</tr>
+</table>
+<hr/>Powered by Tengine<hr><center>tengine</center>
+</body>
+</html>
+
+2023-03-28 10:52:04 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/v2/file/complete:JsonValueError.
+2023-03-28 10:52:05 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
+2023-03-28 10:52:11 - WARNING - base.py - 100 - https://api.aliyundrive.com/v2/file/complete:502:<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html>
+<head><title>502 Bad Gateway</title></head>
+<body>
+<center><h1>502 Bad Gateway</h1></center>
+ Sorry for the inconvenience.<br/>
+Please report this message and include the following information to us.<br/>
+Thank you very much!</p>
+<table>
+<tr>
+<td>URL:</td>
+<td>https://api.aliyundrive.com/v2/file/complete</td>
+</tr>
+<tr>
+<td>Server:</td>
+<td>security-pgw-90b2f6b7d69951d209f28a873243d040-8kd9c</td>
+</tr>
+<tr>
+<td>Date:</td>
+<td>2023/03/28 18:52:05</td>
+</tr>
+</table>
+<hr/>Powered by Tengine<hr><center>tengine</center>
+</body>
+</html>
+
+2023-03-28 10:52:11 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/v2/file/complete:JsonValueError.
+2023-03-28 10:52:13 - WARNING - base.py - 25 - Retry func _post_file_complete 2 time.
+2023-03-28 10:53:47 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-28 10:53:48 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-03-28 10:56:52 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-28 10:56:53 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
+2023-03-28 10:58:55 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-28 10:58:56 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-03-28 11:01:23 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-28 11:01:24 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-03-28 11:03:17 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-28 11:03:18 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-03-28 11:06:28 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-28 11:06:29 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
+2023-03-28 11:07:00 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-28 11:07:02 - WARNING - base.py - 25 - Retry func _post_file_complete 2 time.
+2023-03-28 11:07:32 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-28 11:07:35 - WARNING - base.py - 25 - Retry func _post_file_complete 3 time.
+2023-03-28 11:08:05 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-28 11:08:09 - ERROR - base.py - 36 - All retries failed in func _post_file_complete.
+2023-03-28 11:08:09 - ERROR - aliyundrive.py - 1076 - Failed to complete upload file tmp/68363452/68363452_p1.jpg.
+2023-03-28 11:08:40 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-28 11:08:41 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-03-28 11:09:12 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-28 11:09:14 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2023-03-28 11:14:21 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-28 11:14:22 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-03-28 11:17:38 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-28 11:17:39 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-03-28 11:23:13 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-28 11:23:14 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-03-28 11:24:32 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/10/18/06/00/02/102030745_p0.jpg
+2023-03-28 11:29:46 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-28 11:29:47 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-03-28 11:32:17 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-28 11:32:18 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-03-28 11:48:19 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-28 11:48:20 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-03-28 11:56:53 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/08/31/21/48/22/100901046_p0.png
+2023-03-28 12:06:28 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-28 12:06:29 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-03-28 12:07:00 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-28 12:07:02 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2023-03-28 12:07:32 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-28 12:07:35 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2023-03-28 12:08:05 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-28 12:08:09 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2023-03-28 12:08:09 - ERROR - aliyundrive.py - 1034 - Failed to get create info of file tmp/105250129_mirage/105250129_p0.png.
+2023-03-28 12:08:40 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-28 12:08:41 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-03-28 12:09:11 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-28 12:09:13 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2023-03-28 12:14:51 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2023/02/26/00/00/27/105711349_p0.png
+2023-03-28 12:17:23 - WARNING - aliyundrive.py - 820 - Token is about to expire, try to auto refresh.
+2023-03-28 12:35:03 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2023/02/22/00/06/10/105592849_p0.jpg
