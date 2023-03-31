@@ -10671,3 +10671,26 @@ Thank you very much!</p>
 2023-03-31 00:21:33 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
 2023-03-31 00:21:34 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
 2023-03-31 00:22:04 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2023/01/01/00/04/19/104100071_p0.png
+2023-03-31 10:17:39 - WARNING - aliyundrive.py - 820 - Token is about to expire, try to auto refresh.
+2023-03-31 11:19:16 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-31 11:19:17 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-03-31 11:19:48 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-03-31 11:19:50 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2023-03-31 11:20:39 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2023/02/08/00/00/29/105178129_p0.jpg
+2023-03-31 11:48:48 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2023/01/05/20/21/54/104262935_p0.jpg
+2023-03-31 12:16:39 - WARNING - aliyundrive.py - 820 - Token is about to expire, try to auto refresh.
+2023-03-31 12:17:32 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2023/01/18/18/00/13/104617401_p0.jpg
+2023-03-31 12:40:25 - WARNING - base.py - 100 - https://www.pixiv.net/ajax/illust/103070981:404:{"error":true,"message":"\u5c1a\u65e0\u6743\u9650\u6d4f\u89c8\u8be5\u4f5c\u54c1","body":[]}
+2023-03-31 12:40:25 - ERROR - pixiv.py - 114 - https://www.pixiv.net/ajax/illust/103070981:尚无权限浏览该作品
+2023-03-31 12:40:26 - WARNING - base.py - 25 - Retry func _get_illust 1 time.
+2023-03-31 12:40:26 - WARNING - base.py - 100 - https://www.pixiv.net/ajax/illust/103070981:404:{"error":true,"message":"\u5c1a\u65e0\u6743\u9650\u6d4f\u89c8\u8be5\u4f5c\u54c1","body":[]}
+2023-03-31 12:40:26 - ERROR - pixiv.py - 114 - https://www.pixiv.net/ajax/illust/103070981:尚无权限浏览该作品
+2023-03-31 12:40:28 - WARNING - base.py - 25 - Retry func _get_illust 2 time.
+2023-03-31 12:40:28 - WARNING - base.py - 100 - https://www.pixiv.net/ajax/illust/103070981:404:{"error":true,"message":"\u5c1a\u65e0\u6743\u9650\u6d4f\u89c8\u8be5\u4f5c\u54c1","body":[]}
+2023-03-31 12:40:28 - ERROR - pixiv.py - 114 - https://www.pixiv.net/ajax/illust/103070981:尚无权限浏览该作品
+2023-03-31 12:40:31 - WARNING - base.py - 25 - Retry func _get_illust 3 time.
+2023-03-31 12:40:31 - WARNING - base.py - 100 - https://www.pixiv.net/ajax/illust/103070981:404:{"error":true,"message":"\u5c1a\u65e0\u6743\u9650\u6d4f\u89c8\u8be5\u4f5c\u54c1","body":[]}
+2023-03-31 12:40:31 - ERROR - pixiv.py - 114 - https://www.pixiv.net/ajax/illust/103070981:尚无权限浏览该作品
+2023-03-31 12:40:35 - ERROR - base.py - 36 - All retries failed in func _get_illust.
+2023-03-31 12:40:35 - ERROR - pixiv.py - 550 - Failed to get 103070981 illust info.
+2023-03-31 12:51:16 - WARNING - pixivdrive.py - 219 - Failed to upload some user top illusts.
