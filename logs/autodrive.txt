@@ -10834,3 +10834,40 @@ Thank you very much!</p>
 2023-04-04 12:43:16 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2023/02/20/08/15/28/105545927_p0.png
 2023-04-04 12:44:55 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
 2023-04-04 12:44:56 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
+2023-04-04 22:14:19 - WARNING - aliyundrive.py - 820 - Token is about to expire, try to auto refresh.
+2023-04-04 22:17:07 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2023/03/07/00/00/16/105981481_p0.png
+2023-04-04 22:26:20 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-04-04 22:26:21 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-04-04 22:28:40 - WARNING - base.py - 100 - https://api.aliyundrive.com/v2/file/complete:502:<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html>
+<head><title>502 Bad Gateway</title></head>
+<body>
+<center><h1>502 Bad Gateway</h1></center>
+ Sorry for the inconvenience.<br/>
+Please report this message and include the following information to us.<br/>
+Thank you very much!</p>
+<table>
+<tr>
+<td>URL:</td>
+<td>https://api.aliyundrive.com/v2/file/complete</td>
+</tr>
+<tr>
+<td>Server:</td>
+<td>security-pgw-90b2f6b7d69951d209f28a873243d040-q9x26</td>
+</tr>
+<tr>
+<td>Date:</td>
+<td>2023/04/05 06:28:40</td>
+</tr>
+</table>
+<hr/>Powered by Tengine<hr><center>tengine</center>
+</body>
+</html>
+
+2023-04-04 22:28:40 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/v2/file/complete:JsonValueError.
+2023-04-04 22:28:41 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
+2023-04-04 22:37:40 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/06/05/22/58/47/98855711_p0.jpg
+2023-04-04 23:10:09 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2023/02/26/00/00/29/105711358_p0.png
+2023-04-04 23:19:35 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/12/19/18/32/32/103733404_p0.png
+2023-04-04 23:27:28 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2021/05/06/00/08/57/89635190_p0.jpg
+2023-04-05 00:13:20 - WARNING - aliyundrive.py - 820 - Token is about to expire, try to auto refresh.
