@@ -12182,3 +12182,49 @@ Thank you very much!</p>
 2023-04-08 01:08:02 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/v2/file/complete:JsonValueError.
 2023-04-08 01:08:04 - WARNING - base.py - 25 - Retry func _post_file_complete 2 time.
 2023-04-08 01:13:14 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/08/01/21/34/18/100161972_p0.png
+2023-04-08 10:15:02 - WARNING - aliyundrive.py - 820 - Token is about to expire, try to auto refresh.
+2023-04-08 11:13:32 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-04-08 11:13:33 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
+2023-04-08 11:14:03 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-04-08 11:14:05 - WARNING - base.py - 25 - Retry func _post_file_complete 2 time.
+2023-04-08 11:14:35 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-04-08 11:14:38 - WARNING - base.py - 25 - Retry func _post_file_complete 3 time.
+2023-04-08 11:15:09 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-04-08 11:15:13 - ERROR - base.py - 36 - All retries failed in func _post_file_complete.
+2023-04-08 11:15:13 - ERROR - aliyundrive.py - 1076 - Failed to complete upload file tmp/95291641/95291641_p18.png.
+2023-04-08 11:15:43 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-04-08 11:15:44 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-04-08 11:16:14 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-04-08 11:16:16 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2023-04-08 11:16:47 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-04-08 11:16:50 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2023-04-08 11:17:20 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-04-08 11:17:24 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2023-04-08 11:17:24 - ERROR - aliyundrive.py - 1034 - Failed to get create info of file tmp/95291641/95291641_p19.png.
+2023-04-08 11:17:54 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-04-08 11:17:55 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-04-08 11:18:25 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-04-08 11:18:27 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2023-04-08 11:48:24 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/07/25/21/01/50/99991637_p0.jpg
+2023-04-08 11:57:06 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-04-08 11:57:07 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-04-08 11:57:37 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-04-08 11:57:39 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2023-04-08 11:58:10 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-04-08 11:58:13 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2023-04-08 11:58:43 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-04-08 11:58:47 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2023-04-08 11:58:47 - ERROR - aliyundrive.py - 1034 - Failed to get create info of file tmp/99530254/99530254.json.txt.
+2023-04-08 11:59:21 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-04-08 11:59:22 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-04-08 11:59:52 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-04-08 11:59:54 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2023-04-08 12:07:15 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2023/03/01/00/01/27/105802778_p0.jpg
+2023-04-08 12:08:11 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-04-08 12:08:12 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
+2023-04-08 12:08:42 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-04-08 12:08:44 - WARNING - base.py - 25 - Retry func _post_file_complete 2 time.
+2023-04-08 12:09:14 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-04-08 12:09:17 - WARNING - base.py - 25 - Retry func _post_file_complete 3 time.
+2023-04-08 12:14:03 - WARNING - aliyundrive.py - 820 - Token is about to expire, try to auto refresh.
+2023-04-08 12:27:14 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/05/08/14/57/48/98199195_p0.jpg
