@@ -3,3 +3,22 @@
 2023-06-15 22:31:48 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
 2023-06-15 22:48:40 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2023/06/03/14/31/22/108683773_p0.jpg
 2023-06-15 22:52:09 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/12/23/00/00/19/103816502_p0.jpg
+2023-06-16 10:16:28 - WARNING - aliyundrive.py - 820 - Token is about to expire, try to auto refresh.
+2023-06-16 10:27:14 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-06-16 10:27:15 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-06-16 10:27:45 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-06-16 10:27:47 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2023-06-16 10:28:17 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-06-16 10:28:20 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2023-06-16 10:28:51 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-06-16 10:28:55 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2023-06-16 10:28:55 - ERROR - aliyundrive.py - 1034 - Failed to get create info of file tmp/98726093/98726093.json.txt.
+2023-06-16 10:29:27 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-06-16 10:29:28 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-06-16 10:49:30 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2023/03/11/17/33/54/106114864_p0.jpg
+2023-06-16 11:09:34 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))': /ajax/illust/106058359
+2023-06-16 11:38:44 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2022/04/29/00/00/12/97947478_p0.png
+2023-06-16 11:46:28 - WARNING - pixivdrive.py - 127 - Failed to add salt to page tmp/107454934/107454934_ugoira0.gif, upload original page.
+2023-06-16 11:46:28 - WARNING - pixivdrive.py - 155 - Failed to make mirage for page tmp/107454934/107454934_ugoira0.gif.
+2023-06-16 11:56:29 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2023/02/18/14/19/11/105430019_p0.png
+2023-06-16 12:15:30 - WARNING - aliyundrive.py - 820 - Token is about to expire, try to auto refresh.
