@@ -1,5 +1,6 @@
 import json
 import logging
+import logging.handlers
 import time
 from argparse import ArgumentParser
 from datetime import datetime, timedelta
@@ -128,7 +129,7 @@ if __name__ == "__main__":
     if not args.test:
         # logging config
         root_logger.setLevel(logging.INFO)
-        hdler = logging.FileHandler("logs/bilibot.txt", encoding="utf8")
+        hdler = logging.handlers.RotatingFileHandler("logs/bilibot.txt", maxBytes=2**20, backupCount=2, encoding="utf8")
         hdler.setFormatter(fmter)
         root_logger.addHandler(hdler)
         run(config)

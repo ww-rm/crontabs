@@ -1,5 +1,6 @@
 import json
 import logging
+import logging.handlers
 import time
 from argparse import ArgumentParser
 from pathlib import Path
@@ -41,7 +42,7 @@ if __name__ == "__main__":
     fmter.converter = time.gmtime
     if not args.test:
         root_logger.setLevel(logging.WARNING)  # avoid big log file
-        hdler = logging.FileHandler("logs/autodrive.txt", encoding="utf8")
+        hdler = logging.handlers.RotatingFileHandler("logs/autodrive.txt", maxBytes=2**20, backupCount=2, encoding="utf8")
     else:
         root_logger.setLevel(logging.WARNING)
         hdler = logging.StreamHandler()

@@ -2,17 +2,17 @@
 
 import json
 import logging
+import logging.handlers
 import time
 from argparse import ArgumentParser
 from base64 import b64decode
 from pathlib import Path
 
 import utils
-
 from dailysignin import owo_ecycloud_com
 
-from . import (dash_pepsicola_me, freevpn_cyou, jike0_com, kkwcy_com, ssru6_pw, www_bilibili_com,
-               www_hmoe11_net)
+from . import (dash_pepsicola_me, freevpn_cyou, jike0_com, kkwcy_com, ssru6_pw,
+               www_bilibili_com, www_hmoe11_net)
 
 
 def run(config: dict):
@@ -46,7 +46,7 @@ if __name__ == "__main__":
     fmter.converter = time.gmtime
     if not args.test:
         root_logger.setLevel(logging.INFO)
-        hdler = logging.FileHandler("logs/dailysignin.txt", encoding="utf8")
+        hdler = logging.handlers.RotatingFileHandler("logs/dailysignin.txt", maxBytes=2**20, backupCount=2, encoding="utf8")
     else:
         root_logger.setLevel(logging.WARNING)
         hdler = logging.StreamHandler()

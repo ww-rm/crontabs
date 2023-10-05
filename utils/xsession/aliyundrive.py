@@ -682,6 +682,7 @@ class AliyunDrive(AliyunDriveBase):
         self.token_type = ""  # generally "Bearer"
         self.access_token = ""  # access token added to "Authorization" header
         self.refresh_token = ""  # token used to refresh access token
+        self.device_id = ""  # x-device-id header
 
         self.expire_time = datetime.now(timezone.utc).replace(2020)  # access token expire time
 
@@ -717,6 +718,16 @@ class AliyunDrive(AliyunDriveBase):
         # update header
         if self.token_type:
             self.headers["Authorization"] = self.token_type + " " + self.__access_token
+
+    @property
+    def device_id(self) -> str:
+        return self.__device_id
+
+    @device_id.setter
+    def device_id(self, value: str):
+        self.__device_id = value
+        # update header
+        self.headers["x-device-id"] = self.__device_id
 
     def _get_login_form_data(self, mini_login_html: str) -> dict:
         """Find login form data from mini_login_html."""
@@ -832,6 +843,7 @@ class AliyunDrive(AliyunDriveBase):
             self.token_type = refresh_info["token_type"]
             self.access_token = refresh_info["access_token"]
             self.refresh_token = refresh_info["refresh_token"]
+            self.device_id = refresh_info["device_id"]
 
             self.expire_time = isoparse(refresh_info["expire_time"])  # include timezone, utc time
 
@@ -1235,7 +1247,7 @@ class AliyunDrive(AliyunDriveBase):
         return self._post_file_move(
             self.drive_id, file_id,
             self.drive_id, to_parent_file_id,
-            check_name_mode
+            check_name_mode=check_name_mode
         )
 
     def rename_file(self, file_id: str, name: str, *, file_drive_path: str = "", check_name_mode: str = "refuse") -> dict:
@@ -1249,7 +1261,7 @@ class AliyunDrive(AliyunDriveBase):
                 return ValueError("Need provide valid file_id or file_drive_path, can't be root or empty.")
             file_id = self._get_file_id(file_drive_path)
 
-        return self._post_file_update(self.drive_id, file_id, name, check_name_mode)
+        return self._post_file_update(self.drive_id, file_id, name, check_name_mode=check_name_mode)
 
     def glob_recyclebin(
         self,
