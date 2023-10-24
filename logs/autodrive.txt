@@ -5959,3 +5959,13 @@ Thank you very much!</p>
 2023-10-24 13:07:21 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
 2023-10-24 13:09:59 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
 2023-10-24 13:10:00 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
+2023-10-24 22:14:10 - WARNING - aliyundrive.py - 831 - Token is about to expire, try to auto refresh.
+2023-10-24 22:14:13 - ERROR - base.py - 94 - https://www.pixiv.net/ranking.php:Exceeded 30 redirects.
+2023-10-24 22:14:14 - WARNING - base.py - 25 - Retry func _get_ranking 1 time.
+2023-10-24 22:14:17 - ERROR - base.py - 94 - https://www.pixiv.net/ranking.php:Exceeded 30 redirects.
+2023-10-24 22:14:19 - WARNING - base.py - 25 - Retry func _get_ranking 2 time.
+2023-10-24 22:14:22 - ERROR - base.py - 94 - https://www.pixiv.net/ranking.php:Exceeded 30 redirects.
+2023-10-24 22:14:25 - WARNING - base.py - 25 - Retry func _get_ranking 3 time.
+2023-10-24 22:14:28 - ERROR - base.py - 94 - https://www.pixiv.net/ranking.php:Exceeded 30 redirects.
+2023-10-24 22:14:32 - ERROR - base.py - 36 - All retries failed in func _get_ranking.
+2023-10-24 22:14:32 - ERROR - pixiv.py - 619 - Failed to get monthly ranking info 1:illust:None.
