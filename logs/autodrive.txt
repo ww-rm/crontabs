@@ -6329,3 +6329,66 @@ Thank you very much!</p>
 2023-11-11 22:13:50 - ERROR - base.py - 94 - https://www.pixiv.net/ranking.php:Exceeded 30 redirects.
 2023-11-11 22:13:55 - ERROR - base.py - 36 - All retries failed in func _get_ranking.
 2023-11-11 22:13:55 - ERROR - pixiv.py - 619 - Failed to get monthly ranking info 1:illust:None.
+2023-11-12 10:15:03 - WARNING - aliyundrive.py - 831 - Token is about to expire, try to auto refresh.
+2023-11-12 10:15:04 - WARNING - base.py - 100 - https://api.aliyundrive.com/token/refresh:400:{"code":"InvalidHeader","message":"Header TargetHost is not valid. Must be {domainid}.api.alicloudccp.com","requestId":null}
+2023-11-12 10:15:04 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/token/refresh:400:Header TargetHost is not valid. Must be {domainid}.api.alicloudccp.com
+2023-11-12 10:15:05 - WARNING - base.py - 25 - Retry func _post_token_refresh 1 time.
+2023-11-12 10:15:06 - WARNING - base.py - 100 - https://api.aliyundrive.com/token/refresh:400:{"code":"InvalidHeader","message":"Header TargetHost is not valid. Must be {domainid}.api.alicloudccp.com","requestId":null}
+2023-11-12 10:15:06 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/token/refresh:400:Header TargetHost is not valid. Must be {domainid}.api.alicloudccp.com
+2023-11-12 10:15:08 - WARNING - base.py - 25 - Retry func _post_token_refresh 2 time.
+2023-11-12 10:15:08 - WARNING - base.py - 100 - https://api.aliyundrive.com/token/refresh:400:{"code":"InvalidHeader","message":"Header TargetHost is not valid. Must be {domainid}.api.alicloudccp.com","requestId":null}
+2023-11-12 10:15:08 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/token/refresh:400:Header TargetHost is not valid. Must be {domainid}.api.alicloudccp.com
+2023-11-12 10:15:11 - WARNING - base.py - 25 - Retry func _post_token_refresh 3 time.
+2023-11-12 10:15:11 - WARNING - base.py - 100 - https://api.aliyundrive.com/token/refresh:400:{"code":"InvalidHeader","message":"Header TargetHost is not valid. Must be {domainid}.api.alicloudccp.com","requestId":null}
+2023-11-12 10:15:11 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/token/refresh:400:Header TargetHost is not valid. Must be {domainid}.api.alicloudccp.com
+2023-11-12 10:15:15 - ERROR - base.py - 36 - All retries failed in func _post_token_refresh.
+2023-11-12 10:15:15 - ERROR - aliyundrive.py - 836 - Refresh token failed.
+2023-11-12 10:15:16 - WARNING - base.py - 25 - Retry func _check_refresh 1 time.
+2023-11-12 10:15:16 - WARNING - aliyundrive.py - 831 - Token is about to expire, try to auto refresh.
+2023-11-12 10:15:16 - WARNING - base.py - 100 - https://api.aliyundrive.com/token/refresh:400:{"code":"InvalidHeader","message":"Header TargetHost is not valid. Must be {domainid}.api.alicloudccp.com","requestId":null}
+2023-11-12 10:15:16 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/token/refresh:400:Header TargetHost is not valid. Must be {domainid}.api.alicloudccp.com
+2023-11-12 10:15:17 - WARNING - base.py - 25 - Retry func _post_token_refresh 1 time.
+2023-11-12 10:15:18 - WARNING - base.py - 100 - https://api.aliyundrive.com/token/refresh:400:{"code":"InvalidHeader","message":"Header TargetHost is not valid. Must be {domainid}.api.alicloudccp.com","requestId":null}
+2023-11-12 10:15:18 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/token/refresh:400:Header TargetHost is not valid. Must be {domainid}.api.alicloudccp.com
+2023-11-12 10:15:20 - WARNING - base.py - 25 - Retry func _post_token_refresh 2 time.
+2023-11-12 10:15:20 - WARNING - base.py - 100 - https://api.aliyundrive.com/token/refresh:400:{"code":"InvalidHeader","message":"Header TargetHost is not valid. Must be {domainid}.api.alicloudccp.com","requestId":null}
+2023-11-12 10:15:20 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/token/refresh:400:Header TargetHost is not valid. Must be {domainid}.api.alicloudccp.com
+2023-11-12 10:15:23 - WARNING - base.py - 25 - Retry func _post_token_refresh 3 time.
+2023-11-12 10:15:23 - WARNING - base.py - 100 - https://api.aliyundrive.com/token/refresh:400:{"code":"InvalidHeader","message":"Header TargetHost is not valid. Must be {domainid}.api.alicloudccp.com","requestId":null}
+2023-11-12 10:15:23 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/token/refresh:400:Header TargetHost is not valid. Must be {domainid}.api.alicloudccp.com
+2023-11-12 10:15:27 - ERROR - base.py - 36 - All retries failed in func _post_token_refresh.
+2023-11-12 10:15:27 - ERROR - aliyundrive.py - 836 - Refresh token failed.
+2023-11-12 10:15:29 - WARNING - base.py - 25 - Retry func _check_refresh 2 time.
+2023-11-12 10:15:29 - WARNING - aliyundrive.py - 831 - Token is about to expire, try to auto refresh.
+2023-11-12 10:15:30 - WARNING - base.py - 100 - https://api.aliyundrive.com/token/refresh:400:{"code":"InvalidHeader","message":"Header TargetHost is not valid. Must be {domainid}.api.alicloudccp.com","requestId":null}
+2023-11-12 10:15:30 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/token/refresh:400:Header TargetHost is not valid. Must be {domainid}.api.alicloudccp.com
+2023-11-12 10:15:31 - WARNING - base.py - 25 - Retry func _post_token_refresh 1 time.
+2023-11-12 10:15:31 - WARNING - base.py - 100 - https://api.aliyundrive.com/token/refresh:400:{"code":"InvalidHeader","message":"Header TargetHost is not valid. Must be {domainid}.api.alicloudccp.com","requestId":null}
+2023-11-12 10:15:31 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/token/refresh:400:Header TargetHost is not valid. Must be {domainid}.api.alicloudccp.com
+2023-11-12 10:15:33 - WARNING - base.py - 25 - Retry func _post_token_refresh 2 time.
+2023-11-12 10:15:33 - WARNING - base.py - 100 - https://api.aliyundrive.com/token/refresh:400:{"code":"InvalidHeader","message":"Header TargetHost is not valid. Must be {domainid}.api.alicloudccp.com","requestId":null}
+2023-11-12 10:15:33 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/token/refresh:400:Header TargetHost is not valid. Must be {domainid}.api.alicloudccp.com
+2023-11-12 10:15:36 - WARNING - base.py - 25 - Retry func _post_token_refresh 3 time.
+2023-11-12 10:15:36 - WARNING - base.py - 100 - https://api.aliyundrive.com/token/refresh:400:{"code":"InvalidHeader","message":"Header TargetHost is not valid. Must be {domainid}.api.alicloudccp.com","requestId":null}
+2023-11-12 10:15:36 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/token/refresh:400:Header TargetHost is not valid. Must be {domainid}.api.alicloudccp.com
+2023-11-12 10:15:40 - ERROR - base.py - 36 - All retries failed in func _post_token_refresh.
+2023-11-12 10:15:40 - ERROR - aliyundrive.py - 836 - Refresh token failed.
+2023-11-12 10:15:43 - WARNING - base.py - 25 - Retry func _check_refresh 3 time.
+2023-11-12 10:15:43 - WARNING - aliyundrive.py - 831 - Token is about to expire, try to auto refresh.
+2023-11-12 10:15:44 - WARNING - base.py - 100 - https://api.aliyundrive.com/token/refresh:400:{"code":"InvalidHeader","message":"Header TargetHost is not valid. Must be {domainid}.api.alicloudccp.com","requestId":null}
+2023-11-12 10:15:44 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/token/refresh:400:Header TargetHost is not valid. Must be {domainid}.api.alicloudccp.com
+2023-11-12 10:15:45 - WARNING - base.py - 25 - Retry func _post_token_refresh 1 time.
+2023-11-12 10:15:45 - WARNING - base.py - 100 - https://api.aliyundrive.com/token/refresh:400:{"code":"InvalidHeader","message":"Header TargetHost is not valid. Must be {domainid}.api.alicloudccp.com","requestId":null}
+2023-11-12 10:15:45 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/token/refresh:400:Header TargetHost is not valid. Must be {domainid}.api.alicloudccp.com
+2023-11-12 10:15:47 - WARNING - base.py - 25 - Retry func _post_token_refresh 2 time.
+2023-11-12 10:15:47 - WARNING - base.py - 100 - https://api.aliyundrive.com/token/refresh:400:{"code":"InvalidHeader","message":"Header TargetHost is not valid. Must be {domainid}.api.alicloudccp.com","requestId":null}
+2023-11-12 10:15:47 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/token/refresh:400:Header TargetHost is not valid. Must be {domainid}.api.alicloudccp.com
+2023-11-12 10:15:50 - WARNING - base.py - 25 - Retry func _post_token_refresh 3 time.
+2023-11-12 10:15:51 - WARNING - base.py - 100 - https://api.aliyundrive.com/token/refresh:400:{"code":"InvalidHeader","message":"Header TargetHost is not valid. Must be {domainid}.api.alicloudccp.com","requestId":null}
+2023-11-12 10:15:51 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/token/refresh:400:Header TargetHost is not valid. Must be {domainid}.api.alicloudccp.com
+2023-11-12 10:15:55 - ERROR - base.py - 36 - All retries failed in func _post_token_refresh.
+2023-11-12 10:15:55 - ERROR - aliyundrive.py - 836 - Refresh token failed.
+2023-11-12 10:15:59 - ERROR - base.py - 36 - All retries failed in func _check_refresh.
+2023-11-12 10:15:59 - ERROR - aliyundrive.py - 909 - Failed to get fresh token and login.
+2023-11-12 10:15:59 - ERROR - pixivdrive.py - 51 - Failed to login aliyundrive.
+2023-11-12 10:15:59 - ERROR - __main__.py - 18 - Failed to login, run failed.
