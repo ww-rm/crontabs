@@ -3298,3 +3298,160 @@ Thank you very much!</p>
 2023-12-11 00:08:37 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
 2023-12-11 00:08:38 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
 2023-12-11 00:13:00 - WARNING - aliyundrive.py - 831 - Token is about to expire, try to auto refresh.
+2023-12-11 10:18:02 - WARNING - aliyundrive.py - 831 - Token is about to expire, try to auto refresh.
+2023-12-11 10:27:06 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-12-11 10:27:07 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
+2023-12-11 10:52:02 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-12-11 10:52:03 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-12-11 10:55:10 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='cn-beijing-data.aliyundrive.net', port=443): Read timed out. (read timeout=30)")': /cjNiCFkw%2F889478%2F6526767ec8be5b7e6af74e16a4015520b643d0dd%2F6576ea704d4707bd8a8b4fdf8ce19d57579d73ae?partNumber=1&security-token=CAIS%2BgF1q6Ft5B2yfSjIr5bvHtzBhY5W2ZOjRl7knkQya%2BkUirTuuDz2IHFPeHJrBeAYt%2FoxmW1X5vwSlq5rR4QAXlDfNXuuMAH6qFHPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLukMWr%2Fwq3PIdp2ma447NWQlLnzyCMvvJ9OVDFyN0aKEnH7J%2Bq%2FzxhTPrMnpkSlacGoABcfFCh%2FvGy%2BTeWaH45%2B7qfYv8LN85J5oW0Um5mRSJdMHLaEeLgksunaaHSafEtZPGINjfmj4Psa0z77s7GQnJCg5P48F8fNfdsKHmmFxgDQfl%2B92mu3071KNJ2wMRF5Fj8E8j7jh35Aadr6IFmCZ5L1%2BKkXza0BnLs3BSDaV7VZ4gAA%3D%3D&uploadId=EB8EBAD53F31437FB267F21B5F81C73C&x-oss-access-key-id=STS.NUZUfuhQwnQHDxUzDggf8eqEZ&x-oss-expires=1702295680&x-oss-signature=BY7Xov5LcATrwW8S1c1uivUHd3wm%2FHaGEXtBgVkobNQ%3D&x-oss-signature-version=OSS2
+2023-12-11 11:00:50 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2023/11/29/00/00/47/113792751_p0.jpg
+2023-12-11 11:03:48 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-12-11 11:03:49 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-12-11 11:08:51 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', timeout('The write operation timed out'))': /FGgs1sAj%2F889478%2F6563e2a2684886e192614d168a9b41ab56037ef7%2F6576eda43cb86eb45fe448349703e33fc53dc994?partNumber=1&security-token=CAIS%2BgF1q6Ft5B2yfSjIr5DDc4%2FxmIh2gbS4Wk7grnENeMdfvrTtiDz2IHFPeHJrBeAYt%2FoxmW1X5vwSlq5rR4QAXlDfNSLKOgL6qFHPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLukMWr%2Fwq3PIdp2ma447NWQlLnzyCMvvJ9OVDFyN0aKEnH7J%2Bq%2FzxhTPrMnpkSlacGoABZKtgz8eO00Lka3CveRsMuuZn4csHdS9LWEWvfdPTognNgVz%2BslyMsENgCr7a%2FSR74zMiTy9a%2FNFO%2BmtETRcxKRj9wWf9qkHUl6GDwWwqCkpJHjy57d2V9id6DI8H%2F%2Bfm1HQsL7laPwSyDS5zO1duDsrL6GrECmZ%2BgnLsrjW8aPIgAA%3D%3D&uploadId=0BB0C6CC8A3D436BA9AC054929B9F132&x-oss-access-key-id=STS.NSv85EuWW6vSXhQJqXtHsQqFj&x-oss-expires=1702296501&x-oss-signature=yMDc3BhwDNksfb8LEUnGfIYLHHPrf4GazEVUz1ar0v0%3D&x-oss-signature-version=OSS2
+2023-12-11 11:46:57 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2013/11/23/12/24/47/39892675_p0.jpg
+2023-12-11 12:17:04 - WARNING - aliyundrive.py - 831 - Token is about to expire, try to auto refresh.
+2023-12-11 12:24:11 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2023-12-11 12:24:12 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-12-11 12:25:51 - WARNING - pixivdrive.py - 127 - Failed to add salt to page tmp/112479930/112479930_p0.gif, upload original page.
+2023-12-11 12:47:12 - WARNING - base.py - 100 - https://api.aliyundrive.com/v2/file/complete:504:<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html>
+<head><title>504 Gateway Time-out</title></head>
+<body>
+<center><h1>504 Gateway Time-out</h1></center>
+ Sorry for the inconvenience.<br/>
+Please report this message and include the following information to us.<br/>
+Thank you very much!</p>
+<table>
+<tr>
+<td>URL:</td>
+<td>https://api.aliyundrive.com/v2/file/complete</td>
+</tr>
+<tr>
+<td>Server:</td>
+<td>security-pgw-90b2f6b7d69951d209f28a873243d040-sppll</td>
+</tr>
+<tr>
+<td>Date:</td>
+<td>2023/12/11 20:47:12</td>
+</tr>
+</table>
+<hr/>Powered by Tengine<hr><center>tengine</center>
+</body>
+</html>
+
+2023-12-11 12:47:12 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/v2/file/complete:JsonValueError.
+2023-12-11 12:47:13 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
+2023-12-11 12:47:15 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:502:<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html>
+<head><title>502 Bad Gateway</title></head>
+<body>
+<center><h1>502 Bad Gateway</h1></center>
+ Sorry for the inconvenience.<br/>
+Please report this message and include the following information to us.<br/>
+Thank you very much!</p>
+<table>
+<tr>
+<td>URL:</td>
+<td>https://api.aliyundrive.com/adrive/v2/file/createWithFolders</td>
+</tr>
+<tr>
+<td>Server:</td>
+<td>security-pgw-90b2f6b7d69951d209f28a873243d040-sppll</td>
+</tr>
+<tr>
+<td>Date:</td>
+<td>2023/12/11 20:47:15</td>
+</tr>
+</table>
+<hr/>Powered by Tengine<hr><center>tengine</center>
+</body>
+</html>
+
+2023-12-11 12:47:15 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-12-11 12:47:16 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2023-12-11 12:47:16 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:502:<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html>
+<head><title>502 Bad Gateway</title></head>
+<body>
+<center><h1>502 Bad Gateway</h1></center>
+ Sorry for the inconvenience.<br/>
+Please report this message and include the following information to us.<br/>
+Thank you very much!</p>
+<table>
+<tr>
+<td>URL:</td>
+<td>https://api.aliyundrive.com/adrive/v2/file/createWithFolders</td>
+</tr>
+<tr>
+<td>Server:</td>
+<td>security-pgw-90b2f6b7d69951d209f28a873243d040-sppll</td>
+</tr>
+<tr>
+<td>Date:</td>
+<td>2023/12/11 20:47:16</td>
+</tr>
+</table>
+<hr/>Powered by Tengine<hr><center>tengine</center>
+</body>
+</html>
+
+2023-12-11 12:47:16 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-12-11 12:47:18 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2023-12-11 12:47:19 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:502:<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html>
+<head><title>502 Bad Gateway</title></head>
+<body>
+<center><h1>502 Bad Gateway</h1></center>
+ Sorry for the inconvenience.<br/>
+Please report this message and include the following information to us.<br/>
+Thank you very much!</p>
+<table>
+<tr>
+<td>URL:</td>
+<td>https://api.aliyundrive.com/adrive/v2/file/createWithFolders</td>
+</tr>
+<tr>
+<td>Server:</td>
+<td>security-pgw-90b2f6b7d69951d209f28a873243d040-sppll</td>
+</tr>
+<tr>
+<td>Date:</td>
+<td>2023/12/11 20:47:19</td>
+</tr>
+</table>
+<hr/>Powered by Tengine<hr><center>tengine</center>
+</body>
+</html>
+
+2023-12-11 12:47:19 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-12-11 12:47:22 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2023-12-11 12:47:22 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:502:<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html>
+<head><title>502 Bad Gateway</title></head>
+<body>
+<center><h1>502 Bad Gateway</h1></center>
+ Sorry for the inconvenience.<br/>
+Please report this message and include the following information to us.<br/>
+Thank you very much!</p>
+<table>
+<tr>
+<td>URL:</td>
+<td>https://api.aliyundrive.com/adrive/v2/file/createWithFolders</td>
+</tr>
+<tr>
+<td>Server:</td>
+<td>security-pgw-90b2f6b7d69951d209f28a873243d040-sppll</td>
+</tr>
+<tr>
+<td>Date:</td>
+<td>2023/12/11 20:47:22</td>
+</tr>
+</table>
+<hr/>Powered by Tengine<hr><center>tengine</center>
+</body>
+</html>
+
+2023-12-11 12:47:22 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2023-12-11 12:47:26 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2023-12-11 12:47:26 - ERROR - aliyundrive.py - 1046 - Failed to get create info of file tmp/113904028/113904028_p0.jpg.
+2023-12-11 12:48:41 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2023/12/03/20/18/20/113924949_p0.png
