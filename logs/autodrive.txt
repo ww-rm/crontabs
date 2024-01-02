@@ -520,3 +520,55 @@ Thank you very much!</p>
 2024-01-02 00:19:16 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2023/10/16/13/06/39/112596627_p0.png
 2024-01-02 01:25:48 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
 2024-01-02 01:25:49 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-01-02 10:16:41 - WARNING - aliyundrive.py - 831 - Token is about to expire, try to auto refresh.
+2024-01-02 10:27:06 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2023/09/05/02/04/33/111453609_p0.jpg
+2024-01-02 10:33:57 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2024-01-02 10:33:58 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
+2024-01-02 10:45:15 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2024-01-02 10:45:16 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
+2024-01-02 10:50:24 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:504:<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html>
+<head><title>504 Gateway Time-out</title></head>
+<body>
+<center><h1>504 Gateway Time-out</h1></center>
+ Sorry for the inconvenience.<br/>
+Please report this message and include the following information to us.<br/>
+Thank you very much!</p>
+<table>
+<tr>
+<td>URL:</td>
+<td>https://api.aliyundrive.com/adrive/v2/file/createWithFolders</td>
+</tr>
+<tr>
+<td>Server:</td>
+<td>security-pgw-90b2f6b7d69951d209f28a873243d040-tfgfk</td>
+</tr>
+<tr>
+<td>Date:</td>
+<td>2024/01/02 18:50:23</td>
+</tr>
+</table>
+<hr/>Powered by Tengine<hr><center>tengine</center>
+</body>
+</html>
+
+2024-01-02 10:50:24 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2024-01-02 10:50:25 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-01-02 11:30:21 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='cn-beijing-data.aliyundrive.net', port=443): Read timed out. (read timeout=30)")': /EpmlW6s7%2F889478%2F65933f29a3c6ef6637ab43eea0d1bca7ac31d329%2F6593f3aed06b0a2c2a594c8ba94e9362aa360fe5?partNumber=1&security-token=CAIS%2BgF1q6Ft5B2yfSjIr5fYCP%2FBv5ll%2FJeDen%2F%2F125nWtYao5zN2jz2IHFPeHJrBeAYt%2FoxmW1X5vwSlq5rR4QAXlDfNWfMDXHyqFHPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLukMWr%2Fwq3PIdp2ma447NWQlLnzyCMvvJ9OVDFyN0aKEnH7J%2Bq%2FzxhTPrMnpkSlacGoABQMIzqUoFWaqJihSkF9KZ8x5pUMOCUNAGdFnC9gYEHzrKD4cAyLMxcwe1dWWG3DuZ9rmGQbYXeybJFOB7pshIedJ%2FalEUKP9tB%2FFxeiQaxniSC%2BNYXNQdiYFmH24j%2FnHXT4jEizsh3VLsO3fQsTFp2GH3ZiRIn387oo86O8mu2kAgAA%3D%3D&uploadId=B64A9354357B478590D0D03EFAD10223&x-oss-access-key-id=STS.NTmCEuRFDKUhxYN3n2VY6LYf8&x-oss-expires=1704198590&x-oss-signature=8iBPIiPAmw4gtAGlEZHgahvQ5eh5r7ow7E8G9Un8ufs%3D&x-oss-signature-version=OSS2
+2024-01-02 11:41:35 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2024-01-02 11:41:36 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
+2024-01-02 11:44:23 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', timeout('The write operation timed out'))': /MopGIFVb%2F889478%2F6593f6f8634b484b8c944822a31679735d734b6d%2F6593f6f8cb82fa34714947ea8e25c51530508edd?partNumber=1&security-token=CAIS%2BgF1q6Ft5B2yfSjIr5blJv%2FBvZpH9oaAamjUnWkjZv57iJ%2Fckjz2IHFPeHJrBeAYt%2FoxmW1X5vwSlq5rR4QAXlDfNTrvXnHyqFHPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLukMWr%2Fwq3PIdp2ma447NWQlLnzyCMvvJ9OVDFyN0aKEnH7J%2Bq%2FzxhTPrMnpkSlacGoABeTvUTe6MabyA41SObvznipLmcIB06bixfniSg4QZV%2BRAcHrtHs%2BlvrDrn2iyQWKSQtjUU8uasVIU58N4O9SXTF8I8eh7kqySQXz14vW%2Fl4jWvclKgHxrH4vDDbzGoKqxhWIKfLvGtvrOKZ%2BJhUKRa%2FdZc1uJyXfHAeuxWWk2R%2BsgAA%3D%3D&uploadId=05C82FC250494E0FB63937DE15994C85&x-oss-access-key-id=STS.NUPmEuPEfADkhNeyivjqWgZwp&x-oss-expires=1704199432&x-oss-signature=kZ26F66m7j%2BpEqW7BsBXDOzsTU8wFD3hJp15%2F%2BohXJ4%3D&x-oss-signature-version=OSS2
+2024-01-02 11:53:00 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2024-01-02 11:53:01 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-01-02 12:11:04 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', timeout('The write operation timed out'))': /EWGz9bTn%2F889478%2F65084531713de09838ae408cb084ec5b68b653a3%2F6593fd39bfa379e174e24ce2ae75723cfecedf14?partNumber=1&security-token=CAIS%2BgF1q6Ft5B2yfSjIr5b3EdnMi5N10ZCdc3PYqjciYchotbDZrjz2IHFPeHJrBeAYt%2FoxmW1X5vwSlq5rR4QAXlDfNXmBdHHyqFHPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLukMWr%2Fwq3PIdp2ma447NWQlLnzyCMvvJ9OVDFyN0aKEnH7J%2Bq%2FzxhTPrMnpkSlacGoABjxskAuvKNsgN1ZQj5j6xN8Lg7%2FLaJ0eSc4f%2BCWJq4PEF90UcuRQvrFU7VdoEhphPkWjDdyERr2KBj0J1czvGb3TfkUmILC9vl%2Bxt94Q3wj11EL1DcMH9eTzi10A1WUfrxQcr1QJWBBIAkAoWvhHokMKsOu1Tu1%2FKc3KZi096JZ0gAA%3D%3D&uploadId=D7325E0E6CF84DC29E4DC4C64D220B33&x-oss-access-key-id=STS.NUBZcxfLTfRvqUiN7wmGDZurL&x-oss-expires=1704201033&x-oss-signature=701Jp%2FmAsIe78d5QhurqPZKziPCs33Kj82DqqPM89JY%3D&x-oss-signature-version=OSS2
+2024-01-02 12:15:41 - WARNING - aliyundrive.py - 831 - Token is about to expire, try to auto refresh.
+2024-01-02 12:19:12 - WARNING - pixivdrive.py - 127 - Failed to add salt to page tmp/109140616/109140616_ugoira0.gif, upload original page.
+2024-01-02 12:41:39 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2024-01-02 12:41:40 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
+2024-01-02 12:57:50 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2024-01-02 12:57:51 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-01-02 13:01:25 - WARNING - base.py - 100 - https://api.aliyundrive.com/v2/file/complete:504:Gateway Timeout
+2024-01-02 13:01:25 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/v2/file/complete:JsonValueError.
+2024-01-02 13:01:26 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
+2024-01-02 13:11:09 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2024-01-02 13:11:10 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
