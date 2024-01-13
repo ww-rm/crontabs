@@ -1678,3 +1678,24 @@ Thank you very much!</p>
 2024-01-13 00:10:37 - WARNING - pixivdrive.py - 127 - Failed to add salt to page tmp/108793939/108793939_p0.gif, upload original page.
 2024-01-13 00:10:38 - WARNING - pixivdrive.py - 155 - Failed to make mirage for page tmp/108793939/108793939_p0.gif.
 2024-01-13 00:13:44 - WARNING - aliyundrive.py - 831 - Token is about to expire, try to auto refresh.
+2024-01-13 10:15:43 - WARNING - aliyundrive.py - 831 - Token is about to expire, try to auto refresh.
+2024-01-13 10:26:55 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='cn-beijing-data.aliyundrive.net', port=443): Read timed out. (read timeout=30)")': /Deo9bOYD%2F889478%2F6563d4db2f2b1e1f110e4cdbabf9ac352b6c0a6e%2F65a26551fd14f734839046a89a3e200a1906e3f0?partNumber=1&security-token=CAIS%2BgF1q6Ft5B2yfSjIr5eHD43%2BuedD85qZWk6DsEYXXdVHp%2F3aizz2IHFPeHJrBeAYt%2FoxmW1X5vwSlq5rR4QAXlDfNSCQKDPvqFHPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLukMWr%2Fwq3PIdp2ma447NWQlLnzyCMvvJ9OVDFyN0aKEnH7J%2Bq%2FzxhTPrMnpkSlacGoABU2xRczjwuxWymheTxFz9QrvaJPl1snJCB03ZMQihg3fM11Wtytv8gZMqllRO13ldqAQeS6zLQVdGnR3gpzQjdj3UxSQLBwwUJ5RUHP6%2BEbkpRel3JrmImi9eoZNqhWEYHjmP1gXgRwGTlWRBI%2Fzki408GgBCYkO0Y3ouVGzyO6QgAA%3D%3D&uploadId=DA79042A096C4AA09C6229C27610ACEA&x-oss-access-key-id=STS.NT2D7JT8bDXrXh2TFBQZkH8qi&x-oss-expires=1705145185&x-oss-signature=a1CBl5CyKVrOBBN0m4HRKktXEkswV7%2F7Ia7PP8k8WRo%3D&x-oss-signature-version=OSS2
+2024-01-13 11:42:38 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:504:Gateway Timeout
+2024-01-13 11:42:38 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2024-01-13 11:42:39 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-01-13 11:48:10 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2024-01-13 11:48:11 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-01-13 12:14:44 - WARNING - aliyundrive.py - 831 - Token is about to expire, try to auto refresh.
+2024-01-13 12:21:52 - WARNING - pixivdrive.py - 127 - Failed to add salt to page tmp/108793939/108793939_p0.gif, upload original page.
+2024-01-13 12:21:53 - WARNING - pixivdrive.py - 155 - Failed to make mirage for page tmp/108793939/108793939_p0.gif.
+2024-01-13 12:22:46 - WARNING - base.py - 100 - https://api.aliyundrive.com/v2/file/complete:504:Gateway Timeout
+2024-01-13 12:22:46 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/v2/file/complete:JsonValueError.
+2024-01-13 12:22:47 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
+2024-01-13 12:30:28 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2024-01-13 12:30:29 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
+2024-01-13 12:42:17 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2023/11/27/14/31/57/113574546_p0.jpg
+2024-01-13 12:50:33 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2024-01-13 12:50:34 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-01-13 12:51:36 - WARNING - base.py - 100 - https://api.aliyundrive.com/v2/file/complete:504:Gateway Timeout
+2024-01-13 12:51:36 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/v2/file/complete:JsonValueError.
+2024-01-13 12:51:37 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
