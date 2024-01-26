@@ -2858,3 +2858,41 @@ Thank you very much!</p>
 2024-01-26 00:19:15 - WARNING - pixivdrive.py - 127 - Failed to add salt to page tmp/109140616/109140616_ugoira0.gif, upload original page.
 2024-01-26 00:31:37 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
 2024-01-26 00:31:38 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
+2024-01-26 10:16:14 - WARNING - aliyundrive.py - 831 - Token is about to expire, try to auto refresh.
+2024-01-26 10:33:49 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='bj29-enet.cn-beijing.data.alicloudccp.com', port=443): Read timed out. (read timeout=30)")': /UC4cDivy%2F889478%2F65b386ad731dafee2bd94ef29a10ce87685b6ac4%2F65b38a6fc2630c6830e54ef78e2113c4b749eda4?partNumber=1&security-token=CAIS%2BgF1q6Ft5B2yfSjIr5fYJcPFvrRI7oyYVRT9rE1mb75trp%2Beqjz2IHFPeHJrBeAYt%2FoxmW1X5vwSlq5rR4QAXlDfNXDORR7rqFHPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLukMWr%2Fwq3PIdp2ma447NWQlLnzyCMvvJ9OVDFyN0aKEnH7J%2Bq%2FzxhTPrMnpkSlacGoABIZKl4na5LQqZt%2FgR37OUdfqebXF1DmekLyAyNfL9vSQiza0p5MSjI9%2B%2ByH8FmpHgzz39ObpO6SS6zJ2FD2iXXrJWQkWa2R2y7zG74sR6mE1TkvaWJGXtmkj6rkkGWn%2FJXXPZcG%2FRS11g1x%2FcKhrsCIa%2FxO4G%2FLdyY9s%2FBS8hk7cgAA%3D%3D&uploadId=E2E936DED01D47F6BEDEFA345328ED45&x-oss-access-key-id=STS.NTmnyqSkiYNsW2LHM3c1AAZ5H&x-oss-expires=1706268799&x-oss-signature=7%2F583W8NRRvPNMDMjcsRO8kWBBhTcSVtgJ%2FW6ZzaYC4%3D&x-oss-signature-version=OSS2
+2024-01-26 11:33:03 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:504:Gateway Timeout
+2024-01-26 11:33:03 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2024-01-26 11:33:04 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-01-26 11:37:29 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2015/07/17/00/16/17/51450343_p0.jpg
+2024-01-26 11:45:35 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2023/10/18/00/01/10/112635867_p0.png
+2024-01-26 11:51:53 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2024-01-26 11:51:54 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-01-26 12:10:16 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:504:<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html>
+<head><title>504 Gateway Time-out</title></head>
+<body>
+<center><h1>504 Gateway Time-out</h1></center>
+ Sorry for the inconvenience.<br/>
+Please report this message and include the following information to us.<br/>
+Thank you very much!</p>
+<table>
+<tr>
+<td>URL:</td>
+<td>https://api.aliyundrive.com/adrive/v2/file/createWithFolders</td>
+</tr>
+<tr>
+<td>Server:</td>
+<td>security-pgw-90b2f6b7d69951d209f28a873243d040-2f9zt</td>
+</tr>
+<tr>
+<td>Date:</td>
+<td>2024/01/26 20:10:16</td>
+</tr>
+</table>
+<hr/>Powered by Tengine<hr><center>tengine</center>
+</body>
+</html>
+
+2024-01-26 12:10:16 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2024-01-26 12:10:17 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-01-26 12:15:14 - WARNING - aliyundrive.py - 831 - Token is about to expire, try to auto refresh.
