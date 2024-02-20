@@ -579,3 +579,17 @@ Thank you very much!</p>
 
 2024-02-19 12:17:17 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
 2024-02-19 12:17:18 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-02-19 22:14:23 - WARNING - aliyundrive.py - 831 - Token is about to expire, try to auto refresh.
+2024-02-19 23:55:42 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2024-02-19 23:55:43 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
+2024-02-19 23:56:13 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2024-02-19 23:56:15 - WARNING - base.py - 25 - Retry func _post_file_complete 2 time.
+2024-02-19 23:57:11 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2024-02-19 23:57:12 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-02-19 23:57:42 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2024-02-19 23:57:44 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2024-02-20 00:01:56 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2024/01/08/17/19/12/114998302_p0.jpg
+2024-02-20 00:13:23 - WARNING - aliyundrive.py - 831 - Token is about to expire, try to auto refresh.
+2024-02-20 00:33:45 - WARNING - pixivdrive.py - 127 - Failed to add salt to page tmp/112479930/112479930_p0.gif, upload original page.
+2024-02-20 00:39:39 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2023/06/06/22/56/33/108788171_p0.png
+2024-02-20 00:44:32 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2023/04/20/18/54/22/107353452_p0.png
