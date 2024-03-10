@@ -3087,3 +3087,14 @@ Thank you very much!</p>
 2024-03-09 10:54:12 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
 2024-03-09 10:54:13 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
 2024-03-09 12:15:10 - WARNING - aliyundrive.py - 831 - Token is about to expire, try to auto refresh.
+2024-03-09 22:14:43 - WARNING - aliyundrive.py - 831 - Token is about to expire, try to auto refresh.
+2024-03-09 22:22:11 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2023/12/03/17/40/04/113920260_p0.jpg
+2024-03-09 22:46:53 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2024-03-09 22:46:54 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
+2024-03-09 22:56:11 - WARNING - base.py - 100 - https://api.aliyundrive.com/v2/file/complete:504:Gateway Timeout
+2024-03-09 22:56:11 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/v2/file/complete:JsonValueError.
+2024-03-09 22:56:12 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
+2024-03-09 22:58:58 - WARNING - pixivdrive.py - 127 - Failed to add salt to page tmp/112479930/112479930_p0.gif, upload original page.
+2024-03-09 23:35:26 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2024/01/31/00/00/25/115624429_p0.jpg
+2024-03-09 23:51:49 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2021/10/07/02/08/36/93273705_p0.png
+2024-03-10 00:13:45 - WARNING - aliyundrive.py - 831 - Token is about to expire, try to auto refresh.
