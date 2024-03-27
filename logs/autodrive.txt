@@ -4388,3 +4388,110 @@ Thank you very much!</p>
 2024-03-26 12:58:37 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2023/12/01/20/32/07/113865743_p0.png
 2024-03-26 13:00:51 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
 2024-03-26 13:00:52 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-03-26 22:15:28 - WARNING - aliyundrive.py - 831 - Token is about to expire, try to auto refresh.
+2024-03-26 22:35:42 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2023/10/22/01/40/46/112670857_p0.jpg
+2024-03-26 23:05:28 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2023/10/08/12/31/49/112370304_p0.jpg
+2024-03-26 23:14:30 - WARNING - base.py - 100 - https://api.aliyundrive.com/v2/file/complete:500:{"code":"InternalError","message":"Internal Server Error","requestId":"0a00801317114948599197196e9c0f","resultCode":"InternalError"}
+2024-03-26 23:14:30 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/v2/file/complete:500:Internal Server Error
+2024-03-26 23:14:31 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
+2024-03-26 23:14:35 - WARNING - base.py - 100 - https://api.aliyundrive.com/v2/file/complete:404:{"code":"NotFound.UploadId","message":"The resource upload_id cannot be found. No such upload_id"}
+2024-03-26 23:14:35 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/v2/file/complete:404:The resource upload_id cannot be found. No such upload_id
+2024-03-26 23:14:37 - WARNING - base.py - 25 - Retry func _post_file_complete 2 time.
+2024-03-26 23:14:38 - WARNING - base.py - 100 - https://api.aliyundrive.com/v2/file/complete:404:{"code":"NotFound.UploadId","message":"The resource upload_id cannot be found. No such upload_id"}
+2024-03-26 23:14:38 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/v2/file/complete:404:The resource upload_id cannot be found. No such upload_id
+2024-03-26 23:14:41 - WARNING - base.py - 25 - Retry func _post_file_complete 3 time.
+2024-03-26 23:14:41 - WARNING - base.py - 100 - https://api.aliyundrive.com/v2/file/complete:404:{"code":"NotFound.UploadId","message":"The resource upload_id cannot be found. No such upload_id"}
+2024-03-26 23:14:41 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/v2/file/complete:404:The resource upload_id cannot be found. No such upload_id
+2024-03-26 23:14:45 - ERROR - base.py - 36 - All retries failed in func _post_file_complete.
+2024-03-26 23:14:45 - ERROR - aliyundrive.py - 1088 - Failed to complete upload file tmp/100502793/100502793.json.txt.
+2024-03-26 23:19:01 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:502:<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html>
+<head><title>502 Bad Gateway</title></head>
+<body>
+<center><h1>502 Bad Gateway</h1></center>
+ Sorry for the inconvenience.<br/>
+Please report this message and include the following information to us.<br/>
+Thank you very much!</p>
+<table>
+<tr>
+<td>URL:</td>
+<td>https://api.aliyundrive.com/adrive/v2/file/createWithFolders</td>
+</tr>
+<tr>
+<td>Server:</td>
+<td>security-pgw-90b2f6b7d69951d209f28a873243d040-tnzxq</td>
+</tr>
+<tr>
+<td>Date:</td>
+<td>2024/03/27 07:19:01</td>
+</tr>
+</table>
+<hr/>Powered by Tengine<hr><center>tengine</center>
+</body>
+</html>
+
+2024-03-26 23:19:01 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2024-03-26 23:19:02 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-03-26 23:19:02 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:502:<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html>
+<head><title>502 Bad Gateway</title></head>
+<body>
+<center><h1>502 Bad Gateway</h1></center>
+ Sorry for the inconvenience.<br/>
+Please report this message and include the following information to us.<br/>
+Thank you very much!</p>
+<table>
+<tr>
+<td>URL:</td>
+<td>https://api.aliyundrive.com/adrive/v2/file/createWithFolders</td>
+</tr>
+<tr>
+<td>Server:</td>
+<td>security-pgw-90b2f6b7d69951d209f28a873243d040-tnzxq</td>
+</tr>
+<tr>
+<td>Date:</td>
+<td>2024/03/27 07:19:02</td>
+</tr>
+</table>
+<hr/>Powered by Tengine<hr><center>tengine</center>
+</body>
+</html>
+
+2024-03-26 23:19:02 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2024-03-26 23:19:04 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2024-03-26 23:19:05 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:502:<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html>
+<head><title>502 Bad Gateway</title></head>
+<body>
+<center><h1>502 Bad Gateway</h1></center>
+ Sorry for the inconvenience.<br/>
+Please report this message and include the following information to us.<br/>
+Thank you very much!</p>
+<table>
+<tr>
+<td>URL:</td>
+<td>https://api.aliyundrive.com/adrive/v2/file/createWithFolders</td>
+</tr>
+<tr>
+<td>Server:</td>
+<td>security-pgw-90b2f6b7d69951d209f28a873243d040-tnzxq</td>
+</tr>
+<tr>
+<td>Date:</td>
+<td>2024/03/27 07:19:04</td>
+</tr>
+</table>
+<hr/>Powered by Tengine<hr><center>tengine</center>
+</body>
+</html>
+
+2024-03-26 23:19:05 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2024-03-26 23:19:08 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2024-03-26 23:34:43 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2024/02/04/17/57/11/115759406_p0.png
+2024-03-27 00:12:07 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2023/08/27/15/22/17/111204103_p0.jpg
+2024-03-27 00:14:28 - WARNING - aliyundrive.py - 831 - Token is about to expire, try to auto refresh.
+2024-03-27 00:20:37 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='cn-beijing-data.aliyundrive.net', port=443): Read timed out. (read timeout=30)")': /BRXmKgvJ%2F889478%2F65c4c14a675ce3f87e3d4b509e78a4e4605eedde%2F66036637397f267a24d647df88da1cd98972333e?partNumber=1&security-token=CAIS8gF1q6Ft5B2yfSjIr5fhDf%2FktZ5Y06atU2vJjXQCT8dinvD8tjz2IHhMf3NpBOkZvvQ1lGlU6%2Fcalq5rR4QAXlDfNRK3QljXqFHPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLs0ARrv4r1fMUqW2X543AUgFLhy2KKMPY99xpFgh9a7j0iCbSGyUu%2FhqAAYbWxbdSWAYo9Klwjp4I7Kh4JN3nKJd4QmBwkhplNzZ7zwCCEC1ApL16LhDazFlFgzbHLhjj0X3HKFnDOpWGZcophaPyyZNCT8CtPvZ%2Bn4VPqU5KdW3eBIEaKFGkAYb%2FzlasBg6CiGOL7OX2OKO%2BLWYaSzZ11RFaTLnEaQ25vBGBIAA%3D&uploadId=3373732263B04A2D8BE6B47A3B8B1A45&x-oss-access-key-id=STS.NTTFEPXAyddFQMxitWCHNq5WT&x-oss-expires=1711502407&x-oss-signature=2IkNCnC1Ybujt8EKfkuwPNavUnKexrYawgsWtKN7DoM%3D&x-oss-signature-version=OSS2
+2024-03-27 00:22:33 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2024/01/02/00/00/40/114793137_p0.jpg
+2024-03-27 00:29:36 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2023/08/24/00/25/11/111103813_p0.jpg
+2024-03-27 01:13:53 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2024/03/20/21/51/06/117098505_p0.jpg
