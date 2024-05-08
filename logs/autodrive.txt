@@ -2815,3 +2815,39 @@ Thank you very much!</p>
 2024-05-08 00:19:38 - ERROR - base.py - 36 - All retries failed in func _post_file_complete.
 2024-05-08 00:19:38 - ERROR - aliyundrive.py - 1088 - Failed to complete upload file tmp/115375109/115375109_p2.png.
 2024-05-08 00:28:41 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', TimeoutError('The write operation timed out'))': /wKEw4ATy%2F889478%2F65fc13e622c5f8a298b4461b8a10a69d25929a5a%2F663ac71b91bd0323ad7d49ffbfd8580add26138e?partNumber=1&security-token=CAISvgJ1q6Ft5B2yfSjIr5fMKdnT3Ld53ai%2FNh77njYfbel%2FhbXDjTz2IHhMf3NpBOkZvvQ1lGlU6%2Fcalq5rR4QAXlDfNRqrBRbKqFHPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLs0ARrv4r1fMUqW2X543AUgFLhy2KKMPY99xpFgh9a7j0iCbSGyUu%2FhcRm5sw9%2Byfo34lVYne43XIwnJnLuHwufJ7FxfIREfquk63pvSlHLcLPe0Kjzzleo2k1XRPVFF%2B535IaHXuToXDnvSiVIibnPXtuMkagAFuij6Y0l%2F5dpwaf%2FgK7ytfa9KGt34JwPi1gafuowI9uipseOPYCseC9mN5fVwxl%2Bf0ezvVrTtA5U1ExfsVGmR0ttVMgcMAPentYRa%2FDw4qbFv8DthgXKa5SoFVbAu4qarRyKLA7VfZvFvus66Cut2u813wSyN8T%2FJUYPWgl6x3QiAA&uploadId=6145E92B196F4291BE65F08FDE86A41E&x-oss-access-key-id=STS.NTybcg1hXjjT48Jz6JafSjpho&x-oss-expires=1715131691&x-oss-signature=atxivwI25KcqDx6xWO1hH3OenYwSXU%2BjBQTsXhkKeMQ%3D&x-oss-signature-version=OSS2
+2024-05-08 10:17:57 - WARNING - aliyundrive.py - 831 - Token is about to expire, try to auto refresh.
+2024-05-08 11:00:20 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2024/04/28/00/29/49/118216581_p0.jpg
+2024-05-08 11:29:36 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:504:<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html>
+<head><title>504 Gateway Time-out</title></head>
+<body>
+<center><h1>504 Gateway Time-out</h1></center>
+ Sorry for the inconvenience.<br/>
+Please report this message and include the following information to us.<br/>
+Thank you very much!</p>
+<table>
+<tr>
+<td>URL:</td>
+<td>https://api.aliyundrive.com/adrive/v2/file/createWithFolders</td>
+</tr>
+<tr>
+<td>Server:</td>
+<td>security-pgw-90b2f6b7d69951d209f28a873243d040-z9cmj</td>
+</tr>
+<tr>
+<td>Date:</td>
+<td>2024/05/08 19:29:36</td>
+</tr>
+</table>
+<hr/>Powered by Tengine<hr><center>tengine</center>
+</body>
+</html>
+
+2024-05-08 11:29:36 - ERROR - aliyundrive.py - 75 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:JsonValueError.
+2024-05-08 11:29:37 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-05-08 12:16:58 - WARNING - aliyundrive.py - 831 - Token is about to expire, try to auto refresh.
+2024-05-08 12:25:09 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2024-05-08 12:25:10 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
+2024-05-08 12:39:22 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', TimeoutError('The write operation timed out'))': /7pbLWprD%2F889478%2F663a1fe36cd834e478bf4616b94484747e891e20%2F663b725b4cbe610ef5214121b6076c30324cf2b1?partNumber=1&security-token=CAISvgJ1q6Ft5B2yfSjIr5WCPPLcnJlz5PaSaBfnizgyXb1ugInpujz2IHhMf3NpBOkZvvQ1lGlU6%2Fcalq5rR4QAXlDfNVGVVgLKqFHPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLs0ARrv4r1fMUqW2X543AUgFLhy2KKMPY99xpFgh9a7j0iCbSGyUu%2FhcRm5sw9%2Byfo34lVYnew7hEyWlnLuHwufJ7FxfIREfquk63pvSlHLcLPe0Kjzzleo2k1XRPVFF%2B535IaHXuToXDnvSix1VrefXtuMkagAGXPSf%2FgGocerc239DB9vIdxeetsHqq1gEsJF2mtaslaQk1LfZ86MCWR%2Fq0rH7c4guow0noHDWIj6pNbTiqeKQJN%2BJdyCWm%2FLyeBZOD5ifXZaXpbXDRmgmWj%2Byuz0OTn7ahqdZj9n7tRB4a2kn9vNyy4s2pqGbTOepAV6J3cQ%2BogSAA&uploadId=64FB39B2C77B4C8DBF7C3EDC81418110&x-oss-access-key-id=STS.NV7wHhqFRS4yj1Vo8gQ2BoLBX&x-oss-expires=1715175531&x-oss-signature=CWKXYGB1NhRm59GabVefd%2FWFM3I684tJEaKN1e23lSo%3D&x-oss-signature-version=OSS2
+2024-05-08 12:43:17 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2024/01/14/23/24/06/115175801_p0.jpg
+2024-05-08 12:48:38 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', TimeoutError('The write operation timed out'))': /L3pso8fn%2F889478%2F663b523d5b12dc7bee5d48d480d46e43eeb76f03%2F663b7487fc5aeaff94ca4303990c3abf4a905c3f?partNumber=1&security-token=CAISvgJ1q6Ft5B2yfSjIr5WCPPLcnJlz5PaSaBfnizgyXb1ugInpujz2IHhMf3NpBOkZvvQ1lGlU6%2Fcalq5rR4QAXlDfNVGVVgLKqFHPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLs0ARrv4r1fMUqW2X543AUgFLhy2KKMPY99xpFgh9a7j0iCbSGyUu%2FhcRm5sw9%2Byfo34lVYnew7hEyWlnLuHwufJ7FxfIREfquk63pvSlHLcLPe0Kjzzleo2k1XRPVFF%2B535IaHXuToXDnvSix1VrefXtuMkagAGXPSf%2FgGocerc239DB9vIdxeetsHqq1gEsJF2mtaslaQk1LfZ86MCWR%2Fq0rH7c4guow0noHDWIj6pNbTiqeKQJN%2BJdyCWm%2FLyeBZOD5ifXZaXpbXDRmgmWj%2Byuz0OTn7ahqdZj9n7tRB4a2kn9vNyy4s2pqGbTOepAV6J3cQ%2BogSAA&uploadId=43BC395DBF89433D9B45A9E71B20A15E&x-oss-access-key-id=STS.NV7wHhqFRS4yj1Vo8gQ2BoLBX&x-oss-expires=1715176087&x-oss-signature=XuWScFo5hfOyuu3N0LDYb%2FnOif0Ju96m16OdviANFt0%3D&x-oss-signature-version=OSS2
