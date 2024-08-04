@@ -120,3 +120,342 @@
 2024-08-04 00:47:56 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
 2024-08-04 00:47:56 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/14881241/Deyui | デユイ - 14881241.
 2024-08-04 00:53:58 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2023/02/14/00/01/08/105353528_p0.jpg
+2024-08-04 10:17:04 - WARNING - aliyundrive.py - 831 - Token is about to expire, try to auto refresh.
+2024-08-04 10:20:52 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00700917227668526245192e6f58","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 10:20:52 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 10:20:53 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-08-04 10:20:54 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00700917227668539015355e6f58","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 10:20:54 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 10:20:56 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2024-08-04 10:20:56 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00700917227668561785659e6f58","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 10:20:56 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 10:20:59 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2024-08-04 10:20:59 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00700917227668594776199e6f58","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 10:20:59 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 10:21:03 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2024-08-04 10:21:03 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/446045/Kacyu | 卡丘 - 446045.
+2024-08-04 10:31:36 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00700e17227674961092012e0263","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 10:31:36 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 10:31:37 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-08-04 10:31:37 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00700e17227674973882187e0263","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 10:31:37 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 10:31:39 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2024-08-04 10:31:39 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00700e17227674996682576e0263","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 10:31:39 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 10:31:42 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2024-08-04 10:31:43 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00700e17227675029502965e0263","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 10:31:43 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 10:31:47 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2024-08-04 10:31:47 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/446045/Kacyu | 卡丘 - 446045.
+2024-08-04 10:43:48 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2024/01/20/04/04/51/115314210_p0.jpg
+2024-08-04 10:44:38 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00700a17227682779317196ef824","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 10:44:38 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 10:44:39 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-08-04 10:44:39 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00700a17227682792127354ef824","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 10:44:39 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 10:44:41 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2024-08-04 10:44:41 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00700a17227682814997644ef824","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 10:44:41 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 10:44:44 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2024-08-04 10:44:44 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00700a17227682848058060ef824","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 10:44:44 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 10:44:48 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2024-08-04 10:44:48 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/446045/Kacyu | 卡丘 - 446045.
+2024-08-04 10:48:49 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801917227685294333114e8d70","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 10:48:49 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 10:48:50 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-08-04 10:48:50 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801917227685307173289e8d70","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 10:48:50 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 10:48:52 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2024-08-04 10:48:53 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801917227685329973527e8d70","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 10:48:53 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 10:48:56 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2024-08-04 10:48:56 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801917227685363043837e8d70","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 10:48:56 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 10:49:00 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2024-08-04 10:49:00 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/446045/Kacyu | 卡丘 - 446045.
+2024-08-04 10:50:50 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00802417227686500096396e025c","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 10:50:50 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 10:50:51 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-08-04 10:50:51 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00802417227686512906612e025c","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 10:50:51 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 10:50:53 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2024-08-04 10:50:53 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00802417227686535797051e025c","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 10:50:53 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 10:50:56 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2024-08-04 10:50:57 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00802417227686568597641e025c","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 10:50:57 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 10:51:01 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2024-08-04 10:51:01 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/446045/Kacyu | 卡丘 - 446045.
+2024-08-04 10:54:04 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801f17227688443873007e162f","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 10:54:04 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 10:54:05 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-08-04 10:54:05 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801f17227688456653204e162f","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 10:54:05 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 10:54:07 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2024-08-04 10:54:08 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801f17227688479443524e162f","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 10:54:08 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 10:54:11 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2024-08-04 10:54:11 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801f17227688512214046e162f","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 10:54:11 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 10:54:15 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2024-08-04 10:54:15 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/446045/Kacyu | 卡丘 - 446045.
+2024-08-04 11:01:22 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00701517227692818765957e0260","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 11:01:22 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 11:01:23 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-08-04 11:01:23 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00701517227692831596084e0260","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 11:01:23 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 11:01:25 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2024-08-04 11:01:25 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00701517227692854436369e0260","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 11:01:25 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 11:01:28 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2024-08-04 11:01:28 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00701517227692887246816e0260","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 11:01:28 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 11:01:32 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2024-08-04 11:01:32 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/446045/Kacyu | 卡丘 - 446045.
+2024-08-04 11:03:41 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801817227694213418674e0261","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 11:03:41 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 11:03:42 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-08-04 11:03:42 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801817227694226178856e0261","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 11:03:42 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 11:03:44 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2024-08-04 11:03:45 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801817227694249131118e0261","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 11:03:45 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 11:03:48 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2024-08-04 11:03:48 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801817227694281971482e0261","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 11:03:48 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 11:03:52 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2024-08-04 11:03:52 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/446045/Kacyu | 卡丘 - 446045.
+2024-08-04 11:15:33 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2024/08/04/18/00/05/121176271_p0.jpg
+2024-08-04 11:18:41 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00700917227703216847117e6f62","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 11:18:41 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 11:18:42 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-08-04 11:18:43 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00700917227703229617285e6f62","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 11:18:43 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 11:18:45 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2024-08-04 11:18:45 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00700917227703252347570e6f62","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 11:18:45 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 11:18:48 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2024-08-04 11:18:48 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00700917227703285188125e6f62","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 11:18:48 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 11:18:52 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2024-08-04 11:18:52 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/446045/Kacyu | 卡丘 - 446045.
+2024-08-04 11:20:08 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2024-08-04 11:20:09 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
+2024-08-04 11:20:41 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7fa22f5a6f50>: Failed to establish a new connection: [Errno 101] Network is unreachable')': /v2/file/complete
+2024-08-04 11:21:11 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7fa22f3ce090>: Failed to establish a new connection: [Errno 101] Network is unreachable')': /v2/file/complete
+2024-08-04 11:21:41 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7fa22f3ccb90>: Failed to establish a new connection: [Errno 101] Network is unreachable')': /v2/file/complete
+2024-08-04 11:22:11 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Max retries exceeded with url: /v2/file/complete (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7fa22f59c050>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+2024-08-04 11:22:13 - WARNING - base.py - 25 - Retry func _post_file_complete 2 time.
+2024-08-04 11:22:43 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7fa22f3bc390>: Failed to establish a new connection: [Errno 101] Network is unreachable')': /v2/file/complete
+2024-08-04 11:23:13 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7fa22f3bfd50>: Failed to establish a new connection: [Errno 101] Network is unreachable')': /v2/file/complete
+2024-08-04 11:23:43 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7fa22f3bc710>: Failed to establish a new connection: [Errno 101] Network is unreachable')': /v2/file/complete
+2024-08-04 11:25:10 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801817227707104668038e025e","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 11:25:10 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 11:25:11 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-08-04 11:25:11 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801817227707117488272e025e","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 11:25:11 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 11:25:13 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2024-08-04 11:25:14 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801817227707140238562e025e","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 11:25:14 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 11:25:17 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2024-08-04 11:25:17 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801817227707173058928e025e","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 11:25:17 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 11:25:21 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2024-08-04 11:25:21 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/446045/Kacyu | 卡丘 - 446045.
+2024-08-04 11:32:31 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801d17227711513233798e1d1d","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 11:32:31 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 11:32:32 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-08-04 11:32:32 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801d17227711526013911e1d1d","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 11:32:32 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 11:32:34 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2024-08-04 11:32:35 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801d17227711548774212e1d1d","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 11:32:35 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 11:32:38 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2024-08-04 11:32:38 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801d17227711581554670e1d1d","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 11:32:38 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 11:32:42 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2024-08-04 11:32:42 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/446045/Kacyu | 卡丘 - 446045.
+2024-08-04 11:39:56 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00701c17227715960914786e4aba","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 11:39:56 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 11:39:57 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-08-04 11:39:57 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00701c17227715973704910e4aba","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 11:39:57 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 11:39:59 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2024-08-04 11:39:59 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00701c17227715996455178e4aba","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 11:39:59 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 11:40:02 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2024-08-04 11:40:03 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00701c17227716029275557e4aba","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 11:40:03 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 11:40:07 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2024-08-04 11:40:07 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/446045/Kacyu | 卡丘 - 446045.
+2024-08-04 11:41:50 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00701617227717107175104e02aa","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 11:41:50 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 11:41:51 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-08-04 11:41:52 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00701617227717119985273e02aa","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 11:41:52 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 11:41:54 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2024-08-04 11:41:54 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00701617227717142845539e02aa","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 11:41:54 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 11:41:57 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2024-08-04 11:41:57 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00701617227717175586003e02aa","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 11:41:57 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 11:42:01 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2024-08-04 11:42:01 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/446045/Kacyu | 卡丘 - 446045.
+2024-08-04 11:57:03 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801817227726229096339e0261","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 11:57:03 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 11:57:04 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-08-04 11:57:04 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801817227726242026485e0261","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 11:57:04 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 11:57:06 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2024-08-04 11:57:06 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801817227726264806799e0261","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 11:57:06 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 11:57:09 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2024-08-04 11:57:09 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801817227726297577282e0261","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 11:57:09 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 11:57:13 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2024-08-04 11:57:13 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/446045/Kacyu | 卡丘 - 446045.
+2024-08-04 12:01:56 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00802417227729164927793e025f","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:01:56 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:01:57 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-08-04 12:01:57 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00802417227729177727957e025f","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:01:57 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:01:59 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2024-08-04 12:02:00 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00802417227729200518198e025f","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:02:00 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:02:03 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2024-08-04 12:02:03 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00802417227729233588714e025f","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:02:03 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:02:07 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2024-08-04 12:02:07 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/446045/Kacyu | 卡丘 - 446045.
+2024-08-04 12:03:55 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00701417227730358104073e0261","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:03:55 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:03:56 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-08-04 12:03:57 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00701417227730370924274e0261","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:03:57 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:03:59 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2024-08-04 12:03:59 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00701417227730393734554e0261","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:03:59 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:04:02 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2024-08-04 12:04:02 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00701417227730426745026e0261","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:04:02 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:04:06 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2024-08-04 12:04:06 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/446045/Kacyu | 卡丘 - 446045.
+2024-08-04 12:08:31 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00701717227733112116345e0265","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:08:31 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:08:32 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-08-04 12:08:32 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00701717227733124866570e0265","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:08:32 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:08:34 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2024-08-04 12:08:34 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00701717227733147686955e0265","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:08:34 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:08:37 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2024-08-04 12:08:38 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00701717227733180417362e0265","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:08:38 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:08:42 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2024-08-04 12:08:42 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/446045/Kacyu | 卡丘 - 446045.
+2024-08-04 12:10:24 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00700f17227734243866125e026b","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:10:24 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:10:25 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-08-04 12:10:25 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00700f17227734256596307e026b","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:10:25 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:10:27 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2024-08-04 12:10:28 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00700f17227734279406641e026b","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:10:28 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:10:31 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2024-08-04 12:10:31 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00700f17227734312237287e026b","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:10:31 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:10:35 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2024-08-04 12:10:35 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/446045/Kacyu | 卡丘 - 446045.
+2024-08-04 12:16:05 - WARNING - aliyundrive.py - 831 - Token is about to expire, try to auto refresh.
+2024-08-04 12:33:36 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00800317227748162566552e025a","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:33:36 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:33:37 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-08-04 12:33:37 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00800317227748175306752e025a","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:33:37 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:33:39 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2024-08-04 12:33:39 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00800317227748198237062e025a","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:33:39 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:33:42 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2024-08-04 12:33:43 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00800317227748231077418e025a","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:33:43 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:33:47 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2024-08-04 12:33:47 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/446045/Kacyu | 卡丘 - 446045.
+2024-08-04 12:38:38 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00701117227751178391978e0265","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:38:38 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:38:39 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-08-04 12:38:39 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00701117227751191232157e0265","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:38:39 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:38:41 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2024-08-04 12:38:41 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00701117227751214072484e0265","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:38:41 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:38:44 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2024-08-04 12:38:44 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00701117227751246892921e0265","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:38:44 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:38:48 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2024-08-04 12:38:48 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/446045/Kacyu | 卡丘 - 446045.
+2024-08-04 12:40:48 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801517227752488325842e026e","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:40:48 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:40:49 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-08-04 12:40:50 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801517227752501126028e026e","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:40:50 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:40:52 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2024-08-04 12:40:52 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801517227752523936365e026e","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:40:52 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:40:55 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2024-08-04 12:40:55 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801517227752556757000e026e","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:40:55 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:40:59 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2024-08-04 12:40:59 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/446045/Kacyu | 卡丘 - 446045.
+2024-08-04 12:47:21 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801f17227756417944414e162f","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:47:21 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:47:22 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-08-04 12:47:23 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801f17227756430794633e162f","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:47:23 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:47:25 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2024-08-04 12:47:25 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801f17227756453624992e162f","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:47:25 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:47:28 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2024-08-04 12:47:28 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801f17227756486455467e162f","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:47:28 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:47:32 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2024-08-04 12:47:32 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/446045/Kacyu | 卡丘 - 446045.
+2024-08-04 12:48:38 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801f17227757181106409e162f","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:48:38 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:48:39 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-08-04 12:48:39 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801f17227757193916581e162f","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:48:39 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:48:41 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2024-08-04 12:48:41 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801f17227757216846924e162f","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:48:41 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:48:44 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2024-08-04 12:48:45 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801f17227757249907432e162f","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:48:45 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:48:49 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2024-08-04 12:48:49 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/446045/Kacyu | 卡丘 - 446045.
+2024-08-04 12:50:18 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801b17227758185477680e4ef5","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:50:18 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:50:19 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-08-04 12:50:20 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801b17227758198287880e4ef5","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:50:20 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:50:22 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2024-08-04 12:50:22 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801b17227758221338170e4ef5","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:50:22 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:50:25 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2024-08-04 12:50:25 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801b17227758254208712e4ef5","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:50:25 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:50:29 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2024-08-04 12:50:29 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/446045/Kacyu | 卡丘 - 446045.
+2024-08-04 12:50:51 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801b17227758509034389e4ef5","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:50:51 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:50:52 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-08-04 12:50:52 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801b17227758521824555e4ef5","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:50:52 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:50:54 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2024-08-04 12:50:54 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801b17227758544904902e4ef5","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:50:54 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:50:57 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2024-08-04 12:50:57 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801b17227758577705493e4ef5","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2024-08-04 12:50:57 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2024-08-04 12:51:01 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2024-08-04 12:51:01 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/446045/Kacyu | 卡丘 - 446045.
