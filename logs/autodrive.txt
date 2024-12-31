@@ -283,3 +283,9 @@
 </Error>
 
 2024-12-30 09:05:35 - ERROR - aliyundrive.py - 1077 - File tmp/121802258/121802258_p0.png Part 1 upload failed.
+2024-12-30 22:13:10 - WARNING - aliyundrive.py - 831 - Token is about to expire, try to auto refresh.
+2024-12-30 22:40:37 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2024/10/08/12/47/41/123143936_p0.png
+2024-12-30 23:09:00 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2024-12-30 23:09:01 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2024-12-30 23:43:08 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2024/11/22/05/32/29/124517746_p0.jpg
+2024-12-31 00:12:10 - WARNING - aliyundrive.py - 831 - Token is about to expire, try to auto refresh.
