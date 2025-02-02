@@ -4517,3 +4517,58 @@
 2025-02-02 00:33:31 - WARNING - pixivdrive.py - 155 - Failed to make mirage for page tmp/125207062/125207062_p0.gif.
 2025-02-02 00:33:31 - WARNING - pixivdrive.py - 155 - Failed to make mirage for page tmp/125207062/125207062_p1.gif.
 2025-02-02 00:33:31 - WARNING - pixivdrive.py - 155 - Failed to make mirage for page tmp/125207062/125207062_p2.gif.
+2025-02-02 05:13:24 - WARNING - aliyundrive.py - 831 - Token is about to expire, try to auto refresh.
+2025-02-02 05:43:24 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='cn-beijing-data.aliyundrive.net', port=443): Read timed out. (read timeout=30)")': /eOZqDmJf%2F889478%2F6780c1dc06422ca8ca6d4e5e9a50a157c2ba6b6a%2F679f05d1c804b86ca2b8471e9b4a588aabddcd00?partNumber=1&security-token=CAISvgJ1q6Ft5B2yfSjIr5bWJMDQ345p2pK6RWvboEoMWt9U2Krvtzz2IHhMf3NpBOkZvvQ1lGlU6%2Fcalq5rR4QAXlDfNTyCGh%2Fzq1HPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLs0ARrv4r1fMUqW2X543AUgFLhy2KKMPY99xpFgh9a7j0iCbSGyUu%2FhcRm5sw9%2Byfo34lVYneo5MBQQHRi4IClLcc%2BmqdsRIvJzWstJ7Gf9LWqChvSgk4TxhhcNFKSTQrInFCB0%2BcRObJl16iW0qWhvXtuMkagAExNNwzwFgH%2FnZ9O%2F8tjA%2BRUCxMUq0K9xlaQqaXW458GMLhhnrBMtB%2Bo9wxIrQoDOZOmoohaa1orUXLx6NQGHkDnmMMb42pE3wU1g1YbXQ0DK7Hw5%2BSN0V03qrndkS9knA02%2FRTGeEo3WXzHyH2Sh9ofvWoEEb2arKch7vUO%2FC1NyAA&uploadId=CE3AFCDFA62444D9A30D8C36BC06E1B8&x-oss-access-key-id=STS.NUcozd2QHmPQGMjDJYVPx7oDU&x-oss-expires=1738478561&x-oss-signature=sM1O7QohwwUSJWrLfh28ItAi7xtQVM0rcyLPVZ2CSvo%3D&x-oss-signature-version=OSS2
+2025-02-02 05:43:27 - WARNING - base.py - 100 - https://cn-beijing-data.aliyundrive.net/eOZqDmJf%2F889478%2F6780c1dc06422ca8ca6d4e5e9a50a157c2ba6b6a%2F679f05d1c804b86ca2b8471e9b4a588aabddcd00?partNumber=1&security-token=CAISvgJ1q6Ft5B2yfSjIr5bWJMDQ345p2pK6RWvboEoMWt9U2Krvtzz2IHhMf3NpBOkZvvQ1lGlU6%2Fcalq5rR4QAXlDfNTyCGh%2Fzq1HPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLs0ARrv4r1fMUqW2X543AUgFLhy2KKMPY99xpFgh9a7j0iCbSGyUu%2FhcRm5sw9%2Byfo34lVYneo5MBQQHRi4IClLcc%2BmqdsRIvJzWstJ7Gf9LWqChvSgk4TxhhcNFKSTQrInFCB0%2BcRObJl16iW0qWhvXtuMkagAExNNwzwFgH%2FnZ9O%2F8tjA%2BRUCxMUq0K9xlaQqaXW458GMLhhnrBMtB%2Bo9wxIrQoDOZOmoohaa1orUXLx6NQGHkDnmMMb42pE3wU1g1YbXQ0DK7Hw5%2BSN0V03qrndkS9knA02%2FRTGeEo3WXzHyH2Sh9ofvWoEEb2arKch7vUO%2FC1NyAA&uploadId=CE3AFCDFA62444D9A30D8C36BC06E1B8&x-oss-access-key-id=STS.NUcozd2QHmPQGMjDJYVPx7oDU&x-oss-expires=1738478561&x-oss-signature=sM1O7QohwwUSJWrLfh28ItAi7xtQVM0rcyLPVZ2CSvo%3D&x-oss-signature-version=OSS2:409:<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+  <Code>PartAlreadyExist</Code>
+  <Message>For sequential multipart upload, you can't overwrite uploaded parts.</Message>
+  <RequestId>679F05FD91547031311FBDC1</RequestId>
+  <HostId>cn-beijing-data.aliyundrive.net</HostId>
+  <PartEtag>"148CFE226A08C1E57D8F7C622E24392B"</PartEtag>
+  <PartNumber>1</PartNumber>
+  <EC>0042-00000108</EC>
+  <RecommendDoc>https://api.aliyun.com/troubleshoot?q=0042-00000108</RecommendDoc>
+</Error>
+
+2025-02-02 05:43:27 - WARNING - base.py - 100 - https://cn-beijing-data.aliyundrive.net/eOZqDmJf%2F889478%2F6780c1dc06422ca8ca6d4e5e9a50a157c2ba6b6a%2F679f05d1c804b86ca2b8471e9b4a588aabddcd00?partNumber=1&security-token=CAISvgJ1q6Ft5B2yfSjIr5bWJMDQ345p2pK6RWvboEoMWt9U2Krvtzz2IHhMf3NpBOkZvvQ1lGlU6%2Fcalq5rR4QAXlDfNTyCGh%2Fzq1HPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLs0ARrv4r1fMUqW2X543AUgFLhy2KKMPY99xpFgh9a7j0iCbSGyUu%2FhcRm5sw9%2Byfo34lVYneo5MBQQHRi4IClLcc%2BmqdsRIvJzWstJ7Gf9LWqChvSgk4TxhhcNFKSTQrInFCB0%2BcRObJl16iW0qWhvXtuMkagAExNNwzwFgH%2FnZ9O%2F8tjA%2BRUCxMUq0K9xlaQqaXW458GMLhhnrBMtB%2Bo9wxIrQoDOZOmoohaa1orUXLx6NQGHkDnmMMb42pE3wU1g1YbXQ0DK7Hw5%2BSN0V03qrndkS9knA02%2FRTGeEo3WXzHyH2Sh9ofvWoEEb2arKch7vUO%2FC1NyAA&uploadId=CE3AFCDFA62444D9A30D8C36BC06E1B8&x-oss-access-key-id=STS.NUcozd2QHmPQGMjDJYVPx7oDU&x-oss-expires=1738478561&x-oss-signature=sM1O7QohwwUSJWrLfh28ItAi7xtQVM0rcyLPVZ2CSvo%3D&x-oss-signature-version=OSS2:409:<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+  <Code>PartAlreadyExist</Code>
+  <Message>For sequential multipart upload, you can't overwrite uploaded parts.</Message>
+  <RequestId>679F05FF7C050B3136D5A170</RequestId>
+  <HostId>cn-beijing-data.aliyundrive.net</HostId>
+  <PartEtag>"148CFE226A08C1E57D8F7C622E24392B"</PartEtag>
+  <PartNumber>1</PartNumber>
+  <EC>0042-00000108</EC>
+  <RecommendDoc>https://api.aliyun.com/troubleshoot?q=0042-00000108</RecommendDoc>
+</Error>
+
+2025-02-02 05:43:28 - WARNING - base.py - 100 - https://cn-beijing-data.aliyundrive.net/eOZqDmJf%2F889478%2F6780c1dc06422ca8ca6d4e5e9a50a157c2ba6b6a%2F679f05d1c804b86ca2b8471e9b4a588aabddcd00?partNumber=1&security-token=CAISvgJ1q6Ft5B2yfSjIr5bWJMDQ345p2pK6RWvboEoMWt9U2Krvtzz2IHhMf3NpBOkZvvQ1lGlU6%2Fcalq5rR4QAXlDfNTyCGh%2Fzq1HPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLs0ARrv4r1fMUqW2X543AUgFLhy2KKMPY99xpFgh9a7j0iCbSGyUu%2FhcRm5sw9%2Byfo34lVYneo5MBQQHRi4IClLcc%2BmqdsRIvJzWstJ7Gf9LWqChvSgk4TxhhcNFKSTQrInFCB0%2BcRObJl16iW0qWhvXtuMkagAExNNwzwFgH%2FnZ9O%2F8tjA%2BRUCxMUq0K9xlaQqaXW458GMLhhnrBMtB%2Bo9wxIrQoDOZOmoohaa1orUXLx6NQGHkDnmMMb42pE3wU1g1YbXQ0DK7Hw5%2BSN0V03qrndkS9knA02%2FRTGeEo3WXzHyH2Sh9ofvWoEEb2arKch7vUO%2FC1NyAA&uploadId=CE3AFCDFA62444D9A30D8C36BC06E1B8&x-oss-access-key-id=STS.NUcozd2QHmPQGMjDJYVPx7oDU&x-oss-expires=1738478561&x-oss-signature=sM1O7QohwwUSJWrLfh28ItAi7xtQVM0rcyLPVZ2CSvo%3D&x-oss-signature-version=OSS2:409:<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+  <Code>PartAlreadyExist</Code>
+  <Message>For sequential multipart upload, you can't overwrite uploaded parts.</Message>
+  <RequestId>679F06001FA3C43932FA7DFD</RequestId>
+  <HostId>cn-beijing-data.aliyundrive.net</HostId>
+  <PartEtag>"148CFE226A08C1E57D8F7C622E24392B"</PartEtag>
+  <PartNumber>1</PartNumber>
+  <EC>0042-00000108</EC>
+  <RecommendDoc>https://api.aliyun.com/troubleshoot?q=0042-00000108</RecommendDoc>
+</Error>
+
+2025-02-02 05:43:28 - ERROR - aliyundrive.py - 1077 - File tmp/125544529/125544529_p2.png Part 1 upload failed.
+2025-02-02 05:49:12 - WARNING - pixivdrive.py - 127 - Failed to add salt to page tmp/125797724/125797724_p0.gif, upload original page.
+2025-02-02 05:51:14 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2024/07/08/00/01/31/120337328_p0.jpg
+2025-02-02 06:08:38 - WARNING - pixivdrive.py - 127 - Failed to add salt to page tmp/125207062/125207062_p0.gif, upload original page.
+2025-02-02 06:08:38 - WARNING - pixivdrive.py - 127 - Failed to add salt to page tmp/125207062/125207062_p1.gif, upload original page.
+2025-02-02 06:08:39 - WARNING - pixivdrive.py - 127 - Failed to add salt to page tmp/125207062/125207062_p2.gif, upload original page.
+2025-02-02 06:08:39 - WARNING - pixivdrive.py - 155 - Failed to make mirage for page tmp/125207062/125207062_p0.gif.
+2025-02-02 06:08:39 - WARNING - pixivdrive.py - 155 - Failed to make mirage for page tmp/125207062/125207062_p1.gif.
+2025-02-02 06:08:39 - WARNING - pixivdrive.py - 155 - Failed to make mirage for page tmp/125207062/125207062_p2.gif.
+2025-02-02 06:13:38 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2024/09/17/20/00/09/122524547_p0.png
+2025-02-02 06:49:32 - WARNING - pixivdrive.py - 127 - Failed to add salt to page tmp/96706282/96706282_p0.png, upload original page.
+2025-02-02 06:49:36 - WARNING - pixivdrive.py - 127 - Failed to add salt to page tmp/96706282/96706282_p1.png, upload original page.
+2025-02-02 06:49:36 - WARNING - pixivdrive.py - 127 - Failed to add salt to page tmp/96706282/96706282_p2.png, upload original page.
+2025-02-02 06:49:39 - WARNING - pixivdrive.py - 127 - Failed to add salt to page tmp/96706282/96706282_p3.png, upload original page.
+2025-02-02 06:55:09 - WARNING - pixivdrive.py - 127 - Failed to add salt to page tmp/97313026/97313026_p0.png, upload original page.
+2025-02-02 07:12:24 - WARNING - aliyundrive.py - 831 - Token is about to expire, try to auto refresh.
+2025-02-02 07:39:16 - WARNING - pixivdrive.py - 127 - Failed to add salt to page tmp/94903836/94903836_p0.png, upload original page.
