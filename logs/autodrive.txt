@@ -42,3 +42,533 @@
 2025-02-09 23:13:18 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2025/02/02/08/09/54/126808503_p0.jpg
 2025-02-10 00:10:01 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2024/10/11/20/18/32/123234697_p0.jpg
 2025-02-10 00:12:14 - WARNING - aliyundrive.py - 831 - Token is about to expire, try to auto refresh.
+2025-02-10 05:15:27 - WARNING - aliyundrive.py - 831 - Token is about to expire, try to auto refresh.
+2025-02-10 05:18:40 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00a0ce17391647205663376e7e0d","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:18:40 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:18:41 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2025-02-10 05:18:41 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00a0ce17391647217983501e7e0d","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:18:41 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:18:43 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2025-02-10 05:18:44 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00a0ce17391647240283767e7e0d","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:18:44 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:18:47 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2025-02-10 05:18:47 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00a0ce17391647272764158e7e0d","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:18:47 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:18:51 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2025-02-10 05:18:51 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/14881241/Deyui | デユイ - 14881241.
+2025-02-10 05:20:42 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801717391648427216216ed817","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:20:42 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:20:43 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2025-02-10 05:20:44 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801717391648439426350ed817","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:20:44 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:20:46 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2025-02-10 05:20:46 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801717391648461706603ed817","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:20:46 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:20:49 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2025-02-10 05:20:49 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801717391648493987050ed817","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:20:49 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:20:53 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2025-02-10 05:20:53 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/14881241/Deyui | デユイ - 14881241.
+2025-02-10 05:24:43 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a0060f717391650837001210e861c","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:24:43 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:24:44 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2025-02-10 05:24:45 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a0060f717391650849241393e861c","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:24:45 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:24:47 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2025-02-10 05:24:47 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a0060f717391650871461690e861c","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:24:47 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:24:50 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2025-02-10 05:24:50 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a0060f717391650903732182e861c","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:24:50 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:24:54 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2025-02-10 05:24:54 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/14881241/Deyui | デユイ - 14881241.
+2025-02-10 05:28:52 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00a0c717391653327987628e5d64","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:28:52 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:28:53 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2025-02-10 05:28:54 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00a0c717391653340237758e5d64","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:28:54 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:28:56 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2025-02-10 05:28:56 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00a0c717391653362528122e5d64","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:28:56 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:28:59 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2025-02-10 05:28:59 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00a0c717391653394808648e5d64","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:28:59 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:29:03 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2025-02-10 05:29:03 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/14881241/Deyui | デユイ - 14881241.
+2025-02-10 05:31:12 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', TimeoutError('The write operation timed out'))': /U0zE1Z0V%2F889478%2F6767acf625c6d9b84c6940aaa9c3cec5bcf1744c%2F67a98f0169fe82ea20e34c57a3bfee9445081489?partNumber=1&security-token=CAISvgJ1q6Ft5B2yfSjIr5fSOOD2h69y9vDfYFbpgG4zOOhpmPHPkzz2IHhMf3NpBOkZvvQ1lGlU6%2Fcalq5rR4QAXlDfNRSYblDwq1HPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLs0ARrv4r1fMUqW2X543AUgFLhy2KKMPY99xpFgh9a7j0iCbSGyUu%2FhcRm5sw9%2Byfo34lVYne47IR3RXxi4IClLcc%2BmqdsRIvJzWstJ7Gf9LWqChvSgk4TxhhcNFKSTQrInFCB0%2BcRObJl16if3%2B5tvXtuMkagAFaDyl4tCeVbG1qjT%2FF%2BinRhzuavQ6ELGqcr1pLrtMU6TxMSDRfxwbE0sJ0LpdssP0AWecoDODTPdgpOid6%2FafVlAnetoQutiHBQxr0j0kCh080RNQmYOeuiQoZFi7dXDCNWQrwfdZfM3QXYt0M08ktOYm%2Botute5dOaOY8AKr9RCAA&uploadId=A03853A99CF64780905EB5034087BF38&x-oss-access-key-id=STS.NTgsZBjpSA24bpXdnf4gEw4dq&x-oss-expires=1739169041&x-oss-signature=IH1AoCFMlHiwzOLUTpQRvw%2BjNEshynwdIiR5g6usFAc%3D&x-oss-signature-version=OSS2
+2025-02-10 05:33:47 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2025/01/18/22/26/02/126344400_p0.jpg
+2025-02-10 05:34:04 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00700817391656445221996e0818","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:34:04 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:34:05 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2025-02-10 05:34:05 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00700817391656457442082e0818","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:34:05 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:34:07 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2025-02-10 05:34:08 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00700817391656479662345e0818","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:34:08 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:34:11 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2025-02-10 05:34:11 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00700817391656512102731e0818","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:34:11 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:34:15 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2025-02-10 05:34:15 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/14881241/Deyui | デユイ - 14881241.
+2025-02-10 05:37:25 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801517391658452743594e0e45","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:37:25 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:37:26 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2025-02-10 05:37:26 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801517391658465003768e0e45","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:37:26 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:37:28 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2025-02-10 05:37:28 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801517391658487214079e0e45","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:37:28 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:37:31 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2025-02-10 05:37:32 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801517391658519494415e0e45","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:37:32 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:37:36 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2025-02-10 05:37:36 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/14881241/Deyui | デユイ - 14881241.
+2025-02-10 05:45:04 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a0060f717391663041487191e8610","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:45:04 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:45:05 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2025-02-10 05:45:05 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a0060f717391663053777330e8610","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:45:05 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:45:07 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2025-02-10 05:45:07 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a0060f717391663076047542e8610","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:45:07 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:45:10 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2025-02-10 05:45:10 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a0060f717391663108447933e8610","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:45:10 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:45:14 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2025-02-10 05:45:14 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/14881241/Deyui | デユイ - 14881241.
+2025-02-10 05:53:05 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a0060e817391667853134979e6223","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:53:05 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:53:06 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2025-02-10 05:53:06 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a0060e817391667865365075e6223","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:53:06 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:53:08 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2025-02-10 05:53:08 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a0060e817391667887605348e6223","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:53:08 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:53:11 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2025-02-10 05:53:12 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a0060e817391667919805666e6223","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:53:12 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:53:16 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2025-02-10 05:53:16 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/14881241/Deyui | デユイ - 14881241.
+2025-02-10 05:55:27 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00a06717391669276738956ee551","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:55:27 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:55:28 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2025-02-10 05:55:29 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00a06717391669288961100ee551","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:55:29 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:55:31 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2025-02-10 05:55:31 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00a06717391669311191368ee551","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:55:31 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:55:34 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2025-02-10 05:55:34 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00a06717391669343451764ee551","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:55:34 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:55:38 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2025-02-10 05:55:38 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/14881241/Deyui | デユイ - 14881241.
+2025-02-10 05:59:48 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00a06717391671883715075ee553","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:59:48 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:59:49 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2025-02-10 05:59:49 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00a06717391671895965239ee553","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:59:49 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:59:51 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2025-02-10 05:59:51 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00a06717391671918625481ee553","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:59:51 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:59:54 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2025-02-10 05:59:55 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00a06717391671950885869ee553","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 05:59:55 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 05:59:59 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2025-02-10 05:59:59 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/14881241/Deyui | デユイ - 14881241.
+2025-02-10 06:01:26 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801c17391672865381182e83cf","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 06:01:26 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 06:01:27 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2025-02-10 06:01:27 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801c17391672877691315e83cf","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 06:01:27 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 06:01:29 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2025-02-10 06:01:30 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801c17391672900191578e83cf","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 06:01:30 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 06:01:33 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2025-02-10 06:01:33 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801c17391672932481937e83cf","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 06:01:33 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 06:01:37 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2025-02-10 06:01:37 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/14881241/Deyui | デユイ - 14881241.
+2025-02-10 06:03:41 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00701817391674211998407e7eb0","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 06:03:41 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 06:03:42 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2025-02-10 06:03:42 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00701817391674224198571e7eb0","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 06:03:42 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 06:03:44 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2025-02-10 06:03:44 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00701817391674246378859e7eb0","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 06:03:44 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 06:03:47 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2025-02-10 06:03:47 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00701817391674278641263e7eb0","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 06:03:47 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 06:03:51 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2025-02-10 06:03:51 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/14881241/Deyui | デユイ - 14881241.
+2025-02-10 06:04:58 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00a0c717391674984114598e5d6c","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 06:04:58 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 06:04:59 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2025-02-10 06:04:59 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00a0c717391674996434723e5d6c","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 06:04:59 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 06:05:01 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2025-02-10 06:05:01 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00a0c717391675018694937e5d6c","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 06:05:01 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 06:05:04 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2025-02-10 06:05:05 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00a0c717391675050935232e5d6c","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 06:05:05 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 06:05:09 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2025-02-10 06:05:09 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/14881241/Deyui | デユイ - 14881241.
+2025-02-10 06:06:00 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00a06717391675608602329ee54e","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 06:06:00 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 06:06:01 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2025-02-10 06:06:02 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00a06717391675620822487ee54e","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 06:06:02 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 06:06:04 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2025-02-10 06:06:04 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00a06717391675643262773ee54e","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 06:06:04 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 06:06:07 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2025-02-10 06:06:07 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00a06717391675675553189ee54e","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 06:06:07 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 06:06:11 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2025-02-10 06:06:11 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/14881241/Deyui | デユイ - 14881241.
+2025-02-10 06:07:29 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a0060f717391676489428325e861e","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 06:07:29 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 06:07:30 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2025-02-10 06:07:30 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a0060f717391676501688476e861e","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 06:07:30 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 06:07:32 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2025-02-10 06:07:32 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a0060f717391676523928776e861e","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 06:07:32 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 06:07:35 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2025-02-10 06:07:35 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a0060f717391676556121245e861e","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 06:07:35 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 06:07:39 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2025-02-10 06:07:39 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/14881241/Deyui | デユイ - 14881241.
+2025-02-10 06:11:38 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a0060e817391678988276741e6221","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 06:11:38 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 06:11:39 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2025-02-10 06:11:40 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a0060e817391679000566853e6221","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 06:11:40 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 06:11:42 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2025-02-10 06:11:42 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a0060e817391679022817118e6221","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 06:11:42 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 06:11:45 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2025-02-10 06:11:45 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a0060e817391679055097540e6221","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 06:11:45 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 06:11:49 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2025-02-10 06:11:49 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/14881241/Deyui | デユイ - 14881241.
+2025-02-10 06:19:29 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801717391683695227682ed811","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 06:19:29 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 06:19:30 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2025-02-10 06:19:30 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801717391683707427826ed811","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 06:19:30 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 06:19:32 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2025-02-10 06:19:33 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801717391683729628162ed811","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 06:19:33 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 06:19:36 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2025-02-10 06:19:36 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801717391683761828760ed811","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 06:19:36 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 06:19:40 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2025-02-10 06:19:40 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/14881241/Deyui | デユイ - 14881241.
+2025-02-10 06:28:19 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a0060ea17391688998084791e128a","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 06:28:19 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 06:28:20 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2025-02-10 06:28:21 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a0060ea17391689010474928e128a","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 06:28:21 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 06:28:23 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2025-02-10 06:28:23 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a0060ea17391689032955225e128a","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 06:28:23 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 06:28:26 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2025-02-10 06:28:26 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a0060ea17391689065215590e128a","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 06:28:26 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 06:28:30 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2025-02-10 06:28:30 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/14881241/Deyui | デユイ - 14881241.
+2025-02-10 06:43:28 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a0060f217391698088558254ec5cf","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 06:43:28 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 06:43:29 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2025-02-10 06:43:30 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a0060f217391698100808367ec5cf","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 06:43:30 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 06:43:32 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2025-02-10 06:43:32 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a0060f217391698123048636ec5cf","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 06:43:32 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 06:43:35 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2025-02-10 06:43:35 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a0060f217391698155248959ec5cf","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 06:43:35 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 06:43:39 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2025-02-10 06:43:39 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/14881241/Deyui | デユイ - 14881241.
+2025-02-10 06:50:47 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2024/08/03/22/33/50/121151778_p0.jpg
+2025-02-10 06:54:52 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', TimeoutError('The write operation timed out'))': /raxPVfKM%2F889478%2F66ce57ea6e015a01fa564e61b99ee25b204c2106%2F67a9a29e37b6cb746d0f47dfa8bd6ec9287d355f?partNumber=1&security-token=CAISvgJ1q6Ft5B2yfSjIr5fSOOD2h69y9vDfYFbpgG4zOOhpmPHPkzz2IHhMf3NpBOkZvvQ1lGlU6%2Fcalq5rR4QAXlDfNRSYblDwq1HPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLs0ARrv4r1fMUqW2X543AUgFLhy2KKMPY99xpFgh9a7j0iCbSGyUu%2FhcRm5sw9%2Byfo34lVYne47IR3RXxi4IClLcc%2BmqdsRIvJzWstJ7Gf9LWqChvSgk4TxhhcNFKSTQrInFCB0%2BcRObJl16if3%2B5tvXtuMkagAFaDyl4tCeVbG1qjT%2FF%2BinRhzuavQ6ELGqcr1pLrtMU6TxMSDRfxwbE0sJ0LpdssP0AWecoDODTPdgpOid6%2FafVlAnetoQutiHBQxr0j0kCh080RNQmYOeuiQoZFi7dXDCNWQrwfdZfM3QXYt0M08ktOYm%2Botute5dOaOY8AKr9RCAA&uploadId=E4632A9C962040B6B140E12611B480FD&x-oss-access-key-id=STS.NTgsZBjpSA24bpXdnf4gEw4dq&x-oss-expires=1739174062&x-oss-signature=aB85Blw53wEb1D0kmiGMziCQGaWAH%2BTakbZeTmuiS8Q%3D&x-oss-signature-version=OSS2
+2025-02-10 06:56:36 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2024/10/22/13/54/31/123569505_p0.jpg
+2025-02-10 07:04:19 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='cn-beijing-data.aliyundrive.net', port=443): Read timed out. (read timeout=30)")': /G46SNdKS%2F889478%2F6783a07cac5810cec5d24850a36360c3c48d4216%2F67a9a4d41092b9cf441040cf99e829f29318a4f0?partNumber=1&security-token=CAISvgJ1q6Ft5B2yfSjIr5fSOOD2h69y9vDfYFbpgG4zOOhpmPHPkzz2IHhMf3NpBOkZvvQ1lGlU6%2Fcalq5rR4QAXlDfNRSYblDwq1HPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLs0ARrv4r1fMUqW2X543AUgFLhy2KKMPY99xpFgh9a7j0iCbSGyUu%2FhcRm5sw9%2Byfo34lVYne47IR3RXxi4IClLcc%2BmqdsRIvJzWstJ7Gf9LWqChvSgk4TxhhcNFKSTQrInFCB0%2BcRObJl16if3%2B5tvXtuMkagAFaDyl4tCeVbG1qjT%2FF%2BinRhzuavQ6ELGqcr1pLrtMU6TxMSDRfxwbE0sJ0LpdssP0AWecoDODTPdgpOid6%2FafVlAnetoQutiHBQxr0j0kCh080RNQmYOeuiQoZFi7dXDCNWQrwfdZfM3QXYt0M08ktOYm%2Botute5dOaOY8AKr9RCAA&uploadId=82EB83AE3DC947C5B8C4C3894FC31E58&x-oss-access-key-id=STS.NTgsZBjpSA24bpXdnf4gEw4dq&x-oss-expires=1739174628&x-oss-signature=DMXvamlpQ9IDpf%2FXBDIjA2xZENsU7OcxNNuHspGChiA%3D&x-oss-signature-version=OSS2
+2025-02-10 07:04:49 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', TimeoutError('The write operation timed out'))': /G46SNdKS%2F889478%2F6783a07cac5810cec5d24850a36360c3c48d4216%2F67a9a4d41092b9cf441040cf99e829f29318a4f0?partNumber=1&security-token=CAISvgJ1q6Ft5B2yfSjIr5fSOOD2h69y9vDfYFbpgG4zOOhpmPHPkzz2IHhMf3NpBOkZvvQ1lGlU6%2Fcalq5rR4QAXlDfNRSYblDwq1HPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLs0ARrv4r1fMUqW2X543AUgFLhy2KKMPY99xpFgh9a7j0iCbSGyUu%2FhcRm5sw9%2Byfo34lVYne47IR3RXxi4IClLcc%2BmqdsRIvJzWstJ7Gf9LWqChvSgk4TxhhcNFKSTQrInFCB0%2BcRObJl16if3%2B5tvXtuMkagAFaDyl4tCeVbG1qjT%2FF%2BinRhzuavQ6ELGqcr1pLrtMU6TxMSDRfxwbE0sJ0LpdssP0AWecoDODTPdgpOid6%2FafVlAnetoQutiHBQxr0j0kCh080RNQmYOeuiQoZFi7dXDCNWQrwfdZfM3QXYt0M08ktOYm%2Botute5dOaOY8AKr9RCAA&uploadId=82EB83AE3DC947C5B8C4C3894FC31E58&x-oss-access-key-id=STS.NTgsZBjpSA24bpXdnf4gEw4dq&x-oss-expires=1739174628&x-oss-signature=DMXvamlpQ9IDpf%2FXBDIjA2xZENsU7OcxNNuHspGChiA%3D&x-oss-signature-version=OSS2
+2025-02-10 07:05:02 - WARNING - base.py - 100 - https://cn-beijing-data.aliyundrive.net/G46SNdKS%2F889478%2F6783a07cac5810cec5d24850a36360c3c48d4216%2F67a9a4d41092b9cf441040cf99e829f29318a4f0?partNumber=1&security-token=CAISvgJ1q6Ft5B2yfSjIr5fSOOD2h69y9vDfYFbpgG4zOOhpmPHPkzz2IHhMf3NpBOkZvvQ1lGlU6%2Fcalq5rR4QAXlDfNRSYblDwq1HPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLs0ARrv4r1fMUqW2X543AUgFLhy2KKMPY99xpFgh9a7j0iCbSGyUu%2FhcRm5sw9%2Byfo34lVYne47IR3RXxi4IClLcc%2BmqdsRIvJzWstJ7Gf9LWqChvSgk4TxhhcNFKSTQrInFCB0%2BcRObJl16if3%2B5tvXtuMkagAFaDyl4tCeVbG1qjT%2FF%2BinRhzuavQ6ELGqcr1pLrtMU6TxMSDRfxwbE0sJ0LpdssP0AWecoDODTPdgpOid6%2FafVlAnetoQutiHBQxr0j0kCh080RNQmYOeuiQoZFi7dXDCNWQrwfdZfM3QXYt0M08ktOYm%2Botute5dOaOY8AKr9RCAA&uploadId=82EB83AE3DC947C5B8C4C3894FC31E58&x-oss-access-key-id=STS.NTgsZBjpSA24bpXdnf4gEw4dq&x-oss-expires=1739174628&x-oss-signature=DMXvamlpQ9IDpf%2FXBDIjA2xZENsU7OcxNNuHspGChiA%3D&x-oss-signature-version=OSS2:409:<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+  <Code>PartAlreadyExist</Code>
+  <Message>For sequential multipart upload, you can't overwrite uploaded parts.</Message>
+  <RequestId>67A9A5125402B23639301B5E</RequestId>
+  <HostId>cn-beijing-data.aliyundrive.net</HostId>
+  <PartEtag>"5A3777730231DFB24F7BF48B63A284FA"</PartEtag>
+  <PartNumber>1</PartNumber>
+  <EC>0042-00000108</EC>
+  <RecommendDoc>https://api.aliyun.com/troubleshoot?q=0042-00000108</RecommendDoc>
+</Error>
+
+2025-02-10 07:05:21 - WARNING - base.py - 100 - https://cn-beijing-data.aliyundrive.net/G46SNdKS%2F889478%2F6783a07cac5810cec5d24850a36360c3c48d4216%2F67a9a4d41092b9cf441040cf99e829f29318a4f0?partNumber=1&security-token=CAISvgJ1q6Ft5B2yfSjIr5fSOOD2h69y9vDfYFbpgG4zOOhpmPHPkzz2IHhMf3NpBOkZvvQ1lGlU6%2Fcalq5rR4QAXlDfNRSYblDwq1HPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLs0ARrv4r1fMUqW2X543AUgFLhy2KKMPY99xpFgh9a7j0iCbSGyUu%2FhcRm5sw9%2Byfo34lVYne47IR3RXxi4IClLcc%2BmqdsRIvJzWstJ7Gf9LWqChvSgk4TxhhcNFKSTQrInFCB0%2BcRObJl16if3%2B5tvXtuMkagAFaDyl4tCeVbG1qjT%2FF%2BinRhzuavQ6ELGqcr1pLrtMU6TxMSDRfxwbE0sJ0LpdssP0AWecoDODTPdgpOid6%2FafVlAnetoQutiHBQxr0j0kCh080RNQmYOeuiQoZFi7dXDCNWQrwfdZfM3QXYt0M08ktOYm%2Botute5dOaOY8AKr9RCAA&uploadId=82EB83AE3DC947C5B8C4C3894FC31E58&x-oss-access-key-id=STS.NTgsZBjpSA24bpXdnf4gEw4dq&x-oss-expires=1739174628&x-oss-signature=DMXvamlpQ9IDpf%2FXBDIjA2xZENsU7OcxNNuHspGChiA%3D&x-oss-signature-version=OSS2:409:<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+  <Code>PartAlreadyExist</Code>
+  <Message>For sequential multipart upload, you can't overwrite uploaded parts.</Message>
+  <RequestId>67A9A51FF197D3303255AB98</RequestId>
+  <HostId>cn-beijing-data.aliyundrive.net</HostId>
+  <PartEtag>"5A3777730231DFB24F7BF48B63A284FA"</PartEtag>
+  <PartNumber>1</PartNumber>
+  <EC>0042-00000108</EC>
+  <RecommendDoc>https://api.aliyun.com/troubleshoot?q=0042-00000108</RecommendDoc>
+</Error>
+
+2025-02-10 07:05:27 - WARNING - base.py - 100 - https://cn-beijing-data.aliyundrive.net/G46SNdKS%2F889478%2F6783a07cac5810cec5d24850a36360c3c48d4216%2F67a9a4d41092b9cf441040cf99e829f29318a4f0?partNumber=1&security-token=CAISvgJ1q6Ft5B2yfSjIr5fSOOD2h69y9vDfYFbpgG4zOOhpmPHPkzz2IHhMf3NpBOkZvvQ1lGlU6%2Fcalq5rR4QAXlDfNRSYblDwq1HPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLs0ARrv4r1fMUqW2X543AUgFLhy2KKMPY99xpFgh9a7j0iCbSGyUu%2FhcRm5sw9%2Byfo34lVYne47IR3RXxi4IClLcc%2BmqdsRIvJzWstJ7Gf9LWqChvSgk4TxhhcNFKSTQrInFCB0%2BcRObJl16if3%2B5tvXtuMkagAFaDyl4tCeVbG1qjT%2FF%2BinRhzuavQ6ELGqcr1pLrtMU6TxMSDRfxwbE0sJ0LpdssP0AWecoDODTPdgpOid6%2FafVlAnetoQutiHBQxr0j0kCh080RNQmYOeuiQoZFi7dXDCNWQrwfdZfM3QXYt0M08ktOYm%2Botute5dOaOY8AKr9RCAA&uploadId=82EB83AE3DC947C5B8C4C3894FC31E58&x-oss-access-key-id=STS.NTgsZBjpSA24bpXdnf4gEw4dq&x-oss-expires=1739174628&x-oss-signature=DMXvamlpQ9IDpf%2FXBDIjA2xZENsU7OcxNNuHspGChiA%3D&x-oss-signature-version=OSS2:409:<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+  <Code>PartAlreadyExist</Code>
+  <Message>For sequential multipart upload, you can't overwrite uploaded parts.</Message>
+  <RequestId>67A9A5315402B23639F3565E</RequestId>
+  <HostId>cn-beijing-data.aliyundrive.net</HostId>
+  <PartEtag>"5A3777730231DFB24F7BF48B63A284FA"</PartEtag>
+  <PartNumber>1</PartNumber>
+  <EC>0042-00000108</EC>
+  <RecommendDoc>https://api.aliyun.com/troubleshoot?q=0042-00000108</RecommendDoc>
+</Error>
+
+2025-02-10 07:05:27 - ERROR - aliyundrive.py - 1077 - File tmp/125906990/125906990_p0.jpg Part 1 upload failed.
+2025-02-10 07:06:27 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2024/12/27/10/58/25/125587938_p0.png
+2025-02-10 07:14:44 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='cn-beijing-data.aliyundrive.net', port=443): Read timed out. (read timeout=30)")': /F0oSbuiQ%2F889478%2F67a85649fc180b15f9704c94ab6b19d434ee06dd%2F67a9a7409ad0543a176742509df3e15b2f39a99f?partNumber=1&security-token=CAISvgJ1q6Ft5B2yfSjIr5fSOOD2h69y9vDfYFbpgG4zOOhpmPHPkzz2IHhMf3NpBOkZvvQ1lGlU6%2Fcalq5rR4QAXlDfNRSYblDwq1HPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLs0ARrv4r1fMUqW2X543AUgFLhy2KKMPY99xpFgh9a7j0iCbSGyUu%2FhcRm5sw9%2Byfo34lVYne47IR3RXxi4IClLcc%2BmqdsRIvJzWstJ7Gf9LWqChvSgk4TxhhcNFKSTQrInFCB0%2BcRObJl16if3%2B5tvXtuMkagAFaDyl4tCeVbG1qjT%2FF%2BinRhzuavQ6ELGqcr1pLrtMU6TxMSDRfxwbE0sJ0LpdssP0AWecoDODTPdgpOid6%2FafVlAnetoQutiHBQxr0j0kCh080RNQmYOeuiQoZFi7dXDCNWQrwfdZfM3QXYt0M08ktOYm%2Botute5dOaOY8AKr9RCAA&uploadId=9CB2B403A54A48B780D376D39375DC9B&x-oss-access-key-id=STS.NTgsZBjpSA24bpXdnf4gEw4dq&x-oss-expires=1739175248&x-oss-signature=IkEUr5eecw38RMREqsXaB0rhe%2FnqakAPEQuVWgFG5Ac%3D&x-oss-signature-version=OSS2
+2025-02-10 07:15:32 - WARNING - base.py - 100 - https://cn-beijing-data.aliyundrive.net/F0oSbuiQ%2F889478%2F67a85649fc180b15f9704c94ab6b19d434ee06dd%2F67a9a7409ad0543a176742509df3e15b2f39a99f?partNumber=1&security-token=CAISvgJ1q6Ft5B2yfSjIr5fSOOD2h69y9vDfYFbpgG4zOOhpmPHPkzz2IHhMf3NpBOkZvvQ1lGlU6%2Fcalq5rR4QAXlDfNRSYblDwq1HPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLs0ARrv4r1fMUqW2X543AUgFLhy2KKMPY99xpFgh9a7j0iCbSGyUu%2FhcRm5sw9%2Byfo34lVYne47IR3RXxi4IClLcc%2BmqdsRIvJzWstJ7Gf9LWqChvSgk4TxhhcNFKSTQrInFCB0%2BcRObJl16if3%2B5tvXtuMkagAFaDyl4tCeVbG1qjT%2FF%2BinRhzuavQ6ELGqcr1pLrtMU6TxMSDRfxwbE0sJ0LpdssP0AWecoDODTPdgpOid6%2FafVlAnetoQutiHBQxr0j0kCh080RNQmYOeuiQoZFi7dXDCNWQrwfdZfM3QXYt0M08ktOYm%2Botute5dOaOY8AKr9RCAA&uploadId=9CB2B403A54A48B780D376D39375DC9B&x-oss-access-key-id=STS.NTgsZBjpSA24bpXdnf4gEw4dq&x-oss-expires=1739175248&x-oss-signature=IkEUr5eecw38RMREqsXaB0rhe%2FnqakAPEQuVWgFG5Ac%3D&x-oss-signature-version=OSS2:409:<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+  <Code>PartAlreadyExist</Code>
+  <Message>For sequential multipart upload, you can't overwrite uploaded parts.</Message>
+  <RequestId>67A9A7647A795E3730170913</RequestId>
+  <HostId>cn-beijing-data.aliyundrive.net</HostId>
+  <PartEtag>"58E775F8910D9128B89F15E8CDB3F5D5"</PartEtag>
+  <PartNumber>1</PartNumber>
+  <EC>0042-00000108</EC>
+  <RecommendDoc>https://api.aliyun.com/troubleshoot?q=0042-00000108</RecommendDoc>
+</Error>
+
+2025-02-10 07:15:57 - WARNING - base.py - 100 - https://cn-beijing-data.aliyundrive.net/F0oSbuiQ%2F889478%2F67a85649fc180b15f9704c94ab6b19d434ee06dd%2F67a9a7409ad0543a176742509df3e15b2f39a99f?partNumber=1&security-token=CAISvgJ1q6Ft5B2yfSjIr5fSOOD2h69y9vDfYFbpgG4zOOhpmPHPkzz2IHhMf3NpBOkZvvQ1lGlU6%2Fcalq5rR4QAXlDfNRSYblDwq1HPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLs0ARrv4r1fMUqW2X543AUgFLhy2KKMPY99xpFgh9a7j0iCbSGyUu%2FhcRm5sw9%2Byfo34lVYne47IR3RXxi4IClLcc%2BmqdsRIvJzWstJ7Gf9LWqChvSgk4TxhhcNFKSTQrInFCB0%2BcRObJl16if3%2B5tvXtuMkagAFaDyl4tCeVbG1qjT%2FF%2BinRhzuavQ6ELGqcr1pLrtMU6TxMSDRfxwbE0sJ0LpdssP0AWecoDODTPdgpOid6%2FafVlAnetoQutiHBQxr0j0kCh080RNQmYOeuiQoZFi7dXDCNWQrwfdZfM3QXYt0M08ktOYm%2Botute5dOaOY8AKr9RCAA&uploadId=9CB2B403A54A48B780D376D39375DC9B&x-oss-access-key-id=STS.NTgsZBjpSA24bpXdnf4gEw4dq&x-oss-expires=1739175248&x-oss-signature=IkEUr5eecw38RMREqsXaB0rhe%2FnqakAPEQuVWgFG5Ac%3D&x-oss-signature-version=OSS2:409:<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+  <Code>PartAlreadyExist</Code>
+  <Message>For sequential multipart upload, you can't overwrite uploaded parts.</Message>
+  <RequestId>67A9A7945402B239354E6B63</RequestId>
+  <HostId>cn-beijing-data.aliyundrive.net</HostId>
+  <PartEtag>"58E775F8910D9128B89F15E8CDB3F5D5"</PartEtag>
+  <PartNumber>1</PartNumber>
+  <EC>0042-00000108</EC>
+  <RecommendDoc>https://api.aliyun.com/troubleshoot?q=0042-00000108</RecommendDoc>
+</Error>
+
+2025-02-10 07:16:17 - WARNING - base.py - 100 - https://cn-beijing-data.aliyundrive.net/F0oSbuiQ%2F889478%2F67a85649fc180b15f9704c94ab6b19d434ee06dd%2F67a9a7409ad0543a176742509df3e15b2f39a99f?partNumber=1&security-token=CAISvgJ1q6Ft5B2yfSjIr5fSOOD2h69y9vDfYFbpgG4zOOhpmPHPkzz2IHhMf3NpBOkZvvQ1lGlU6%2Fcalq5rR4QAXlDfNRSYblDwq1HPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLs0ARrv4r1fMUqW2X543AUgFLhy2KKMPY99xpFgh9a7j0iCbSGyUu%2FhcRm5sw9%2Byfo34lVYne47IR3RXxi4IClLcc%2BmqdsRIvJzWstJ7Gf9LWqChvSgk4TxhhcNFKSTQrInFCB0%2BcRObJl16if3%2B5tvXtuMkagAFaDyl4tCeVbG1qjT%2FF%2BinRhzuavQ6ELGqcr1pLrtMU6TxMSDRfxwbE0sJ0LpdssP0AWecoDODTPdgpOid6%2FafVlAnetoQutiHBQxr0j0kCh080RNQmYOeuiQoZFi7dXDCNWQrwfdZfM3QXYt0M08ktOYm%2Botute5dOaOY8AKr9RCAA&uploadId=9CB2B403A54A48B780D376D39375DC9B&x-oss-access-key-id=STS.NTgsZBjpSA24bpXdnf4gEw4dq&x-oss-expires=1739175248&x-oss-signature=IkEUr5eecw38RMREqsXaB0rhe%2FnqakAPEQuVWgFG5Ac%3D&x-oss-signature-version=OSS2:409:<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+  <Code>PartAlreadyExist</Code>
+  <Message>For sequential multipart upload, you can't overwrite uploaded parts.</Message>
+  <RequestId>67A9A7AD0640093932C4B266</RequestId>
+  <HostId>cn-beijing-data.aliyundrive.net</HostId>
+  <PartEtag>"58E775F8910D9128B89F15E8CDB3F5D5"</PartEtag>
+  <PartNumber>1</PartNumber>
+  <EC>0042-00000108</EC>
+  <RecommendDoc>https://api.aliyun.com/troubleshoot?q=0042-00000108</RecommendDoc>
+</Error>
+
+2025-02-10 07:16:17 - ERROR - aliyundrive.py - 1077 - File tmp/126894647/126894647_p0.png Part 1 upload failed.
+2025-02-10 07:16:17 - WARNING - aliyundrive.py - 831 - Token is about to expire, try to auto refresh.
+2025-02-10 07:18:50 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', TimeoutError('The write operation timed out'))': /3VTa24zl%2F889478%2F676a760930a93f7581174af0853a82849530dc69%2F67a9a83c5a71d5e7178448069f6c72652e5468b1?partNumber=1&security-token=CAISvgJ1q6Ft5B2yfSjIr5fSOOD2h69y9vDfYFbpgG4zOOhpmPHPkzz2IHhMf3NpBOkZvvQ1lGlU6%2Fcalq5rR4QAXlDfNRSYblDwq1HPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLs0ARrv4r1fMUqW2X543AUgFLhy2KKMPY99xpFgh9a7j0iCbSGyUu%2FhcRm5sw9%2Byfo34lVYne47IR3RXxi4IClLcc%2BmqdsRIvJzWstJ7Gf9LWqChvSgk4TxhhcNFKSTQrInFCB0%2BcRObJl16if3%2B5tvXtuMkagAFaDyl4tCeVbG1qjT%2FF%2BinRhzuavQ6ELGqcr1pLrtMU6TxMSDRfxwbE0sJ0LpdssP0AWecoDODTPdgpOid6%2FafVlAnetoQutiHBQxr0j0kCh080RNQmYOeuiQoZFi7dXDCNWQrwfdZfM3QXYt0M08ktOYm%2Botute5dOaOY8AKr9RCAA&uploadId=911FC26A8FCF4804A069E52087E01581&x-oss-access-key-id=STS.NTgsZBjpSA24bpXdnf4gEw4dq&x-oss-expires=1739175500&x-oss-signature=sg9CEXi%2FtO0vZTw3cClElE%2B8fOr6Al8cx08NzJLIDqQ%3D&x-oss-signature-version=OSS2
+2025-02-10 07:24:33 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00a06817391722738417460eca3d","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 07:24:33 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 07:24:34 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2025-02-10 07:24:35 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00a06817391722750637587eca3d","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 07:24:35 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 07:24:37 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2025-02-10 07:24:37 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00a06817391722772827810eca3d","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 07:24:37 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 07:24:40 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2025-02-10 07:24:40 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00a06817391722805118178eca3d","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 07:24:40 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 07:24:44 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2025-02-10 07:24:44 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/14881241/Deyui | デユイ - 14881241.
+2025-02-10 07:27:02 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00700917391724224152148ece8d","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 07:27:02 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 07:27:03 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2025-02-10 07:27:03 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00700917391724236362371ece8d","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 07:27:03 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 07:27:05 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2025-02-10 07:27:05 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00700917391724258572774ece8d","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 07:27:05 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 07:27:08 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2025-02-10 07:27:09 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00700917391724290893350ece8d","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 07:27:09 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 07:27:13 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2025-02-10 07:27:13 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/14881241/Deyui | デユイ - 14881241.
+2025-02-10 07:30:00 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00700817391726003541022e081b","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 07:30:00 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 07:30:01 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2025-02-10 07:30:01 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00700817391726015751175e081b","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 07:30:01 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 07:30:03 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2025-02-10 07:30:03 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00700817391726037971374e081b","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 07:30:03 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 07:30:06 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2025-02-10 07:30:07 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00700817391726070381788e081b","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 07:30:07 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 07:30:11 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2025-02-10 07:30:11 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/14881241/Deyui | デユイ - 14881241.
+2025-02-10 07:31:02 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00700817391726627578078e081b","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 07:31:02 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 07:31:03 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2025-02-10 07:31:04 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00700817391726639798267e081b","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 07:31:04 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 07:31:06 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2025-02-10 07:31:06 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00700817391726662008640e081b","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 07:31:06 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 07:31:09 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2025-02-10 07:31:09 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00700817391726694261035e081b","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 07:31:09 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 07:31:13 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2025-02-10 07:31:13 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/14881241/Deyui | デユイ - 14881241.
+2025-02-10 07:32:10 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2024/12/15/19/44/46/125216657_p0.png
+2025-02-10 07:33:46 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', TimeoutError('The write operation timed out'))': /RzxX7xoU%2F889478%2F66fa7c3f7d2a4792af2e4d8a8297c5fd51913804%2F67a9abbcf724c4674daf49a3adfa3078b04eeecb?partNumber=1&security-token=CAISvgJ1q6Ft5B2yfSjIr5fgG9eNobJizaq6N2X%2Fkzk%2BTbp%2Bnr2T1jz2IHhMf3NpBOkZvvQ1lGlU6%2Fcalq5rR4QAXlDfNTnsUE%2Fwq1HPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLs0ARrv4r1fMUqW2X543AUgFLhy2KKMPY99xpFgh9a7j0iCbSGyUu%2FhcRm5sw9%2Byfo34lVYneo7lX7z%2B77uHwufJ7FxfIREfquk63pvSlHLcLPe0Kjzzleo2k1XRPVFF%2B535IaHXuToXDnvSisohzxPXtuMkagAG0Uzy3ENawRnc9LY3mo9dn3QVKqcCcm2pmrIw8qyzPeSnLJitw2TeQJvURT0bUXSghIBuAYoYU4aQYRVzRjILlvbLl0B0CAliwD%2BddFf8HZMXclTBBOu3FsdIXwDEryToxDt26KCOxYDBJtv0LvJugl7WRkYongM4cK%2BpzJjZwLSAA&uploadId=0413C07B72F34B72B6C5A6AD21E5C75B&x-oss-access-key-id=STS.NTUPm9LmCzhQ5CNw9kA5Rqx84&x-oss-expires=1739176396&x-oss-signature=D8rGsrqh0k7XuJFYjNR4Jad3mmJSGK9C3wPfWG6omeg%3D&x-oss-signature-version=OSS2
+2025-02-10 07:34:17 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', TimeoutError('The write operation timed out'))': /RzxX7xoU%2F889478%2F66fa7c3f7d2a4792af2e4d8a8297c5fd51913804%2F67a9abbcf724c4674daf49a3adfa3078b04eeecb?partNumber=1&security-token=CAISvgJ1q6Ft5B2yfSjIr5fgG9eNobJizaq6N2X%2Fkzk%2BTbp%2Bnr2T1jz2IHhMf3NpBOkZvvQ1lGlU6%2Fcalq5rR4QAXlDfNTnsUE%2Fwq1HPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLs0ARrv4r1fMUqW2X543AUgFLhy2KKMPY99xpFgh9a7j0iCbSGyUu%2FhcRm5sw9%2Byfo34lVYneo7lX7z%2B77uHwufJ7FxfIREfquk63pvSlHLcLPe0Kjzzleo2k1XRPVFF%2B535IaHXuToXDnvSisohzxPXtuMkagAG0Uzy3ENawRnc9LY3mo9dn3QVKqcCcm2pmrIw8qyzPeSnLJitw2TeQJvURT0bUXSghIBuAYoYU4aQYRVzRjILlvbLl0B0CAliwD%2BddFf8HZMXclTBBOu3FsdIXwDEryToxDt26KCOxYDBJtv0LvJugl7WRkYongM4cK%2BpzJjZwLSAA&uploadId=0413C07B72F34B72B6C5A6AD21E5C75B&x-oss-access-key-id=STS.NTUPm9LmCzhQ5CNw9kA5Rqx84&x-oss-expires=1739176396&x-oss-signature=D8rGsrqh0k7XuJFYjNR4Jad3mmJSGK9C3wPfWG6omeg%3D&x-oss-signature-version=OSS2
+2025-02-10 07:38:48 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801517391731280266167e0e46","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 07:38:48 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 07:38:49 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2025-02-10 07:38:49 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801517391731292486283e0e46","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 07:38:49 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 07:38:51 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2025-02-10 07:38:51 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801517391731314706546e0e46","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 07:38:51 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 07:38:54 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2025-02-10 07:38:54 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00801517391731346926957e0e46","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 07:38:54 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 07:38:58 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2025-02-10 07:38:58 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/14881241/Deyui | デユイ - 14881241.
+2025-02-10 07:46:22 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00701a17391735819265753ee77b","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 07:46:22 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 07:46:23 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2025-02-10 07:46:23 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00701a17391735831525897ee77b","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 07:46:23 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 07:46:25 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2025-02-10 07:46:25 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00701a17391735853836239ee77b","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 07:46:25 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 07:46:28 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2025-02-10 07:46:28 - WARNING - base.py - 100 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:{"code":"FileNameDisable","message":"file name disable","requestId":"0a00701a17391735886136810ee77b","resultCode":"FileNameDisable","display_message":"请修改名称，不能包含字符 /*?:<>\"|\\"}
+2025-02-10 07:46:28 - ERROR - aliyundrive.py - 80 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:403:file name disable
+2025-02-10 07:46:32 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2025-02-10 07:46:32 - ERROR - aliyundrive.py - 966 - Failed to create folder pixiv/14881241/Deyui | デユイ - 14881241.
+2025-02-10 07:53:17 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='cn-beijing-data.aliyundrive.net', port=443): Read timed out. (read timeout=30)")': /gtJ4atC4%2F889478%2F6714da191d2476ee68824b21893be70d2c661170%2F67a9b041dd0da47a8aca4dedaf7a4ccf6705a77a?partNumber=1&security-token=CAISvgJ1q6Ft5B2yfSjIr5fgG9eNobJizaq6N2X%2Fkzk%2BTbp%2Bnr2T1jz2IHhMf3NpBOkZvvQ1lGlU6%2Fcalq5rR4QAXlDfNTnsUE%2Fwq1HPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLs0ARrv4r1fMUqW2X543AUgFLhy2KKMPY99xpFgh9a7j0iCbSGyUu%2FhcRm5sw9%2Byfo34lVYneo7lX7z%2B77uHwufJ7FxfIREfquk63pvSlHLcLPe0Kjzzleo2k1XRPVFF%2B535IaHXuToXDnvSisohzxPXtuMkagAG0Uzy3ENawRnc9LY3mo9dn3QVKqcCcm2pmrIw8qyzPeSnLJitw2TeQJvURT0bUXSghIBuAYoYU4aQYRVzRjILlvbLl0B0CAliwD%2BddFf8HZMXclTBBOu3FsdIXwDEryToxDt26KCOxYDBJtv0LvJugl7WRkYongM4cK%2BpzJjZwLSAA&uploadId=193EF89BCF634326BD8D858F6B6F401D&x-oss-access-key-id=STS.NTUPm9LmCzhQ5CNw9kA5Rqx84&x-oss-expires=1739177553&x-oss-signature=%2BoYP1duoujucOhUd4%2B3BTTI3Iswn7MogrIx55AvpRx4%3D&x-oss-signature-version=OSS2
+2025-02-10 07:53:47 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', TimeoutError('The write operation timed out'))': /gtJ4atC4%2F889478%2F6714da191d2476ee68824b21893be70d2c661170%2F67a9b041dd0da47a8aca4dedaf7a4ccf6705a77a?partNumber=1&security-token=CAISvgJ1q6Ft5B2yfSjIr5fgG9eNobJizaq6N2X%2Fkzk%2BTbp%2Bnr2T1jz2IHhMf3NpBOkZvvQ1lGlU6%2Fcalq5rR4QAXlDfNTnsUE%2Fwq1HPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLs0ARrv4r1fMUqW2X543AUgFLhy2KKMPY99xpFgh9a7j0iCbSGyUu%2FhcRm5sw9%2Byfo34lVYneo7lX7z%2B77uHwufJ7FxfIREfquk63pvSlHLcLPe0Kjzzleo2k1XRPVFF%2B535IaHXuToXDnvSisohzxPXtuMkagAG0Uzy3ENawRnc9LY3mo9dn3QVKqcCcm2pmrIw8qyzPeSnLJitw2TeQJvURT0bUXSghIBuAYoYU4aQYRVzRjILlvbLl0B0CAliwD%2BddFf8HZMXclTBBOu3FsdIXwDEryToxDt26KCOxYDBJtv0LvJugl7WRkYongM4cK%2BpzJjZwLSAA&uploadId=193EF89BCF634326BD8D858F6B6F401D&x-oss-access-key-id=STS.NTUPm9LmCzhQ5CNw9kA5Rqx84&x-oss-expires=1739177553&x-oss-signature=%2BoYP1duoujucOhUd4%2B3BTTI3Iswn7MogrIx55AvpRx4%3D&x-oss-signature-version=OSS2
+2025-02-10 07:53:49 - WARNING - base.py - 100 - https://cn-beijing-data.aliyundrive.net/gtJ4atC4%2F889478%2F6714da191d2476ee68824b21893be70d2c661170%2F67a9b041dd0da47a8aca4dedaf7a4ccf6705a77a?partNumber=1&security-token=CAISvgJ1q6Ft5B2yfSjIr5fgG9eNobJizaq6N2X%2Fkzk%2BTbp%2Bnr2T1jz2IHhMf3NpBOkZvvQ1lGlU6%2Fcalq5rR4QAXlDfNTnsUE%2Fwq1HPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLs0ARrv4r1fMUqW2X543AUgFLhy2KKMPY99xpFgh9a7j0iCbSGyUu%2FhcRm5sw9%2Byfo34lVYneo7lX7z%2B77uHwufJ7FxfIREfquk63pvSlHLcLPe0Kjzzleo2k1XRPVFF%2B535IaHXuToXDnvSisohzxPXtuMkagAG0Uzy3ENawRnc9LY3mo9dn3QVKqcCcm2pmrIw8qyzPeSnLJitw2TeQJvURT0bUXSghIBuAYoYU4aQYRVzRjILlvbLl0B0CAliwD%2BddFf8HZMXclTBBOu3FsdIXwDEryToxDt26KCOxYDBJtv0LvJugl7WRkYongM4cK%2BpzJjZwLSAA&uploadId=193EF89BCF634326BD8D858F6B6F401D&x-oss-access-key-id=STS.NTUPm9LmCzhQ5CNw9kA5Rqx84&x-oss-expires=1739177553&x-oss-signature=%2BoYP1duoujucOhUd4%2B3BTTI3Iswn7MogrIx55AvpRx4%3D&x-oss-signature-version=OSS2:409:<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+  <Code>PartAlreadyExist</Code>
+  <Message>For sequential multipart upload, you can't overwrite uploaded parts.</Message>
+  <RequestId>67A9B08CC5BC5B383369D2A2</RequestId>
+  <HostId>cn-beijing-data.aliyundrive.net</HostId>
+  <PartEtag>"3E37280BDCEE1BBDC463D17EA20F9C86"</PartEtag>
+  <PartNumber>1</PartNumber>
+  <EC>0042-00000108</EC>
+  <RecommendDoc>https://api.aliyun.com/troubleshoot?q=0042-00000108</RecommendDoc>
+</Error>
+
+2025-02-10 07:53:49 - WARNING - base.py - 100 - https://cn-beijing-data.aliyundrive.net/gtJ4atC4%2F889478%2F6714da191d2476ee68824b21893be70d2c661170%2F67a9b041dd0da47a8aca4dedaf7a4ccf6705a77a?partNumber=1&security-token=CAISvgJ1q6Ft5B2yfSjIr5fgG9eNobJizaq6N2X%2Fkzk%2BTbp%2Bnr2T1jz2IHhMf3NpBOkZvvQ1lGlU6%2Fcalq5rR4QAXlDfNTnsUE%2Fwq1HPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLs0ARrv4r1fMUqW2X543AUgFLhy2KKMPY99xpFgh9a7j0iCbSGyUu%2FhcRm5sw9%2Byfo34lVYneo7lX7z%2B77uHwufJ7FxfIREfquk63pvSlHLcLPe0Kjzzleo2k1XRPVFF%2B535IaHXuToXDnvSisohzxPXtuMkagAG0Uzy3ENawRnc9LY3mo9dn3QVKqcCcm2pmrIw8qyzPeSnLJitw2TeQJvURT0bUXSghIBuAYoYU4aQYRVzRjILlvbLl0B0CAliwD%2BddFf8HZMXclTBBOu3FsdIXwDEryToxDt26KCOxYDBJtv0LvJugl7WRkYongM4cK%2BpzJjZwLSAA&uploadId=193EF89BCF634326BD8D858F6B6F401D&x-oss-access-key-id=STS.NTUPm9LmCzhQ5CNw9kA5Rqx84&x-oss-expires=1739177553&x-oss-signature=%2BoYP1duoujucOhUd4%2B3BTTI3Iswn7MogrIx55AvpRx4%3D&x-oss-signature-version=OSS2:409:<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+  <Code>PartAlreadyExist</Code>
+  <Message>For sequential multipart upload, you can't overwrite uploaded parts.</Message>
+  <RequestId>67A9B08DB06F763739D84B90</RequestId>
+  <HostId>cn-beijing-data.aliyundrive.net</HostId>
+  <PartEtag>"3E37280BDCEE1BBDC463D17EA20F9C86"</PartEtag>
+  <PartNumber>1</PartNumber>
+  <EC>0042-00000108</EC>
+  <RecommendDoc>https://api.aliyun.com/troubleshoot?q=0042-00000108</RecommendDoc>
+</Error>
+
+2025-02-10 07:53:50 - WARNING - base.py - 100 - https://cn-beijing-data.aliyundrive.net/gtJ4atC4%2F889478%2F6714da191d2476ee68824b21893be70d2c661170%2F67a9b041dd0da47a8aca4dedaf7a4ccf6705a77a?partNumber=1&security-token=CAISvgJ1q6Ft5B2yfSjIr5fgG9eNobJizaq6N2X%2Fkzk%2BTbp%2Bnr2T1jz2IHhMf3NpBOkZvvQ1lGlU6%2Fcalq5rR4QAXlDfNTnsUE%2Fwq1HPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLs0ARrv4r1fMUqW2X543AUgFLhy2KKMPY99xpFgh9a7j0iCbSGyUu%2FhcRm5sw9%2Byfo34lVYneo7lX7z%2B77uHwufJ7FxfIREfquk63pvSlHLcLPe0Kjzzleo2k1XRPVFF%2B535IaHXuToXDnvSisohzxPXtuMkagAG0Uzy3ENawRnc9LY3mo9dn3QVKqcCcm2pmrIw8qyzPeSnLJitw2TeQJvURT0bUXSghIBuAYoYU4aQYRVzRjILlvbLl0B0CAliwD%2BddFf8HZMXclTBBOu3FsdIXwDEryToxDt26KCOxYDBJtv0LvJugl7WRkYongM4cK%2BpzJjZwLSAA&uploadId=193EF89BCF634326BD8D858F6B6F401D&x-oss-access-key-id=STS.NTUPm9LmCzhQ5CNw9kA5Rqx84&x-oss-expires=1739177553&x-oss-signature=%2BoYP1duoujucOhUd4%2B3BTTI3Iswn7MogrIx55AvpRx4%3D&x-oss-signature-version=OSS2:409:<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+  <Code>PartAlreadyExist</Code>
+  <Message>For sequential multipart upload, you can't overwrite uploaded parts.</Message>
+  <RequestId>67A9B08E73F4E53737F9B887</RequestId>
+  <HostId>cn-beijing-data.aliyundrive.net</HostId>
+  <PartEtag>"3E37280BDCEE1BBDC463D17EA20F9C86"</PartEtag>
+  <PartNumber>1</PartNumber>
+  <EC>0042-00000108</EC>
+  <RecommendDoc>https://api.aliyun.com/troubleshoot?q=0042-00000108</RecommendDoc>
+</Error>
+
+2025-02-10 07:53:50 - ERROR - aliyundrive.py - 1077 - File tmp/122672569/122672569_p0.png Part 1 upload failed.
+2025-02-10 07:58:42 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='cn-beijing-data.aliyundrive.net', port=443): Read timed out. (read timeout=30)")': /C6YEJCVE%2F889478%2F67a9b18e48e063b43edf4cc59d1d21d91f239726%2F67a9b18ea7154a478fb747d291beaa20d761f326?partNumber=1&security-token=CAISvgJ1q6Ft5B2yfSjIr5fgG9eNobJizaq6N2X%2Fkzk%2BTbp%2Bnr2T1jz2IHhMf3NpBOkZvvQ1lGlU6%2Fcalq5rR4QAXlDfNTnsUE%2Fwq1HPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLs0ARrv4r1fMUqW2X543AUgFLhy2KKMPY99xpFgh9a7j0iCbSGyUu%2FhcRm5sw9%2Byfo34lVYneo7lX7z%2B77uHwufJ7FxfIREfquk63pvSlHLcLPe0Kjzzleo2k1XRPVFF%2B535IaHXuToXDnvSisohzxPXtuMkagAG0Uzy3ENawRnc9LY3mo9dn3QVKqcCcm2pmrIw8qyzPeSnLJitw2TeQJvURT0bUXSghIBuAYoYU4aQYRVzRjILlvbLl0B0CAliwD%2BddFf8HZMXclTBBOu3FsdIXwDEryToxDt26KCOxYDBJtv0LvJugl7WRkYongM4cK%2BpzJjZwLSAA&uploadId=4C107C708313442D821022969E3F6978&x-oss-access-key-id=STS.NTUPm9LmCzhQ5CNw9kA5Rqx84&x-oss-expires=1739177886&x-oss-signature=qEQEDyj0hLXP1%2FzA%2BdkFBMZYD9B8q4p8C%2BhSQmZNpe4%3D&x-oss-signature-version=OSS2
+2025-02-10 07:58:48 - WARNING - base.py - 100 - https://cn-beijing-data.aliyundrive.net/C6YEJCVE%2F889478%2F67a9b18e48e063b43edf4cc59d1d21d91f239726%2F67a9b18ea7154a478fb747d291beaa20d761f326?partNumber=1&security-token=CAISvgJ1q6Ft5B2yfSjIr5fgG9eNobJizaq6N2X%2Fkzk%2BTbp%2Bnr2T1jz2IHhMf3NpBOkZvvQ1lGlU6%2Fcalq5rR4QAXlDfNTnsUE%2Fwq1HPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLs0ARrv4r1fMUqW2X543AUgFLhy2KKMPY99xpFgh9a7j0iCbSGyUu%2FhcRm5sw9%2Byfo34lVYneo7lX7z%2B77uHwufJ7FxfIREfquk63pvSlHLcLPe0Kjzzleo2k1XRPVFF%2B535IaHXuToXDnvSisohzxPXtuMkagAG0Uzy3ENawRnc9LY3mo9dn3QVKqcCcm2pmrIw8qyzPeSnLJitw2TeQJvURT0bUXSghIBuAYoYU4aQYRVzRjILlvbLl0B0CAliwD%2BddFf8HZMXclTBBOu3FsdIXwDEryToxDt26KCOxYDBJtv0LvJugl7WRkYongM4cK%2BpzJjZwLSAA&uploadId=4C107C708313442D821022969E3F6978&x-oss-access-key-id=STS.NTUPm9LmCzhQ5CNw9kA5Rqx84&x-oss-expires=1739177886&x-oss-signature=qEQEDyj0hLXP1%2FzA%2BdkFBMZYD9B8q4p8C%2BhSQmZNpe4%3D&x-oss-signature-version=OSS2:409:<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+  <Code>PartAlreadyExist</Code>
+  <Message>For sequential multipart upload, you can't overwrite uploaded parts.</Message>
+  <RequestId>67A9B1B4142AC63635105103</RequestId>
+  <HostId>cn-beijing-data.aliyundrive.net</HostId>
+  <PartEtag>"2DEB7EAF7FFF4CBA462FF73E582D2BF3"</PartEtag>
+  <PartNumber>1</PartNumber>
+  <EC>0042-00000108</EC>
+  <RecommendDoc>https://api.aliyun.com/troubleshoot?q=0042-00000108</RecommendDoc>
+</Error>
+
+2025-02-10 07:59:25 - WARNING - base.py - 100 - https://cn-beijing-data.aliyundrive.net/C6YEJCVE%2F889478%2F67a9b18e48e063b43edf4cc59d1d21d91f239726%2F67a9b18ea7154a478fb747d291beaa20d761f326?partNumber=1&security-token=CAISvgJ1q6Ft5B2yfSjIr5fgG9eNobJizaq6N2X%2Fkzk%2BTbp%2Bnr2T1jz2IHhMf3NpBOkZvvQ1lGlU6%2Fcalq5rR4QAXlDfNTnsUE%2Fwq1HPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLs0ARrv4r1fMUqW2X543AUgFLhy2KKMPY99xpFgh9a7j0iCbSGyUu%2FhcRm5sw9%2Byfo34lVYneo7lX7z%2B77uHwufJ7FxfIREfquk63pvSlHLcLPe0Kjzzleo2k1XRPVFF%2B535IaHXuToXDnvSisohzxPXtuMkagAG0Uzy3ENawRnc9LY3mo9dn3QVKqcCcm2pmrIw8qyzPeSnLJitw2TeQJvURT0bUXSghIBuAYoYU4aQYRVzRjILlvbLl0B0CAliwD%2BddFf8HZMXclTBBOu3FsdIXwDEryToxDt26KCOxYDBJtv0LvJugl7WRkYongM4cK%2BpzJjZwLSAA&uploadId=4C107C708313442D821022969E3F6978&x-oss-access-key-id=STS.NTUPm9LmCzhQ5CNw9kA5Rqx84&x-oss-expires=1739177886&x-oss-signature=qEQEDyj0hLXP1%2FzA%2BdkFBMZYD9B8q4p8C%2BhSQmZNpe4%3D&x-oss-signature-version=OSS2:409:<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+  <Code>PartAlreadyExist</Code>
+  <Message>For sequential multipart upload, you can't overwrite uploaded parts.</Message>
+  <RequestId>67A9B1B98DAE5B3931AE5FA2</RequestId>
+  <HostId>cn-beijing-data.aliyundrive.net</HostId>
+  <PartEtag>"2DEB7EAF7FFF4CBA462FF73E582D2BF3"</PartEtag>
+  <PartNumber>1</PartNumber>
+  <EC>0042-00000108</EC>
+  <RecommendDoc>https://api.aliyun.com/troubleshoot?q=0042-00000108</RecommendDoc>
+</Error>
+
+2025-02-10 07:59:44 - WARNING - base.py - 100 - https://cn-beijing-data.aliyundrive.net/C6YEJCVE%2F889478%2F67a9b18e48e063b43edf4cc59d1d21d91f239726%2F67a9b18ea7154a478fb747d291beaa20d761f326?partNumber=1&security-token=CAISvgJ1q6Ft5B2yfSjIr5fgG9eNobJizaq6N2X%2Fkzk%2BTbp%2Bnr2T1jz2IHhMf3NpBOkZvvQ1lGlU6%2Fcalq5rR4QAXlDfNTnsUE%2Fwq1HPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLs0ARrv4r1fMUqW2X543AUgFLhy2KKMPY99xpFgh9a7j0iCbSGyUu%2FhcRm5sw9%2Byfo34lVYneo7lX7z%2B77uHwufJ7FxfIREfquk63pvSlHLcLPe0Kjzzleo2k1XRPVFF%2B535IaHXuToXDnvSisohzxPXtuMkagAG0Uzy3ENawRnc9LY3mo9dn3QVKqcCcm2pmrIw8qyzPeSnLJitw2TeQJvURT0bUXSghIBuAYoYU4aQYRVzRjILlvbLl0B0CAliwD%2BddFf8HZMXclTBBOu3FsdIXwDEryToxDt26KCOxYDBJtv0LvJugl7WRkYongM4cK%2BpzJjZwLSAA&uploadId=4C107C708313442D821022969E3F6978&x-oss-access-key-id=STS.NTUPm9LmCzhQ5CNw9kA5Rqx84&x-oss-expires=1739177886&x-oss-signature=qEQEDyj0hLXP1%2FzA%2BdkFBMZYD9B8q4p8C%2BhSQmZNpe4%3D&x-oss-signature-version=OSS2:409:<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+  <Code>PartAlreadyExist</Code>
+  <Message>For sequential multipart upload, you can't overwrite uploaded parts.</Message>
+  <RequestId>67A9B1DD8DAE5B39316699A2</RequestId>
+  <HostId>cn-beijing-data.aliyundrive.net</HostId>
+  <PartEtag>"2DEB7EAF7FFF4CBA462FF73E582D2BF3"</PartEtag>
+  <PartNumber>1</PartNumber>
+  <EC>0042-00000108</EC>
+  <RecommendDoc>https://api.aliyun.com/troubleshoot?q=0042-00000108</RecommendDoc>
+</Error>
+
+2025-02-10 07:59:44 - ERROR - aliyundrive.py - 1077 - File tmp/124711881/124711881_p5.jpg Part 1 upload failed.
+2025-02-10 08:01:07 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', TimeoutError('The write operation timed out'))': /31uTTkaf%2F889478%2F67a9b22535a74ca707fb4168b108c3b9d9f6257f%2F67a9b225b211a0e8ddc24898a5ad203c1072ce4a?partNumber=1&security-token=CAISvgJ1q6Ft5B2yfSjIr5fgG9eNobJizaq6N2X%2Fkzk%2BTbp%2Bnr2T1jz2IHhMf3NpBOkZvvQ1lGlU6%2Fcalq5rR4QAXlDfNTnsUE%2Fwq1HPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLs0ARrv4r1fMUqW2X543AUgFLhy2KKMPY99xpFgh9a7j0iCbSGyUu%2FhcRm5sw9%2Byfo34lVYneo7lX7z%2B77uHwufJ7FxfIREfquk63pvSlHLcLPe0Kjzzleo2k1XRPVFF%2B535IaHXuToXDnvSisohzxPXtuMkagAG0Uzy3ENawRnc9LY3mo9dn3QVKqcCcm2pmrIw8qyzPeSnLJitw2TeQJvURT0bUXSghIBuAYoYU4aQYRVzRjILlvbLl0B0CAliwD%2BddFf8HZMXclTBBOu3FsdIXwDEryToxDt26KCOxYDBJtv0LvJugl7WRkYongM4cK%2BpzJjZwLSAA&uploadId=6FA3BC5FB9204E0AAAAC15908E234B73&x-oss-access-key-id=STS.NTUPm9LmCzhQ5CNw9kA5Rqx84&x-oss-expires=1739178037&x-oss-signature=tWwawI3iPohYbVV2W5d9v%2FBbhGR2tpB14s8mn7ecKR4%3D&x-oss-signature-version=OSS2
+2025-02-10 08:04:56 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='cn-beijing-data.aliyundrive.net', port=443): Read timed out. (read timeout=30)")': /xAvrxhU7%2F889478%2F678b463481bbab13d9e0456f909c702e1a9f5a48%2F67a9b2f73d38e310b6f74cbc8dc4d89fdaf68abf?partNumber=1&security-token=CAISvgJ1q6Ft5B2yfSjIr5fgG9eNobJizaq6N2X%2Fkzk%2BTbp%2Bnr2T1jz2IHhMf3NpBOkZvvQ1lGlU6%2Fcalq5rR4QAXlDfNTnsUE%2Fwq1HPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLs0ARrv4r1fMUqW2X543AUgFLhy2KKMPY99xpFgh9a7j0iCbSGyUu%2FhcRm5sw9%2Byfo34lVYneo7lX7z%2B77uHwufJ7FxfIREfquk63pvSlHLcLPe0Kjzzleo2k1XRPVFF%2B535IaHXuToXDnvSisohzxPXtuMkagAG0Uzy3ENawRnc9LY3mo9dn3QVKqcCcm2pmrIw8qyzPeSnLJitw2TeQJvURT0bUXSghIBuAYoYU4aQYRVzRjILlvbLl0B0CAliwD%2BddFf8HZMXclTBBOu3FsdIXwDEryToxDt26KCOxYDBJtv0LvJugl7WRkYongM4cK%2BpzJjZwLSAA&uploadId=EF16296EC00243F888724AE7DBAFD160&x-oss-access-key-id=STS.NTUPm9LmCzhQ5CNw9kA5Rqx84&x-oss-expires=1739178247&x-oss-signature=I1dAzbr5WyYhih1%2FIdoF3vms5CttJoax6ZYB9lpjo6E%3D&x-oss-signature-version=OSS2
+2025-02-10 08:05:27 - WARNING - base.py - 100 - https://cn-beijing-data.aliyundrive.net/xAvrxhU7%2F889478%2F678b463481bbab13d9e0456f909c702e1a9f5a48%2F67a9b2f73d38e310b6f74cbc8dc4d89fdaf68abf?partNumber=1&security-token=CAISvgJ1q6Ft5B2yfSjIr5fgG9eNobJizaq6N2X%2Fkzk%2BTbp%2Bnr2T1jz2IHhMf3NpBOkZvvQ1lGlU6%2Fcalq5rR4QAXlDfNTnsUE%2Fwq1HPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLs0ARrv4r1fMUqW2X543AUgFLhy2KKMPY99xpFgh9a7j0iCbSGyUu%2FhcRm5sw9%2Byfo34lVYneo7lX7z%2B77uHwufJ7FxfIREfquk63pvSlHLcLPe0Kjzzleo2k1XRPVFF%2B535IaHXuToXDnvSisohzxPXtuMkagAG0Uzy3ENawRnc9LY3mo9dn3QVKqcCcm2pmrIw8qyzPeSnLJitw2TeQJvURT0bUXSghIBuAYoYU4aQYRVzRjILlvbLl0B0CAliwD%2BddFf8HZMXclTBBOu3FsdIXwDEryToxDt26KCOxYDBJtv0LvJugl7WRkYongM4cK%2BpzJjZwLSAA&uploadId=EF16296EC00243F888724AE7DBAFD160&x-oss-access-key-id=STS.NTUPm9LmCzhQ5CNw9kA5Rqx84&x-oss-expires=1739178247&x-oss-signature=I1dAzbr5WyYhih1%2FIdoF3vms5CttJoax6ZYB9lpjo6E%3D&x-oss-signature-version=OSS2:409:<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+  <Code>PartAlreadyExist</Code>
+  <Message>For sequential multipart upload, you can't overwrite uploaded parts.</Message>
+  <RequestId>67A9B328B858D83936FBBED8</RequestId>
+  <HostId>cn-beijing-data.aliyundrive.net</HostId>
+  <PartEtag>"ABF106A52CD3A6B6AB7BC15378E6A62C"</PartEtag>
+  <PartNumber>1</PartNumber>
+  <EC>0042-00000108</EC>
+  <RecommendDoc>https://api.aliyun.com/troubleshoot?q=0042-00000108</RecommendDoc>
+</Error>
+
+2025-02-10 08:05:39 - WARNING - base.py - 100 - https://cn-beijing-data.aliyundrive.net/xAvrxhU7%2F889478%2F678b463481bbab13d9e0456f909c702e1a9f5a48%2F67a9b2f73d38e310b6f74cbc8dc4d89fdaf68abf?partNumber=1&security-token=CAISvgJ1q6Ft5B2yfSjIr5fgG9eNobJizaq6N2X%2Fkzk%2BTbp%2Bnr2T1jz2IHhMf3NpBOkZvvQ1lGlU6%2Fcalq5rR4QAXlDfNTnsUE%2Fwq1HPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLs0ARrv4r1fMUqW2X543AUgFLhy2KKMPY99xpFgh9a7j0iCbSGyUu%2FhcRm5sw9%2Byfo34lVYneo7lX7z%2B77uHwufJ7FxfIREfquk63pvSlHLcLPe0Kjzzleo2k1XRPVFF%2B535IaHXuToXDnvSisohzxPXtuMkagAG0Uzy3ENawRnc9LY3mo9dn3QVKqcCcm2pmrIw8qyzPeSnLJitw2TeQJvURT0bUXSghIBuAYoYU4aQYRVzRjILlvbLl0B0CAliwD%2BddFf8HZMXclTBBOu3FsdIXwDEryToxDt26KCOxYDBJtv0LvJugl7WRkYongM4cK%2BpzJjZwLSAA&uploadId=EF16296EC00243F888724AE7DBAFD160&x-oss-access-key-id=STS.NTUPm9LmCzhQ5CNw9kA5Rqx84&x-oss-expires=1739178247&x-oss-signature=I1dAzbr5WyYhih1%2FIdoF3vms5CttJoax6ZYB9lpjo6E%3D&x-oss-signature-version=OSS2:409:<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+  <Code>PartAlreadyExist</Code>
+  <Message>For sequential multipart upload, you can't overwrite uploaded parts.</Message>
+  <RequestId>67A9B34750BCA63833325FB2</RequestId>
+  <HostId>cn-beijing-data.aliyundrive.net</HostId>
+  <PartEtag>"ABF106A52CD3A6B6AB7BC15378E6A62C"</PartEtag>
+  <PartNumber>1</PartNumber>
+  <EC>0042-00000108</EC>
+  <RecommendDoc>https://api.aliyun.com/troubleshoot?q=0042-00000108</RecommendDoc>
+</Error>
+
+2025-02-10 08:05:44 - WARNING - base.py - 100 - https://cn-beijing-data.aliyundrive.net/xAvrxhU7%2F889478%2F678b463481bbab13d9e0456f909c702e1a9f5a48%2F67a9b2f73d38e310b6f74cbc8dc4d89fdaf68abf?partNumber=1&security-token=CAISvgJ1q6Ft5B2yfSjIr5fgG9eNobJizaq6N2X%2Fkzk%2BTbp%2Bnr2T1jz2IHhMf3NpBOkZvvQ1lGlU6%2Fcalq5rR4QAXlDfNTnsUE%2Fwq1HPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLs0ARrv4r1fMUqW2X543AUgFLhy2KKMPY99xpFgh9a7j0iCbSGyUu%2FhcRm5sw9%2Byfo34lVYneo7lX7z%2B77uHwufJ7FxfIREfquk63pvSlHLcLPe0Kjzzleo2k1XRPVFF%2B535IaHXuToXDnvSisohzxPXtuMkagAG0Uzy3ENawRnc9LY3mo9dn3QVKqcCcm2pmrIw8qyzPeSnLJitw2TeQJvURT0bUXSghIBuAYoYU4aQYRVzRjILlvbLl0B0CAliwD%2BddFf8HZMXclTBBOu3FsdIXwDEryToxDt26KCOxYDBJtv0LvJugl7WRkYongM4cK%2BpzJjZwLSAA&uploadId=EF16296EC00243F888724AE7DBAFD160&x-oss-access-key-id=STS.NTUPm9LmCzhQ5CNw9kA5Rqx84&x-oss-expires=1739178247&x-oss-signature=I1dAzbr5WyYhih1%2FIdoF3vms5CttJoax6ZYB9lpjo6E%3D&x-oss-signature-version=OSS2:409:<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+  <Code>PartAlreadyExist</Code>
+  <Message>For sequential multipart upload, you can't overwrite uploaded parts.</Message>
+  <RequestId>67A9B35350BCA63833F675B2</RequestId>
+  <HostId>cn-beijing-data.aliyundrive.net</HostId>
+  <PartEtag>"ABF106A52CD3A6B6AB7BC15378E6A62C"</PartEtag>
+  <PartNumber>1</PartNumber>
+  <EC>0042-00000108</EC>
+  <RecommendDoc>https://api.aliyun.com/troubleshoot?q=0042-00000108</RecommendDoc>
+</Error>
+
+2025-02-10 08:05:44 - ERROR - aliyundrive.py - 1077 - File tmp/126305001_mirage/126305001_p2.png Part 1 upload failed.
