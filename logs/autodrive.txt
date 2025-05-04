@@ -1340,3 +1340,34 @@
 2025-05-02 23:19:02 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2024/03/30/20/51/37/117390501_p0.jpg
 2025-05-03 00:13:03 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2025/02/09/00/53/16/127040292_p0.jpg
 2025-05-03 00:13:31 - WARNING - aliyundrive.py - 831 - Token is about to expire, try to auto refresh.
+2025-05-03 22:14:05 - WARNING - aliyundrive.py - 831 - Token is about to expire, try to auto refresh.
+2025-05-03 22:34:04 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2025-05-03 22:34:05 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2025-05-03 22:34:35 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2025-05-03 22:34:37 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 2 time.
+2025-05-03 22:35:07 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7fa5931636d0>: Failed to establish a new connection: [Errno 101] Network is unreachable')': /adrive/v2/file/createWithFolders
+2025-05-03 22:35:38 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2025-05-03 22:35:41 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 3 time.
+2025-05-03 22:36:11 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7fa59318f010>: Failed to establish a new connection: [Errno 101] Network is unreachable')': /adrive/v2/file/createWithFolders
+2025-05-03 22:36:41 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2025-05-03 22:36:45 - ERROR - base.py - 36 - All retries failed in func _post_file_create_with_folders.
+2025-05-03 22:36:45 - ERROR - aliyundrive.py - 1046 - Failed to get create info of file tmp/128361198/128361198.json.txt.
+2025-05-03 22:38:49 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2025-05-03 22:38:51 - WARNING - base.py - 25 - Retry func _post_file_complete 1 time.
+2025-05-03 22:39:22 - ERROR - base.py - 94 - https://api.aliyundrive.com/v2/file/complete:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2025-05-03 22:39:24 - WARNING - base.py - 25 - Retry func _post_file_complete 2 time.
+2025-05-03 22:41:24 - ERROR - base.py - 94 - https://api.aliyundrive.com/adrive/v2/file/createWithFolders:HTTPSConnectionPool(host='api.aliyundrive.com', port=443): Read timed out. (read timeout=30)
+2025-05-03 22:41:25 - WARNING - base.py - 25 - Retry func _post_file_create_with_folders 1 time.
+2025-05-03 23:11:17 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2025/03/05/00/00/29/127870918_p0.jpg
+2025-05-03 23:30:54 - WARNING - connectionpool.py - 751 - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))': /img-original/img/2025/01/25/01/10/10/126538931_p0.jpg
+2025-05-03 23:41:08 - WARNING - pixivdrive.py - 127 - Failed to add salt to page tmp/128710200/128710200_p0.gif, upload original page.
+2025-05-03 23:41:08 - WARNING - pixivdrive.py - 155 - Failed to make mirage for page tmp/128710200/128710200_p0.gif.
+2025-05-04 00:13:06 - WARNING - aliyundrive.py - 831 - Token is about to expire, try to auto refresh.
+2025-05-04 00:16:04 - WARNING - base.py - 100 - https://cn-beijing-data.aliyundrive.net/alMA8SBk%2F889478%2F63b554ee7b9f826286d54039bf94e0565ca5946f%2F6816b1c3775060193ee6403d9a558a7d3fef2db1?partNumber=1&security-token=CAISvgJ1q6Ft5B2yfSjIr5XzfMjSubV44bWBN23C10c%2FOtkZuabptTz2IHhMf3NpBOkZvvQ1lGlU6%2Fcalq5rR4QAXlDfNXDLWQPWq1HPWZHInuDox55m4cTXNAr%2BIhr%2F29CoEIedZdjBe%2FCrRknZnytou9XTfimjWFrXWv%2Fgy%2BQQDLItUxK%2FcCBNCfpPOwJms7V6D3bKMuu3OROY6Qi5TmgQ41Uh1jgjtPzkkpfFtkGF1GeXkLFF%2B97DRbG%2FdNRpMZtFVNO44fd7bKKp0lQLs0ARrv4r1fMUqW2X543AUgFLhy2KKMPY99xpFgh9a7j0iCbSGyUu%2FhcRm5sw9%2Byfo34lVYneg%2FBIyylf7uHwufJ7FxfIREfquk63pvSlHLcLPe0Kjzzleo2k1XRPVFF%2B535IaHXuToXDnvSi16CtdfXtuMkagAE7Wx%2FRLbYnM41m4wRcMehRiQFECE9FnmZNOoymVDM85%2B%2FUZloB0g30wsxj%2BOFIeTG2gfs%2B6UBiK4n8rz1y35WKjfE%2BS64LOQa8ADogNeYvFv7nKgS2JVTjguXH8ly%2B2%2BDpc1SHbH416tycn%2BMP9L8yDcVwqBq%2FuvgULNB%2FC8PrWCAA&uploadId=36229BB5CEE0476D9D45B50E18FECEFC&x-oss-access-key-id=STS.NVF7rfTjYVwj5Ks3Gj6V5VcBW&x-oss-expires=1746321363&x-oss-signature=w5dBnrwdGwEv09OvmakKfwWHcG18jMuy7295ucssENw%3D&x-oss-signature-version=OSS2:502:<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+  <Code>ServiceUnavailable</Code>
+  <Message>Sorry, the page you are looking for is currently unavailable. Please try again later.</Message>
+  <RequestId>6816B1C482768A38309DCFB3</RequestId>
+  <HostId>cn-beijing-data.aliyundrive.net</HostId>
+</Error>
+
